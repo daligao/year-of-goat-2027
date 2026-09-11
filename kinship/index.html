@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Family Title Finder — What Do I Call This Relative?</title>
+<meta name="description" content="Chinese kinship titles are notoriously specific. Click through the relationship chain to find the exact Chinese term, pinyin, and cultural notes for any family member.">
+<meta property="og:title" content="Chinese Family Title Finder — What Do I Call This Relative?">
+<meta property="og:description" content="Father's older brother = 伯父 bófù. Mother's brother's wife = 舅妈 jiùmā. Click through any relationship chain for the exact Chinese title.">
+<meta property="og:url" content="https://chinesefortunetools.online/kinship/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://chinesefortunetools.online/kinship/">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');</script>
+<!-- Schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Chinese Family Title Finder","url":"https://chinesefortunetools.online/kinship/","description":"Find the exact Chinese kinship title for any family relationship","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"ChineseFortuneTools"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Chinese term for father's older brother?","acceptedAnswer":{"@type":"Answer","text":"Father's older brother is called 伯父 (bófù) or informally 大伯 (dàbó) in Chinese. His wife is 伯母 (bómǔ)."}},{"@type":"Question","name":"What is the difference between 堂 (táng) and 表 (biǎo) cousins?","acceptedAnswer":{"@type":"Answer","text":"堂兄弟姐妹 are cousins on the paternal side (father's siblings' children). 表兄弟姐妹 are cousins on the maternal side (mother's siblings' children). Chinese distinguishes these because paternal relatives carry the same surname."}},{"@type":"Question","name":"Why does Chinese have so many kinship terms?","acceptedAnswer":{"@type":"Answer","text":"Chinese kinship terms encode relationship direction (paternal vs maternal), birth order (older vs younger), and generation. This precision reflects Confucian values of hierarchical relationships and role-based obligations within the family."}},{"@type":"Question","name":"What do you call your mother's sister in Chinese?","acceptedAnswer":{"@type":"Answer","text":"Your mother's sister is called 姨妈 (yímā) or 阿姨 (āyí). Her husband is 姨父 (yífu)."}},{"@type":"Question","name":"What is the Chinese term for maternal grandfather?","acceptedAnswer":{"@type":"Answer","text":"Maternal grandfather is 外公 (wàigōng) in Mandarin. In some regions he is also called 姥爷 (lǎoyé). Maternal grandmother is 外婆 (wàipó) or 姥姥 (lǎolao)."}}]}
+</script>
+<style>
+:root{--gold:#c9a84c;--ink:#1a1a2e;--parchment:#fdf6e3;--red:#c0392b;--sage:#7a9e7e;--purple:#6c3483;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;background:var(--parchment);color:var(--ink);line-height:1.7;}
+a{color:var(--red);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.nav-bar{background:var(--ink);padding:12px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.nav-bar a{color:#ccc;font-size:0.85rem;}
+.nav-bar a:first-child{color:var(--gold);font-weight:bold;}
+.nav-bar span{color:#555;}
+
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:#fff;text-align:center;padding:54px 20px 40px;}
+.hero .badge{display:inline-block;background:var(--gold);color:#1a1a2e;font-size:0.7rem;font-weight:bold;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:900;margin-bottom:10px;line-height:1.2;}
+.hero h1 span{color:var(--gold);}
+.hero p{opacity:0.8;max-width:560px;margin:0 auto;font-size:1rem;}
+
+.tool-wrap{max-width:720px;margin:0 auto;padding:40px 20px;}
+
+/* Path breadcrumb */
+.path-bar{background:#fff;border:1.5px solid #e8dfc8;border-radius:10px;padding:14px 18px;margin-bottom:24px;display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-height:52px;}
+.path-bar .path-you{background:var(--ink);color:#fff;padding:4px 12px;border-radius:20px;font-size:0.85rem;font-weight:bold;}
+.path-bar .path-arrow{color:#bbb;font-size:0.9rem;}
+.path-bar .path-step{background:var(--gold);color:var(--ink);padding:4px 12px;border-radius:20px;font-size:0.85rem;font-weight:bold;cursor:pointer;}
+.path-bar .path-step:hover{opacity:0.8;}
+.path-bar .path-empty{color:#aaa;font-size:0.85rem;font-style:italic;}
+
+/* Step chooser */
+.step-section{margin-bottom:28px;}
+.step-section h3{font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;color:#888;margin-bottom:12px;}
+.btn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.rel-btn{background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:12px 14px;cursor:pointer;text-align:left;font-family:inherit;font-size:0.9rem;color:var(--ink);transition:border-color .15s,background .15s;display:flex;align-items:center;gap:8px;}
+.rel-btn:hover{border-color:var(--gold);background:#fffdf4;}
+.rel-btn .btn-icon{font-size:1.3rem;flex-shrink:0;}
+.rel-btn .btn-label{line-height:1.3;}
+.rel-btn .btn-sub{font-size:0.75rem;color:#888;display:block;}
+
+/* Result card */
+.result-card{background:#fff;border:2px solid var(--gold);border-radius:16px;padding:30px 28px;text-align:center;animation:fadeIn .3s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.result-zh{font-size:4rem;font-weight:bold;color:var(--ink);line-height:1;margin-bottom:4px;}
+.result-pinyin{font-size:1.5rem;color:var(--gold);margin-bottom:6px;}
+.result-en{font-size:1rem;color:#555;margin-bottom:16px;}
+.result-path{font-size:0.8rem;color:#888;margin-bottom:16px;font-style:italic;}
+.result-note{background:#fdf6e3;border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;font-size:0.88rem;color:#555;text-align:left;margin-bottom:20px;}
+.result-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.btn-reset{background:var(--red);color:#fff;border:none;border-radius:8px;padding:11px 22px;font-size:0.9rem;cursor:pointer;font-family:inherit;font-weight:bold;}
+.btn-reset:hover{background:#a93226;}
+.btn-share{background:#fff;color:var(--ink);border:1.5px solid #ddd;border-radius:8px;padding:11px 22px;font-size:0.9rem;cursor:pointer;font-family:inherit;}
+.btn-share:hover{border-color:var(--gold);}
+.btn-back{background:#fff;color:var(--ink);border:1.5px solid #ddd;border-radius:8px;padding:10px 18px;font-size:0.85rem;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;}
+.btn-back:hover{border-color:var(--gold);}
+
+/* Info boxes */
+.info-box{background:#fff;border-radius:12px;padding:24px 22px;margin-bottom:22px;border:1px solid #e8dfc8;}
+.info-box h3{font-size:1rem;margin-bottom:12px;color:var(--ink);}
+
+.kinship-table{width:100%;border-collapse:collapse;font-size:0.88rem;}
+.kinship-table th{background:var(--ink);color:#fff;padding:8px 12px;text-align:left;}
+.kinship-table td{padding:7px 12px;border-bottom:1px solid #f0e8d8;}
+.kinship-table tr:hover td{background:#fdf6e3;}
+.kinship-table .zh{font-size:1.05rem;font-weight:bold;}
+.kinship-table .py{color:var(--gold);}
+
+.cta-box{background:linear-gradient(135deg,#c0392b,#96281b);color:#fff;border-radius:14px;padding:28px 24px;text-align:center;margin:36px 0;}
+.cta-box h3{font-size:1.2rem;margin-bottom:8px;}
+.cta-box p{opacity:0.85;font-size:0.9rem;margin-bottom:18px;}
+.cta-box a{display:inline-block;background:#fff;color:var(--red);padding:11px 26px;border-radius:8px;font-weight:bold;font-size:0.95rem;}
+
+footer{background:var(--ink);color:#aaa;text-align:center;padding:28px 20px;font-size:0.82rem;}
+footer a{color:var(--gold);}
+
+@media(max-width:600px){
+  .btn-grid{grid-template-columns:1fr 1fr;}
+  .result-zh{font-size:3rem;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav-bar">
+  <a href="/">ChineseFortuneTools.online</a>
+  <span>›</span>
+  <a href="/kinship/">Family Title Finder</a>
+</nav>
+
+<header class="hero">
+  <div class="badge">Chinese Culture Tool</div>
+  <h1>What Do I Call This <span>Relative?</span></h1>
+  <p>Chinese has dozens of specific kinship terms. Click through the relationship chain to find the exact title.</p>
+</header>
+
+<main class="tool-wrap">
+
+  <!-- Path display -->
+  <div class="path-bar" id="path-bar">
+    <span class="path-you">You</span>
+    <span class="path-empty" id="path-empty">← Select a relationship below</span>
+  </div>
+
+  <!-- Back button (hidden until step 2) -->
+  <button class="btn-back" id="btn-back" style="display:none" onclick="goBack()">← Back</button>
+
+  <!-- Step chooser -->
+  <div id="chooser"></div>
+
+  <!-- Result (hidden until final) -->
+  <div class="result-card" id="result-card" style="display:none"></div>
+
+  <!-- Quick reference table -->
+  <div class="info-box">
+    <h3>Quick Reference: Common Chinese Kinship Terms</h3>
+    <table class="kinship-table">
+      <thead><tr><th>Relationship</th><th>Chinese</th><th>Pinyin</th></tr></thead>
+      <tbody>
+        <tr><td>Father's older brother</td><td class="zh">伯父</td><td class="py">bófù</td></tr>
+        <tr><td>Father's younger brother</td><td class="zh">叔叔</td><td class="py">shūshu</td></tr>
+        <tr><td>Father's sister</td><td class="zh">姑姑</td><td class="py">gūgu</td></tr>
+        <tr><td>Mother's brother</td><td class="zh">舅舅</td><td class="py">jiùjiu</td></tr>
+        <tr><td>Mother's sister</td><td class="zh">姨妈</td><td class="py">yímā</td></tr>
+        <tr><td>Paternal grandfather</td><td class="zh">爷爷</td><td class="py">yéye</td></tr>
+        <tr><td>Paternal grandmother</td><td class="zh">奶奶</td><td class="py">nǎinai</td></tr>
+        <tr><td>Maternal grandfather</td><td class="zh">外公</td><td class="py">wàigōng</td></tr>
+        <tr><td>Maternal grandmother</td><td class="zh">外婆</td><td class="py">wàipó</td></tr>
+        <tr><td>Paternal cousin (older male)</td><td class="zh">堂哥</td><td class="py">tánggē</td></tr>
+        <tr><td>Paternal cousin (older female)</td><td class="zh">堂姐</td><td class="py">tángjiě</td></tr>
+        <tr><td>Maternal cousin (older male)</td><td class="zh">表哥</td><td class="py">biǎogē</td></tr>
+        <tr><td>Maternal cousin (older female)</td><td class="zh">表姐</td><td class="py">biǎojiě</td></tr>
+        <tr><td>Husband's father</td><td class="zh">公公</td><td class="py">gōnggong</td></tr>
+        <tr><td>Husband's mother</td><td class="zh">婆婆</td><td class="py">pópo</td></tr>
+        <tr><td>Wife's father</td><td class="zh">岳父</td><td class="py">yuèfù</td></tr>
+        <tr><td>Wife's mother</td><td class="zh">岳母</td><td class="py">yuèmǔ</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <h3>Why does Chinese have so many kinship terms?</h3>
+    <p style="font-size:0.9rem;color:#555;margin-bottom:10px;">English uses "aunt" for four different people. Chinese is precise: 伯母 (father's older brother's wife) ≠ 婶婶 (father's younger brother's wife) ≠ 姑姑 (father's sister) ≠ 姨妈 (mother's sister).</p>
+    <p style="font-size:0.9rem;color:#555;margin-bottom:10px;">This matters because Confucian family ethics assign specific duties and forms of address to each relationship. Getting the title wrong signals that you don't know your place in the family hierarchy — a significant social misstep.</p>
+    <p style="font-size:0.9rem;color:#555;">Key distinction: <strong>堂 (táng)</strong> cousins share the father's surname (paternal side). <strong>表 (biǎo)</strong> cousins are on the maternal side. Only 堂 relatives are considered "inside the family" (家里人) in traditional culture.</p>
+  </div>
+
+  <div class="cta-box">
+    <h3>Learn Chinese Social Rules the Locals Follow</h3>
+    <p>Gift-giving, greetings, dining etiquette, workplace norms — the unwritten rules that trip up most foreigners.</p>
+    <a href="https://chinarules101.com/" target="_blank" onclick="gtag('event','visit_main_site',{tool:'kinship',destination:'chinarules101'})">Read ChinaRules101 →</a>
+  </div>
+
+</main>
+
+<footer>
+  <p><a href="/">← All Tools</a> &nbsp;|&nbsp; <a href="https://chinarules101.com/" target="_blank">ChinaRules101.com</a> &nbsp;|&nbsp; <a href="https://chinesefortunetools.com/" target="_blank">ChineseFortuneTools.com</a></p>
+  <p style="margin-top:8px;">© 2026 ChineseFortuneTools.online — Free Chinese culture tools</p>
+</footer>
+
+<script>
+// ─── DATA ────────────────────────────────────────────────────────────────────
+// Each entry: zh, pinyin, en, note (optional), informal (optional)
+const K = {
+  // Direct family
+  "father":           {zh:"父亲", pinyin:"fùqin",    en:"Father",              informal:"爸爸 bàba"},
+  "mother":           {zh:"母亲", pinyin:"mǔqin",    en:"Mother",              informal:"妈妈 māma"},
+  "older-brother":    {zh:"哥哥", pinyin:"gēge",     en:"Older Brother",       informal:"哥 gē"},
+  "younger-brother":  {zh:"弟弟", pinyin:"dìdi",     en:"Younger Brother",     informal:"弟 dì"},
+  "older-sister":     {zh:"姐姐", pinyin:"jiějie",   en:"Older Sister",        informal:"姐 jiě"},
+  "younger-sister":   {zh:"妹妹", pinyin:"mèimei",   en:"Younger Sister",      informal:"妹 mèi"},
+  "son":              {zh:"儿子", pinyin:"érzi",      en:"Son"},
+  "daughter":         {zh:"女儿", pinyin:"nǚér",     en:"Daughter"},
+  "husband":          {zh:"丈夫", pinyin:"zhàngfu",  en:"Husband",             informal:"老公 lǎogōng"},
+  "wife":             {zh:"妻子", pinyin:"qīzi",     en:"Wife",                informal:"老婆 lǎopó"},
+
+  // Grandparents
+  "father.father":    {zh:"爷爷", pinyin:"yéye",     en:"Paternal Grandfather"},
+  "father.mother":    {zh:"奶奶", pinyin:"nǎinai",   en:"Paternal Grandmother"},
+  "mother.father":    {zh:"外公", pinyin:"wàigōng",  en:"Maternal Grandfather", note:"In northern China also 姥爷 (lǎoyé)"},
+  "mother.mother":    {zh:"外婆", pinyin:"wàipó",    en:"Maternal Grandmother", note:"In northern China also 姥姥 (lǎolao)"},
+
+  // Father's siblings
+  "father.older-brother":   {zh:"伯父", pinyin:"bófù",    en:"Father's Older Brother", informal:"大伯 dàbó", note:"His children are your 堂兄弟姐妹 (paternal cousins)"},
+  "father.younger-brother": {zh:"叔叔", pinyin:"shūshu",  en:"Father's Younger Brother", note:"His children are your 堂兄弟姐妹 (paternal cousins)"},
+  "father.older-sister":    {zh:"姑姑", pinyin:"gūgu",    en:"Father's Sister (older)", note:"Her children are your 表兄弟姐妹 (maternal-side cousins)"},
+  "father.younger-sister":  {zh:"姑姑", pinyin:"gūgu",    en:"Father's Sister (younger)", note:"Same title regardless of birth order"},
+
+  // Father's siblings' spouses
+  "father.older-brother.wife":    {zh:"伯母", pinyin:"bómǔ",    en:"Father's Older Brother's Wife", informal:"大妈 dàmā"},
+  "father.younger-brother.wife":  {zh:"婶婶", pinyin:"shěnshen", en:"Father's Younger Brother's Wife", informal:"婶 shěn"},
+  "father.older-sister.husband":  {zh:"姑父", pinyin:"gūfu",    en:"Father's Sister's Husband"},
+  "father.younger-sister.husband":{zh:"姑父", pinyin:"gūfu",    en:"Father's Sister's Husband"},
+
+  // Paternal cousins
+  "father.older-brother.older-son":       {zh:"堂哥", pinyin:"tánggē",   en:"Paternal Cousin (older male, father's side)",   note:"堂 cousins share your father's surname"},
+  "father.older-brother.younger-son":     {zh:"堂弟", pinyin:"tángdì",   en:"Paternal Cousin (younger male, father's side)"},
+  "father.older-brother.older-daughter":  {zh:"堂姐", pinyin:"tángjiě",  en:"Paternal Cousin (older female, father's side)"},
+  "father.older-brother.younger-daughter":{zh:"堂妹", pinyin:"tángmèi",  en:"Paternal Cousin (younger female, father's side)"},
+  "father.younger-brother.older-son":     {zh:"堂哥", pinyin:"tánggē",   en:"Paternal Cousin (older male)"},
+  "father.younger-brother.younger-son":   {zh:"堂弟", pinyin:"tángdì",   en:"Paternal Cousin (younger male)"},
+  "father.younger-brother.older-daughter":{zh:"堂姐", pinyin:"tángjiě",  en:"Paternal Cousin (older female)"},
+  "father.younger-brother.younger-daughter":{zh:"堂妹",pinyin:"tángmèi", en:"Paternal Cousin (younger female)"},
+  "father.older-sister.older-son":        {zh:"表哥", pinyin:"biǎogē",   en:"Cousin via Father's Sister (older male)", note:"Called 表 because he's on a different surname line"},
+  "father.older-sister.younger-son":      {zh:"表弟", pinyin:"biǎodì",   en:"Cousin via Father's Sister (younger male)"},
+  "father.older-sister.older-daughter":   {zh:"表姐", pinyin:"biǎojiě",  en:"Cousin via Father's Sister (older female)"},
+  "father.older-sister.younger-daughter": {zh:"表妹", pinyin:"biǎomèi",  en:"Cousin via Father's Sister (younger female)"},
+  "father.younger-sister.older-son":      {zh:"表哥", pinyin:"biǎogē",   en:"Cousin via Father's Sister (older male)"},
+  "father.younger-sister.younger-son":    {zh:"表弟", pinyin:"biǎodì",   en:"Cousin via Father's Sister (younger male)"},
+  "father.younger-sister.older-daughter": {zh:"表姐", pinyin:"biǎojiě",  en:"Cousin via Father's Sister (older female)"},
+  "father.younger-sister.younger-daughter":{zh:"表妹",pinyin:"biǎomèi",  en:"Cousin via Father's Sister (younger female)"},
+
+  // Mother's siblings
+  "mother.brother":          {zh:"舅舅", pinyin:"jiùjiu",  en:"Mother's Brother",        note:"His children are your 表兄弟姐妹 (maternal cousins)"},
+  "mother.older-sister":     {zh:"姨妈", pinyin:"yímā",    en:"Mother's Sister (older)", informal:"阿姨 āyí", note:"Her children are your 表兄弟姐妹"},
+  "mother.younger-sister":   {zh:"姨妈", pinyin:"yímā",    en:"Mother's Sister (younger)", informal:"阿姨 āyí"},
+
+  // Mother's siblings' spouses
+  "mother.brother.wife":           {zh:"舅妈", pinyin:"jiùmā",  en:"Mother's Brother's Wife"},
+  "mother.older-sister.husband":   {zh:"姨父", pinyin:"yífu",   en:"Mother's Sister's Husband"},
+  "mother.younger-sister.husband": {zh:"姨父", pinyin:"yífu",   en:"Mother's Sister's Husband"},
+
+  // Maternal cousins
+  "mother.brother.older-son":         {zh:"表哥", pinyin:"biǎogē",  en:"Maternal Cousin (older male)"},
+  "mother.brother.younger-son":       {zh:"表弟", pinyin:"biǎodì",  en:"Maternal Cousin (younger male)"},
+  "mother.brother.older-daughter":    {zh:"表姐", pinyin:"biǎojiě", en:"Maternal Cousin (older female)"},
+  "mother.brother.younger-daughter":  {zh:"表妹", pinyin:"biǎomèi", en:"Maternal Cousin (younger female)"},
+  "mother.older-sister.older-son":    {zh:"表哥", pinyin:"biǎogē",  en:"Maternal Cousin (older male)"},
+  "mother.older-sister.younger-son":  {zh:"表弟", pinyin:"biǎodì",  en:"Maternal Cousin (younger male)"},
+  "mother.older-sister.older-daughter":{zh:"表姐",pinyin:"biǎojiě", en:"Maternal Cousin (older female)"},
+  "mother.older-sister.younger-daughter":{zh:"表妹",pinyin:"biǎomèi",en:"Maternal Cousin (younger female)"},
+  "mother.younger-sister.older-son":  {zh:"表哥", pinyin:"biǎogē",  en:"Maternal Cousin (older male)"},
+  "mother.younger-sister.younger-son":{zh:"表弟", pinyin:"biǎodì",  en:"Maternal Cousin (younger male)"},
+  "mother.younger-sister.older-daughter":{zh:"表姐",pinyin:"biǎojiě",en:"Maternal Cousin (older female)"},
+  "mother.younger-sister.younger-daughter":{zh:"表妹",pinyin:"biǎomèi",en:"Maternal Cousin (younger female)"},
+
+  // Siblings' children
+  "older-brother.son":      {zh:"侄子", pinyin:"zhízi",      en:"Nephew (older brother's son)"},
+  "older-brother.daughter": {zh:"侄女", pinyin:"zhínǚ",      en:"Niece (older brother's daughter)"},
+  "younger-brother.son":    {zh:"侄子", pinyin:"zhízi",      en:"Nephew (younger brother's son)"},
+  "younger-brother.daughter":{zh:"侄女",pinyin:"zhínǚ",      en:"Niece (younger brother's daughter)"},
+  "older-sister.son":       {zh:"外甥", pinyin:"wàisheng",   en:"Nephew (older sister's son)"},
+  "older-sister.daughter":  {zh:"外甥女",pinyin:"wàishengnǚ",en:"Niece (older sister's daughter)"},
+  "younger-sister.son":     {zh:"外甥", pinyin:"wàisheng",   en:"Nephew (younger sister's son)"},
+  "younger-sister.daughter":{zh:"外甥女",pinyin:"wàishengnǚ",en:"Niece (younger sister's daughter)"},
+
+  // In-laws (spouse's parents)
+  "husband.father":  {zh:"公公", pinyin:"gōnggong", en:"Father-in-law (Husband's Father)", note:"Wife uses this term; husband calls his own father 父亲"},
+  "husband.mother":  {zh:"婆婆", pinyin:"pópo",     en:"Mother-in-law (Husband's Mother)", note:"Wife uses this term"},
+  "wife.father":     {zh:"岳父", pinyin:"yuèfù",   en:"Father-in-law (Wife's Father)", informal:"丈人 zhàngrén"},
+  "wife.mother":     {zh:"岳母", pinyin:"yuèmǔ",   en:"Mother-in-law (Wife's Mother)",  informal:"丈母娘 zhàngmǔniáng"},
+
+  // Children's spouses
+  "son.wife":        {zh:"儿媳", pinyin:"érxí",   en:"Daughter-in-law (Son's Wife)"},
+  "daughter.husband":{zh:"女婿", pinyin:"nǚxu",   en:"Son-in-law (Daughter's Husband)"},
+
+  // Grandchildren
+  "son.son":           {zh:"孙子",   pinyin:"sūnzi",   en:"Grandson (Son's Son)"},
+  "son.daughter":      {zh:"孙女",   pinyin:"sūnnǚ",   en:"Granddaughter (Son's Daughter)"},
+  "daughter.son":      {zh:"外孙",   pinyin:"wàisūn",  en:"Grandson (Daughter's Son)"},
+  "daughter.daughter": {zh:"外孙女", pinyin:"wàisūnnǚ",en:"Granddaughter (Daughter's Daughter)"},
+};
+
+// ─── TREE (what options appear at each node) ─────────────────────────────────
+const TREE = {
+  "": [
+    {id:"father",          icon:"👨", label:"Father",          sub:"父亲"},
+    {id:"mother",          icon:"👩", label:"Mother",          sub:"母亲"},
+    {id:"older-brother",   icon:"🧑", label:"Older Brother",   sub:"哥哥"},
+    {id:"younger-brother", icon:"🧒", label:"Younger Brother", sub:"弟弟"},
+    {id:"older-sister",    icon:"👧", label:"Older Sister",    sub:"姐姐"},
+    {id:"younger-sister",  icon:"👶", label:"Younger Sister",  sub:"妹妹"},
+    {id:"son",             icon:"👦", label:"Son",             sub:"儿子"},
+    {id:"daughter",        icon:"👧", label:"Daughter",        sub:"女儿"},
+    {id:"husband",         icon:"💍", label:"Husband",         sub:"丈夫"},
+    {id:"wife",            icon:"💍", label:"Wife",            sub:"妻子"},
+  ],
+  "father": [
+    {id:"father",          icon:"👴", label:"His Father",       sub:"→ 爷爷"},
+    {id:"mother",          icon:"👵", label:"His Mother",       sub:"→ 奶奶"},
+    {id:"older-brother",   icon:"👨", label:"His Older Brother",sub:"→ 伯父"},
+    {id:"younger-brother", icon:"👦", label:"His Younger Brother",sub:"→ 叔叔"},
+    {id:"older-sister",    icon:"👩", label:"His Sister (older)",sub:"→ 姑姑"},
+    {id:"younger-sister",  icon:"👧", label:"His Sister (younger)",sub:"→ 姑姑"},
+  ],
+  "mother": [
+    {id:"father",          icon:"👴", label:"Her Father",        sub:"→ 外公"},
+    {id:"mother",          icon:"👵", label:"Her Mother",        sub:"→ 外婆"},
+    {id:"brother",         icon:"👨", label:"Her Brother",       sub:"→ 舅舅"},
+    {id:"older-sister",    icon:"👩", label:"Her Sister (older)", sub:"→ 姨妈"},
+    {id:"younger-sister",  icon:"👧", label:"Her Sister (younger)",sub:"→ 姨妈"},
+  ],
+  "father.older-brother": [
+    {id:"wife",            icon:"👩", label:"His Wife",          sub:"→ 伯母"},
+    {id:"older-son",       icon:"👦", label:"His Son (older than you)",sub:"→ 堂哥"},
+    {id:"younger-son",     icon:"🧒", label:"His Son (younger than you)",sub:"→ 堂弟"},
+    {id:"older-daughter",  icon:"👧", label:"His Daughter (older)",sub:"→ 堂姐"},
+    {id:"younger-daughter",icon:"👶", label:"His Daughter (younger)",sub:"→ 堂妹"},
+  ],
+  "father.younger-brother": [
+    {id:"wife",            icon:"👩", label:"His Wife",          sub:"→ 婶婶"},
+    {id:"older-son",       icon:"👦", label:"His Son (older than you)",sub:"→ 堂哥"},
+    {id:"younger-son",     icon:"🧒", label:"His Son (younger than you)",sub:"→ 堂弟"},
+    {id:"older-daughter",  icon:"👧", label:"His Daughter (older)",sub:"→ 堂姐"},
+    {id:"younger-daughter",icon:"👶", label:"His Daughter (younger)",sub:"→ 堂妹"},
+  ],
+  "father.older-sister": [
+    {id:"husband",         icon:"👨", label:"Her Husband",       sub:"→ 姑父"},
+    {id:"older-son",       icon:"👦", label:"Her Son (older than you)",sub:"→ 表哥"},
+    {id:"younger-son",     icon:"🧒", label:"Her Son (younger than you)",sub:"→ 表弟"},
+    {id:"older-daughter",  icon:"👧", label:"Her Daughter (older)",sub:"→ 表姐"},
+    {id:"younger-daughter",icon:"👶", label:"Her Daughter (younger)",sub:"→ 表妹"},
+  ],
+  "father.younger-sister": [
+    {id:"husband",         icon:"👨", label:"Her Husband",       sub:"→ 姑父"},
+    {id:"older-son",       icon:"👦", label:"Her Son (older than you)",sub:"→ 表哥"},
+    {id:"younger-son",     icon:"🧒", label:"Her Son (younger than you)",sub:"→ 表弟"},
+    {id:"older-daughter",  icon:"👧", label:"Her Daughter (older)",sub:"→ 表姐"},
+    {id:"younger-daughter",icon:"👶", label:"Her Daughter (younger)",sub:"→ 表妹"},
+  ],
+  "mother.brother": [
+    {id:"wife",            icon:"👩", label:"His Wife",          sub:"→ 舅妈"},
+    {id:"older-son",       icon:"👦", label:"His Son (older than you)",sub:"→ 表哥"},
+    {id:"younger-son",     icon:"🧒", label:"His Son (younger than you)",sub:"→ 表弟"},
+    {id:"older-daughter",  icon:"👧", label:"His Daughter (older)",sub:"→ 表姐"},
+    {id:"younger-daughter",icon:"👶", label:"His Daughter (younger)",sub:"→ 表妹"},
+  ],
+  "mother.older-sister": [
+    {id:"husband",         icon:"👨", label:"Her Husband",       sub:"→ 姨父"},
+    {id:"older-son",       icon:"👦", label:"Her Son (older than you)",sub:"→ 表哥"},
+    {id:"younger-son",     icon:"🧒", label:"Her Son (younger than you)",sub:"→ 表弟"},
+    {id:"older-daughter",  icon:"👧", label:"Her Daughter (older)",sub:"→ 表姐"},
+    {id:"younger-daughter",icon:"👶", label:"Her Daughter (younger)",sub:"→ 表妹"},
+  ],
+  "mother.younger-sister": [
+    {id:"husband",         icon:"👨", label:"Her Husband",       sub:"→ 姨父"},
+    {id:"older-son",       icon:"👦", label:"Her Son (older than you)",sub:"→ 表哥"},
+    {id:"younger-son",     icon:"🧒", label:"Her Son (younger than you)",sub:"→ 表弟"},
+    {id:"older-daughter",  icon:"👧", label:"Her Daughter (older)",sub:"→ 表姐"},
+    {id:"younger-daughter",icon:"👶", label:"Her Daughter (younger)",sub:"→ 表妹"},
+  ],
+  "older-brother": [
+    {id:"son",             icon:"👦", label:"His Son",           sub:"→ 侄子"},
+    {id:"daughter",        icon:"👧", label:"His Daughter",      sub:"→ 侄女"},
+  ],
+  "younger-brother": [
+    {id:"son",             icon:"👦", label:"His Son",           sub:"→ 侄子"},
+    {id:"daughter",        icon:"👧", label:"His Daughter",      sub:"→ 侄女"},
+  ],
+  "older-sister": [
+    {id:"son",             icon:"👦", label:"Her Son",           sub:"→ 外甥"},
+    {id:"daughter",        icon:"👧", label:"Her Daughter",      sub:"→ 外甥女"},
+  ],
+  "younger-sister": [
+    {id:"son",             icon:"👦", label:"Her Son",           sub:"→ 外甥"},
+    {id:"daughter",        icon:"👧", label:"Her Daughter",      sub:"→ 外甥女"},
+  ],
+  "son": [
+    {id:"wife",            icon:"👩", label:"His Wife",          sub:"→ 儿媳"},
+    {id:"son",             icon:"👦", label:"His Son",           sub:"→ 孙子"},
+    {id:"daughter",        icon:"👧", label:"His Daughter",      sub:"→ 孙女"},
+  ],
+  "daughter": [
+    {id:"husband",         icon:"👨", label:"Her Husband",       sub:"→ 女婿"},
+    {id:"son",             icon:"👦", label:"Her Son",           sub:"→ 外孙"},
+    {id:"daughter",        icon:"👧", label:"Her Daughter",      sub:"→ 外孙女"},
+  ],
+  "husband": [
+    {id:"father",          icon:"👴", label:"His Father",        sub:"→ 公公"},
+    {id:"mother",          icon:"👵", label:"His Mother",        sub:"→ 婆婆"},
+  ],
+  "wife": [
+    {id:"father",          icon:"👴", label:"Her Father",        sub:"→ 岳父"},
+    {id:"mother",          icon:"👵", label:"Her Mother",        sub:"→ 岳母"},
+  ],
+};
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let path = []; // array of step ids, e.g. ["father","older-brother"]
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+function pathKey() { return path.join('.'); }
+
+function stepLabel(id) {
+  const labels = {
+    'father':'Father','mother':'Mother','older-brother':'Older Brother',
+    'younger-brother':'Younger Brother','older-sister':'Older Sister',
+    'younger-sister':'Younger Sister','son':'Son','daughter':'Daughter',
+    'husband':'Husband','wife':'Wife','brother':'Brother',
+    'older-son':'Son (older)','younger-son':'Son (younger)',
+    'older-daughter':'Daughter (older)','younger-daughter':'Daughter (younger)',
+  };
+  return labels[id] || id;
+}
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+function render() {
+  const key = pathKey();
+  const result = K[key];
+  const choices = TREE[key];
+
+  // Path bar
+  const bar = document.getElementById('path-bar');
+  const empty = document.getElementById('path-empty');
+  // Remove all path steps first
+  bar.querySelectorAll('.path-step,.path-arrow').forEach(el => el.remove());
+  if (path.length === 0) {
+    empty.style.display = '';
+  } else {
+    empty.style.display = 'none';
+    path.forEach((step, i) => {
+      const arrow = document.createElement('span');
+      arrow.className = 'path-arrow';
+      arrow.textContent = '›';
+      bar.appendChild(arrow);
+      const chip = document.createElement('span');
+      chip.className = 'path-step';
+      chip.textContent = stepLabel(step);
+      chip.title = 'Click to go back here';
+      const idx = i;
+      chip.addEventListener('click', () => { path = path.slice(0,idx+1); render(); });
+      bar.appendChild(chip);
+    });
+  }
+
+  // Back button
+  document.getElementById('btn-back').style.display = path.length > 0 ? '' : 'none';
+
+  // Result or chooser
+  const chooser = document.getElementById('chooser');
+  const resultCard = document.getElementById('result-card');
+
+  if (result && !choices) {
+    // Terminal result
+    chooser.innerHTML = '';
+    resultCard.style.display = '';
+    const enPath = path.map(stepLabel).join(' → ');
+    resultCard.innerHTML = `
+      <div class="result-zh">${result.zh}</div>
+      <div class="result-pinyin">${result.pinyin}</div>
+      <div class="result-en">${result.en}</div>
+      <div class="result-path">You → ${enPath}</div>
+      ${result.note ? `<div class="result-note">💡 ${result.note}</div>` : ''}
+      ${result.informal ? `<div class="result-note">👥 Informal: ${result.informal}</div>` : ''}
+      <div class="result-actions">
+        <button class="btn-reset" onclick="reset()">Start Over</button>
+        <button class="btn-share" onclick="share('${result.zh}','${result.pinyin}','${result.en}')">Share Result</button>
+      </div>`;
+    gtag('event','tool_complete',{tool:'kinship',result:result.zh,path:key});
+  } else if (result && choices) {
+    // Intermediate: show current result + continue options
+    resultCard.style.display = '';
+    const enPath = path.map(stepLabel).join(' → ');
+    resultCard.innerHTML = `
+      <div style="text-align:left;margin-bottom:16px;">
+        <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:#888;margin-bottom:6px;">Current: You → ${enPath}</div>
+        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;">
+          <span class="result-zh" style="font-size:2.6rem;">${result.zh}</span>
+          <span class="result-pinyin" style="font-size:1.1rem;">${result.pinyin}</span>
+          <span style="color:#555;font-size:0.9rem;">${result.en}</span>
+        </div>
+        ${result.informal ? `<div style="font-size:0.8rem;color:#888;margin-top:4px;">Informal: ${result.informal}</div>` : ''}
+      </div>`;
+    chooser.innerHTML = '';
+    renderChoices(chooser, choices, "Continue building the chain:");
+    gtag('event','tool_step',{tool:'kinship',step:key});
+  } else if (choices) {
+    // No result yet, show choices
+    resultCard.style.display = 'none';
+    chooser.innerHTML = '';
+    const heading = path.length === 0
+      ? "Select the relationship to <em>you</em>:"
+      : `<em>${path.map(stepLabel).join(' → ')}</em>'s relationship:`;
+    renderChoices(chooser, choices, heading);
+    if (path.length === 0) gtag('event','tool_start',{tool:'kinship'});
+  } else {
+    // Unknown path
+    resultCard.style.display = 'none';
+    chooser.innerHTML = `<p style="color:#888;font-style:italic;">This combination isn't in the database yet. Try a different path or use the quick reference table below.</p>`;
+  }
+}
+
+function renderChoices(container, choices, heading) {
+  const h = document.createElement('div');
+  h.className = 'step-section';
+  h.innerHTML = `<h3>${heading}</h3>`;
+  const grid = document.createElement('div');
+  grid.className = 'btn-grid';
+  choices.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'rel-btn';
+    btn.innerHTML = `<span class="btn-icon">${opt.icon}</span><span class="btn-label">${opt.label}<span class="btn-sub">${opt.sub || ''}</span></span>`;
+    btn.addEventListener('click', () => {
+      path.push(opt.id);
+      render();
+    });
+    grid.appendChild(btn);
+  });
+  h.appendChild(grid);
+  container.appendChild(h);
+}
+
+function reset() {
+  path = [];
+  render();
+}
+
+function goBack() {
+  path.pop();
+  render();
+}
+
+function share(zh, py, en) {
+  const text = `Chinese kinship term: ${zh} (${py}) = ${en} — via chinesefortunetools.online/kinship/`;
+  if (navigator.share) {
+    navigator.share({title:'Chinese Family Title', text, url:location.href});
+  } else {
+    navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!'));
+  }
+  gtag('event','share_result',{tool:'kinship',result:zh});
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{
+  "site": {
+    "name": "ChineseFortuneTools.online",
+    "description": "Chinese Culture Tool Lab — interactive tools, zero cost, real experiments",
+    "base_url": "https://chinesefortunetools.online",
+    "ga4": "G-GZSPJFQ6FR",
+    "updated": "2026-09-11"
+  },
+  "tools": [
+    {
+      "id": "gift-checker",
+      "title": "Can I Give This in China?",
+      "subtitle": "Chinese Gift Taboo Checker",
+      "emoji": "🎁",
+      "url": "/gift-checker/",
+      "status": "live",
+      "priority": 0.9,
+      "tags": ["gifts","culture","etiquette"],
+      "funnel": "chinarules101.com/gifts/",
+      "description": "Type any gift to instantly find out if it's safe, risky, or taboo — with cultural explanations and better alternatives.",
+      "cta": "Check a Gift →"
+    },
+    {
+      "id": "red-envelope",
+      "title": "Red Envelope Calculator",
+      "subtitle": "How Much to Put in a 红包?",
+      "emoji": "🧧",
+      "url": "/red-envelope/",
+      "status": "live",
+      "priority": 0.9,
+      "tags": ["gifts","money","wedding","cny"],
+      "funnel": "chinarules101.com/gifts/chinese-wedding-red-envelope/",
+      "description": "Calculate the right amount for weddings, Chinese New Year, birthdays and more. Lucky amounts included.",
+      "cta": "Calculate Amount →"
+    },
+    {
+      "id": "zodiac",
+      "title": "Exact Zodiac Calculator",
+      "subtitle": "Spring Festival Boundary — Handled Correctly",
+      "emoji": "🐉",
+      "url": "/zodiac/",
+      "status": "live",
+      "priority": 0.9,
+      "tags": ["zodiac","astrology","birthday"],
+      "funnel": "chinesefortunetools.com/chinese-zodiac/",
+      "description": "Most calculators get Jan/Feb birthdays wrong. Enter your full birth date for the accurate Chinese zodiac sign.",
+      "cta": "Find My Sign →"
+    },
+    {
+      "id": "kinship",
+      "title": "Chinese Family Title Finder",
+      "subtitle": "What Do I Call This Relative?",
+      "emoji": "👨‍👩‍👧‍👦",
+      "url": "/kinship/",
+      "status": "live",
+      "priority": 0.9,
+      "tags": ["family","culture","language"],
+      "funnel": "chinarules101.com/",
+      "description": "Chinese kinship titles are notoriously complex. Click through the relationship chain to find the exact Chinese term.",
+      "cta": "Find the Title →"
+    }
+  ]
+}

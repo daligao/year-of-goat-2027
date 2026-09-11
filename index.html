@@ -127,6 +127,19 @@
 
   .divider{border:none;border-top:1px solid #e8dfc8;max-width:860px;margin:0 auto;}
 
+  /* TOOL CARDS */
+  .tools-hub{background:#fff;padding:54px 20px;}
+  .tools-hub h2{text-align:center;font-size:1.8rem;color:var(--ink);margin-bottom:8px;}
+  .tools-hub .sub{text-align:center;color:#666;margin-bottom:36px;font-size:1rem;}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:920px;margin:0 auto;}
+  .tool-card{border:1.5px solid #e8dfc8;border-radius:14px;padding:24px 20px;text-decoration:none;color:inherit;transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column;gap:10px;background:#fff;}
+  .tool-card:hover{box-shadow:0 6px 24px rgba(0,0,0,0.10);transform:translateY(-3px);text-decoration:none;}
+  .tool-card .t-emoji{font-size:2.4rem;line-height:1;}
+  .tool-card .t-title{font-size:1.05rem;font-weight:bold;color:var(--ink);}
+  .tool-card .t-sub{font-size:0.8rem;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+  .tool-card .t-desc{font-size:0.87rem;color:#555;line-height:1.5;flex:1;}
+  .tool-card .t-cta{font-size:0.85rem;color:var(--red);font-weight:bold;margin-top:4px;}
+
   @media(max-width:600px){
     .hero h1{font-size:2rem;}
     .section{padding:36px 16px;}
@@ -247,6 +260,45 @@ function findFortune(){
 }
 document.getElementById('birth-year').addEventListener('keydown', function(e){ if(e.key==='Enter') findFortune(); });
 </script>
+
+<hr class="divider">
+
+<!-- TOOLS-GRID-START -->
+<section class="tools-hub">
+  <h2>Free Chinese Culture Tools</h2>
+  <p class="sub">No sign-up. No fluff. Accurate information you can actually use.</p>
+  <div class="tools-grid">
+    <a class="tool-card" href="/gift-checker/" onclick="gtag('event','tool_click',{tool:'gift-checker',from:'homepage'})">
+      <div class="t-emoji">🎁</div>
+      <div class="t-sub">Gift Taboo Checker</div>
+      <div class="t-title">Can I Give This in China?</div>
+      <div class="t-desc">Type any gift to find out if it's safe, risky, or taboo — with the cultural reason and better alternatives.</div>
+      <div class="t-cta">Check a Gift →</div>
+    </a>
+    <a class="tool-card" href="/red-envelope/" onclick="gtag('event','tool_click',{tool:'red-envelope',from:'homepage'})">
+      <div class="t-emoji">🧧</div>
+      <div class="t-sub">Red Envelope Calculator</div>
+      <div class="t-title">How Much to Put in a 红包?</div>
+      <div class="t-desc">Wedding, CNY, birthday — pick the occasion and relationship to get the right amount with lucky numbers.</div>
+      <div class="t-cta">Calculate Amount →</div>
+    </a>
+    <a class="tool-card" href="/zodiac/" onclick="gtag('event','tool_click',{tool:'zodiac',from:'homepage'})">
+      <div class="t-emoji">🐉</div>
+      <div class="t-sub">Exact Zodiac Calculator</div>
+      <div class="t-title">Your Real Chinese Zodiac Sign</div>
+      <div class="t-desc">Most sites get January/February birthdays wrong. Enter your full date for the Spring-Festival-accurate result.</div>
+      <div class="t-cta">Find My Sign →</div>
+    </a>
+    <a class="tool-card" href="/kinship/" onclick="gtag('event','tool_click',{tool:'kinship',from:'homepage'})">
+      <div class="t-emoji">👨‍👩‍👧‍👦</div>
+      <div class="t-sub">Family Title Finder</div>
+      <div class="t-title">What Do I Call This Relative?</div>
+      <div class="t-desc">Click through the relationship chain — Father → Older Brother → Wife — and get the exact Chinese title.</div>
+      <div class="t-cta">Find the Title →</div>
+    </a>
+  </div>
+</section>
+<!-- TOOLS-GRID-END -->
 
 <hr class="divider">
 
