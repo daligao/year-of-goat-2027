@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exact Chinese Zodiac Calculator — Correct Spring Festival Boundary</title>
+<meta name="description" content="The most accurate Chinese Zodiac calculator. Enter your exact birth date — handles the Spring Festival boundary correctly. January and February birthdays calculated precisely.">
+<meta property="og:title" content="Exact Chinese Zodiac Calculator — Spring Festival Boundary Handled">
+<meta property="og:description" content="Most zodiac calculators get January/February wrong. Enter your full birth date for the accurate result.">
+<link rel="canonical" href="https://chinesefortunetools.online/zodiac/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');function ga(e,p){gtag('event',e,p||{});}</script>
+<style>
+:root{--gold:#c9a84c;--ink:#1a1a2e;--parchment:#fdf6e3;--red:#c0392b;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--parchment);color:var(--ink);}
+a{color:var(--red);text-decoration:none;}a:hover{text-decoration:underline;}
+.nav{background:var(--ink);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{color:var(--gold);font-weight:bold;font-size:0.9rem;font-family:Georgia,serif;}
+.nav-back{color:#aaa;font-size:0.82rem;}
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b4e 100%);color:#fff;text-align:center;padding:52px 20px 44px;}
+.hero-badge{display:inline-block;background:var(--gold);color:#1a1a2e;font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:10px;font-family:Georgia,serif;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero p{opacity:0.8;max-width:500px;margin:0 auto;}
+.alert-banner{background:#fff3cd;border:1px solid #ffc107;padding:12px 20px;text-align:center;font-size:0.88rem;color:#856404;}
+.alert-banner strong{display:block;}
+.main{max-width:640px;margin:0 auto;padding:0 20px 60px;}
+.calc-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 8px 40px rgba(0,0,0,0.12);margin-top:-28px;position:relative;z-index:10;}
+.calc-card h2{font-size:1.1rem;font-family:Georgia,serif;margin-bottom:20px;color:var(--ink);}
+.date-row{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+.date-group{flex:1;min-width:100px;}
+.date-group label{display:block;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-bottom:6px;}
+.date-group select, .date-group input{width:100%;padding:12px 14px;border:2px solid #ddd;border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;outline:none;appearance:none;-webkit-appearance:none;}
+.date-group select:focus, .date-group input:focus{border-color:var(--gold);}
+.calc-btn{width:100%;padding:16px;background:var(--ink);color:#fff;border:none;border-radius:10px;font-size:1.05rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.15s;}
+.calc-btn:hover{background:#2d1b4e;}
+/* RESULT */
+#result{display:none;margin-top:28px;}
+.result-card{background:#fff;border-radius:14px;overflow:hidden;border:2px solid var(--gold);}
+.result-header{background:linear-gradient(135deg,#1a1a2e,#2d1b4e);color:#fff;padding:28px;text-align:center;}
+.rh-emoji{font-size:4rem;display:block;margin-bottom:12px;}
+.rh-sign{font-size:2rem;font-weight:900;font-family:Georgia,serif;}
+.rh-sign em{color:var(--gold);font-style:normal;}
+.rh-sub{opacity:0.75;font-size:0.9rem;margin-top:6px;}
+.rh-correction{background:rgba(255,255,255,0.1);border-radius:8px;padding:10px 16px;margin-top:14px;font-size:0.85rem;line-height:1.5;}
+.result-body{padding:24px;}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px;}
+.pillar{background:var(--parchment);border-radius:10px;padding:14px;text-align:center;border:1px solid #e8dfc8;}
+.p-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-bottom:5px;}
+.p-val{font-size:0.95rem;font-weight:700;color:var(--ink);}
+.p-val.gold{color:var(--gold);}
+.fortune-2027{background:linear-gradient(135deg,#fdf6e3,#fef9e7);border:1px solid #e8dfc8;border-radius:12px;padding:18px;margin-bottom:20px;}
+.f27-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:8px;}
+.f27-stars{color:var(--gold);font-size:1.1rem;margin-bottom:8px;}
+.f27-text{font-size:0.92rem;color:#555;line-height:1.65;}
+.compat-row{margin-bottom:20px;}
+.compat-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-bottom:10px;}
+.compat-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.compat-chip{padding:6px 14px;border-radius:20px;font-size:0.82rem;font-weight:600;}
+.best-match{background:#eafaf1;color:#1e8449;border:1px solid #a9dfbf;}
+.avoid-match{background:#fdecea;color:#a93226;border:1px solid #f5b7b1;}
+.traits{margin-bottom:20px;}
+.trait-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.trait-tag{padding:5px 12px;background:#f0e8d5;border-radius:20px;font-size:0.8rem;color:var(--ink);}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f0e8d5;}
+.btn-share{padding:10px 20px;background:var(--ink);color:#fff;border:none;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;}
+.btn-deep{padding:10px 20px;background:var(--red);color:#fff;border-radius:8px;font-size:0.88rem;font-weight:600;display:inline-block;}
+/* INFO SECTION */
+.info-section{margin-top:36px;}
+.info-section h2{font-size:1.2rem;font-family:Georgia,serif;border-left:4px solid var(--gold);padding-left:12px;margin-bottom:16px;}
+.info-card{background:#fff;border-radius:12px;padding:20px;margin-bottom:14px;border:1px solid #e8dfc8;}
+.info-card h3{font-size:0.95rem;font-weight:700;margin-bottom:8px;}
+.info-card p{font-size:0.88rem;color:#555;line-height:1.6;}
+.info-card .example{background:var(--parchment);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:0.85rem;color:#444;}
+/* ZODIAC TABLE */
+.zodiac-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e8dfc8;margin-top:16px;}
+.zodiac-table th{background:var(--ink);color:var(--gold);padding:10px 12px;text-align:left;font-size:0.78rem;}
+.zodiac-table td{padding:9px 12px;border-bottom:1px solid #f0e8d5;font-size:0.82rem;}
+.zodiac-table tr:last-child td{border-bottom:none;}
+.zodiac-table tr:hover td{background:var(--parchment);}
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#c0392b,#8e1a12);color:#fff;text-align:center;padding:44px 20px;margin-top:40px;}
+.cta-section h2{font-size:1.4rem;font-family:Georgia,serif;margin-bottom:10px;}
+.cta-section p{opacity:0.8;max-width:440px;margin:0 auto 20px;font-size:0.9rem;}
+.cta-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.cta-btn{background:#fff;color:#c0392b;font-weight:700;padding:10px 20px;border-radius:8px;font-size:0.88rem;display:inline-block;}
+footer{background:var(--ink);color:#aaa;text-align:center;padding:20px;font-size:0.8rem;}
+footer a{color:var(--gold);}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;font-size:0.88rem;display:none;z-index:100;}
+@media(max-width:480px){.date-row{flex-direction:column;}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Exact Chinese Zodiac Calculator","description":"Accurate Chinese Zodiac calculator that correctly handles the Spring Festival boundary for January and February birthdays.","url":"https://chinesefortunetools.online/zodiac/","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body>
+<nav class="nav">
+  <span class="nav-logo">🏮 ChineseFortuneTools</span>
+  <a class="nav-back" href="/">← 2027 Goat Year Guide</a>
+</nav>
+<header class="hero">
+  <div class="hero-badge">🐉 Exact Zodiac</div>
+  <h1>Chinese Zodiac Calculator</h1>
+  <p>Most calculators get <em>January & February</em> wrong. Enter your full birth date for the accurate result — Spring Festival boundary handled correctly.</p>
+</header>
+<div class="alert-banner">
+  <strong>⚠️ Why other calculators are wrong for Jan/Feb birthdays</strong>
+  Chinese zodiac years don't start on January 1st. They begin at Chinese New Year, which falls between late January and mid-February. If you were born in January or early February, your sign may be different from what most sites tell you.
+</div>
+
+<div class="main">
+<div class="calc-card">
+  <h2>Enter your exact date of birth</h2>
+  <div class="date-row">
+    <div class="date-group">
+      <label>Month</label>
+      <select id="birth-month">
+        <option value="">Month</option>
+        <option value="1">January</option><option value="2">February</option>
+        <option value="3">March</option><option value="4">April</option>
+        <option value="5">May</option><option value="6">June</option>
+        <option value="7">July</option><option value="8">August</option>
+        <option value="9">September</option><option value="10">October</option>
+        <option value="11">November</option><option value="12">December</option>
+      </select>
+    </div>
+    <div class="date-group">
+      <label>Day</label>
+      <select id="birth-day">
+        <option value="">Day</option>
+        ${Array.from({length:31},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join('')}
+      </select>
+    </div>
+    <div class="date-group">
+      <label>Year</label>
+      <input type="number" id="birth-year" placeholder="e.g. 1990" min="1900" max="2024">
+    </div>
+  </div>
+  <button class="calc-btn" onclick="calculate()">Find My Chinese Zodiac →</button>
+  <div id="result"></div>
+</div>
+
+<div class="info-section">
+  <h2>Why Your Birth Month Matters</h2>
+  <div class="info-card">
+    <h3>🗓 Chinese New Year changes every year</h3>
+    <p>Chinese New Year (the start of a new zodiac year) falls on a different date each year — anywhere from January 21 to February 20. This means people born in January or early February need to check the exact CNY date for their birth year.</p>
+    <div class="example">Example: Born February 3, 1990?<br>Chinese New Year 1990 was January 27, 1990.<br>→ You were born AFTER CNY, so you're a <strong>Horse</strong> (not Snake).<br><br>Born January 20, 1990?<br>→ You were born BEFORE CNY 1990, so you're a <strong>Snake</strong> (the previous year's sign).</div>
+  </div>
+  <div class="info-card">
+    <h3>🌿 BaZi vs. Popular Tradition</h3>
+    <p>This calculator uses the popular Chinese New Year date. Traditional BaZi (八字) astrology uses the solar term Li Chun (立春, Start of Spring — around February 4) as the true year boundary. Our result shows the popular version; deep BaZi readings use Li Chun.</p>
+  </div>
+  <h2 style="margin-top:24px;">2027 Chinese New Year Dates (Recent Years)</h2>
+  <table class="zodiac-table">
+    <thead><tr><th>Year</th><th>Sign</th><th>CNY Start Date</th><th>CNY End Date</th></tr></thead>
+    <tbody>
+      <tr><td>2027</td><td>🐐 Goat</td><td>Feb 6, 2027</td><td>Jan 25, 2028</td></tr>
+      <tr><td>2026</td><td>🐴 Horse</td><td>Feb 17, 2026</td><td>Feb 5, 2027</td></tr>
+      <tr><td>2025</td><td>🐍 Snake</td><td>Jan 29, 2025</td><td>Feb 16, 2026</td></tr>
+      <tr><td>2024</td><td>🐲 Dragon</td><td>Feb 10, 2024</td><td>Jan 28, 2025</td></tr>
+      <tr><td>2023</td><td>🐰 Rabbit</td><td>Jan 22, 2023</td><td>Feb 9, 2024</td></tr>
+      <tr><td>2022</td><td>🐯 Tiger</td><td>Feb 1, 2022</td><td>Jan 21, 2023</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<section class="cta-section">
+  <h2>Go Deeper with Your Zodiac</h2>
+  <p>Full fortune readings, BaZi calculator, Feng Shui tools and more</p>
+  <div class="cta-grid">
+    <a class="cta-btn" href="https://chinesefortunetools.com/chinese-zodiac/" onclick="ga('visit_main_site',{tool:'zodiac_calc',destination:'fortunetools_zodiac'})">🐐 Full Zodiac Guide</a>
+    <a class="cta-btn" href="https://chinesefortunetools.com/bazi-calculator/" onclick="ga('visit_main_site',{tool:'zodiac_calc',destination:'fortunetools_bazi'})">📊 BaZi Calculator</a>
+    <a class="cta-btn" href="/" onclick="ga('visit_main_site',{tool:'zodiac_calc',destination:'online_2027'})">🏮 2027 Goat Year Guide</a>
+    <a class="cta-btn" href="/gift-checker/" onclick="ga('visit_main_site',{tool:'zodiac_calc',destination:'gift_checker'})">🎁 Gift Checker</a>
+  </div>
+</section>
+<footer><p><a href="/">ChineseFortuneTools.online</a> · <a href="https://chinesefortunetools.com">ChineseFortuneTools.com</a> · Full BaZi readings use Li Chun (立春) as year boundary</p></footer>
+<div id="toast">📋 Copied!</div>
+
+<script>
+// CNY dates (month, day) for years 1900-2030 — start of zodiac year
+const CNY = {
+  1900:[1,31],1901:[2,19],1902:[2,8],1903:[1,29],1904:[2,16],1905:[2,4],1906:[1,25],1907:[2,13],1908:[2,2],1909:[1,22],
+  1910:[2,10],1911:[1,30],1912:[2,18],1913:[2,6],1914:[1,26],1915:[2,14],1916:[2,3],1917:[1,23],1918:[2,11],1919:[2,1],
+  1920:[2,20],1921:[2,8],1922:[1,28],1923:[2,16],1924:[2,5],1925:[1,24],1926:[2,13],1927:[2,2],1928:[1,23],1929:[2,10],
+  1930:[1,30],1931:[2,17],1932:[2,6],1933:[1,26],1934:[2,14],1935:[2,4],1936:[1,24],1937:[2,11],1938:[1,31],1939:[2,19],
+  1940:[2,8],1941:[1,27],1942:[2,15],1943:[2,5],1944:[1,25],1945:[2,13],1946:[2,2],1947:[1,22],1948:[2,10],1949:[1,29],
+  1950:[2,17],1951:[2,6],1952:[1,27],1953:[2,14],1954:[2,3],1955:[1,24],1956:[2,12],1957:[1,31],1958:[2,18],1959:[2,8],
+  1960:[1,28],1961:[2,15],1962:[2,5],1963:[1,25],1964:[2,13],1965:[2,2],1966:[1,21],1967:[2,9],1968:[1,30],1969:[2,17],
+  1970:[2,6],1971:[1,27],1972:[2,15],1973:[2,3],1974:[1,23],1975:[2,11],1976:[1,31],1977:[2,18],1978:[2,7],1979:[1,28],
+  1980:[2,16],1981:[2,5],1982:[1,25],1983:[2,13],1984:[2,2],1985:[2,20],1986:[2,9],1987:[1,29],1988:[2,17],1989:[2,6],
+  1990:[1,27],1991:[2,15],1992:[2,4],1993:[1,23],1994:[2,10],1995:[1,31],1996:[2,19],1997:[2,7],1998:[1,28],1999:[2,16],
+  2000:[2,5],2001:[1,24],2002:[2,12],2003:[2,1],2004:[1,22],2005:[2,9],2006:[1,29],2007:[2,18],2008:[2,7],2009:[1,26],
+  2010:[2,14],2011:[2,3],2012:[1,23],2013:[2,10],2014:[1,31],2015:[2,19],2016:[2,8],2017:[1,28],2018:[2,16],2019:[2,5],
+  2020:[1,25],2021:[2,12],2022:[2,1],2023:[1,22],2024:[2,10],2025:[1,29],2026:[2,17],2027:[2,6],2028:[1,26],2029:[2,13],2030:[2,3]
+};
+
+const SIGNS = [
+  {name:'Rat',    emoji:'🐀', element_cycle:['Metal','Water','Wood','Fire','Earth'], yin_yang:'Yang',
+   traits:['Quick-witted','Resourceful','Versatile','Kind','Smart'],
+   avoid:['Horse','Goat'], best:['Dragon','Monkey','Ox'],
+   fortune2027:{stars:'★★★☆☆',text:'Moderate year. The Goat\'s gentle energy contrasts with Rat\'s quick instincts. Stay patient in career moves, avoid speculative investments. Relationships reward extra communication effort.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/rat/'},
+  {name:'Ox',     emoji:'🐂', yin_yang:'Yin',
+   traits:['Diligent','Dependable','Strong','Determined','Honest'],
+   avoid:['Goat','Horse','Dog'], best:['Rat','Snake','Rooster'],
+   fortune2027:{stars:'★★★☆☆',text:'Steady, unglamorous progress in 2027. Hard work pays off but don\'t expect breakthroughs. Health needs attention — the Goat year can sap Ox\'s usually solid stamina. Rest more than usual.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/ox/'},
+  {name:'Tiger',  emoji:'🐯', yin_yang:'Yang',
+   traits:['Brave','Confident','Charismatic','Ambitious','Unpredictable'],
+   avoid:['Monkey','Snake','Tiger'], best:['Horse','Dog','Pig'],
+   fortune2027:{stars:'★★★★☆',text:'Good year. Fire Goat\'s creative warmth amplifies Tiger\'s bold energy. Strong for leadership roles and creative projects. Guard against financial overconfidence — Fire energy can push you to spend big.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/tiger/'},
+  {name:'Rabbit', emoji:'🐰', yin_yang:'Yin',
+   traits:['Gentle','Elegant','Alert','Responsible','Witty'],
+   avoid:['Rooster','Dragon'], best:['Goat','Pig','Dog'],
+   fortune2027:{stars:'★★★★★',text:'Your peak year. Rabbit forms the San He (三合) harmony triad with Goat and Pig. Career opportunities accelerate, romantic luck is strong, and financial prospects improve steadily. Act on opportunities — this window doesn\'t repeat for 12 years.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/rabbit/'},
+  {name:'Dragon', emoji:'🐲', yin_yang:'Yang',
+   traits:['Confident','Intelligent','Gifted','Lucky','Ambitious'],
+   avoid:['Dog','Rabbit','Dragon'], best:['Rat','Tiger','Snake','Monkey'],
+   fortune2027:{stars:'★★★☆☆',text:'Mixed year. Dragon\'s fiery ambition rubs against the Goat\'s preference for harmony. Channel creative energy into disciplined projects rather than bold solo bets. Partnership dynamics need careful navigation.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/dragon/'},
+  {name:'Snake',  emoji:'🐍', yin_yang:'Yin',
+   traits:['Intuitive','Wise','Elegant','Cautious','Responsible'],
+   avoid:['Tiger','Pig'], best:['Ox','Rooster','Monkey'],
+   fortune2027:{stars:'★★★★☆',text:'Above average. Snake\'s deep wisdom and intuition flourish under Goat\'s receptive energy. Strong for intellectual work, investment decisions, and deepening personal bonds. Trust your gut over external advice this year.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/snake/'},
+  {name:'Horse',  emoji:'🐴', yin_yang:'Yang',
+   traits:['Animated','Active','Energetic','Quick-witted','Changeable'],
+   avoid:['Rat','Ox'], best:['Tiger','Dog','Goat'],
+   fortune2027:{stars:'★★★★★',text:'Excellent year. Horse and Goat form the Liu He (六合) perfect pair — the most auspicious 1-on-1 bond in the zodiac. Career advancement, wealth opportunities, and romantic luck all converge in 2027. This is your moment.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/horse/'},
+  {name:'Goat',   emoji:'🐐', yin_yang:'Yin',
+   traits:['Gentle','Creative','Compassionate','Calm','Artistic'],
+   avoid:['Ox','Dog','Rat'], best:['Rabbit','Horse','Pig'],
+   fortune2027:{stars:'★★★☆☆',text:'Ben Ming Nian (本命年) — your own zodiac year. Traditional belief considers this both significant and vulnerable. Wear red accessories for protection. Avoid major risks; focus on nurturing key relationships and consolidating existing gains.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/goat/'},
+  {name:'Monkey', emoji:'🐒', yin_yang:'Yang',
+   traits:['Curious','Mischievous','Clever','Innovative','Problem-solver'],
+   avoid:['Tiger','Pig'], best:['Rat','Dragon','Snake'],
+   fortune2027:{stars:'★★★☆☆',text:'Balanced year. Monkey\'s quicksilver mind finds the Goat year\'s pace a little slow. Use 2027 to consolidate, plan carefully, and build foundations. Bold new ventures will fare better in a more energetically compatible year.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/monkey/'},
+  {name:'Rooster',emoji:'🐓', yin_yang:'Yin',
+   traits:['Observant','Hardworking','Courageous','Talented','Confident'],
+   avoid:['Rabbit','Dog','Rooster'], best:['Ox','Snake','Dragon'],
+   fortune2027:{stars:'★★★☆☆',text:'Caution advised. Rooster and Goat carry a subtle Xing (刑) friction. Workplace relationships need careful management — avoid confrontation. Health deserves extra attention, especially digestion and stress levels.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/rooster/'},
+  {name:'Dog',    emoji:'🐕', yin_yang:'Yang',
+   traits:['Loyal','Honest','Amiable','Kind','Cautious'],
+   avoid:['Dragon','Goat','Rooster'], best:['Rabbit','Tiger','Horse'],
+   fortune2027:{stars:'★★☆☆☆',text:'Challenging year. Dog and Goat have a Liu Chong (六冲) clash — the most friction-heavy zodiac relationship. Extra effort required to maintain harmony in relationships and make careful decisions. Consult a BaZi reading for personalized guidance on navigating 2027.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/dog/'},
+  {name:'Pig',    emoji:'🐷', yin_yang:'Yin',
+   traits:['Compassionate','Generous','Diligent','Trusting','Sincere'],
+   avoid:['Snake','Monkey'], best:['Rabbit','Goat','Tiger'],
+   fortune2027:{stars:'★★★★★',text:'Excellent year. Pig completes the San He (三合) harmony triad with Goat and Rabbit. One of your best years in the 12-year cycle. Wealth, relationships, and career all trend upward — be ready to seize the opportunities that come your way.'},
+   url:'https://chinesefortunetools.com/chinese-zodiac/pig/'},
+];
+
+const ELEMENTS = ['Metal','Metal','Water','Water','Wood','Wood','Fire','Fire','Earth','Earth'];
+const HEAVENLY = ['Geng (庚)','Xin (辛)','Ren (壬)','Gui (癸)','Jia (甲)','Yi (乙)','Bing (丙)','Ding (丁)','Wu (戊)','Ji (己)'];
+
+function getZodiacYear(birthDate) {
+  const year = birthDate.getFullYear();
+  const cny = CNY[year];
+  if (!cny) return null;
+  const cnyDate = new Date(year, cny[0]-1, cny[1]);
+  // if born before CNY, belongs to previous zodiac year
+  const zodiacYear = birthDate < cnyDate ? year - 1 : year;
+  return zodiacYear;
+}
+
+function getSign(zodiacYear) {
+  // 1900 = Rat (index 0)
+  return SIGNS[((zodiacYear - 1900) % 12 + 12) % 12];
+}
+
+function getElement(zodiacYear) {
+  // 10-year heavenly stem cycle, 1900 = Geng (Metal)
+  const idx = ((zodiacYear - 1900) % 10 + 10) % 10;
+  return {element: ELEMENTS[idx], stem: HEAVENLY[idx]};
+}
+
+function calculate() {
+  const month = parseInt(document.getElementById('birth-month').value);
+  const day = parseInt(document.getElementById('birth-day').value);
+  const year = parseInt(document.getElementById('birth-year').value);
+
+  if (!month || !day || !year || year < 1900 || year > 2024) {
+    alert('Please enter a valid date between 1900 and 2024.');
+    return;
+  }
+
+  ga('tool_start', {tool:'zodiac_calc'});
+
+  const birthDate = new Date(year, month-1, day);
+  const zodiacYear = getZodiacYear(birthDate);
+  if (!zodiacYear) { alert('Date out of range.'); return; }
+
+  const sign = getSign(zodiacYear);
+  const {element, stem} = getElement(zodiacYear);
+  const yinYang = sign.yin_yang;
+
+  // Did the year change due to boundary?
+  const cny = CNY[year];
+  const cnyDate = new Date(year, cny[0]-1, cny[1]);
+  const crossedBoundary = birthDate < cnyDate;
+  const correctionMsg = crossedBoundary
+    ? `⚠️ Year corrected: You were born before Chinese New Year ${year} (which was ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][cny[0]-1]} ${cny[1]}, ${year}). Your zodiac year is ${zodiacYear} — not ${year} as most calculators assume.`
+    : month <= 2
+      ? `✅ Confirmed: Chinese New Year ${year} was ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][cny[0]-1]} ${cny[1]}, ${year}. You were born after it, so your sign is correct as ${sign.name}.`
+      : '';
+
+  const bestHTML = sign.best.map(s=>`<span class="compat-chip best-match">✅ ${s}</span>`).join('');
+  const avoidHTML = sign.avoid.map(s=>`<span class="compat-chip avoid-match">❌ ${s}</span>`).join('');
+  const traitHTML = sign.traits.map(t=>`<span class="trait-tag">${t}</span>`).join('');
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').innerHTML = `
+    <div class="result-card">
+      <div class="result-header">
+        <span class="rh-emoji">${sign.emoji}</span>
+        <div class="rh-sign">${element} <em>${sign.name}</em></div>
+        <div class="rh-sub">${yinYang} · ${stem} · Born in Zodiac Year ${zodiacYear}</div>
+        ${correctionMsg ? `<div class="rh-correction">${correctionMsg}</div>` : ''}
+      </div>
+      <div class="result-body">
+        <div class="pillars">
+          <div class="pillar"><div class="p-label">Sign</div><div class="p-val">${sign.emoji} ${sign.name}</div></div>
+          <div class="pillar"><div class="p-label">Element</div><div class="p-val gold">${element}</div></div>
+          <div class="pillar"><div class="p-label">Yin / Yang</div><div class="p-val">${yinYang}</div></div>
+          <div class="pillar"><div class="p-label">Zodiac Year</div><div class="p-val">${zodiacYear}</div></div>
+        </div>
+        <div class="fortune-2027">
+          <div class="f27-label">🐐 Your Fortune in 2027 (Year of the Goat)</div>
+          <div class="f27-stars">${sign.fortune2027.stars}</div>
+          <div class="f27-text">${sign.fortune2027.text}</div>
+        </div>
+        <div class="traits"><div class="compat-label">Key Traits</div><div class="trait-tags">${traitHTML}</div></div>
+        <div class="compat-row">
+          <div class="compat-label">Best Compatibility</div>
+          <div class="compat-chips">${bestHTML}</div>
+        </div>
+        <div class="compat-row">
+          <div class="compat-label">Less Compatible</div>
+          <div class="compat-chips">${avoidHTML}</div>
+        </div>
+        <div class="result-actions">
+          <button class="btn-share" onclick="shareResult('${sign.name}','${element}','${zodiacYear}')">📤 Share My Sign</button>
+          <a class="btn-deep" href="${sign.url}" target="_blank" onclick="ga('visit_main_site',{tool:'zodiac_calc',sign:'${sign.name}',destination:'fortunetools'})">📖 Full ${sign.name} Guide →</a>
+        </div>
+      </div>
+    </div>`;
+
+  ga('tool_complete', {tool:'zodiac_calc', sign: sign.name, element, crossed_boundary: crossedBoundary});
+  document.getElementById('result').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function shareResult(sign, element, year) {
+  const text = `My Chinese Zodiac: ${element} ${sign} (${year}) 🐉 Check yours (with correct Spring Festival boundary): https://chinesefortunetools.online/zodiac/`;
+  if (navigator.share) {
+    navigator.share({title:'My Chinese Zodiac Sign', text, url:'https://chinesefortunetools.online/zodiac/'});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      const t=document.getElementById('toast');t.style.display='block';setTimeout(()=>t.style.display='none',2500);
+    });
+  }
+  ga('share_result',{tool:'zodiac_calc',sign});
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('birth-year').addEventListener('keydown',e=>{if(e.key==='Enter')calculate();});
+});
+</script>
+</body>
+</html>

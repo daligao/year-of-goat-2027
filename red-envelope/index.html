@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Red Envelope Amount Calculator — How Much to Give?</title>
+<meta name="description" content="How much money should you put in a Chinese red envelope (红包)? Free calculator for weddings, Chinese New Year, birthdays and more. Get lucky amounts instantly.">
+<meta property="og:title" content="Chinese Red Envelope Amount Calculator">
+<meta property="og:description" content="How much to give in a Chinese red envelope? Enter occasion, relationship and region — get a lucky amount instantly.">
+<link rel="canonical" href="https://chinesefortunetools.online/red-envelope/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');function ga(e,p){gtag('event',e,p||{});}</script>
+<style>
+:root{--gold:#c9a84c;--ink:#1a1a2e;--parchment:#fdf6e3;--red:#c0392b;--green:#27ae60;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--parchment);color:var(--ink);}
+a{color:var(--red);text-decoration:none;}a:hover{text-decoration:underline;}
+.nav{background:var(--ink);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{color:var(--gold);font-weight:bold;font-size:0.9rem;font-family:Georgia,serif;}
+.nav-back{color:#aaa;font-size:0.82rem;}
+.hero{background:linear-gradient(135deg,#c0392b 0%,#8e1a12 100%);color:#fff;text-align:center;padding:52px 20px 44px;}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.2);color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:10px;font-family:Georgia,serif;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero p{opacity:0.85;max-width:480px;margin:0 auto;}
+.main{max-width:680px;margin:0 auto;padding:0 20px 60px;}
+.calc-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 8px 40px rgba(0,0,0,0.12);margin-top:-28px;position:relative;z-index:10;}
+.step{margin-bottom:24px;}
+.step-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-bottom:10px;display:block;}
+.step-label span{color:var(--gold);}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{padding:8px 16px;border:2px solid #e0d5c0;border-radius:24px;font-size:0.88rem;cursor:pointer;background:#fff;color:var(--ink);transition:all 0.15s;font-family:inherit;}
+.chip:hover{border-color:var(--gold);}
+.chip.selected{background:var(--ink);color:#fff;border-color:var(--ink);}
+.chip.red-selected{background:var(--red);color:#fff;border-color:var(--red);}
+.calc-btn{width:100%;padding:16px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:1.05rem;font-weight:700;cursor:pointer;margin-top:8px;font-family:inherit;transition:background 0.15s;}
+.calc-btn:hover{background:#a93226;}
+.calc-btn:disabled{background:#ccc;cursor:not-allowed;}
+/* RESULT */
+#result{display:none;margin-top:28px;}
+.result-top{background:linear-gradient(135deg,#c0392b,#8e1a12);color:#fff;border-radius:14px 14px 0 0;padding:28px 28px 24px;text-align:center;}
+.result-top .rt-label{font-size:0.78rem;text-transform:uppercase;letter-spacing:2px;opacity:0.75;margin-bottom:8px;}
+.result-top .rt-range{font-size:2.4rem;font-weight:900;font-family:Georgia,serif;}
+.result-top .rt-currency{font-size:1rem;opacity:0.8;margin-top:4px;}
+.result-body{background:#fff;border-radius:0 0 14px 14px;padding:24px 28px;}
+.lucky-row{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+.lucky-amt{flex:1;min-width:90px;text-align:center;padding:14px;border-radius:10px;border:2px solid var(--gold);}
+.lucky-amt .la-num{font-size:1.3rem;font-weight:900;color:var(--red);}
+.lucky-amt .la-why{font-size:0.72rem;color:#888;margin-top:3px;}
+.avoid-row{background:#fdecea;border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:0.88rem;color:#a93226;}
+.avoid-row strong{display:block;margin-bottom:4px;}
+.rule-list{margin-bottom:20px;}
+.rule-item{padding:8px 0;border-bottom:1px solid #f0e8d5;font-size:0.9rem;color:#555;display:flex;gap:10px;}
+.rule-item:last-child{border-bottom:none;}
+.rule-item .ri-icon{flex-shrink:0;}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f0e8d5;}
+.btn-share{padding:10px 20px;background:var(--ink);color:#fff;border:none;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;}
+.btn-learn{padding:10px 20px;background:var(--red);color:#fff;border-radius:8px;font-size:0.88rem;font-weight:600;display:inline-block;}
+/* QUICK GUIDE */
+.guide-section{margin-top:36px;}
+.guide-section h2{font-size:1.2rem;font-family:Georgia,serif;border-left:4px solid var(--gold);padding-left:12px;margin-bottom:16px;}
+.guide-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e8dfc8;}
+.guide-table th{background:var(--ink);color:var(--gold);padding:10px 14px;text-align:left;font-size:0.8rem;letter-spacing:1px;}
+.guide-table td{padding:10px 14px;border-bottom:1px solid #f0e8d5;font-size:0.88rem;}
+.guide-table tr:last-child td{border-bottom:none;}
+.guide-table tr:hover td{background:#fdf6e3;}
+.lucky-num{color:var(--red);font-weight:700;}
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#1a1a2e,#2d1b4e);color:#fff;text-align:center;padding:44px 20px;margin-top:40px;}
+.cta-section h2{font-size:1.4rem;font-family:Georgia,serif;margin-bottom:10px;}
+.cta-section p{opacity:0.8;max-width:440px;margin:0 auto 20px;font-size:0.9rem;}
+.cta-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.cta-btn{background:var(--gold);color:var(--ink);font-weight:700;padding:10px 20px;border-radius:8px;font-size:0.88rem;}
+footer{background:var(--ink);color:#aaa;text-align:center;padding:20px;font-size:0.8rem;}
+footer a{color:var(--gold);}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;font-size:0.88rem;display:none;z-index:100;}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Chinese Red Envelope Amount Calculator","description":"Calculate how much money to put in a Chinese red envelope (红包) for weddings, Chinese New Year, birthdays and more.","url":"https://chinesefortunetools.online/red-envelope/","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body>
+<nav class="nav">
+  <span class="nav-logo">🏮 ChineseFortuneTools</span>
+  <a class="nav-back" href="/">← 2027 Goat Year Guide</a>
+</nav>
+<header class="hero">
+  <div class="hero-badge">🧧 Chinese Red Envelope</div>
+  <h1>How Much to Put in a <em>Red Envelope</em>?</h1>
+  <p>Answer 4 quick questions — get a culturally correct amount with lucky number suggestions</p>
+</header>
+
+<div class="main">
+<div class="calc-card">
+
+  <div class="step">
+    <span class="step-label"><span>①</span> What's the occasion?</span>
+    <div class="chip-row" id="occasion-chips">
+      <button class="chip" data-val="wedding" onclick="pick('occasion',this)">💍 Wedding</button>
+      <button class="chip" data-val="cny" onclick="pick('occasion',this)">🏮 Chinese New Year</button>
+      <button class="chip" data-val="birthday" onclick="pick('occasion',this)">🎂 Birthday</button>
+      <button class="chip" data-val="baby" onclick="pick('occasion',this)">👶 New Baby</button>
+      <button class="chip" data-val="housewarming" onclick="pick('occasion',this)">🏠 Housewarming</button>
+      <button class="chip" data-val="graduation" onclick="pick('occasion',this)">🎓 Graduation</button>
+      <button class="chip" data-val="business" onclick="pick('occasion',this)">💼 Business</button>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-label"><span>②</span> Your relationship to the recipient?</span>
+    <div class="chip-row" id="relationship-chips">
+      <button class="chip" data-val="coworker" onclick="pick('relationship',this)">👔 Coworker</button>
+      <button class="chip" data-val="friend" onclick="pick('relationship',this)">🤝 Friend</button>
+      <button class="chip" data-val="closefriend" onclick="pick('relationship',this)">❤️ Close Friend</button>
+      <button class="chip" data-val="family" onclick="pick('relationship',this)">👨‍👩‍👧 Family</button>
+      <button class="chip" data-val="closefamily" onclick="pick('relationship',this)">💞 Close Family</button>
+      <button class="chip" data-val="boss" onclick="pick('relationship',this)">👑 Boss / Senior</button>
+      <button class="chip" data-val="partner" onclick="pick('relationship',this)">💑 Romantic Partner</button>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-label"><span>③</span> Are you attending in person?</span>
+    <div class="chip-row" id="attending-chips">
+      <button class="chip" data-val="yes" onclick="pick('attending',this)">✅ Yes, attending</button>
+      <button class="chip" data-val="no" onclick="pick('attending',this)">📮 No, sending remotely</button>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-label"><span>④</span> Your region / currency?</span>
+    <div class="chip-row" id="region-chips">
+      <button class="chip" data-val="cn" onclick="pick('region',this)">🇨🇳 Mainland China (¥ RMB)</button>
+      <button class="chip" data-val="hk" onclick="pick('region',this)">🇭🇰 Hong Kong (HK$)</button>
+      <button class="chip" data-val="sg" onclick="pick('region',this)">🇸🇬 Singapore (S$)</button>
+      <button class="chip" data-val="us" onclick="pick('region',this)">🇺🇸 US / UK / Other (USD)</button>
+    </div>
+  </div>
+
+  <button class="calc-btn" id="calc-btn" onclick="calculate()" disabled>Calculate Lucky Amount →</button>
+  <div id="result"></div>
+</div>
+
+<div class="guide-section">
+  <h2>Quick Reference — Common Wedding Amounts</h2>
+  <table class="guide-table">
+    <thead><tr><th>Relationship</th><th>Mainland China</th><th>Lucky Amounts</th></tr></thead>
+    <tbody>
+      <tr><td>Coworker / Acquaintance</td><td>¥300–¥600</td><td class="lucky-num">¥366, ¥600</td></tr>
+      <tr><td>Friend</td><td>¥500–¥1,000</td><td class="lucky-num">¥666, ¥888</td></tr>
+      <tr><td>Close Friend</td><td>¥800–¥1,500</td><td class="lucky-num">¥888, ¥1,288</td></tr>
+      <tr><td>Best Friend</td><td>¥1,000–¥2,000</td><td class="lucky-num">¥1,688, ¥2,000</td></tr>
+      <tr><td>Family</td><td>¥1,000–¥3,000+</td><td class="lucky-num">¥1,888, ¥2,888</td></tr>
+      <tr><td>Close Family / Sibling</td><td>¥3,000–¥10,000+</td><td class="lucky-num">¥3,888, ¥6,888</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.8rem;color:#999;margin-top:10px;">Amounts vary by city tier. Beijing/Shanghai may run 20-30% higher than these figures.</p>
+</div>
+
+<div class="guide-section">
+  <h2>Lucky Numbers to Use (and Avoid)</h2>
+  <table class="guide-table">
+    <thead><tr><th>Number</th><th>Meaning</th><th>Use?</th></tr></thead>
+    <tbody>
+      <tr><td class="lucky-num">6</td><td>顺 (shùn) — smooth sailing, everything goes well</td><td>✅ Great</td></tr>
+      <tr><td class="lucky-num">8</td><td>发 (fā) — prosperity, getting rich</td><td>✅ Best</td></tr>
+      <tr><td class="lucky-num">9</td><td>久 (jiǔ) — longevity, forever</td><td>✅ Great for couples</td></tr>
+      <tr><td class="lucky-num">168</td><td>一路发 (yīlù fā) — prosperity all the way</td><td>✅ Very popular</td></tr>
+      <tr><td class="lucky-num">520</td><td>我爱你 (wǒ ài nǐ) — I love you</td><td>✅ Romantic</td></tr>
+      <tr><td style="color:#c0392b">4</td><td>死 (sǐ) — death</td><td>❌ Never use</td></tr>
+      <tr><td style="color:#c0392b">400, 444</td><td>Sounds like "death death death"</td><td>❌ Strongly avoid</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<section class="cta-section">
+  <h2>More Chinese Etiquette Guides</h2>
+  <p>Full guides on what to write on envelopes, how to give and receive, and what to say</p>
+  <div class="cta-grid">
+    <a class="cta-btn" href="https://chinarules101.com/gifts/chinese-wedding-red-envelope/" onclick="ga('visit_main_site',{tool:'red_envelope',destination:'chinarules101_wedding'})">💍 Wedding Red Envelope Guide</a>
+    <a class="cta-btn" href="https://chinarules101.com/gifts/" onclick="ga('visit_main_site',{tool:'red_envelope',destination:'chinarules101_gifts'})">🎁 All Gift Guides</a>
+    <a class="cta-btn" href="/gift-checker/" onclick="ga('visit_main_site',{tool:'red_envelope',destination:'gift_checker'})">🔍 Gift Taboo Checker</a>
+  </div>
+</section>
+<footer><p><a href="/">ChineseFortuneTools.online</a> · <a href="https://chinarules101.com">ChinaRules101.com</a> · Amounts are cultural guidance, not financial advice</p></footer>
+<div id="toast">📋 Copied!</div>
+
+<script>
+const state = {occasion:null, relationship:null, attending:null, region:null};
+
+function pick(key, el) {
+  state[key] = el.dataset.val;
+  el.closest('.chip-row').querySelectorAll('.chip').forEach(c=>c.classList.remove('selected','red-selected'));
+  el.classList.add('selected');
+  checkReady();
+}
+
+function checkReady() {
+  const ready = state.occasion && state.relationship && state.attending && state.region;
+  document.getElementById('calc-btn').disabled = !ready;
+}
+
+// Base ranges [min, max] in CNY
+const BASE = {
+  wedding:     {coworker:[300,500], friend:[500,800],   closefriend:[800,1200],  family:[1000,2000], closefamily:[3000,8000], boss:[500,800],   partner:[1000,2000]},
+  cny:         {coworker:[50,100],  friend:[100,200],   closefriend:[200,500],   family:[200,500],   closefamily:[500,1000],  boss:[100,200],   partner:[200,500]},
+  birthday:    {coworker:[100,200], friend:[200,500],   closefriend:[300,600],   family:[300,600],   closefamily:[500,1000],  boss:[200,300],   partner:[300,600]},
+  baby:        {coworker:[200,300], friend:[300,500],   closefriend:[500,800],   family:[500,1000],  closefamily:[1000,2000], boss:[300,500],   partner:[500,1000]},
+  housewarming:{coworker:[100,200], friend:[200,300],   closefriend:[300,500],   family:[300,600],   closefamily:[500,1000],  boss:[200,300],   partner:[300,500]},
+  graduation:  {coworker:[100,200], friend:[200,300],   closefriend:[300,500],   family:[300,500],   closefamily:[500,1000],  boss:[200,300],   partner:[300,500]},
+  business:    {coworker:[200,300], friend:[300,500],   closefriend:[500,800],   family:[500,800],   closefamily:[800,1500],  boss:[300,500],   partner:[500,1000]},
+};
+
+const CURRENCY = {cn:{symbol:'¥', rate:1, name:'RMB'}, hk:{symbol:'HK$', rate:1.1, name:'HKD'}, sg:{symbol:'S$', rate:0.19, name:'SGD'}, us:{symbol:'$', rate:0.14, name:'USD'}};
+
+function nearestLucky(n, currency) {
+  const r = CURRENCY[currency].rate;
+  const lucky = [66,88,100,168,188,200,288,300,366,388,500,520,600,666,688,700,800,888,1000,1200,1288,1388,1500,1688,2000,2888,3888,5000,6888,8888,10000];
+  // convert to local
+  return lucky.map(l => ({raw: l, local: Math.round(l * r / 10) * 10 || 1}));
+}
+
+function findLuckyAmounts(min, max, currency) {
+  const r = CURRENCY[currency].rate;
+  const lucky = [66,88,168,188,288,366,388,520,600,666,688,888,1000,1288,1388,1688,2000,2888,3888,5000,6888,8888];
+  return lucky.filter(l => l >= min && l <= max * 1.1).slice(0,3).map(l => ({
+    raw: l,
+    display: CURRENCY[currency].symbol + (currency === 'cn' ? l : Math.round(l * r)),
+    why: luckyWhy(l)
+  }));
+}
+
+function luckyWhy(n) {
+  const s = String(n);
+  if (s.includes('888')) return '三重发财 Triple prosperity';
+  if (s.includes('88')) return '双喜发财 Double prosperity';
+  if (s==='666') return '顺顺利利 Everything smooth';
+  if (s.includes('68')) return '一路发 Prosperity ahead';
+  if (s.includes('168')) return '一路发 All the way rich';
+  if (s.includes('520')) return '我爱你 I love you';
+  if (s.includes('99')) return '天长地久 Forever together';
+  if (s.endsWith('8')) return '8 = 发 (fā) Prosperity';
+  if (s.endsWith('6')) return '6 = 顺 (shùn) Smooth sailing';
+  return '吉祥如意 Auspicious';
+}
+
+function calculate() {
+  ga('tool_start', {tool:'red_envelope'});
+  const {occasion, relationship, attending, region} = state;
+  const range = BASE[occasion][relationship];
+  let [mn, mx] = range;
+  if (attending === 'no') { mn = Math.round(mn * 0.6); mx = Math.round(mx * 0.6); }
+
+  const cur = CURRENCY[region];
+  const localMin = Math.round(mn * cur.rate);
+  const localMax = Math.round(mx * cur.rate);
+
+  // snap to nice numbers
+  const snap = (v) => {
+    if (cur.symbol === '¥') return Math.round(v/10)*10;
+    return Math.round(v/5)*5 || 5;
+  };
+
+  const luckyAmts = findLuckyAmounts(mn, mx, region);
+  const luckyHTML = luckyAmts.length ? luckyAmts.map(l => `<div class="lucky-amt"><div class="la-num">${l.display}</div><div class="la-why">${l.why}</div></div>`).join('') : `<div class="lucky-amt"><div class="la-num">${cur.symbol}${snap(localMin)}</div><div class="la-why">Round up to nearest lucky number</div></div>`;
+
+  const rules = [
+    {icon:'✅', text: `<strong>Do:</strong> Use crisp, new banknotes — never old or crumpled bills in a red envelope`},
+    {icon:'✅', text: `<strong>Do:</strong> Present the envelope with both hands as a sign of respect`},
+    {icon:'❌', text: `<strong>Don't:</strong> Open a red envelope in front of the giver — open it privately`},
+    {icon:'❌', text: `<strong>Avoid:</strong> Any amount containing the number 4 (四 sì = sounds like death 死)`},
+  ];
+  if (occasion === 'wedding') rules.push({icon:'📝', text: `<strong>Write on envelope:</strong> 新婚快乐 (xīnhūn kuàilè) — Happy wedding, or 百年好合 (bǎinián hǎohé) — 100 years of harmony`});
+
+  const rulesHTML = rules.map(r => `<div class="rule-item"><span class="ri-icon">${r.icon}</span><span>${r.text}</span></div>`).join('');
+
+  const avoidMax = Math.round(mx * cur.rate * 0.45);
+  const avoidDisplay = cur.symbol + (Math.round(avoidMax/10)*10 || avoidMax);
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').innerHTML = `
+    <div style="border-radius:14px;overflow:hidden;border:1px solid #e8dfc8;margin-top:4px;">
+      <div class="result-top">
+        <div class="rt-label">Suggested Amount</div>
+        <div class="rt-range">${cur.symbol}${snap(localMin)} – ${cur.symbol}${snap(localMax)}</div>
+        <div class="rt-currency">${cur.name} · ${relationshipLabel(relationship)} · ${occasionLabel(occasion)}</div>
+      </div>
+      <div class="result-body">
+        ${luckyAmts.length ? `<div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-bottom:10px;">🍀 Lucky Amounts in Range</div>` : ''}
+        <div class="lucky-row">${luckyHTML}</div>
+        <div class="avoid-row"><strong>❌ Amounts to Avoid</strong>Anything containing 4, 40, 400, or 444 — 四 (sì) sounds like 死 (death)</div>
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-bottom:8px;">Etiquette Rules</div>
+        <div class="rule-list">${rulesHTML}</div>
+        <div class="result-actions">
+          <button class="btn-share" onclick="shareResult()">📤 Share</button>
+          <a class="btn-learn" href="https://chinarules101.com/gifts/chinese-wedding-red-envelope/" target="_blank" onclick="ga('visit_main_site',{tool:'red_envelope',destination:'chinarules101'})">📖 Full Red Envelope Guide →</a>
+        </div>
+      </div>
+    </div>`;
+
+  ga('tool_complete', {tool:'red_envelope', occasion, relationship, region});
+  document.getElementById('result').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function occasionLabel(o){return {wedding:'Wedding',cny:'Chinese New Year',birthday:'Birthday',baby:'New Baby',housewarming:'Housewarming',graduation:'Graduation',business:'Business'}[o]||o;}
+function relationshipLabel(r){return {coworker:'Coworker',friend:'Friend',closefriend:'Close Friend',family:'Family',closefamily:'Close Family',boss:'Boss/Senior',partner:'Partner'}[r]||r;}
+
+function shareResult() {
+  const {occasion, relationship, region} = state;
+  const cur = CURRENCY[region];
+  const range = BASE[occasion][relationship];
+  const text = `Chinese Red Envelope Calculator: for a ${occasionLabel(occasion)} (${relationshipLabel(relationship)}), give ${cur.symbol}${Math.round(range[0]*cur.rate)}–${cur.symbol}${Math.round(range[1]*cur.rate)}. Check yours: https://chinesefortunetools.online/red-envelope/`;
+  if (navigator.share) {
+    navigator.share({title:'Chinese Red Envelope Calculator', text, url:'https://chinesefortunetools.online/red-envelope/'});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      const t=document.getElementById('toast');t.style.display='block';setTimeout(()=>t.style.display='none',2500);
+    });
+  }
+  ga('share_result',{tool:'red_envelope'});
+}
+</script>
+</body>
+</html>
