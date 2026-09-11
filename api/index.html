@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Chinese Culture Data API — Free JSON Endpoints</title>
+<meta name="description" content="Free, open, no-key Chinese culture data API. Zodiac signs, Chinese New Year dates 2020-2035, festival calendar, lucky numbers, gift taboos — all as static JSON.">
+<link rel="canonical" href="https://chinesefortunetools.online/api/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:monospace;background:#0d1117;color:#e6edf3;padding:0;line-height:1.7;}
+.hero{background:linear-gradient(135deg,#161b22,#21262d);padding:52px 20px 40px;text-align:center;border-bottom:1px solid #30363d;}
+.hero h1{font-size:clamp(1.4rem,4vw,2.2rem);color:#e6edf3;margin-bottom:8px;}
+.hero h1 span{color:#58a6ff;}
+.hero p{color:#8b949e;max-width:540px;margin:0 auto 20px;font-size:0.9rem;}
+.badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
+.badge{background:#21262d;border:1px solid #30363d;padding:4px 12px;border-radius:20px;font-size:0.75rem;color:#8b949e;}
+.badge.green{border-color:#238636;color:#3fb950;}
+.badge.blue{border-color:#1f6feb;color:#58a6ff;}
+
+.main{max-width:860px;margin:0 auto;padding:40px 20px;}
+h2{font-size:1rem;color:#e6edf3;margin:32px 0 16px;border-left:3px solid #58a6ff;padding-left:12px;}
+
+.endpoint{background:#161b22;border:1px solid #30363d;border-radius:8px;margin-bottom:16px;overflow:hidden;}
+.endpoint-header{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid #21262d;}
+.method{background:#1f6feb;color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:4px;font-weight:bold;}
+.ep-url{color:#58a6ff;font-size:0.9rem;}
+.ep-url a{color:#58a6ff;text-decoration:none;}
+.ep-url a:hover{text-decoration:underline;}
+.ep-desc{padding:10px 16px;color:#8b949e;font-size:0.82rem;}
+.ep-example{padding:0 16px 14px;}
+.ep-example pre{background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:12px;font-size:0.78rem;color:#7ee787;overflow-x:auto;line-height:1.5;}
+
+.copy-btn{float:right;background:transparent;border:1px solid #30363d;color:#8b949e;font-family:monospace;font-size:0.72rem;padding:3px 10px;border-radius:4px;cursor:pointer;margin-top:-2px;}
+.copy-btn:hover{color:#e6edf3;border-color:#8b949e;}
+
+.note{background:#161b22;border:1px solid #d29922;border-radius:8px;padding:16px 20px;color:#d29922;font-size:0.85rem;margin-bottom:24px;}
+.note strong{color:#e3b341;}
+
+.usage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:32px;}
+.usage-card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;}
+.usage-card h3{font-size:0.82rem;color:#e6edf3;margin-bottom:6px;}
+.usage-card p{font-size:0.78rem;color:#8b949e;line-height:1.5;}
+
+footer{text-align:center;padding:28px;color:#484f58;font-size:0.78rem;border-top:1px solid #21262d;}
+footer a{color:#58a6ff;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Open Chinese Culture <span>Data API</span></h1>
+  <p>Static JSON endpoints. No key required. No rate limits from your end — served via GitHub Pages CDN.</p>
+  <div class="badges">
+    <span class="badge green">✓ Free forever</span>
+    <span class="badge green">✓ No API key</span>
+    <span class="badge blue">CC0 License</span>
+    <span class="badge">Static JSON</span>
+    <span class="badge">5 endpoints</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="note">
+    <strong>How to use:</strong> All endpoints are plain HTTPS GET requests. Response is JSON with CORS open.
+    Cache the response client-side — data changes rarely. For high-traffic use, mirror the JSON files yourself (they're MIT-licensed).
+  </div>
+
+  <h2>Endpoints</h2>
+
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="ep-url"><a href="/api/chinese-new-year.json">/api/chinese-new-year.json</a></span>
+      <button class="copy-btn" onclick="copy(this,'https://chinesefortunetools.online/api/chinese-new-year.json')">Copy URL</button>
+    </div>
+    <div class="ep-desc">Chinese New Year dates 2020–2035 with zodiac sign, element, and Lantern Festival date.</div>
+    <div class="ep-example">
+      <pre>{
+  "years": {
+    "2027": {
+      "date": "2027-02-06",
+      "lantern_festival": "2027-02-20",
+      "zodiac": "Goat",
+      "element": "Yin Fire"
+    }
+  }
+}</pre>
+    </div>
+  </div>
+
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="ep-url"><a href="/api/festivals.json">/api/festivals.json</a></span>
+      <button class="copy-btn" onclick="copy(this,'https://chinesefortunetools.online/api/festivals.json')">Copy URL</button>
+    </div>
+    <div class="ep-desc">8 major Chinese festivals with dates 2025–2028, Chinese names, and descriptions.</div>
+    <div class="ep-example">
+      <pre>{
+  "festivals": [
+    {
+      "id": "mid-autumn",
+      "name": "Mid-Autumn Festival",
+      "name_zh": "中秋节",
+      "emoji": "🥮",
+      "dates": { "2026": "2026-09-25", "2027": "2027-10-15" }
+    }
+  ]
+}</pre>
+    </div>
+  </div>
+
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="ep-url"><a href="/api/zodiac.json">/api/zodiac.json</a></span>
+      <button class="copy-btn" onclick="copy(this,'https://chinesefortunetools.online/api/zodiac.json')">Copy URL</button>
+    </div>
+    <div class="ep-desc">All 12 Chinese zodiac signs with traits, lucky numbers, lucky colors, and 2027 fortune.</div>
+    <div class="ep-example"><pre>{ "signs": { "Goat": { "zh": "羊", "traits": [...], "lucky_numbers": [2,7] } } }</pre></div>
+  </div>
+
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="ep-url"><a href="/api/lucky-numbers.json">/api/lucky-numbers.json</a></span>
+      <button class="copy-btn" onclick="copy(this,'https://chinesefortunetools.online/api/lucky-numbers.json')">Copy URL</button>
+    </div>
+    <div class="ep-desc">Lucky and unlucky numbers in Chinese culture, with reasons — plus lucky numbers by zodiac sign.</div>
+    <div class="ep-example">
+      <pre>{
+  "lucky": { "numbers": [2,6,8,9] },
+  "unlucky": { "numbers": [4,7] },
+  "by_zodiac": { "Goat": [2,7], "Dragon": [1,6,7] }
+}</pre>
+    </div>
+  </div>
+
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="ep-url"><a href="/api/gift-taboos.json">/api/gift-taboos.json</a></span>
+      <button class="copy-btn" onclick="copy(this,'https://chinesefortunetools.online/api/gift-taboos.json')">Copy URL</button>
+    </div>
+    <div class="ep-desc">10 common gift taboos in Chinese culture — item, reason, severity (high/medium/low).</div>
+    <div class="ep-example">
+      <pre>{
+  "taboos": [
+    { "item": "Clock", "zh": "钟", "severity": "high",
+      "reason": "Sounds like 'attending a funeral' (送钟/送终)" }
+  ]
+}</pre>
+    </div>
+  </div>
+
+  <h2>Usage Examples</h2>
+  <div class="usage-grid">
+    <div class="usage-card">
+      <h3>JavaScript / fetch</h3>
+      <p>fetch('https://chinesefortunetools.online/api/chinese-new-year.json')<br>.then(r => r.json())<br>.then(d => console.log(d.years['2027']))</p>
+    </div>
+    <div class="usage-card">
+      <h3>Python</h3>
+      <p>import requests<br>r = requests.get('.../api/festivals.json')<br>data = r.json()</p>
+    </div>
+    <div class="usage-card">
+      <h3>cURL</h3>
+      <p>curl https://chinesefortunetools.online/api/chinese-new-year.json | python3 -m json.tool</p>
+    </div>
+    <div class="usage-card">
+      <h3>Attribution (optional)</h3>
+      <p>Data from <a href="https://chinesefortunetools.online">ChineseFortuneTools.online</a> — not required but appreciated.</p>
+    </div>
+  </div>
+
+  <h2>Data Sources & License</h2>
+  <p style="color:#8b949e;font-size:0.85rem;line-height:1.8;">
+    All data is <strong style="color:#e6edf3;">CC0 (public domain)</strong> — use freely in commercial or personal projects with no attribution required.<br>
+    Source: <a href="https://github.com/daligao/year-of-goat-2027">github.com/daligao/year-of-goat-2027</a> — star the repo if it saved you time.<br>
+    Data accuracy: CNY dates verified against HK Observatory lunar calendar. Festival dates 2025–2028.
+  </p>
+
+</div>
+
+<footer>
+  <p><a href="/">Chinese Culture Lab</a> · <a href="https://github.com/daligao/year-of-goat-2027">GitHub</a> · <a href="/api/chinese-new-year.json">CNY API</a> · <a href="/api/festivals.json">Festivals API</a></p>
+</footer>
+
+<script>
+function copy(btn, url) {
+  navigator.clipboard.writeText(url).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy URL', 2000);
+  });
+}
+gtag('event','page_view',{page_title:'API Landing'});
+</script>
+</body>
+</html>

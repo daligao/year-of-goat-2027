@@ -1,0 +1,88 @@
+{
+  "_source": "chinesefortunetools.online/api/lucky-numbers.json",
+  "_license": "CC0 \u2014 free to use",
+  "_updated": "2026-09-11",
+  "lucky": {
+    "numbers": [
+      2,
+      6,
+      8,
+      9
+    ],
+    "notes": {
+      "2": "Pairs \u2014 good things come in pairs (\u597d\u4e8b\u6210\u53cc)",
+      "6": "Smooth, flow (\u516d\u516d\u5927\u987a)",
+      "8": "Prosperity (\u53d1, sounds like \u516b)",
+      "9": "Longevity (\u4e45, sounds like \u4e5d)"
+    }
+  },
+  "unlucky": {
+    "numbers": [
+      4,
+      7
+    ],
+    "notes": {
+      "4": "Death (\u6b7b, sounds like \u56db)",
+      "7": "Ghost month associations"
+    }
+  },
+  "by_zodiac": {
+    "Rat": [
+      2,
+      3
+    ],
+    "Ox": [
+      1,
+      4
+    ],
+    "Tiger": [
+      1,
+      3,
+      4
+    ],
+    "Rabbit": [
+      3,
+      4,
+      9
+    ],
+    "Dragon": [
+      1,
+      6,
+      7
+    ],
+    "Snake": [
+      2,
+      8,
+      9
+    ],
+    "Horse": [
+      2,
+      3,
+      7
+    ],
+    "Goat": [
+      2,
+      7
+    ],
+    "Monkey": [
+      1,
+      8,
+      9
+    ],
+    "Rooster": [
+      5,
+      7,
+      8
+    ],
+    "Dog": [
+      3,
+      4,
+      9
+    ],
+    "Pig": [
+      2,
+      5,
+      8
+    ]
+  }
+}

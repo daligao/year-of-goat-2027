@@ -365,6 +365,18 @@ document.getElementById('birth-year').addEventListener('keydown', function(e){ i
   </div>
 </section>
 
+<!-- COMMUNITY IDEAS -->
+<section id="ideas-section" style="background:#161b22;padding:40px 20px;display:none;">
+  <div style="max-width:860px;margin:0 auto;">
+    <h2 style="color:#e6edf3;font-size:1.4rem;text-align:center;margin-bottom:8px;font-family:monospace;">💡 Community Ideas</h2>
+    <p style="text-align:center;color:#8b949e;font-size:0.82rem;margin-bottom:24px;">Vote on GitHub · Top ideas get built next</p>
+    <div id="ideas-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;"></div>
+    <p style="text-align:center;margin-top:20px;font-size:0.82rem;">
+      <a id="ideas-submit-link" href="https://github.com/daligao/year-of-goat-2027/issues/new?labels=idea&title=Tool+idea%3A+" style="color:#58a6ff;">+ Submit your idea →</a>
+    </p>
+  </div>
+</section>
+
 <hr class="divider">
 
 <!-- GOAT PROFILE -->
@@ -795,6 +807,25 @@ fetch('/data/season.json').then(r=>r.json()).then(s=>{
     gtag('event','ab_variant',{experiment:'cta_text',variant:variant});
   }
 })();
+
+/* --- community ideas --- */
+fetch('/data/ideas.json').then(r=>r.json()).then(function(d){
+  if(!d.ideas||!d.ideas.length) return;
+  var grid=document.getElementById('ideas-grid');
+  var top=d.ideas.slice(0,6);
+  grid.innerHTML=top.map(function(idea,i){
+    return '<a href="'+idea.url+'" target="_blank" style="display:block;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px;text-decoration:none;color:#e6edf3;transition:border-color .2s;" onmouseover="this.style.borderColor=\'#58a6ff\'" onmouseout="this.style.borderColor=\'#30363d\'">'
+      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">'
+      +'<span style="font-size:1.1rem;font-weight:900;color:#58a6ff;font-family:monospace;">'+idea.votes+'</span>'
+      +'<span style="font-size:0.7rem;color:#484f58;">votes</span>'
+      +(i===0?'<span style="font-size:0.65rem;background:#1f6feb;color:#fff;padding:1px 7px;border-radius:10px;margin-left:auto;">TOP</span>':'')
+      +'</div>'
+      +'<div style="font-size:0.88rem;color:#e6edf3;line-height:1.4;">'+idea.title+'</div>'
+      +'<div style="font-size:0.72rem;color:#484f58;margin-top:6px;">'+idea.comments+' comments · #'+idea.id+'</div>'
+      +'</a>';
+  }).join('');
+  document.getElementById('ideas-section').style.display='block';
+}).catch(()=>{});
 
 /* --- service worker --- */
 if('serviceWorker' in navigator){

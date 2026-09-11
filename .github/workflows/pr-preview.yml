@@ -1,0 +1,91 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy preview
+        if: github.event.action != 'closed'
+        env:
+          PR: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          # Checkout the PR branch into a temp dir
+          git fetch origin pull/$PR/head:pr-$PR
+          git checkout pr-$PR -- . 2>/dev/null || true
+
+          # Copy changed HTML files to /previews/PR_NUMBER/
+          mkdir -p previews/$PR
+          for f in $(git diff --name-only main pr-$PR -- '*.html' '*.css' '*.js' 2>/dev/null); do
+            dir=$(dirname "previews/$PR/$f")
+            mkdir -p "$dir"
+            git show pr-$PR:"$f" > "previews/$PR/$f" 2>/dev/null || true
+          done
+
+          # Fallback: copy all changed files
+          if [ -z "$(ls -A previews/$PR)" ]; then
+            git show pr-$PR:index.html > previews/$PR/index.html 2>/dev/null || echo "<p>Preview not available</p>" > previews/$PR/index.html
+          fi
+
+          # Add preview banner to each HTML file
+          for html in $(find previews/$PR -name "*.html"); do
+            BANNER='<div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#d29922;color:#0d1117;text-align:center;padding:8px 16px;font-family:monospace;font-size:0.85rem;">🔍 PR #'$PR' Preview — <a href="https://github.com/daligao/year-of-goat-2027/pull/'$PR'" style="color:#0d1117;font-weight:bold;">View PR →</a> · SHA: '${HEAD_SHA:0:7}'</div><div style="margin-top:42px;">'
+            sed -i "s|<body>|<body>${BANNER}|g" "$html" 2>/dev/null || true
+          done
+
+          # Commit to main
+          git checkout main
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add previews/$PR/
+          git diff --staged --quiet || git commit -m "preview: deploy PR #$PR [skip ci]"
+          git push
+
+          echo "Preview deployed: https://chinesefortunetools.online/previews/$PR/"
+
+      - name: Post preview URL comment
+        if: github.event.action == 'opened' || github.event.action == 'synchronize'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request.number;
+            const sha = context.payload.pull_request.head.sha.slice(0, 7);
+            const url = `https://chinesefortunetools.online/previews/${pr}/`;
+            const body = `## 🔍 Preview Deployed\n\n**URL:** ${url}\n**SHA:** \`${sha}\`\n\nPreview auto-updates on each push. Deleted when PR closes.`;
+            // Find existing preview comment
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner, repo: context.repo.repo, issue_number: pr
+            });
+            const existing = comments.data.find(c => c.body.includes('Preview Deployed') && c.user.login === 'github-actions[bot]');
+            if (existing) {
+              await github.rest.issues.updateComment({ owner: context.repo.owner, repo: context.repo.repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: pr, body });
+            }
+
+      - name: Cleanup preview on close
+        if: github.event.action == 'closed'
+        env:
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          if [ -d "previews/$PR" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git rm -rf previews/$PR/
+            git commit -m "preview: cleanup PR #$PR [skip ci]"
+            git push
+            echo "Preview cleaned up."
+          fi

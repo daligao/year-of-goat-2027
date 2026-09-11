@@ -1,0 +1,82 @@
+{
+  "_source": "chinesefortunetools.online/api/gift-taboos.json",
+  "_license": "CC0 — free to use",
+  "_updated": "2026-09-11",
+  "taboos": [
+    {
+      "item": "Clock",
+      "zh": "钟",
+      "reason": "Sounds like 'attending a funeral' (送钟/送终)",
+      "severity": "high"
+    },
+    {
+      "item": "Umbrella",
+      "zh": "伞",
+      "reason": "Sounds like 'scatter/break up' (散)",
+      "severity": "medium"
+    },
+    {
+      "item": "Shoes",
+      "zh": "鞋",
+      "reason": "Sounds like 'evil' (邪)",
+      "severity": "medium"
+    },
+    {
+      "item": "Pears",
+      "zh": "梨",
+      "reason": "Sounds like 'separation' (离)",
+      "severity": "medium"
+    },
+    {
+      "item": "Green hat",
+      "zh": "绿帽子",
+      "reason": "Symbol of being cheated on by a partner",
+      "severity": "high"
+    },
+    {
+      "item": "Handkerchief",
+      "zh": "手帕",
+      "reason": "Associated with funerals and crying",
+      "severity": "medium"
+    },
+    {
+      "item": "Mirrors",
+      "zh": "镜子",
+      "reason": "Can attract ghosts in folk belief; also breaks easily (bad luck)",
+      "severity": "low"
+    },
+    {
+      "item": "Knife/scissors",
+      "zh": "刀/剪刀",
+      "reason": "Symbolizes cutting the relationship",
+      "severity": "high"
+    },
+    {
+      "item": "Number 4",
+      "zh": "四",
+      "reason": "Sounds like 'death' (死) — avoid gifts with 4 units or ¥4",
+      "severity": "high"
+    },
+    {
+      "item": "Shoes to a boyfriend/girlfriend",
+      "zh": "鞋",
+      "reason": "Suggests they will 'walk away' from you",
+      "severity": "medium"
+    }
+  ],
+  "safe_numbers": [
+    6,
+    8,
+    9,
+    88,
+    168,
+    888
+  ],
+  "unsafe_numbers": [
+    4,
+    14,
+    24,
+    44,
+    7
+  ]
+}
