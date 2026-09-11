@@ -1,5 +1,5 @@
-const CACHE = 'culturelab-v1';
-const PRECACHE = ['/', '/gift-checker/', '/red-envelope/', '/zodiac/', '/kinship/', '/data/tools.json', '/data/zodiac.json', '/data/festivals.json'];
+const CACHE = 'culturelab-v2';
+const PRECACHE = ['/', '/gift-checker/', '/red-envelope/', '/zodiac/', '/kinship/', '/festival-countdown/', '/lab/', '/beta/', '/data/tools.json', '/data/zodiac.json', '/data/festivals.json', '/data/season.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE).catch(() => {})));

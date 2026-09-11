@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Festival Countdown 2026–2027 — Days Until the Next Holiday</title>
+<meta name="description" content="How many days until the next Chinese festival? Live countdown to Chinese New Year, Mid-Autumn Festival, Dragon Boat, Qixi, and 8 major holidays — with celebration guides.">
+<meta property="og:title" content="Chinese Festival Countdown — Days Until the Next Holiday">
+<meta property="og:description" content="Live countdown to all major Chinese festivals. Know what's coming, what to do, and what to say.">
+<meta property="og:url" content="https://chinesefortunetools.online/festival-countdown/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://chinesefortunetools.online/festival-countdown/">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#8B0000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Festival Countdown">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');</script>
+<style>
+:root{--gold:#c9a84c;--ink:#1a1a2e;--red:#8B0000;--parchment:#fdf6e3;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;background:var(--parchment);color:var(--ink);line-height:1.7;}
+a{color:var(--red);}
+
+.lab-nav{background:#0d1117;padding:10px 20px;display:flex;align-items:center;gap:12px;font-family:monospace;font-size:0.8rem;}
+.lab-nav a{color:#8b949e;text-decoration:none;}
+.lab-nav a:hover{color:var(--gold);}
+.lab-nav .sep{color:#30363d;}
+.lab-badge{background:#6e40c9;color:#fff;font-size:0.65rem;padding:2px 8px;border-radius:10px;letter-spacing:1px;}
+
+.hero{background:linear-gradient(135deg,#3d0000 0%,#8B0000 50%,#3d0000 100%);color:#fff;text-align:center;padding:52px 20px 40px;}
+.hero-emoji{font-size:4rem;display:block;margin-bottom:12px;}
+.hero h1{font-size:clamp(1.6rem,5vw,2.6rem);font-weight:900;margin-bottom:8px;}
+.hero h1 span{color:var(--gold);}
+.hero .sub{opacity:0.85;max-width:520px;margin:0 auto;font-size:1rem;}
+
+/* NEXT FESTIVAL CARD */
+.next-card{background:#fff;max-width:640px;margin:-28px auto 0;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.15);padding:32px 28px;position:relative;z-index:2;}
+.next-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;color:#999;margin-bottom:6px;font-family:sans-serif;}
+.next-name{font-size:1.6rem;font-weight:900;color:var(--ink);margin-bottom:4px;}
+.next-date{font-size:0.95rem;color:#888;margin-bottom:20px;}
+.countdown-row{display:flex;gap:16px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;}
+.cd-box{text-align:center;min-width:60px;}
+.cd-num{font-size:2.2rem;font-weight:900;color:var(--red);font-family:monospace;display:block;line-height:1;}
+.cd-lbl{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-top:3px;}
+.next-emoji{font-size:3rem;position:absolute;top:24px;right:28px;}
+.share-btn{display:inline-block;background:var(--red);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;cursor:pointer;font-family:inherit;font-weight:bold;text-decoration:none;}
+.share-btn:hover{background:#6b0000;color:#fff;}
+
+/* ALL FESTIVALS */
+.section{max-width:860px;margin:0 auto;padding:48px 20px;}
+.section h2{font-size:1.6rem;border-left:4px solid var(--gold);padding-left:14px;margin-bottom:24px;}
+.festivals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.f-card{background:#fff;border-radius:12px;border:1px solid #e8dfc8;padding:20px;cursor:pointer;transition:box-shadow .15s;}
+.f-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+.f-card.next{border-color:var(--red);border-width:2px;}
+.f-card.past{opacity:0.55;}
+.f-header{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.f-emoji{font-size:1.8rem;}
+.f-name{font-weight:bold;font-size:0.95rem;color:var(--ink);}
+.f-date{font-size:0.8rem;color:#888;}
+.f-days{font-size:0.8rem;font-weight:bold;margin-bottom:8px;}
+.f-days.soon{color:var(--red);}
+.f-days.far{color:#666;}
+.f-days.past{color:#aaa;}
+.f-desc{font-size:0.85rem;color:#555;line-height:1.55;display:none;}
+.f-card.open .f-desc{display:block;}
+.f-toggle{font-size:0.78rem;color:var(--red);font-weight:bold;margin-top:6px;cursor:pointer;}
+
+/* CELEBRATION TIPS */
+.tips-box{background:#fff;border-radius:12px;border:1px solid #e8dfc8;border-left:4px solid var(--gold);padding:20px 24px;margin-top:20px;}
+.tips-box h3{font-size:1rem;margin-bottom:10px;color:var(--ink);}
+.tips-list{list-style:none;display:grid;gap:8px;}
+.tips-list li{font-size:0.88rem;color:#555;padding-left:20px;position:relative;}
+.tips-list li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:0.75rem;top:2px;}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,#8B0000,#5c0000);color:#fff;text-align:center;padding:44px 20px;}
+.cta h2{font-size:1.5rem;margin-bottom:10px;}
+.cta p{opacity:0.85;max-width:480px;margin:0 auto 22px;font-size:0.95rem;}
+.cta a{display:inline-block;background:#fff;color:#8B0000;font-weight:bold;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:0.9rem;}
+
+footer{background:var(--ink);color:#888;text-align:center;padding:24px;font-size:0.8rem;font-family:sans-serif;}
+footer a{color:var(--gold);}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Chinese Festival Countdown",
+  "url":"https://chinesefortunetools.online/festival-countdown/",
+  "description":"Live countdown to all major Chinese festivals — Chinese New Year, Mid-Autumn, Dragon Boat, and more.",
+  "applicationCategory":"UtilityApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"When is the next Chinese New Year?","acceptedAnswer":{"@type":"Answer","text":"Chinese New Year 2027 falls on February 6, 2027 (Year of the Goat). Chinese New Year 2026 is February 17, 2026 (Year of the Horse)."}},
+    {"@type":"Question","name":"What are the major Chinese festivals?","acceptedAnswer":{"@type":"Answer","text":"The 8 major Chinese festivals are: Chinese New Year (Spring Festival), Lantern Festival, Qingming (Tomb Sweeping), Dragon Boat Festival, Qixi (Chinese Valentine's), Mid-Autumn Festival, Double Ninth Festival, and Winter Solstice."}},
+    {"@type":"Question","name":"When is Mid-Autumn Festival 2026?","acceptedAnswer":{"@type":"Answer","text":"Mid-Autumn Festival (Moon Festival) 2026 falls on September 25, 2026. It is celebrated on the 15th day of the 8th lunar month, when the moon is at its fullest."}},
+    {"@type":"Question","name":"What do you say during Chinese festivals?","acceptedAnswer":{"@type":"Answer","text":"Common greetings: Chinese New Year — 新年快乐 (Xīnnián kuàilè) or 恭喜发财 (Gōngxǐ fācái). Mid-Autumn — 中秋节快乐 (Zhōngqiū jié kuàilè). Dragon Boat — 端午节快乐 (Duānwǔ jié kuàilè). Qixi — 七夕节快乐 (Qīxī jié kuàilè)."}},
+    {"@type":"Question","name":"Is Dragon Boat Festival a public holiday in China?","acceptedAnswer":{"@type":"Answer","text":"Yes. Dragon Boat Festival (端午节, Duānwǔ jié) is a public holiday in mainland China, with workers typically receiving 3 days off. It falls on the 5th day of the 5th lunar month — usually in June."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="lab-nav">
+  <a href="/">🧪 Chinese Culture Lab</a>
+  <span class="sep">›</span>
+  <span>Festival Countdown</span>
+  <span class="lab-badge">LAB</span>
+</nav>
+
+<div class="hero">
+  <span class="hero-emoji">🏮</span>
+  <h1>Chinese Festival <span>Countdown</span></h1>
+  <p class="sub">8 major Chinese holidays. Live countdown. What's coming, what to do, what to say.</p>
+</div>
+
+<div style="padding:0 20px;">
+<div class="next-card" id="next-card">
+  <div class="next-label">Next Chinese Festival</div>
+  <div class="next-name" id="next-name">Loading…</div>
+  <div class="next-date" id="next-date"></div>
+  <div class="countdown-row" id="countdown-row"></div>
+  <span class="next-emoji" id="next-emoji"></span>
+  <button class="share-btn" onclick="shareCountdown()">Share This Countdown</button>
+</div>
+</div>
+
+<section class="section">
+  <h2>All Chinese Festivals 2026–2027</h2>
+  <div class="festivals-grid" id="festivals-grid">
+    <div style="color:#999;font-size:0.9rem;">Loading festival data…</div>
+  </div>
+
+  <div class="tips-box" id="tips-box" style="display:none;">
+    <h3 id="tips-title">How to Celebrate</h3>
+    <ul class="tips-list" id="tips-list"></ul>
+  </div>
+</section>
+
+<hr style="border:none;border-top:1px solid #e8dfc8;max-width:860px;margin:0 auto;">
+
+<!-- FAQ -->
+<section class="section" style="padding-top:36px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display:grid;gap:12px;margin-top:16px;">
+    <details style="background:#fff;border:1px solid #e8dfc8;border-radius:8px;padding:14px 18px;">
+      <summary style="cursor:pointer;font-weight:bold;font-size:0.95rem;">When is the next Chinese New Year?</summary>
+      <p style="margin-top:8px;font-size:0.88rem;color:#555;">Chinese New Year 2026 falls on <strong>February 17, 2026</strong> (Year of the Horse). Chinese New Year 2027 is <strong>February 6, 2027</strong> (Year of the Goat). CNY begins on the first day of the first lunar month.</p>
+    </details>
+    <details style="background:#fff;border:1px solid #e8dfc8;border-radius:8px;padding:14px 18px;">
+      <summary style="cursor:pointer;font-weight:bold;font-size:0.95rem;">What are the 8 major Chinese festivals?</summary>
+      <p style="margin-top:8px;font-size:0.88rem;color:#555;">Chinese New Year, Lantern Festival, Qingming (Tomb Sweeping Day), Dragon Boat Festival, Qixi (Chinese Valentine's Day), Mid-Autumn Festival (Moon Festival), Double Ninth Festival, and Winter Solstice.</p>
+    </details>
+    <details style="background:#fff;border:1px solid #e8dfc8;border-radius:8px;padding:14px 18px;">
+      <summary style="cursor:pointer;font-weight:bold;font-size:0.95rem;">Which Chinese festivals are public holidays?</summary>
+      <p style="margin-top:8px;font-size:0.88rem;color:#555;">In mainland China, the statutory public holidays include Chinese New Year (7 days), Qingming (1 day), Dragon Boat Festival (1 day), and Mid-Autumn Festival (1 day). Lantern Festival, Qixi, and Double Ninth are cultural holidays but not statutory days off.</p>
+    </details>
+    <details style="background:#fff;border:1px solid #e8dfc8;border-radius:8px;padding:14px 18px;">
+      <summary style="cursor:pointer;font-weight:bold;font-size:0.95rem;">How do Chinese lunar calendar dates work?</summary>
+      <p style="margin-top:8px;font-size:0.88sm;color:#555;">Chinese festivals follow the lunisolar calendar, so their Gregorian dates shift every year. Chinese New Year falls between January 21 and February 20. Mid-Autumn is always the 15th of the 8th lunar month — the night of the full moon.</p>
+    </details>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>Heading to China Soon?</h2>
+  <p>Know the unwritten rules for every festival — gifts, greetings, what not to do.</p>
+  <a href="https://chinarules101.com" onclick="gtag('event','cta_click',{tool:'festival-countdown',destination:'chinarules101'})">Read ChinaRules101.com →</a>
+</div>
+
+<footer>
+  <p><a href="/">Chinese Culture Lab</a> · <a href="/lab/">⚗️ Lab</a> · <a href="/beta/">🚧 Beta</a></p>
+  <p style="margin-top:6px;">Data from <a href="/data/festivals.json">festivals.json</a> · <a href="https://chinesefortunetools.com">ChineseFortuneTools.com</a></p>
+</footer>
+
+<script>
+const TIPS = {
+  "Chinese New Year (Spring Festival)": {
+    emoji: "🎊",
+    tips: ["Give red envelopes (红包) with money in even amounts — never 4 or odd numbers","Wear red for luck; avoid black and white (associated with mourning)","Clean your home before the holiday — never sweep on New Year's Day itself","Say 新年快乐 (Xīnnián kuàilè) or 恭喜发财 (Gōngxǐ fācái)","Fireworks at midnight — eardrum warning: it's incredibly loud","Don't wash hair on New Year's Day — washing away good luck"]
+  },
+  "Lantern Festival": {
+    emoji: "🏮",
+    tips: ["Eat tangyuan (汤圆) — sweet glutinous rice balls symbolizing family reunion","Write riddles on lanterns for people to guess (猜灯谜)","Release sky lanterns if it's legal in your area","Say 元宵节快乐 (Yuánxiāo jié kuàilè)","The festival marks the end of CNY celebrations — 15th night of the first lunar month"]
+  },
+  "Qingming Festival (Tomb Sweeping)": {
+    emoji: "🌿",
+    tips: ["Visit ancestors' graves to sweep and tidy them — a gesture of filial piety","Burn paper offerings (paper money, paper houses) for the deceased","Eat qingtuan (青团) — green glutinous rice balls flavored with mugwort","Fly kites — traditionally kites are released to carry away misfortune","Avoid loud celebrations; this is a solemn, respectful holiday"]
+  },
+  "Dragon Boat Festival": {
+    emoji: "🐉",
+    tips: ["Eat zongzi (粽子) — sticky rice wrapped in bamboo leaves, sweet or savory","Watch dragon boat racing — deafening drums, fierce competition","Hang mugwort and calamus on doors to ward off evil spirits","Say 端午节快乐 (Duānwǔ jié kuàilè)","Drink realgar wine — traditional but optional (and strong)"]
+  },
+  "Qixi Festival (Chinese Valentine's Day)": {
+    emoji: "💫",
+    tips: ["It's the 7th day of the 7th lunar month — the Cowherd and Weaver Girl story","Couples exchange gifts — more romantic than commercial (unlike February 14)","Say 七夕节快乐 (Qīxī jié kuàilè) to couples","Young women traditionally pray for good needlework skills and a good husband","Less crowded than Western Valentine's Day — restaurants are manageable"]
+  },
+  "Mid-Autumn Festival": {
+    emoji: "🥮",
+    tips: ["Give and eat mooncakes (月饼) — lotus paste, red bean, or salted egg yolk","Go outside and admire the full moon with family","Say 中秋节快乐 (Zhōngqiū jié kuàilè)","Mooncakes make excellent gifts — give nice boxes, not individual cakes","The salted egg yolk inside represents the full moon — aesthetically iconic"]
+  },
+  "Double Ninth Festival": {
+    emoji: "🍂",
+    tips: ["Hike to high places — 重阳 (Chóngyáng) means double yang, the number 9","Drink chrysanthemum wine and eat chrysanthemum cakes","Visit elderly relatives — it's also China's Senior Citizens Day","Wear cornus (茱萸) sprigs as a traditional protective amulet","Say 重阳节快乐 (Chóngyáng jié kuàilè)"]
+  },
+  "Winter Solstice (Dongzhi)": {
+    emoji: "❄️",
+    tips: ["Eat tangyuan in the south, dumplings in the north — family reunion meal","The longest night of the year; yin peaks and yang begins to grow","Many Chinese consider this as important as Chinese New Year","Say 冬至快乐 (Dōngzhì kuàilè)","Traditional families offer sacrifices to heaven and ancestors"]
+  }
+};
+
+var festivals = [];
+var nextFestival = null;
+
+function daysUntil(dateStr) {
+  var today = new Date(); today.setHours(0,0,0,0);
+  var d = new Date(dateStr); d.setHours(0,0,0,0);
+  return Math.round((d - today) / 86400000);
+}
+
+function formatDate(dateStr) {
+  var d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+}
+
+function updateCountdown() {
+  if (!nextFestival) return;
+  var diff = daysUntil(nextFestival.date);
+  if (diff < 0) { loadFestivals(); return; }
+  var days = diff;
+  var hrs = Math.floor((new Date(nextFestival.date) - new Date()) / 3600000) % 24;
+  var mins = Math.floor((new Date(nextFestival.date) - new Date()) / 60000) % 60;
+  var secs = Math.floor((new Date(nextFestival.date) - new Date()) / 1000) % 60;
+  document.getElementById('countdown-row').innerHTML =
+    cdBox(days,'Days') + cdBox(hrs,'Hours') + cdBox(mins,'Min') + cdBox(secs,'Sec');
+}
+
+function cdBox(n, label) {
+  return '<div class="cd-box"><span class="cd-num">' + String(n).padStart(2,'0') + '</span><div class="cd-lbl">' + label + '</div></div>';
+}
+
+function renderFestival(f, isNext) {
+  var diff = daysUntil(f.date);
+  var daysClass = diff < 0 ? 'past' : (diff < 30 ? 'soon' : 'far');
+  var daysText = diff < 0 ? (Math.abs(diff) + ' days ago') : (diff === 0 ? 'TODAY!' : diff + ' days away');
+  var card = document.createElement('div');
+  card.className = 'f-card' + (isNext ? ' next' : '') + (diff < 0 ? ' past' : '');
+  card.innerHTML =
+    '<div class="f-header"><span class="f-emoji">' + f.emoji + '</span><div><div class="f-name">' + f.name + '</div><div class="f-date">' + formatDate(f.date) + '</div></div></div>' +
+    '<div class="f-days ' + daysClass + '">' + (isNext ? '▶ ' : '') + daysText + '</div>' +
+    '<div class="f-desc">' + (f.description || '') + '</div>' +
+    '<div class="f-toggle">▾ Celebration tips</div>';
+  card.querySelector('.f-toggle').addEventListener('click', function() {
+    card.classList.toggle('open');
+    var tips = TIPS[f.name];
+    if (tips && !document.getElementById('tips-box').style.display !== 'none') {
+      showTips(f.name, tips);
+    }
+    this.textContent = card.classList.contains('open') ? '▴ Hide tips' : '▾ Celebration tips';
+  });
+  return card;
+}
+
+function showTips(name, tips) {
+  var box = document.getElementById('tips-box');
+  document.getElementById('tips-title').textContent = tips.emoji + ' How to Celebrate ' + name;
+  document.getElementById('tips-list').innerHTML = tips.tips.map(t => '<li>' + t + '</li>').join('');
+  box.style.display = 'block';
+  box.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function loadFestivals() {
+  fetch('/data/festivals.json').then(r=>r.json()).then(function(data) {
+    festivals = [];
+    var today = new Date(); today.setHours(0,0,0,0);
+
+    data.festivals.forEach(function(f) {
+      // Find the soonest date (2026 or 2027)
+      var bestDate = null;
+      Object.values(f.dates).forEach(function(d) {
+        var dt = new Date(d);
+        if (!bestDate || (Math.abs(dt - today) < Math.abs(new Date(bestDate) - today) && dt >= today)) {
+          if (dt >= today) bestDate = d;
+        }
+        // fallback: closest past date if nothing future
+        if (!bestDate) bestDate = d;
+      });
+      // Prefer upcoming
+      var upcoming = Object.values(f.dates).filter(d => new Date(d) >= today).sort()[0];
+      var past = Object.values(f.dates).filter(d => new Date(d) < today).sort().reverse()[0];
+      festivals.push({
+        id: f.id,
+        name: f.name,
+        emoji: f.emoji || '🏮',
+        date: upcoming || past,
+        isPast: !upcoming,
+        description: f.description || '',
+      });
+    });
+
+    // Sort: upcoming first by date, then past by most recent
+    var upcoming = festivals.filter(f => !f.isPast).sort((a,b) => new Date(a.date)-new Date(b.date));
+    var past = festivals.filter(f => f.isPast).sort((a,b) => new Date(b.date)-new Date(a.date));
+    var sorted = [...upcoming, ...past];
+
+    nextFestival = upcoming[0] || null;
+
+    // Render next card
+    if (nextFestival) {
+      document.getElementById('next-name').textContent = nextFestival.name;
+      document.getElementById('next-date').textContent = formatDate(nextFestival.date);
+      document.getElementById('next-emoji').textContent = nextFestival.emoji;
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // Show tips for next festival
+      var tips = TIPS[nextFestival.name];
+      if (tips) showTips(nextFestival.name, tips);
+    }
+
+    // Render all festivals grid
+    var grid = document.getElementById('festivals-grid');
+    grid.innerHTML = '';
+    sorted.forEach(function(f) {
+      grid.appendChild(renderFestival(f, f === nextFestival));
+    });
+
+    gtag('event','festival_countdown_load', {next_festival: nextFestival ? nextFestival.name : 'none'});
+  }).catch(function() {
+    document.getElementById('next-name').textContent = 'Failed to load festival data.';
+  });
+}
+
+function shareCountdown() {
+  var text = nextFestival
+    ? (daysUntil(nextFestival.date) + ' days until ' + nextFestival.name + ' ' + nextFestival.emoji + ' — ' + formatDate(nextFestival.date))
+    : 'Chinese Festival Countdown';
+  var url = 'https://chinesefortunetools.online/festival-countdown/';
+  if (navigator.share) {
+    navigator.share({title: text, url: url});
+  } else {
+    navigator.clipboard.writeText(url + '\n' + text).then(function() {
+      alert('Link copied!');
+    });
+  }
+  gtag('event','share', {tool:'festival-countdown', festival: nextFestival ? nextFestival.name : ''});
+}
+
+loadFestivals();
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
+</script>
+</body>
+</html>

@@ -14,10 +14,12 @@ def update_sitemap(data):
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
              f'  <url><loc>{base}/</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>']
     for t in data['tools']:
-        if t['status'] == 'live':
-            url = base + t['url']
-            pri = t.get('priority', 0.8)
-            lines.append(f'  <url><loc>{url}</loc><lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>{pri}</priority></url>')
+        # exclude retired tools and lab-tier (noindex) from sitemap
+        if t['status'] == 'retired': continue
+        if t.get('stage') == 'lab': continue
+        url = base + t['url']
+        pri = t.get('priority', 0.8)
+        lines.append(f'  <url><loc>{url}</loc><lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>{pri}</priority></url>')
     lines.append('</urlset>')
     with open('sitemap.xml', 'w') as f:
         f.write('\n'.join(lines) + '\n')
