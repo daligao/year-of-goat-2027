@@ -2,10 +2,40 @@
   "_note": "Update monthly. Graduate threshold: uv_30d > 1000 AND click_to_main > 50.",
   "_updated": "2026-09-11",
   "tools": [
-    {"id": "gift-checker",  "uv_30d": 0, "sessions_30d": 0, "click_to_main": 0, "share_count": 0},
-    {"id": "red-envelope",  "uv_30d": 0, "sessions_30d": 0, "click_to_main": 0, "share_count": 0},
-    {"id": "zodiac",        "uv_30d": 0, "sessions_30d": 0, "click_to_main": 0, "share_count": 0},
-    {"id": "kinship",       "uv_30d": 0, "sessions_30d": 0, "click_to_main": 0, "share_count": 0}
+    {
+      "id": "gift-checker",
+      "uv_30d": 0,
+      "sessions_30d": 0,
+      "click_to_main": 0,
+      "share_count": 0
+    },
+    {
+      "id": "red-envelope",
+      "uv_30d": 0,
+      "sessions_30d": 0,
+      "click_to_main": 0,
+      "share_count": 0
+    },
+    {
+      "id": "zodiac",
+      "uv_30d": 0,
+      "sessions_30d": 0,
+      "click_to_main": 0,
+      "share_count": 0
+    },
+    {
+      "id": "kinship",
+      "uv_30d": 0,
+      "sessions_30d": 0,
+      "click_to_main": 0,
+      "share_count": 0
+    },
+    {
+      "id": "festival-countdown",
+      "uv_30d": 0,
+      "click_to_main": 0,
+      "share_count": 0
+    }
   ],
   "graduation_thresholds": {
     "uv_30d": 1000,

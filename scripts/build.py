@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build script: reads data/tools.json, updates sitemap.xml"""
-import json, sys
+import json, sys, os, glob
 from datetime import date
 
 def load_tools():
@@ -13,13 +13,17 @@ def update_sitemap(data):
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
              f'  <url><loc>{base}/</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>']
+    # Tool pages from tools.json
     for t in data['tools']:
-        # exclude retired tools and lab-tier (noindex) from sitemap
         if t['status'] == 'retired': continue
         if t.get('stage') == 'lab': continue
         url = base + t['url']
         pri = t.get('priority', 0.8)
         lines.append(f'  <url><loc>{url}</loc><lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>{pri}</priority></url>')
+    # Programmatic SEO pages (2027/sign/month/)
+    for path in sorted(glob.glob('2027/*/*/index.html')):
+        url_path = '/' + path.replace('index.html', '')
+        lines.append(f'  <url><loc>{base}{url_path}</loc><lastmod>{today}</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>')
     lines.append('</urlset>')
     with open('sitemap.xml', 'w') as f:
         f.write('\n'.join(lines) + '\n')
