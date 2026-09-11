@@ -307,19 +307,34 @@ function occasionLabel(o){return {wedding:'Wedding',cny:'Chinese New Year',birth
 function relationshipLabel(r){return {coworker:'Coworker',friend:'Friend',closefriend:'Close Friend',family:'Family',closefamily:'Close Family',boss:'Boss/Senior',partner:'Partner'}[r]||r;}
 
 function shareResult() {
-  const {occasion, relationship, region} = state;
+  const {occasion, relationship, attending, region} = state;
   const cur = CURRENCY[region];
   const range = BASE[occasion][relationship];
-  const text = `Chinese Red Envelope Calculator: for a ${occasionLabel(occasion)} (${relationshipLabel(relationship)}), give ${cur.symbol}${Math.round(range[0]*cur.rate)}–${cur.symbol}${Math.round(range[1]*cur.rate)}. Check yours: https://chinesefortunetools.online/red-envelope/`;
+  const shareUrl = `https://chinesefortunetools.online/red-envelope/?occ=${occasion}&rel=${relationship}&att=${attending}&reg=${region}`;
+  const text = `Chinese Red Envelope: ${occasionLabel(occasion)} + ${relationshipLabel(relationship)} = ${cur.symbol}${Math.round(range[0]*cur.rate)}–${cur.symbol}${Math.round(range[1]*cur.rate)}. Calculate yours:`;
   if (navigator.share) {
-    navigator.share({title:'Chinese Red Envelope Calculator', text, url:'https://chinesefortunetools.online/red-envelope/'});
+    navigator.share({title:'Chinese Red Envelope Calculator', text, url:shareUrl});
   } else {
-    navigator.clipboard.writeText(text).then(()=>{
+    navigator.clipboard.writeText(text + ' ' + shareUrl).then(()=>{
       const t=document.getElementById('toast');t.style.display='block';setTimeout(()=>t.style.display='none',2500);
     });
   }
-  ga('share_result',{tool:'red_envelope'});
+  ga('share_result',{tool:'red_envelope',occasion,relationship});
 }
+
+// ── URL params: restore state on load ──────────────────────────
+(function(){
+  const p = new URLSearchParams(location.search);
+  const keys = ['occ','rel','att','reg'];
+  const stateKeys = ['occasion','relationship','attending','region'];
+  keys.forEach((k,i) => {
+    const v = p.get(k);
+    if (!v) return;
+    const btn = document.querySelector(`.chip[data-val="${v}"]`);
+    if (btn) { pick(stateKeys[i], btn); }
+  });
+  if (state.occasion && state.relationship && state.attending && state.region) calculate();
+})();
 </script>
 </body>
 </html>

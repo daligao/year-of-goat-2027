@@ -361,11 +361,15 @@ function calculate() {
 }
 
 function shareResult(sign, element, year) {
-  const text = `My Chinese Zodiac: ${element} ${sign} (${year}) 🐉 Check yours (with correct Spring Festival boundary): https://chinesefortunetools.online/zodiac/`;
+  const m = document.getElementById('birth-month').value;
+  const d = document.getElementById('birth-day').value;
+  const y = document.getElementById('birth-year').value;
+  const shareUrl = `https://chinesefortunetools.online/zodiac/?dob=${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  const text = `I'm a ${element} ${sign} 🐉 (born ${y}, Spring-Festival-accurate). What's yours?`;
   if (navigator.share) {
-    navigator.share({title:'My Chinese Zodiac Sign', text, url:'https://chinesefortunetools.online/zodiac/'});
+    navigator.share({title:`I'm a ${element} ${sign}`, text, url:shareUrl});
   } else {
-    navigator.clipboard.writeText(text).then(()=>{
+    navigator.clipboard.writeText(text + ' ' + shareUrl).then(()=>{
       const t=document.getElementById('toast');t.style.display='block';setTimeout(()=>t.style.display='none',2500);
     });
   }
@@ -374,6 +378,18 @@ function shareResult(sign, element, year) {
 
 document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('birth-year').addEventListener('keydown',e=>{if(e.key==='Enter')calculate();});
+
+  // ── URL param: ?dob=1990-02-15 auto-fills and calculates ──
+  const dob = new URLSearchParams(location.search).get('dob');
+  if (dob) {
+    const parts = dob.split('-');
+    if (parts.length === 3) {
+      document.getElementById('birth-year').value  = parts[0];
+      document.getElementById('birth-month').value = parseInt(parts[1]);
+      document.getElementById('birth-day').value   = parseInt(parts[2]);
+      calculate();
+    }
+  }
 });
 </script>
 </body>
