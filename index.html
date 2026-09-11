@@ -10,6 +10,10 @@
 <meta property="og:url" content="https://chinesefortunetools.online">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://chinesefortunetools.online/">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1a1a2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CultureLab">
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');</script>
@@ -645,9 +649,11 @@ function toggleFaq(el){
   <p style="font-family:monospace;color:var(--gold);margin-bottom:6px;">🧪 Chinese Culture Lab</p>
   <p><a href="https://chinesefortunetools.com">ChineseFortuneTools.com</a> · <a href="https://chinarules101.com">ChinaRules101.com</a> · <a href="https://chinesenamecraft.com">ChineseNameCraft.com</a></p>
   <p style="margin-top:6px;font-size:0.75rem;"><a href="/sitemap.xml">Sitemap</a> · <a href="/data/tools.json">tools.json</a> · <a href="/data/zodiac.json">zodiac.json</a> · <a href="/data/festivals.json">festivals.json</a></p>
+  <p style="margin-top:8px;"><img src="https://github.com/daligao/year-of-goat-2027/actions/workflows/build.yml/badge.svg" alt="Build" style="vertical-align:middle;"> <img src="https://github.com/daligao/site-operations/actions/workflows/weekly-audit.yml/badge.svg" alt="SEO Audit" style="vertical-align:middle;margin-left:6px;"></p>
 </footer>
 
 <script>
+/* --- tools.json counter --- */
 fetch('/data/tools.json').then(r=>r.json()).then(d=>{
   var counts={testing:0,growing:0,graduated:0,retired:0};
   d.tools.forEach(t=>{ if(counts[t.status]!==undefined) counts[t.status]++; });
@@ -658,6 +664,47 @@ fetch('/data/tools.json').then(r=>r.json()).then(d=>{
   if(counts.retired)   parts.push(counts.retired+' retired');
   document.getElementById('lab-stats').textContent=parts.join(' · ');
 }).catch(()=>{});
+
+/* --- seasonal theme --- */
+fetch('/data/season.json').then(r=>r.json()).then(s=>{
+  var t=s.theme||{};
+  var root=document.documentElement.style;
+  if(t['--gold'])     root.setProperty('--gold',t['--gold']);
+  if(t['--ink'])      root.setProperty('--ink',t['--ink']);
+  if(t['--red'])      root.setProperty('--red',t['--red']);
+  if(t['--parchment'])root.setProperty('--parchment',t['--parchment']);
+  if(t.badge){var el=document.querySelector('.lab-logo');if(el)el.textContent='🧪 '+t.badge;}
+  if(t.hero_note&&t.hero_note.length>0){
+    var n=document.createElement('p');
+    n.style='color:var(--gold);font-size:0.9rem;margin-top:10px;font-weight:bold;letter-spacing:1px;';
+    n.textContent=t.hero_note;
+    document.querySelector('.cny-date')?.insertAdjacentElement('afterend',n);
+  }
+}).catch(()=>{});
+
+/* --- A/B test: CTA button text --- */
+(function(){
+  var variant=localStorage.getItem('ab_cta');
+  if(!variant){
+    variant=Math.random()<0.5?'A':'B';
+    localStorage.setItem('ab_cta',variant);
+  }
+  /* Variant B: "Try Free Tools →" instead of "Explore Free Tools →" */
+  if(variant==='B'){
+    document.querySelectorAll('.cta-btn').forEach(function(btn){
+      if(btn.textContent.includes('Explore')) btn.textContent=btn.textContent.replace('Explore','Try');
+    });
+  }
+  /* Fire GA4 event so we can measure which variant converts */
+  if(typeof gtag!=='undefined'){
+    gtag('event','ab_variant',{experiment:'cta_text',variant:variant});
+  }
+})();
+
+/* --- service worker --- */
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').catch(()=>{});
+}
 </script>
 </body>
 </html>
