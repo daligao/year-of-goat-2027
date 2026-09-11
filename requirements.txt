@@ -1,0 +1,2 @@
+# No pip dependencies — build.py uses stdlib only
+# Listed here so CI cache: pip doesn't fail
