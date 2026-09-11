@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can I Give This Gift in China? — Chinese Gift Taboo Checker</title>
+<meta name="description" content="Instantly check if a gift is appropriate in Chinese culture. Type any item to see if it's safe, risky, or a taboo — plus better alternatives and cultural explanations.">
+<meta property="og:title" content="Can I Give This Gift in China?">
+<meta property="og:description" content="Free Chinese gift taboo checker. Is a clock, umbrella, or pear OK to give? Find out instantly.">
+<meta property="og:url" content="https://chinesefortunetools.online/gift-checker/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://chinesefortunetools.online/gift-checker/">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-GZSPJFQ6FR');
+function ga(event,params){gtag('event',event,params||{});}
+</script>
+<style>
+:root{
+  --green:#27ae60;--green-bg:#eafaf1;--green-border:#a9dfbf;
+  --yellow:#f39c12;--yellow-bg:#fef9e7;--yellow-border:#f9e79f;
+  --red:#c0392b;--red-bg:#fdedec;--red-border:#f5b7b1;
+  --gold:#c9a84c;--ink:#1a1a2e;--parchment:#fdf6e3;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--parchment);color:var(--ink);min-height:100vh;}
+a{color:var(--red);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* NAV */
+.nav{background:var(--ink);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{color:var(--gold);font-weight:bold;font-size:0.9rem;font-family:Georgia,serif;}
+.nav-back{color:#aaa;font-size:0.82rem;}
+.nav-back:hover{color:var(--gold);}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b4e 100%);color:#fff;text-align:center;padding:52px 20px 40px;}
+.hero-badge{display:inline-block;background:var(--gold);color:#1a1a2e;font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;margin-bottom:10px;font-family:Georgia,serif;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero p{opacity:0.8;max-width:500px;margin:0 auto;}
+
+/* SEARCH BOX */
+.search-section{max-width:620px;margin:-28px auto 0;padding:0 20px;position:relative;z-index:10;}
+.search-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 40px rgba(0,0,0,0.15);}
+.search-label{font-size:0.85rem;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;display:block;}
+.search-row{display:flex;gap:10px;}
+.search-input{flex:1;padding:14px 18px;font-size:1.05rem;border:2px solid #ddd;border-radius:10px;outline:none;font-family:inherit;transition:border-color 0.2s;}
+.search-input:focus{border-color:var(--gold);}
+.search-btn{padding:14px 24px;background:var(--ink);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:background 0.15s;white-space:nowrap;}
+.search-btn:hover{background:#2d1b4e;}
+.suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.sug-label{font-size:0.78rem;color:#999;margin-top:2px;width:100%;}
+.sug-btn{padding:6px 14px;background:var(--parchment);border:1px solid #e0d5c0;border-radius:20px;font-size:0.82rem;color:var(--ink);cursor:pointer;transition:all 0.15s;}
+.sug-btn:hover,.sug-btn.active{background:var(--gold);border-color:var(--gold);color:#1a1a2e;font-weight:600;}
+
+/* RESULT */
+.result-section{max-width:620px;margin:24px auto;padding:0 20px;}
+#result{display:none;}
+.result-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+.result-header{padding:22px 24px;display:flex;align-items:center;gap:16px;}
+.result-header.safe{background:var(--green-bg);border-bottom:2px solid var(--green-border);}
+.result-header.caution{background:var(--yellow-bg);border-bottom:2px solid var(--yellow-border);}
+.result-header.avoid{background:var(--red-bg);border-bottom:2px solid var(--red-border);}
+.result-icon{font-size:2.8rem;flex-shrink:0;}
+.result-title{flex:1;}
+.result-gift-name{font-size:1.3rem;font-weight:800;color:var(--ink);}
+.result-badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:6px;}
+.safe .result-badge{background:var(--green);color:#fff;}
+.caution .result-badge{background:var(--yellow);color:#fff;}
+.avoid .result-badge{background:var(--red);color:#fff;}
+.result-body{padding:22px 24px;}
+.result-why{font-size:1rem;color:#444;line-height:1.7;margin-bottom:18px;}
+.result-chinese{font-size:0.9rem;color:#888;margin-bottom:18px;padding:10px 14px;background:#f9f5ec;border-radius:8px;border-left:3px solid var(--gold);}
+.result-alternatives{margin-bottom:18px;}
+.alt-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:10px;}
+.alt-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.alt-chip{padding:6px 14px;border-radius:20px;font-size:0.85rem;font-weight:600;}
+.safe-chip{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);}
+.result-occasions{margin-bottom:18px;}
+.occ-item{display:inline-block;padding:4px 12px;margin:3px;background:#f0f0f0;border-radius:6px;font-size:0.8rem;color:#555;}
+.occ-item.ok{background:#e8f8ef;color:#1e8449;}
+.occ-item.no{background:#fdecea;color:#a93226;}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f0e8d5;}
+.btn-share{padding:10px 20px;background:var(--ink);color:#fff;border:none;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer;}
+.btn-learn{padding:10px 20px;background:var(--red);color:#fff;border-radius:8px;font-size:0.88rem;font-weight:600;display:inline-block;}
+.btn-learn:hover{background:#a93226;text-decoration:none;}
+.result-not-found{padding:28px 24px;text-align:center;}
+.result-not-found .nf-icon{font-size:2.5rem;margin-bottom:12px;}
+.result-not-found h3{font-size:1.1rem;margin-bottom:8px;color:var(--ink);}
+.result-not-found p{font-size:0.9rem;color:#666;margin-bottom:16px;}
+.nf-suggestions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+
+/* QUICK GRID */
+.quick-section{max-width:900px;margin:40px auto;padding:0 20px;}
+.quick-section h2{font-size:1.3rem;font-family:Georgia,serif;border-left:4px solid var(--gold);padding-left:12px;margin-bottom:20px;}
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+.quick-card{background:#fff;border:1px solid #e8dfc8;border-radius:10px;padding:14px 12px;text-align:center;cursor:pointer;transition:all 0.15s;border-top:3px solid transparent;}
+.quick-card:hover{box-shadow:0 4px 14px rgba(0,0,0,0.1);transform:translateY(-2px);}
+.quick-card.safe{border-top-color:var(--green);}
+.quick-card.caution{border-top-color:var(--yellow);}
+.quick-card.avoid{border-top-color:var(--red);}
+.qc-emoji{font-size:1.6rem;margin-bottom:6px;}
+.qc-name{font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.qc-status{font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
+.safe .qc-status{color:var(--green);}
+.caution .qc-status{color:var(--yellow);}
+.avoid .qc-status{color:var(--red);}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#c0392b,#8e1a12);color:#fff;text-align:center;padding:48px 20px;margin-top:40px;}
+.cta-section h2{font-size:1.6rem;font-family:Georgia,serif;margin-bottom:10px;}
+.cta-section p{opacity:0.88;max-width:480px;margin:0 auto 24px;}
+.cta-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.cta-btn{background:#fff;color:#c0392b;font-weight:700;padding:11px 20px;border-radius:8px;font-size:0.88rem;display:inline-block;}
+.cta-btn:hover{text-decoration:none;opacity:0.9;}
+
+/* SHARE TOAST */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;font-size:0.88rem;display:none;z-index:100;}
+
+footer{background:var(--ink);color:#aaa;text-align:center;padding:24px 20px;font-size:0.8rem;margin-top:0;}
+footer a{color:var(--gold);}
+
+@media(max-width:500px){
+  .search-row{flex-direction:column;}
+  .hero h1{font-size:1.8rem;}
+}
+</style>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Can I Give This Gift in China?","description":"Free Chinese gift taboo checker. Instantly find out if a gift is safe, risky, or taboo in Chinese culture.","url":"https://chinesefortunetools.online/gift-checker/","applicationCategory":"LifestyleApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">🏮 ChineseFortuneTools</span>
+  <a class="nav-back" href="/">← Back to 2027 Guide</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">Chinese Culture Tool</div>
+  <h1>Can I Give <em>This</em> in China?</h1>
+  <p>Instantly check if your gift is safe, risky, or a cultural taboo — with explanations and alternatives</p>
+</header>
+
+<div class="search-section">
+  <div class="search-card">
+    <span class="search-label">Type a gift item to check</span>
+    <div class="search-row">
+      <input type="text" id="gift-input" class="search-input" placeholder="e.g. clock, umbrella, wine..." autocomplete="off" spellcheck="false">
+      <button class="search-btn" onclick="checkGift()">Check →</button>
+    </div>
+    <div class="suggestions">
+      <span class="sug-label">Try these:</span>
+      <button class="sug-btn" onclick="quickCheck('clock')">🕐 Clock</button>
+      <button class="sug-btn" onclick="quickCheck('umbrella')">☂️ Umbrella</button>
+      <button class="sug-btn" onclick="quickCheck('shoes')">👟 Shoes</button>
+      <button class="sug-btn" onclick="quickCheck('pear')">🍐 Pear</button>
+      <button class="sug-btn" onclick="quickCheck('wine')">🍷 Wine</button>
+      <button class="sug-btn" onclick="quickCheck('tea')">🍵 Tea</button>
+      <button class="sug-btn" onclick="quickCheck('wallet')">👛 Wallet</button>
+    </div>
+  </div>
+</div>
+
+<div class="result-section">
+  <div id="result"></div>
+</div>
+
+<section class="quick-section">
+  <h2>Popular Gift Checks</h2>
+  <div class="quick-grid" id="quick-grid"></div>
+</section>
+
+<section class="cta-section">
+  <h2>Going to a Chinese Event?</h2>
+  <p>Full guides on red envelope amounts, wedding etiquette, gift wrapping, and what to say</p>
+  <div class="cta-grid">
+    <a class="cta-btn" href="https://chinarules101.com/gifts/" onclick="ga('visit_main_site',{tool:'gift_checker',destination:'chinarules101_gifts'})">🎁 Chinese Gift Guides</a>
+    <a class="cta-btn" href="https://chinarules101.com/gifts/chinese-wedding-red-envelope/" onclick="ga('visit_main_site',{tool:'gift_checker',destination:'chinarules101_redenvelope'})">🧧 Red Envelope Guide</a>
+    <a class="cta-btn" href="https://chinarules101.com/" onclick="ga('visit_main_site',{tool:'gift_checker',destination:'chinarules101_home'})">📖 All China Rules</a>
+    <a class="cta-btn" href="https://chinesefortunetools.com/chinese-zodiac/" onclick="ga('visit_main_site',{tool:'gift_checker',destination:'fortunetools_zodiac'})">🐐 2027 Zodiac Fortune</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="/">ChineseFortuneTools.online</a> · <a href="https://chinarules101.com">ChinaRules101.com</a> · For cultural guidance, not legal advice</p>
+</footer>
+
+<div id="toast">📋 Copied to clipboard!</div>
+
+<script>
+// ─── GIFT DATABASE ───────────────────────────────────────────────────────────
+const GIFTS = [
+  // ─── AVOID ───
+  {
+    keys: ['clock','wall clock','alarm clock','grandfather clock','clocks','timepiece','watch'],
+    name: 'Clock', emoji: '🕐', status: 'avoid',
+    why: 'Giving a clock (送钟, sòng zhōng) sounds identical to "attending a funeral" (送终, sòng zhōng) in Mandarin. This is one of the most serious gift taboos in Chinese culture — avoid it for all occasions.',
+    chinese: '送钟 (sòng zhōng) = sounds like 送终 (sòng zhōng) = attending someone\'s death',
+    alternatives: ['Tea set', 'Fruit basket', 'Premium snacks', 'Crystal ornament'],
+    occasions: {Wedding:'❌',Birthday:'❌',Business:'❌','Chinese New Year':'❌',Housewarming:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['umbrella','parasol','brolly'],
+    name: 'Umbrella', emoji: '☂️', status: 'avoid',
+    why: 'Umbrella (伞, sǎn) is a homophone of "散" (sǎn), meaning to scatter or break apart. Giving an umbrella implies you wish the relationship to end — especially bad for couples or business partners.',
+    chinese: '伞 (sǎn) = sounds like 散 (sǎn) = scatter / fall apart',
+    alternatives: ['Scarf', 'Handbag', 'Sunglasses', 'Luxury accessories'],
+    occasions: {Wedding:'❌',Birthday:'❌',Business:'❌','Romantic Partner':'❌',Housewarming:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['pear','pears'],
+    name: 'Pear', emoji: '🍐', status: 'avoid',
+    why: 'Pear (梨, lí) sounds exactly like 离 (lí), meaning separation or departure. Sharing or gifting pears is especially taboo between couples and close friends — it symbolises breaking up.',
+    chinese: '梨 (lí) = sounds like 离 (lí) = separation / leaving',
+    alternatives: ['Oranges', 'Apples (平安)', 'Peaches (longevity)', 'Pomelo'],
+    occasions: {Wedding:'❌',Birthday:'❌','Romantic Partner':'❌','Chinese New Year':'❌',Family:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['shoes','shoe','sneakers','boots','footwear','slippers','sandals','heels','trainers'],
+    name: 'Shoes', emoji: '👟', status: 'avoid',
+    why: 'Shoes (鞋, xié) sound like 邪 (xié), meaning evil or wrongdoing. They also symbolise "walking away" — gifting shoes implies you want the recipient to leave your life. Some regions see them as bad luck.',
+    chinese: '鞋 (xié) = sounds like 邪 (xié) = evil / wicked',
+    alternatives: ['Socks (short-term is OK in some contexts)', 'Belt', 'Wallet with money inside', 'Perfume'],
+    occasions: {Wedding:'❌',Birthday:'⚠️ Risky',Business:'❌','Romantic Partner':'❌',Elders:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['handkerchief','handkerchiefs','hanky','tissue','tissues'],
+    name: 'Handkerchief', emoji: '🤧', status: 'avoid',
+    why: 'Handkerchiefs are traditionally associated with crying, funerals, and farewell. Gifting one implies sadness, illness, or that you are saying a final goodbye to someone.',
+    chinese: 'Associated with funerals, grief, and permanent farewells in Chinese tradition',
+    alternatives: ['Premium scarf', 'Facial skincare set', 'Luxury towel set'],
+    occasions: {Wedding:'❌',Birthday:'❌',Business:'❌',Funeral:'⚠️ Only context'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['mirror','mirrors','compact mirror'],
+    name: 'Mirror', emoji: '🪞', status: 'avoid',
+    why: 'Mirrors are historically linked to the spirit world in Chinese culture. They are believed to attract ghosts and are traditionally placed face-down during funerals. Gifting a mirror can carry an unsettling meaning.',
+    chinese: 'Mirrors (镜子) are associated with spirits and used in funeral rites',
+    alternatives: ['Painting', 'Photo frame', 'Decorative vase', 'Wall art'],
+    occasions: {Wedding:'❌',Birthday:'❌',Housewarming:'❌',Business:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['green hat','green cap','hat'],
+    name: 'Green Hat', emoji: '🎩', status: 'avoid',
+    why: 'A green hat (绿帽子, lǜ màozi) is the most infamous gift taboo in China. It means your partner is cheating on you. Never give any green hat — even as a joke. This is deeply offensive.',
+    chinese: '戴绿帽子 (dài lǜ màozi) = being cheated on by your partner',
+    alternatives: ['Any other colour hat', 'Luxury cap (non-green)', 'Sunglasses'],
+    occasions: {Wedding:'❌',Birthday:'❌',Business:'❌','Romantic Partner':'❌',Friends:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['chrysanthemum','chrysanthemums','white flowers','white flower','white rose','white roses','white lily','white lilies'],
+    name: 'White / Chrysanthemum Flowers', emoji: '🌸', status: 'avoid',
+    why: 'White flowers, especially chrysanthemums, are used at Chinese funerals. Gifting them to a living person is deeply inauspicious. Yellow chrysanthemums are also used in some funeral traditions.',
+    chinese: '菊花 (júhuā) and white flowers are symbols of mourning in Chinese culture',
+    alternatives: ['Red roses (romantic)', 'Pink peonies (prosperity)', 'Orchids (luck)', 'Sunflowers (happiness)'],
+    occasions: {Wedding:'❌',Birthday:'❌',Business:'❌','Chinese New Year':'❌',Hospital:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['fan','fans','hand fan','folding fan'],
+    name: 'Fan', emoji: '🪭', status: 'avoid',
+    why: 'Like umbrella, "fan" (扇, shàn) sounds like 散 (sàn — scatter / break apart). Gifting a fan implies you want the relationship or partnership to disperse. Best avoided especially for romantic partners.',
+    chinese: '扇 (shàn) = sounds like 散 (sàn) = scatter, break apart',
+    alternatives: ['Air purifier', 'Scented candles', 'Premium fabric', 'Luxury card holder'],
+    occasions: {'Romantic Partner':'❌',Business:'❌ Partner',Wedding:'❌',Birthday:'⚠️'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['empty wallet','empty purse','empty bag'],
+    name: 'Empty Wallet / Purse', emoji: '👜', status: 'avoid',
+    why: 'Gifting an empty wallet or purse signals financial bad luck to the recipient. Always put a small amount of money inside — even just a lucky coin or a crisp banknote — before gifting.',
+    chinese: 'An empty wallet symbolises poverty and bad financial fortune for the recipient',
+    alternatives: ['Wallet with ¥6, ¥8, or ¥88 inside', 'Wallet with a lucky coin'],
+    occasions: {Wedding:'⚠️ Add money',Birthday:'⚠️ Add money',Business:'⚠️ Add money'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+
+  // ─── CAUTION ───
+  {
+    keys: ['watch','watches','wristwatch','smartwatch','wrist watch'],
+    name: 'Watch', emoji: '⌚', status: 'caution',
+    why: 'Watches share the same "clock problem" — 送表 (sòng biǎo) can be interpreted similarly to 送终. However, luxury watches are commonly accepted as business gifts, especially if explicitly branded as a status item rather than a timekeeper.',
+    chinese: '送表 (sòng biǎo) = give a watch, but can echo 送终 funeral associations',
+    alternatives: ['Luxury brand pen', 'Premium wallet', 'Tech gadget'],
+    occasions: {Wedding:'⚠️',Birthday:'⚠️',Business:'✅ Luxury brands OK',Elders:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['knife','knives','scissors','scissor','blade','penknife','letter opener'],
+    name: 'Knife / Scissors', emoji: '🔪', status: 'caution',
+    why: 'Sharp objects symbolise cutting ties or relationships. For personal or romantic gifts, avoid entirely. In business contexts, a traditional workaround is to have the recipient "buy" the knife with a coin — this breaks the curse.',
+    chinese: 'Sharp objects (刀剪) suggest cutting 断 (duàn) the relationship',
+    alternatives: ['Premium kitchenware set', 'Cooking accessories', 'Gift card to kitchenware store'],
+    occasions: {Wedding:'❌','Romantic Partner':'❌',Business:'⚠️ Use coin workaround',Birthday:'⚠️',Housewarming:'⚠️ Coin workaround'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['wine','red wine','white wine','alcohol','beer','whisky','whiskey','champagne','baijiu','spirits','liquor'],
+    name: 'Wine / Alcohol', emoji: '🍷', status: 'caution',
+    why: 'Alcohol is a common and acceptable gift in many Chinese contexts — especially baijiu for business and Maotai for VIP occasions. However, it\'s inappropriate for Muslim communities, pregnant women, recovering alcoholics, and some elders.',
+    chinese: '酒 (jiǔ) is very common as a gift — but context matters greatly',
+    alternatives: ['Premium tea', 'Health supplements', 'Fruit hamper'],
+    occasions: {Wedding:'✅',Business:'✅ Premium brands',Birthday:'✅',Elders:'⚠️ Check health','Non-drinker':'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['wallet','purse','money clip'],
+    name: 'Wallet / Purse', emoji: '👛', status: 'caution',
+    why: 'A wallet is a thoughtful and generally acceptable gift — but NEVER give it empty. Always place a small amount of money (¥8, ¥88 or ¥888 for luck) inside before gifting. An empty wallet signals financial bad luck.',
+    chinese: 'Always include money inside a wallet gift — ¥8 or ¥88 for maximum luck',
+    alternatives: ['Wallet with lucky money', 'Card holder', 'Money clip with red envelope'],
+    occasions: {Wedding:'✅ With money',Birthday:'✅ With money',Business:'✅ Luxury brand',Elders:'✅ With money'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['book','books','novel','autobiography','fiction'],
+    name: 'Book', emoji: '📚', status: 'caution',
+    why: 'Books are generally fine gifts in modern China, especially for students or intellectuals. But be careful: 书 (shū) sounds like 输 (shū) meaning "to lose." For business partners or people who are competitive, avoid books before important events.',
+    chinese: '书 (shū) = sounds like 输 (shū) = to lose / be defeated',
+    alternatives: ['E-reader', 'Online learning subscription', 'Stationery set'],
+    occasions: {Student:'✅',Business:'⚠️',Birthday:'✅',Wedding:'⚠️',Exam:'❌ Bad timing'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['number 4','four','4 pieces','set of 4','4-piece'],
+    name: 'Anything in Sets of 4', emoji: '4️⃣', status: 'caution',
+    why: 'The number 4 (四, sì) sounds like 死 (sǐ), meaning death. Avoid gifting items in sets of 4 or prices containing 4. Use 6 (smooth), 8 (prosperity), or 9 (longevity) instead.',
+    chinese: '四 (sì) = sounds like 死 (sǐ) = death. Prefer 6, 8, or 9 items.',
+    alternatives: ['Set of 6 (顺, smooth sailing)', 'Set of 8 (发, prosperity)', 'Pair (good for couples)'],
+    occasions: {Wedding:'❌ 4 pieces',Business:'❌ ¥444',Birthday:'❌ 4 items',Elders:'❌'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['yellow flowers','yellow flower','marigold','marigolds'],
+    name: 'Yellow Flowers', emoji: '🌼', status: 'caution',
+    why: 'Yellow flowers can be used in some Chinese funeral and mourning traditions. While not universally taboo, they carry negative connotations in many regions. Safe options are red, pink, or purple flowers.',
+    chinese: 'Yellow flowers are used in some regional funeral rituals — safer to avoid',
+    alternatives: ['Red roses', 'Pink peonies (牡丹)', 'Purple orchids', 'Mixed colourful bouquet'],
+    occasions: {Wedding:'⚠️',Birthday:'⚠️',Funeral:'✅ Context only',Business:'⚠️'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['pineapple','pineapples'],
+    name: 'Pineapple', emoji: '🍍', status: 'caution',
+    why: 'In Cantonese, pineapple (菠蘿, bōluó) sounds like "wave of good luck" — very lucky in Hong Kong and Guangdong. But in Mandarin-speaking regions, it has no special meaning. Safe but unremarkable in most of mainland China.',
+    chinese: 'Lucky in Cantonese culture 🇭🇰, neutral in Mandarin-speaking mainland China',
+    alternatives: ['Oranges (always lucky in Chinese culture)', 'Pomelo', 'Apple'],
+    occasions: {Wedding:'✅ HK / Cantonese',Business:'✅ Guangdong area','Chinese New Year':'✅ South China'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+
+  // ─── SAFE ───
+  {
+    keys: ['tea','green tea','oolong','pu-erh','pu erh','puerh','jasmine tea','tea set','tea leaves'],
+    name: 'Tea', emoji: '🍵', status: 'safe',
+    why: 'Tea is one of the most universally appropriate gifts in Chinese culture. Premium teas (Longjing, Tieguanyin, Pu-erh) are especially valued by elders and business contacts. Tea signals respect, health, and cultural appreciation.',
+    chinese: '茶 (chá) — a timeless symbol of respect, hospitality, and good health',
+    alternatives: ['Teapot set', 'Tea ceremony set', 'Tea sampler box'],
+    occasions: {Wedding:'✅',Business:'✅',Birthday:'✅','Chinese New Year':'✅',Elders:'✅',Housewarming:'✅'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['red envelope','red packet','hong bao','hongbao','ang bao','lucky money'],
+    name: 'Red Envelope (Cash)', emoji: '🧧', status: 'safe',
+    why: 'Red envelopes (红包, hóngbāo) are the most universally safe gift in Chinese culture. The red colour symbolises luck and protection, and cash gives the recipient complete freedom. Use lucky amounts: ¥88, ¥168, ¥288, ¥888.',
+    chinese: '红包 (hóngbāo) — literally "red packet." The gold standard of Chinese gifting.',
+    alternatives: ['Gold jewellery', 'Gift card', 'Premium tea with lucky money'],
+    occasions: {Wedding:'✅',Birthday:'✅','Chinese New Year':'✅',Baby:'✅',Business:'✅ Digital ok',Elders:'✅'},
+    learnMore: 'https://chinarules101.com/gifts/chinese-wedding-red-envelope/'
+  },
+  {
+    keys: ['fruit','fruit basket','fruits','apple','apples','orange','oranges','mandarin','mandarins','tangerine'],
+    name: 'Fruit / Fruit Basket', emoji: '🍊', status: 'safe',
+    why: 'Fruit is always a safe and thoughtful gift, especially oranges and mandarins (桔子, 橙子) which symbolise luck and prosperity. Apples (苹果, píngguǒ) mean peace and safety (平安). Bring fruit when visiting elders or hosts.',
+    chinese: '橙子/桔子 = luck & prosperity · 苹果 (píngguǒ) = sounds like 平安 = safety & peace',
+    alternatives: ['Premium fruit hamper', 'Exotic imported fruit', 'Dried fruit mix'],
+    occasions: {Wedding:'✅',Birthday:'✅','Chinese New Year':'✅',Elders:'✅',Hospital:'✅',Housewarming:'✅'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['gold','gold jewellery','gold jewelry','jade','jade bracelet','gold bracelet','gold necklace','jewelry','jewellery'],
+    name: 'Gold / Jade', emoji: '💛', status: 'safe',
+    why: 'Gold and jade are premium gifts that never go wrong in Chinese culture. Gold symbolises wealth and status; jade symbolises virtue, health, and protection. Both are deeply meaningful for weddings, milestone birthdays, and new babies.',
+    chinese: '金 (jīn) = gold = wealth · 玉 (yù) = jade = virtue, protection, and health',
+    alternatives: ['Gold coin sets', 'Jade bangle', 'Gold-plated ornament'],
+    occasions: {Wedding:'✅✅',Birthday:'✅','Newborn Baby':'✅',Elders:'✅',Business:'✅ VIP'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['health supplement','vitamins','supplements','bird nest','ginseng','bird\'s nest','cordyceps'],
+    name: 'Health Supplements', emoji: '💊', status: 'safe',
+    why: 'Health supplements — especially premium ones like bird\'s nest (燕窝), ginseng (人参), or Cordyceps — are among the most valued gifts for elders in China. They show deep care and respect, and carry strong cultural status.',
+    chinese: '燕窝 (yànwō) bird\'s nest, 人参 (rénshēn) ginseng — premium health gifts signal deep respect',
+    alternatives: ['Bird\'s nest gift set', 'Ginseng collection', 'Traditional Chinese medicine gift box'],
+    occasions: {Elders:'✅✅',Birthday:'✅',Business:'✅ Senior contacts',Hospital:'✅',Recovery:'✅'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['chocolate','chocolates','candy','sweets','confectionery'],
+    name: 'Chocolate / Sweets', emoji: '🍫', status: 'safe',
+    why: 'Chocolates and imported sweets are widely appreciated, especially premium brands like Ferrero Rocher (very popular for Chinese New Year), Godiva, or Lindt. Sweets symbolise a sweet life. Always safe for visits and casual gifts.',
+    chinese: '甜 (tián) = sweet = a sweet and happy life — symbolically appropriate for most occasions',
+    alternatives: ['Mooncakes (Mid-Autumn only)', 'Premium biscuit assortment', 'Macaron box'],
+    occasions: {Wedding:'✅','Chinese New Year':'✅',Birthday:'✅',Children:'✅',Business:'✅ Imported brands'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['lucky bamboo','bamboo plant','money tree','money plant','jade plant','orchid','orchids','peony','peonies'],
+    name: 'Lucky Plants', emoji: '🪴', status: 'safe',
+    why: 'Lucky bamboo (富贵竹), money trees, orchids, and peonies are all excellent gifts. They symbolise fortune, prosperity, and vitality. Perfect for housewarmings and business openings. Always safe unless giving chrysanthemums (funeral) or wilting flowers.',
+    chinese: '富贵竹 = wealth bamboo · 兰花 (orchid) = elegance · 牡丹 (peony) = prosperity & nobility',
+    alternatives: ['Lucky bamboo arrangement', 'Orchid in ceramic pot', 'Bonsai tree'],
+    occasions: {Housewarming:'✅',Business:'✅ Opening','Chinese New Year':'✅',Birthday:'✅',Wedding:'✅'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['mooncake','mooncakes','moon cake'],
+    name: 'Mooncakes', emoji: '🌕', status: 'safe',
+    why: 'Mooncakes (月饼, yuèbǐng) are the iconic gift for the Mid-Autumn Festival (usually September). Premium mooncakes from luxury brands (Häagen-Dazs, hotel brands) are prized business gifts during this period. Outside of Mid-Autumn, they are less appropriate.',
+    chinese: '月饼 (yuèbǐng) — the quintessential Mid-Autumn Festival (中秋节) gift',
+    alternatives: ['Premium pastry box', 'Traditional sweet hamper'],
+    occasions:{'Mid-Autumn Festival':'✅✅',Business:'✅ Sept/Oct only',Birthday:'⚠️ Timing matters',Other:'⚠️ Wrong season'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['liquor','baijiu','maotai','moutai','kweichow moutai'],
+    name: 'Baijiu / Maotai', emoji: '🥃', status: 'safe',
+    why: 'Premium baijiu — especially Kweichow Moutai (茅台) — is one of the most prized business gifts in China. It signals status, respect, and serious relationship-building. Essential for high-level business dinners and government contacts.',
+    chinese: '茅台 (Máotái) = the prestige gift of Chinese business culture, a bottle of Moutai speaks louder than words',
+    alternatives: ['Wuliangye baijiu', 'Aged red wine (aged ≥ 5 years)', 'Premium imported spirits'],
+    occasions: {Business:'✅✅',Wedding:'✅',Birthday:'✅ Male elders','Government Contact':'✅'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+  {
+    keys: ['cash','money','banknote','banknotes'],
+    name: 'Cash (Lucky Amounts)', emoji: '💴', status: 'safe',
+    why: 'Cash is perfectly appropriate in Chinese culture, especially in red envelopes. Use lucky amounts: ¥66 (smooth), ¥88 or ¥888 (prosperity), ¥168 (all the way to prosperity), ¥688 (on the road to wealth). Avoid amounts with 4.',
+    chinese: '8 = prosperity · 6 = smooth · 9 = longevity · AVOID 4 (sounds like death 死)',
+    alternatives: ['Red envelope with ¥888', 'Digital red packet (WeChat Pay)', 'Gift card'],
+    occasions: {Wedding:'✅✅',Birthday:'✅','Chinese New Year':'✅',Baby:'✅',Business:'✅'},
+    learnMore: 'https://chinarules101.com/gifts/chinese-wedding-red-envelope/'
+  },
+  {
+    keys: ['skincare','skin care','cosmetics','makeup','lotion','serum','moisturizer','face cream'],
+    name: 'Skincare / Cosmetics', emoji: '💄', status: 'safe',
+    why: 'Premium skincare and cosmetics brands are very welcome gifts in China, especially SK-II, La Mer, Clé de Peau, or Sulwhasoo. They signal that you value the recipient\'s wellbeing and are tuned into current trends.',
+    chinese: 'Premium imported 护肤品 (hùfūpǐn) are highly desirable, especially for women',
+    alternatives: ['Gift set from premium brand', 'Facial device', 'Spa voucher'],
+    occasions: {Wedding:'✅',Birthday:'✅',Business:'✅ Female contacts',Mother:'✅','Chinese New Year':'✅'},
+    learnMore: 'https://chinarules101.com/gifts/'
+  },
+];
+
+// ─── QUICK PREVIEW ITEMS ─────────────────────────────────────────────────────
+const QUICK_ITEMS = [
+  {key:'clock',emoji:'🕐',name:'Clock',status:'avoid'},
+  {key:'tea',emoji:'🍵',name:'Tea',status:'safe'},
+  {key:'umbrella',emoji:'☂️',name:'Umbrella',status:'avoid'},
+  {key:'red envelope',emoji:'🧧',name:'Red Envelope',status:'safe'},
+  {key:'pear',emoji:'🍐',name:'Pear',status:'avoid'},
+  {key:'wine',emoji:'🍷',name:'Wine',status:'caution'},
+  {key:'shoes',emoji:'👟',name:'Shoes',status:'avoid'},
+  {key:'gold',emoji:'💛',name:'Gold / Jade',status:'safe'},
+  {key:'fan',emoji:'🪭',name:'Fan',status:'avoid'},
+  {key:'fruit',emoji:'🍊',name:'Fruit',status:'safe'},
+  {key:'watch',emoji:'⌚',name:'Watch',status:'caution'},
+  {key:'health supplement',emoji:'💊',name:'Supplements',status:'safe'},
+  {key:'knife',emoji:'🔪',name:'Knife/Scissors',status:'caution'},
+  {key:'chocolate',emoji:'🍫',name:'Chocolate',status:'safe'},
+  {key:'mirror',emoji:'🪞',name:'Mirror',status:'avoid'},
+  {key:'lucky bamboo',emoji:'🪴',name:'Lucky Plants',status:'safe'},
+  {key:'handkerchief',emoji:'🤧',name:'Handkerchief',status:'avoid'},
+  {key:'baijiu',emoji:'🥃',name:'Baijiu / Maotai',status:'safe'},
+];
+
+// ─── FUZZY LOOKUP ─────────────────────────────────────────────────────────────
+function findGift(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return null;
+  // exact key match
+  for (const g of GIFTS) {
+    if (g.keys.some(k => k === q)) return g;
+  }
+  // starts-with
+  for (const g of GIFTS) {
+    if (g.keys.some(k => k.startsWith(q) || q.startsWith(k))) return g;
+  }
+  // includes
+  for (const g of GIFTS) {
+    if (g.keys.some(k => k.includes(q) || q.includes(k))) return g;
+  }
+  return null;
+}
+
+function statusLabel(s) {
+  if (s==='safe') return '✅ Safe to Give';
+  if (s==='caution') return '⚠️ Use Caution';
+  return '🚫 Avoid This Gift';
+}
+function statusIcon(s) {
+  if (s==='safe') return '🟢';
+  if (s==='caution') return '🟡';
+  return '🔴';
+}
+
+function renderResult(g, query) {
+  const occHTML = Object.entries(g.occasions).map(([occ,val]) =>
+    `<span class="occ-item ${val.includes('✅')?'ok':val.includes('❌')?'no':''}">${val} ${occ}</span>`
+  ).join('');
+  const altChips = g.alternatives.map(a => `<span class="alt-chip safe-chip">${a}</span>`).join('');
+
+  return `<div class="result-card">
+    <div class="result-header ${g.status}">
+      <div class="result-icon">${g.emoji}</div>
+      <div class="result-title">
+        <div class="result-gift-name">${g.name}</div>
+        <span class="result-badge">${statusLabel(g.status)}</span>
+      </div>
+    </div>
+    <div class="result-body">
+      <p class="result-why">${g.why}</p>
+      <div class="result-chinese">${g.chinese}</div>
+      ${g.status !== 'safe' ? `<div class="result-alternatives"><div class="alt-label">Better Alternatives</div><div class="alt-chips">${altChips}</div></div>` : ''}
+      <div class="result-occasions">
+        <div class="alt-label">By Occasion</div>
+        ${occHTML}
+      </div>
+      <div class="result-actions">
+        <button class="btn-share" onclick="shareResult('${g.name}','${g.status}')">📤 Share Result</button>
+        <a class="btn-learn" href="${g.learnMore}" target="_blank" onclick="ga('visit_main_site',{tool:'gift_checker',gift:'${g.name}',destination:'chinarules101'})">📖 Full Gift Guide on ChinaRules101 →</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderNotFound(query) {
+  const suggestions = GIFTS.filter(g=>g.status==='avoid').slice(0,4).map(g=>
+    `<button class="sug-btn" onclick="quickCheck('${g.keys[0]}')">${g.emoji} ${g.name}</button>`
+  ).join('');
+  return `<div class="result-card"><div class="result-not-found">
+    <div class="nf-icon">🔍</div>
+    <h3>We don't have data on "<strong>${query}</strong>" yet</h3>
+    <p>Our database covers the most common Chinese gift taboos. For this item, a good rule of thumb: check if the item's name sounds like anything negative in Mandarin, or if it's associated with funerals or separation.</p>
+    <p style="margin-top:10px;"><a href="https://chinarules101.com/gifts/" target="_blank" onclick="ga('visit_main_site',{tool:'gift_checker',destination:'chinarules101_gifts'})">→ See the full Chinese gift guide on ChinaRules101.com</a></p>
+    <div class="nf-suggestions" style="margin-top:16px;">${suggestions}</div>
+  </div></div>`;
+}
+
+function checkGift() {
+  const q = document.getElementById('gift-input').value;
+  if (!q.trim()) return;
+  ga('tool_start', {tool:'gift_checker', query: q});
+  const g = findGift(q);
+  const el = document.getElementById('result');
+  el.style.display = 'block';
+  if (g) {
+    el.innerHTML = renderResult(g, q);
+    ga('tool_complete', {tool:'gift_checker', gift: g.name, status: g.status});
+  } else {
+    el.innerHTML = renderNotFound(q);
+  }
+  el.scrollIntoView({behavior:'smooth', block:'nearest'});
+  document.querySelectorAll('.sug-btn').forEach(b=>b.classList.remove('active'));
+}
+
+function quickCheck(key) {
+  document.getElementById('gift-input').value = key;
+  document.querySelectorAll('.sug-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.toLowerCase().includes(key.toLowerCase()));
+  });
+  checkGift();
+}
+
+function shareResult(name, status) {
+  const icon = status==='safe'?'✅':status==='caution'?'⚠️':'🚫';
+  const text = `${icon} Is it OK to give ${name} as a gift in China? Find out: https://chinesefortunetools.online/gift-checker/`;
+  if (navigator.share) {
+    navigator.share({title:'Chinese Gift Checker', text, url:'https://chinesefortunetools.online/gift-checker/'});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>{
+      const t = document.getElementById('toast');
+      t.style.display='block';
+      setTimeout(()=>t.style.display='none', 2500);
+    });
+  }
+  ga('share_result', {tool:'gift_checker', gift: name, status});
+}
+
+// Enter key
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('gift-input').addEventListener('keydown', function(e){
+    if(e.key==='Enter') checkGift();
+  });
+
+  // Build quick grid
+  const grid = document.getElementById('quick-grid');
+  QUICK_ITEMS.forEach(item=>{
+    const card = document.createElement('div');
+    card.className = `quick-card ${item.status}`;
+    card.innerHTML = `<div class="qc-emoji">${item.emoji}</div><div class="qc-name">${item.name}</div><div class="qc-status">${statusLabel(item.status).replace('✅ ','').replace('⚠️ ','').replace('🚫 ','')}</div>`;
+    card.onclick = ()=>quickCheck(item.key);
+    grid.appendChild(card);
+  });
+});
+</script>
+</body>
+</html>
