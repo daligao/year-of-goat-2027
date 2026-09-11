@@ -1,0 +1,77 @@
+{
+  "_source": "chinesefortunetools.online/data/festivals.json",
+  "_note": "Chinese festival dates 2025-2028. Update once, all sites use this.",
+  "_updated": "2026-09-11",
+  "festivals": [
+    {
+      "id": "cny",
+      "name": "Chinese New Year (Spring Festival)",
+      "zh": "春节",
+      "type": "lunar",
+      "lunar_date": "1/1",
+      "description": "The most important Chinese holiday. Marks the start of the lunar new year.",
+      "dates": {"2025":"2025-01-29","2026":"2026-02-17","2027":"2027-02-06","2028":"2028-01-26"}
+    },
+    {
+      "id": "lantern",
+      "name": "Lantern Festival",
+      "zh": "元宵节",
+      "type": "lunar",
+      "lunar_date": "1/15",
+      "description": "15th day of the first lunar month. Marks the end of CNY celebrations.",
+      "dates": {"2025":"2025-02-12","2026":"2026-03-03","2027":"2027-02-20","2028":"2028-02-11"}
+    },
+    {
+      "id": "qingming",
+      "name": "Qingming Festival (Tomb Sweeping)",
+      "zh": "清明节",
+      "type": "solar",
+      "description": "Around April 4-6. Families visit ancestral graves. Avoid giving gifts on this day.",
+      "dates": {"2025":"2025-04-05","2026":"2026-04-05","2027":"2027-04-05","2028":"2028-04-04"}
+    },
+    {
+      "id": "dragon-boat",
+      "name": "Dragon Boat Festival",
+      "zh": "端午节",
+      "type": "lunar",
+      "lunar_date": "5/5",
+      "description": "Fifth day of fifth lunar month. Dragon boat races, zongzi rice dumplings.",
+      "dates": {"2025":"2025-05-31","2026":"2026-06-19","2027":"2027-06-09","2028":"2028-06-27"}
+    },
+    {
+      "id": "qixi",
+      "name": "Qixi Festival (Chinese Valentine's Day)",
+      "zh": "七夕节",
+      "type": "lunar",
+      "lunar_date": "7/7",
+      "description": "Seventh day of seventh lunar month. Chinese Valentine's Day.",
+      "dates": {"2025":"2025-08-29","2026":"2026-08-19","2027":"2027-08-08","2028":"2028-08-26"}
+    },
+    {
+      "id": "mid-autumn",
+      "name": "Mid-Autumn Festival",
+      "zh": "中秋节",
+      "type": "lunar",
+      "lunar_date": "8/15",
+      "description": "15th day of eighth lunar month. Mooncakes, family reunion, full moon.",
+      "dates": {"2025":"2025-10-06","2026":"2026-09-25","2027":"2027-10-15","2028":"2028-10-03"}
+    },
+    {
+      "id": "double-nine",
+      "name": "Double Ninth Festival",
+      "zh": "重阳节",
+      "type": "lunar",
+      "lunar_date": "9/9",
+      "description": "Ninth day of ninth lunar month. Respecting elders, climbing mountains.",
+      "dates": {"2025":"2025-10-29","2026":"2026-10-19","2027":"2027-11-07","2028":"2028-10-26"}
+    },
+    {
+      "id": "winter-solstice",
+      "name": "Winter Solstice Festival",
+      "zh": "冬至",
+      "type": "solar",
+      "description": "Around December 21-22. Family reunion meal, tangyuan dumplings.",
+      "dates": {"2025":"2025-12-22","2026":"2026-12-22","2027":"2027-12-22","2028":"2028-12-21"}
+    }
+  ]
+}

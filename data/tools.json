@@ -1,7 +1,7 @@
 {
   "site": {
-    "name": "ChineseFortuneTools.online",
-    "description": "Chinese Culture Tool Lab — interactive tools, zero cost, real experiments",
+    "name": "Chinese Culture Lab",
+    "tagline": "We build tiny experiments about Chinese culture. Some survive. Some don't.",
     "base_url": "https://chinesefortunetools.online",
     "ga4": "G-GZSPJFQ6FR",
     "updated": "2026-09-11"
@@ -10,14 +10,15 @@
     {
       "id": "gift-checker",
       "title": "Can I Give This in China?",
-      "subtitle": "Chinese Gift Taboo Checker",
+      "subtitle": "Gift Taboo Checker",
       "emoji": "🎁",
       "url": "/gift-checker/",
-      "status": "live",
+      "status": "testing",
+      "launched": "2026-09-11",
       "priority": 0.9,
       "tags": ["gifts","culture","etiquette"],
       "funnel": "chinarules101.com/gifts/",
-      "description": "Type any gift to instantly find out if it's safe, risky, or taboo — with cultural explanations and better alternatives.",
+      "description": "Type any gift to instantly find out if it's safe, risky, or taboo — with cultural explanations.",
       "cta": "Check a Gift →"
     },
     {
@@ -26,24 +27,26 @@
       "subtitle": "How Much to Put in a 红包?",
       "emoji": "🧧",
       "url": "/red-envelope/",
-      "status": "live",
+      "status": "testing",
+      "launched": "2026-09-11",
       "priority": 0.9,
       "tags": ["gifts","money","wedding","cny"],
       "funnel": "chinarules101.com/gifts/chinese-wedding-red-envelope/",
-      "description": "Calculate the right amount for weddings, Chinese New Year, birthdays and more. Lucky amounts included.",
+      "description": "Calculate the right amount for weddings, CNY, birthdays. Lucky amounts included.",
       "cta": "Calculate Amount →"
     },
     {
       "id": "zodiac",
       "title": "Exact Zodiac Calculator",
-      "subtitle": "Spring Festival Boundary — Handled Correctly",
+      "subtitle": "Spring Festival Boundary Handled",
       "emoji": "🐉",
       "url": "/zodiac/",
-      "status": "live",
+      "status": "testing",
+      "launched": "2026-09-11",
       "priority": 0.9,
       "tags": ["zodiac","astrology","birthday"],
       "funnel": "chinesefortunetools.com/chinese-zodiac/",
-      "description": "Most calculators get Jan/Feb birthdays wrong. Enter your full birth date for the accurate Chinese zodiac sign.",
+      "description": "Most calculators get Jan/Feb birthdays wrong. Enter your full birth date for the accurate result.",
       "cta": "Find My Sign →"
     },
     {
@@ -52,11 +55,12 @@
       "subtitle": "What Do I Call This Relative?",
       "emoji": "👨‍👩‍👧‍👦",
       "url": "/kinship/",
-      "status": "live",
+      "status": "testing",
+      "launched": "2026-09-11",
       "priority": 0.9,
       "tags": ["family","culture","language"],
       "funnel": "chinarules101.com/",
-      "description": "Chinese kinship titles are notoriously complex. Click through the relationship chain to find the exact Chinese term.",
+      "description": "Click through the relationship chain to find the exact Chinese kinship title with pinyin.",
       "cta": "Find the Title →"
     }
   ]

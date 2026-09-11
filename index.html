@@ -127,6 +127,12 @@
 
   .divider{border:none;border-top:1px solid #e8dfc8;max-width:860px;margin:0 auto;}
 
+  /* LAB NAV */
+  .lab-nav{background:#0d1117;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .lab-logo{color:var(--gold);font-size:0.9rem;font-weight:bold;letter-spacing:.5px;font-family:monospace;}
+  .lab-stats{font-size:0.75rem;color:#666;font-family:monospace;}
+  .lab-stats span{color:#aaa;}
+
   /* TOOL CARDS */
   .tools-hub{background:#fff;padding:54px 20px;}
   .tools-hub h2{text-align:center;font-size:1.8rem;color:var(--ink);margin-bottom:8px;}
@@ -139,6 +145,11 @@
   .tool-card .t-sub{font-size:0.8rem;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
   .tool-card .t-desc{font-size:0.87rem;color:#555;line-height:1.5;flex:1;}
   .tool-card .t-cta{font-size:0.85rem;color:var(--red);font-weight:bold;margin-top:4px;}
+  .exp-badge{font-size:0.68rem;font-weight:bold;padding:3px 8px;border-radius:12px;letter-spacing:.5px;white-space:nowrap;}
+  .exp-badge.testing{background:#e8f4fd;color:#1a6fa0;}
+  .exp-badge.growing{background:#e8f9ed;color:#1a7a3a;}
+  .exp-badge.graduated{background:#fff8e1;color:#8a6000;}
+  .exp-badge.retired{background:#f0f0f0;color:#888;}
 
   @media(max-width:600px){
     .hero h1{font-size:2rem;}
@@ -177,6 +188,17 @@
 </script>
 </head>
 <body>
+
+<!-- LAB NAV -->
+<div class="lab-nav">
+  <span class="lab-logo">🧪 Chinese Culture Lab</span>
+  <div class="lab-stats" id="lab-stats">
+    <span id="stat-testing">4 testing</span>
+    <span id="stat-growing" style="display:none">· 0 growing</span>
+    <span id="stat-graduated" style="display:none">· 0 graduated</span>
+    <span id="stat-retired" style="display:none">· 0 retired</span>
+  </div>
+</div>
 
 <!-- HERO -->
 <header class="hero">
@@ -265,32 +287,44 @@ document.getElementById('birth-year').addEventListener('keydown', function(e){ i
 
 <!-- TOOLS-GRID-START -->
 <section class="tools-hub">
-  <h2>Free Chinese Culture Tools</h2>
-  <p class="sub">No sign-up. No fluff. Accurate information you can actually use.</p>
+  <h2>Live Experiments</h2>
+  <p class="sub">We build tiny tools about Chinese culture. Some grow. Some get promoted to our main sites. Some retire.</p>
   <div class="tools-grid">
     <a class="tool-card" href="/gift-checker/" onclick="gtag('event','tool_click',{tool:'gift-checker',from:'homepage'})">
-      <div class="t-emoji">🎁</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div class="t-emoji">🎁</div>
+        <span class="exp-badge testing">🧪 Testing</span>
+      </div>
       <div class="t-sub">Gift Taboo Checker</div>
       <div class="t-title">Can I Give This in China?</div>
       <div class="t-desc">Type any gift to find out if it's safe, risky, or taboo — with the cultural reason and better alternatives.</div>
       <div class="t-cta">Check a Gift →</div>
     </a>
     <a class="tool-card" href="/red-envelope/" onclick="gtag('event','tool_click',{tool:'red-envelope',from:'homepage'})">
-      <div class="t-emoji">🧧</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div class="t-emoji">🧧</div>
+        <span class="exp-badge testing">🧪 Testing</span>
+      </div>
       <div class="t-sub">Red Envelope Calculator</div>
       <div class="t-title">How Much to Put in a 红包?</div>
       <div class="t-desc">Wedding, CNY, birthday — pick the occasion and relationship to get the right amount with lucky numbers.</div>
       <div class="t-cta">Calculate Amount →</div>
     </a>
     <a class="tool-card" href="/zodiac/" onclick="gtag('event','tool_click',{tool:'zodiac',from:'homepage'})">
-      <div class="t-emoji">🐉</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div class="t-emoji">🐉</div>
+        <span class="exp-badge testing">🧪 Testing</span>
+      </div>
       <div class="t-sub">Exact Zodiac Calculator</div>
       <div class="t-title">Your Real Chinese Zodiac Sign</div>
       <div class="t-desc">Most sites get January/February birthdays wrong. Enter your full date for the Spring-Festival-accurate result.</div>
       <div class="t-cta">Find My Sign →</div>
     </a>
     <a class="tool-card" href="/kinship/" onclick="gtag('event','tool_click',{tool:'kinship',from:'homepage'})">
-      <div class="t-emoji">👨‍👩‍👧‍👦</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div class="t-emoji">👨‍👩‍👧‍👦</div>
+        <span class="exp-badge testing">🧪 Testing</span>
+      </div>
       <div class="t-sub">Family Title Finder</div>
       <div class="t-title">What Do I Call This Relative?</div>
       <div class="t-desc">Click through the relationship chain — Father → Older Brother → Wife — and get the exact Chinese title.</div>
@@ -608,9 +642,22 @@ function toggleFaq(el){
 </section>
 
 <footer>
-  <p>2027 Year of the Goat Guide · <a href="https://chinesefortunetools.com">ChineseFortuneTools.com</a> · For entertainment and cultural education purposes.</p>
-  <p style="margin-top:6px;"><a href="/sitemap.xml">Sitemap</a></p>
+  <p style="font-family:monospace;color:var(--gold);margin-bottom:6px;">🧪 Chinese Culture Lab</p>
+  <p><a href="https://chinesefortunetools.com">ChineseFortuneTools.com</a> · <a href="https://chinarules101.com">ChinaRules101.com</a> · <a href="https://chinesenamecraft.com">ChineseNameCraft.com</a></p>
+  <p style="margin-top:6px;font-size:0.75rem;"><a href="/sitemap.xml">Sitemap</a> · <a href="/data/tools.json">tools.json</a> · <a href="/data/zodiac.json">zodiac.json</a> · <a href="/data/festivals.json">festivals.json</a></p>
 </footer>
 
+<script>
+fetch('/data/tools.json').then(r=>r.json()).then(d=>{
+  var counts={testing:0,growing:0,graduated:0,retired:0};
+  d.tools.forEach(t=>{ if(counts[t.status]!==undefined) counts[t.status]++; });
+  var parts=[];
+  if(counts.testing)   parts.push(counts.testing+' testing');
+  if(counts.growing)   parts.push(counts.growing+' growing 🔥');
+  if(counts.graduated) parts.push(counts.graduated+' graduated 🏆');
+  if(counts.retired)   parts.push(counts.retired+' retired');
+  document.getElementById('lab-stats').textContent=parts.join(' · ');
+}).catch(()=>{});
+</script>
 </body>
 </html>
