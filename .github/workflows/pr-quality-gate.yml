@@ -1,0 +1,231 @@
+name: PR Quality Gate
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+# All jobs must pass before merge is allowed.
+# Configure in repo Settings → Branches → Branch protection → Required status checks.
+
+jobs:
+
+  # ── 1. HTML Validation ────────────────────────────────────────────────────
+  html-validation:
+    name: HTML Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install html-validate
+        run: npm install -g html-validate
+      - name: Validate HTML files
+        run: |
+          FAILED=0
+          for f in index.html */index.html; do
+            [ -f "$f" ] || continue
+            html-validate "$f" 2>&1 | tail -5
+            [ ${PIPESTATUS[0]} -ne 0 ] && FAILED=$((FAILED+1))
+          done
+          if [ $FAILED -gt 0 ]; then
+            echo "HTML validation failed on $FAILED file(s)"
+            exit 1
+          fi
+
+  # ── 2. JSON Schema Validation ─────────────────────────────────────────────
+  schema-validation:
+    name: JSON Schema Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - run: python3 scripts/validate_schemas.py
+
+  # ── 3. Broken Link Check ──────────────────────────────────────────────────
+  link-check:
+    name: Broken Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install lychee
+        run: |
+          curl -sSLf https://github.com/lycheeverse/lychee/releases/download/v0.15.1/lychee-v0.15.1-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          sudo mv lychee /usr/local/bin/
+      - name: Check links in HTML files
+        run: |
+          lychee --verbose --no-progress --timeout 20 \
+            --exclude "localhost" --exclude "127.0.0.1" \
+            --exclude-path "_pagefind" \
+            --exclude-path "previews" \
+            --max-retries 2 \
+            "**/*.html" 2>&1 | tee /tmp/link-report.txt
+          # Only fail on broken internal links (external can be flaky)
+          BROKEN=$(grep -c "ERROR\[" /tmp/link-report.txt 2>/dev/null || echo 0)
+          if [ "$BROKEN" -gt "0" ]; then
+            echo "$BROKEN broken link(s) found"
+            exit 1
+          fi
+
+  # ── 4. SEO Check ──────────────────────────────────────────────────────────
+  seo-check:
+    name: SEO Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 scripts/build.py seo_check
+        continue-on-error: true  # SEO issues are warnings, not blockers for template pages
+
+  # ── 5. Sitemap Validation ─────────────────────────────────────────────────
+  sitemap-check:
+    name: Sitemap Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate sitemap structure
+        run: |
+          python3 - <<'EOF'
+          import xml.etree.ElementTree as ET, sys
+          try:
+            tree = ET.parse("sitemap.xml")
+            root = tree.getroot()
+            ns   = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+            locs = root.findall('.//sm:loc', ns)
+            if not locs:
+              print("FAIL: No <loc> entries in sitemap.xml")
+              sys.exit(1)
+            for loc in locs:
+              if not loc.text.startswith("https://"):
+                print(f"FAIL: Invalid URL in sitemap: {loc.text}")
+                sys.exit(1)
+            print(f"OK: {len(locs)} URLs in sitemap, all valid")
+          except ET.ParseError as e:
+            print(f"FAIL: sitemap.xml is not valid XML: {e}")
+            sys.exit(1)
+          EOF
+
+  # ── 6. JavaScript Tests ───────────────────────────────────────────────────
+  js-tests:
+    name: JavaScript Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check for test files and run
+        run: |
+          if [ -f "package.json" ] && [ -d "tests" ]; then
+            npm ci && npm test
+          else
+            echo "No JS test suite yet — skipping (add tests/ directory to enable)"
+          fi
+
+  # ── 7. Performance Budget ─────────────────────────────────────────────────
+  performance-budget:
+    name: Performance Budget
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 scripts/performance_budget.py
+      - name: Upload budget report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf-budget-${{ github.run_id }}
+          path: data/performance_budget.json
+          retention-days: 30
+
+  # ── 8. Dependency Review ──────────────────────────────────────────────────
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: always
+
+  # ── 9. CodeQL Security Scan ───────────────────────────────────────────────
+  codeql:
+    name: CodeQL Security
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+      - uses: github/codeql-action/analyze@v3
+
+  # ── 10. Visual Regression ─────────────────────────────────────────────────
+  visual-regression:
+    name: Visual Regression (PR Preview)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install and start local server
+        run: |
+          npm install -g http-server
+          http-server . -p 8080 --silent &
+          sleep 2
+      - name: Install Playwright
+        run: |
+          npm install -g playwright
+          npx playwright install chromium --with-deps
+      - name: Capture screenshots of changed pages
+        run: |
+          mkdir -p /tmp/pr-screenshots
+          PAGES=("/" "/gift-checker/" "/zodiac/" "/dashboard/")
+          for PAGE in "${PAGES[@]}"; do
+            SLUG=$(echo "$PAGE" | tr '/' '-' | sed 's/^-//')
+            [ -z "$SLUG" ] && SLUG="home"
+            npx playwright screenshot --browser chromium --viewport-size "1280,900" \
+              "http://localhost:8080$PAGE" "/tmp/pr-screenshots/${SLUG}-desktop.png" 2>/dev/null || true
+          done
+      - name: Upload PR screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-screenshots-${{ github.event.pull_request.number }}
+          path: /tmp/pr-screenshots/
+          retention-days: 14
+
+  # ── Summary Gate ──────────────────────────────────────────────────────────
+  quality-gate-passed:
+    name: All Quality Checks Passed
+    runs-on: ubuntu-latest
+    needs:
+      - html-validation
+      - schema-validation
+      - link-check
+      - sitemap-check
+      - performance-budget
+      - codeql
+    steps:
+      - run: echo "All required quality checks passed."

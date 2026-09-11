@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "metrics.schema.json",
+  "title": "Tool Metrics",
+  "type": "object",
+  "required": ["tools"],
+  "properties": {
+    "_note":    { "type": "string" },
+    "_updated": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "_source":  { "type": "string" },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id":              { "type": "string" },
+          "uv_30d":          { "type": "integer", "minimum": 0 },
+          "sessions_30d":    { "type": "integer", "minimum": 0 },
+          "tool_start":      { "type": "integer", "minimum": 0 },
+          "tool_complete":   { "type": "integer", "minimum": 0 },
+          "completion_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+          "share_count":     { "type": "integer", "minimum": 0 },
+          "share_rate":      { "type": "number", "minimum": 0 },
+          "click_to_main":   { "type": "integer", "minimum": 0 },
+          "experiment_score":{ "type": "number", "minimum": 0, "maximum": 100 },
+          "recommendation":  { "type": "string", "enum": ["Graduate", "Accelerate", "Observe", "Retire"] },
+          "gsc": {
+            "type": "object",
+            "properties": {
+              "impressions_28d": { "type": "integer", "minimum": 0 },
+              "clicks_28d":      { "type": "integer", "minimum": 0 },
+              "ctr":             { "type": "number", "minimum": 0, "maximum": 1 },
+              "avg_position":    { "type": "number", "minimum": 0 }
+            }
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["date"],
+              "properties": {
+                "date":             { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+                "uv_30d":           { "type": "integer" },
+                "experiment_score": { "type": "number" },
+                "gsc_impressions":  { "type": "integer" },
+                "gsc_clicks":       { "type": "integer" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "graduation_thresholds": {
+      "type": "object",
+      "properties": {
+        "uv_30d":       { "type": "integer" },
+        "click_to_main":{ "type": "integer" }
+      }
+    }
+  }
+}

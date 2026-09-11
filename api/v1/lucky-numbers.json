@@ -1,0 +1,92 @@
+{
+  "_source": "chinesefortunetools.online/api/lucky-numbers.json",
+  "_license": "CC0 — free to use",
+  "_updated": "2026-09-11",
+  "lucky": {
+    "numbers": [
+      2,
+      6,
+      8,
+      9
+    ],
+    "notes": {
+      "2": "Pairs — good things come in pairs (好事成双)",
+      "6": "Smooth, flow (六六大顺)",
+      "8": "Prosperity (发, sounds like 八)",
+      "9": "Longevity (久, sounds like 九)"
+    }
+  },
+  "unlucky": {
+    "numbers": [
+      4,
+      7
+    ],
+    "notes": {
+      "4": "Death (死, sounds like 四)",
+      "7": "Ghost month associations"
+    }
+  },
+  "by_zodiac": {
+    "Rat": [
+      2,
+      3
+    ],
+    "Ox": [
+      1,
+      4
+    ],
+    "Tiger": [
+      1,
+      3,
+      4
+    ],
+    "Rabbit": [
+      3,
+      4,
+      9
+    ],
+    "Dragon": [
+      1,
+      6,
+      7
+    ],
+    "Snake": [
+      2,
+      8,
+      9
+    ],
+    "Horse": [
+      2,
+      3,
+      7
+    ],
+    "Goat": [
+      2,
+      7
+    ],
+    "Monkey": [
+      1,
+      8,
+      9
+    ],
+    "Rooster": [
+      5,
+      7,
+      8
+    ],
+    "Dog": [
+      3,
+      4,
+      9
+    ],
+    "Pig": [
+      2,
+      5,
+      8
+    ]
+  },
+  "version": "1",
+  "updated_at": "2026-09-11",
+  "license": "CC BY 4.0",
+  "source_notes": "Static dataset by Chinese Culture Lab. chinesefortunetools.online"
+}

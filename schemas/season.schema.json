@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "season.schema.json",
+  "title": "Season Theme",
+  "type": "object",
+  "required": ["season", "theme"],
+  "properties": {
+    "season":   { "type": "string" },
+    "festival": { "type": "string" },
+    "until":    { "type": "string" },
+    "theme": {
+      "type": "object",
+      "required": ["--gold"],
+      "additionalProperties": { "type": "string" }
+    },
+    "banner": { "type": "string" }
+  },
+  "additionalProperties": false
+}

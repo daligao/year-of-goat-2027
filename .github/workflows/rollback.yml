@@ -1,0 +1,113 @@
+name: Manual Production Rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: 'Commit SHA to roll back to (7+ chars). Find in git log.'
+        required: true
+        type: string
+      reason:
+        description: 'Reason for rollback (logged in rollback history)'
+        required: true
+        type: string
+      confirm:
+        description: 'Type ROLLBACK to confirm'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      safe: ${{ steps.check.outputs.safe }}
+      full_sha: ${{ steps.check.outputs.full_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate inputs
+        id: check
+        run: |
+          if [ "${{ github.event.inputs.confirm }}" != "ROLLBACK" ]; then
+            echo "Confirmation text does not match ROLLBACK. Aborting."
+            exit 1
+          fi
+          SHA="${{ github.event.inputs.commit_sha }}"
+          FULL=$(git rev-parse "$SHA" 2>/dev/null || echo "")
+          if [ -z "$FULL" ]; then
+            echo "Commit SHA '$SHA' not found in history. Aborting."
+            exit 1
+          fi
+          echo "Rolling back to: $FULL"
+          git show --stat "$FULL" | head -20
+          echo "safe=true" >> $GITHUB_OUTPUT
+          echo "full_sha=$FULL" >> $GITHUB_OUTPUT
+
+  rollback:
+    runs-on: ubuntu-latest
+    needs: validate
+    if: needs.validate.outputs.safe == 'true'
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Log rollback to history file
+        run: |
+          FULL="${{ needs.validate.outputs.full_sha }}"
+          NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          ACTOR="${{ github.actor }}"
+          REASON="${{ github.event.inputs.reason }}"
+          CURRENT=$(git rev-parse HEAD)
+
+          mkdir -p data
+          # Append to rollback log (JSON Lines format)
+          echo "{\"timestamp\":\"$NOW\",\"actor\":\"$ACTOR\",\"from_sha\":\"$CURRENT\",\"to_sha\":\"$FULL\",\"reason\":\"$REASON\"}" >> data/rollback_log.jsonl
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/rollback_log.jsonl
+          git commit -m "chore: log rollback to $FULL by $ACTOR [skip ci]"
+          git push
+
+      - name: Execute rollback via git revert
+        run: |
+          FULL="${{ needs.validate.outputs.full_sha }}"
+          CURRENT=$(git rev-parse HEAD)
+
+          # Create a revert commit from current HEAD back to target SHA
+          # This is safe and reversible — preserves git history
+          git revert --no-edit "$FULL..HEAD" 2>/dev/null || {
+            # If multiple commits, revert range might conflict — use reset approach with commit
+            echo "Range revert failed, using reset+commit approach"
+            git reset --soft "$FULL"
+            git commit -m "rollback: revert to $FULL — ${{ github.event.inputs.reason }} [skip ci]"
+          }
+          git push
+
+      - name: Trigger site rebuild
+        run: |
+          curl -sf -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/build.yml/dispatches" \
+            -d '{"ref":"main","inputs":{"action":"update-sitemap"}}'
+
+      - name: Summary
+        run: |
+          echo "## Rollback Complete" >> $GITHUB_STEP_SUMMARY
+          echo "- **Rolled back to:** ${{ needs.validate.outputs.full_sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Reason:** ${{ github.event.inputs.reason }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Executed by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Site rebuild triggered. Allow 2-3 minutes for changes to appear." >> $GITHUB_STEP_SUMMARY
+          echo "To undo this rollback, run the rollback workflow again with the previous SHA." >> $GITHUB_STEP_SUMMARY

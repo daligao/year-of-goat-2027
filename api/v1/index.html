@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Culture Lab — Open API v1</title>
+<meta name="description" content="Free, open JSON API for Chinese calendar, zodiac, festivals, and gift taboo data. No authentication required.">
+<link rel="canonical" href="https://chinesefortunetools.online/api/v1/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:monospace;background:#0d1117;color:#e6edf3;line-height:1.6;}
+.hero{background:#161b22;border-bottom:1px solid #30363d;padding:40px 20px;text-align:center;}
+.hero h1{font-size:1.6rem;margin-bottom:8px;}
+.hero p{color:#8b949e;font-size:0.85rem;max-width:560px;margin:0 auto;}
+.badge{display:inline-block;background:#238636;color:#56d364;font-size:0.7rem;padding:2px 8px;border-radius:4px;margin:8px 4px 0;border:1px solid #2ea043;}
+.main{max-width:860px;margin:0 auto;padding:36px 20px;}
+h2{font-size:1rem;color:#e6edf3;margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid #21262d;}
+.endpoint{background:#161b22;border:1px solid #30363d;border-radius:8px;margin-bottom:20px;overflow:hidden;}
+.ep-header{padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;}
+.ep-method{background:#1a3a2a;color:#56d364;font-size:0.7rem;padding:2px 8px;border-radius:4px;border:1px solid #238636;flex-shrink:0;}
+.ep-url{color:#79c0ff;font-size:0.85rem;flex:1;}
+.ep-desc{color:#8b949e;font-size:0.78rem;text-align:right;}
+.ep-body{display:none;padding:0 18px 18px;}
+.ep-body.open{display:block;}
+.copy-btn{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:0.72rem;font-family:monospace;float:right;margin-top:4px;}
+.copy-btn:hover{background:#30363d;color:#e6edf3;}
+.code{background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:14px;font-size:0.78rem;overflow-x:auto;margin:10px 0;white-space:pre;position:relative;}
+.fields{margin:10px 0;}
+.field-row{display:flex;gap:12px;padding:5px 0;border-bottom:1px solid #21262d;font-size:0.78rem;}
+.field-name{color:#79c0ff;width:160px;flex-shrink:0;}
+.field-type{color:#d2a8ff;width:70px;flex-shrink:0;}
+.field-desc{color:#8b949e;}
+.example-tabs{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;}
+.tab{background:#21262d;border:1px solid #30363d;color:#8b949e;padding:4px 12px;border-radius:4px;cursor:pointer;font-size:0.72rem;font-family:monospace;}
+.tab.active{background:#1f6feb;border-color:#1f6feb;color:#fff;}
+.example{display:none;}
+.example.active{display:block;}
+.nav{text-align:center;padding:20px;font-size:0.78rem;color:#484f58;}
+.nav a{color:#58a6ff;text-decoration:none;margin:0 8px;}
+.data-release{background:#1a1a2e;border:1px solid #30363d;border-radius:8px;padding:16px;margin:16px 0;font-size:0.8rem;}
+.data-release h3{font-size:0.85rem;color:#e6edf3;margin-bottom:8px;}
+.dl-link{color:#58a6ff;text-decoration:none;}
+.dl-link:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🀄 Open API v1</h1>
+  <p>Free JSON API for Chinese calendar data. No API key. No auth. CORS enabled via GitHub Pages.</p>
+  <div>
+    <span class="badge">FREE</span>
+    <span class="badge">NO AUTH</span>
+    <span class="badge">CORS OPEN</span>
+    <span class="badge">CC BY 4.0</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <h2>Base URL</h2>
+  <div class="code">https://chinesefortunetools.online/api/v1/<button class="copy-btn" onclick="copy('https://chinesefortunetools.online/api/v1/')">Copy</button></div>
+
+  <h2>Endpoints</h2>
+
+  <!-- Chinese New Year -->
+  <div class="endpoint">
+    <div class="ep-header" onclick="toggle(this)">
+      <span class="ep-method">GET</span>
+      <span class="ep-url">/api/v1/chinese-new-year.json</span>
+      <span class="ep-desc">CNY dates 2020–2035</span>
+    </div>
+    <div class="ep-body">
+      <div class="fields">
+        <div class="field-row"><span class="field-name">year</span><span class="field-type">integer</span><span class="field-desc">Gregorian year</span></div>
+        <div class="field-row"><span class="field-name">date</span><span class="field-type">string</span><span class="field-desc">CNY date (YYYY-MM-DD)</span></div>
+        <div class="field-row"><span class="field-name">zodiac</span><span class="field-type">string</span><span class="field-desc">Chinese zodiac animal</span></div>
+        <div class="field-row"><span class="field-name">element</span><span class="field-type">string</span><span class="field-desc">Five element (Metal/Water/Wood/Fire/Earth)</span></div>
+        <div class="field-row"><span class="field-name">lantern_date</span><span class="field-type">string</span><span class="field-desc">Lantern Festival date (15th day)</span></div>
+      </div>
+      <div class="example-tabs">
+        <span class="tab active" onclick="switchTab(this,'cny','fetch')">fetch</span>
+        <span class="tab" onclick="switchTab(this,'cny','python')">Python</span>
+        <span class="tab" onclick="switchTab(this,'cny','curl')">curl</span>
+      </div>
+      <div class="example active" id="cny-fetch"><div class="code">const res = await fetch('https://chinesefortunetools.online/api/v1/chinese-new-year.json');
+const data = await res.json();
+const cny2027 = data.years.find(y => y.year === 2027);
+// → { year: 2027, date: "2027-02-06", zodiac: "Goat", element: "Fire", ... }</div></div>
+      <div class="example" id="cny-python"><div class="code">import urllib.request, json
+url = "https://chinesefortunetools.online/api/v1/chinese-new-year.json"
+with urllib.request.urlopen(url) as r:
+    data = json.loads(r.read())
+cny2027 = next(y for y in data["years"] if y["year"] == 2027)
+print(cny2027["date"])  # 2027-02-06</div></div>
+      <div class="example" id="cny-curl"><div class="code">curl https://chinesefortunetools.online/api/v1/chinese-new-year.json | python3 -m json.tool</div></div>
+    </div>
+  </div>
+
+  <!-- Festivals -->
+  <div class="endpoint">
+    <div class="ep-header" onclick="toggle(this)">
+      <span class="ep-method">GET</span>
+      <span class="ep-url">/api/v1/festivals.json</span>
+      <span class="ep-desc">8 major festivals, dates 2025–2028</span>
+    </div>
+    <div class="ep-body">
+      <div class="fields">
+        <div class="field-row"><span class="field-name">name</span><span class="field-type">string</span><span class="field-desc">English festival name</span></div>
+        <div class="field-row"><span class="field-name">chinese</span><span class="field-type">string</span><span class="field-desc">Chinese name</span></div>
+        <div class="field-row"><span class="field-name">emoji</span><span class="field-type">string</span><span class="field-desc">Representative emoji</span></div>
+        <div class="field-row"><span class="field-name">dates</span><span class="field-type">object</span><span class="field-desc">{ "2025": "YYYY-MM-DD", ... }</span></div>
+      </div>
+      <div class="example-tabs">
+        <span class="tab active" onclick="switchTab(this,'fest','fetch')">fetch</span>
+      </div>
+      <div class="example active" id="fest-fetch"><div class="code">const res = await fetch('https://chinesefortunetools.online/api/v1/festivals.json');
+const { festivals } = await res.json();
+const cny = festivals.find(f => f.name === "Chinese New Year");
+console.log(cny.dates["2027"]);  // "2027-02-06"</div></div>
+    </div>
+  </div>
+
+  <!-- Zodiac -->
+  <div class="endpoint">
+    <div class="ep-header" onclick="toggle(this)">
+      <span class="ep-method">GET</span>
+      <span class="ep-url">/api/v1/zodiac.json</span>
+      <span class="ep-desc">12 zodiac signs with traits and 2027 forecast</span>
+    </div>
+    <div class="ep-body">
+      <div class="example-tabs">
+        <span class="tab active" onclick="switchTab(this,'zod','fetch')">fetch</span>
+      </div>
+      <div class="example active" id="zod-fetch"><div class="code">const res = await fetch('https://chinesefortunetools.online/api/v1/zodiac.json');
+const { signs } = await res.json();
+const goat = signs.find(s => s.name === "Goat");
+console.log(goat.traits, goat.lucky_numbers);</div></div>
+    </div>
+  </div>
+
+  <!-- Lucky Numbers -->
+  <div class="endpoint">
+    <div class="ep-header" onclick="toggle(this)">
+      <span class="ep-method">GET</span>
+      <span class="ep-url">/api/v1/lucky-numbers.json</span>
+      <span class="ep-desc">Lucky and unlucky numbers by zodiac</span>
+    </div>
+    <div class="ep-body">
+      <div class="example-tabs">
+        <span class="tab active" onclick="switchTab(this,'luck','fetch')">fetch</span>
+      </div>
+      <div class="example active" id="luck-fetch"><div class="code">const res = await fetch('https://chinesefortunetools.online/api/v1/lucky-numbers.json');
+const data = await res.json();
+// data.by_zodiac["Goat"] → { lucky: [...], unlucky: [...] }
+// data.universal_lucky   → [6, 8, 9]</div></div>
+    </div>
+  </div>
+
+  <!-- Gift Taboos -->
+  <div class="endpoint">
+    <div class="ep-header" onclick="toggle(this)">
+      <span class="ep-method">GET</span>
+      <span class="ep-url">/api/v1/gift-taboos.json</span>
+      <span class="ep-desc">10 Chinese gift-giving taboos with severity</span>
+    </div>
+    <div class="ep-body">
+      <div class="fields">
+        <div class="field-row"><span class="field-name">item</span><span class="field-type">string</span><span class="field-desc">The taboo gift item</span></div>
+        <div class="field-row"><span class="field-name">reason</span><span class="field-type">string</span><span class="field-desc">Why it is taboo</span></div>
+        <div class="field-row"><span class="field-name">severity</span><span class="field-type">string</span><span class="field-desc">high / medium / low</span></div>
+        <div class="field-row"><span class="field-name">alternatives</span><span class="field-type">array</span><span class="field-desc">Suggested safe alternatives</span></div>
+      </div>
+      <div class="example-tabs">
+        <span class="tab active" onclick="switchTab(this,'gift','fetch')">fetch</span>
+        <span class="tab" onclick="switchTab(this,'gift','python')">Python</span>
+      </div>
+      <div class="example active" id="gift-fetch"><div class="code">const res = await fetch('https://chinesefortunetools.online/api/v1/gift-taboos.json');
+const { taboos } = await res.json();
+const highRisk = taboos.filter(t => t.severity === "high");
+// → clocks, pears, shoes, umbrellas, green hats</div></div>
+      <div class="example" id="gift-python"><div class="code">import urllib.request, json
+url = "https://chinesefortunetools.online/api/v1/gift-taboos.json"
+with urllib.request.urlopen(url) as r:
+    taboos = json.loads(r.read())["taboos"]
+print([t["item"] for t in taboos if t["severity"] == "high"])</div></div>
+    </div>
+  </div>
+
+  <h2>Data Release Downloads</h2>
+  <div class="data-release">
+    <h3>Download complete datasets</h3>
+    <p>All datasets are available as individual JSON files and as a combined release archive from GitHub.</p>
+    <br>
+    <a class="dl-link" href="https://github.com/daligao/year-of-goat-2027/releases" target="_blank">GitHub Releases →</a>
+    &nbsp;•&nbsp;
+    <a class="dl-link" href="https://chinesefortunetools.online/changelog/">Changelog →</a>
+  </div>
+
+  <h2>Rate Limits &amp; Terms</h2>
+  <div style="font-size:0.8rem;color:#8b949e;line-height:1.8;">
+    <p>• No authentication or API key required.</p>
+    <p>• GitHub Pages CDN limits apply (fair use).</p>
+    <p>• Data is static and updated via GitHub Actions. Cache with <code>Cache-Control: max-age=86400</code>.</p>
+    <p>• Attribution appreciated: link to <code>chinesefortunetools.online</code>.</p>
+    <p>• License: <a href="https://creativecommons.org/licenses/by/4.0/" style="color:#58a6ff">CC BY 4.0</a></p>
+  </div>
+
+</div>
+
+<div class="nav">
+  <a href="/">← Home</a>
+  <a href="/api/">API v0 (legacy)</a>
+  <a href="/dashboard/">Dashboard</a>
+  <a href="https://github.com/daligao/year-of-goat-2027">GitHub</a>
+</div>
+
+<script>
+function toggle(header) {
+  var body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+function copy(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    event.target.textContent = 'Copied!';
+    setTimeout(() => event.target.textContent = 'Copy', 1500);
+  });
+}
+function switchTab(el, group, lang) {
+  var parent = el.parentElement;
+  parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  var body = parent.parentElement;
+  body.querySelectorAll('.example').forEach(e => e.classList.remove('active'));
+  var target = document.getElementById(group + '-' + lang);
+  if (target) target.classList.add('active');
+}
+</script>
+</body>
+</html>

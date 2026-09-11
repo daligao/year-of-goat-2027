@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiment Dashboard — Chinese Culture Lab</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="/manifest.json">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:monospace;background:#0d1117;color:#e6edf3;min-height:100vh;}
+.hero{background:#161b22;border-bottom:1px solid #30363d;padding:32px 20px;text-align:center;}
+.hero h1{font-size:1.4rem;color:#e6edf3;margin-bottom:4px;}
+.hero p{color:#8b949e;font-size:0.8rem;}
+.updated{font-size:0.72rem;color:#484f58;margin-top:8px;}
+.main{max-width:1100px;margin:0 auto;padding:28px 20px;}
+.filters{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.filter-btn{background:#161b22;border:1px solid #30363d;color:#8b949e;padding:5px 14px;border-radius:20px;cursor:pointer;font-size:0.78rem;font-family:monospace;}
+.filter-btn.active{background:#1f6feb;border-color:#1f6feb;color:#fff;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px;position:relative;transition:border-color .2s;}
+.card:hover{border-color:#58a6ff;}
+.card-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.card-emoji{font-size:1.5rem;}
+.card-title{font-size:1rem;color:#e6edf3;font-weight:bold;}
+.card-subtitle{font-size:0.72rem;color:#8b949e;margin-top:2px;}
+.stage-badge{position:absolute;top:14px;right:14px;font-size:0.65rem;padding:2px 8px;border-radius:10px;font-weight:bold;}
+.stage-lab   {background:#4a1f6e;color:#d2a8ff;}
+.stage-beta  {background:#1a3a5c;color:#79c0ff;}
+.stage-stable{background:#1a3a2a;color:#56d364;}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.metric{background:#0d1117;border-radius:6px;padding:10px;}
+.metric-label{font-size:0.65rem;color:#484f58;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.metric-value{font-size:1.1rem;color:#e6edf3;font-weight:bold;}
+.metric-sub{font-size:0.65rem;color:#8b949e;margin-top:2px;}
+.gsc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px;}
+.gsc-cell{background:#0d1117;border-radius:6px;padding:8px;text-align:center;}
+.gsc-label{font-size:0.6rem;color:#484f58;margin-bottom:3px;}
+.gsc-val{font-size:0.9rem;color:#58a6ff;font-weight:bold;}
+.score-bar{margin-bottom:14px;}
+.score-label{display:flex;justify-content:space-between;font-size:0.72rem;color:#8b949e;margin-bottom:5px;}
+.bar-bg{background:#21262d;border-radius:3px;height:6px;}
+.bar-fill{height:6px;border-radius:3px;transition:width .4s;}
+.rec{padding:8px 12px;border-radius:6px;font-size:0.78rem;font-weight:bold;text-align:center;}
+.rec-Graduate  {background:#1a3a2a;color:#56d364;border:1px solid #238636;}
+.rec-Accelerate{background:#1a2a3a;color:#79c0ff;border:1px solid #1f6feb;}
+.rec-Observe   {background:#2a2a1a;color:#e3b341;border:1px solid #9e6a03;}
+.rec-Retire    {background:#2a1a1a;color:#f85149;border:1px solid #da3633;}
+.launch-days{font-size:0.7rem;color:#484f58;margin-top:8px;text-align:center;}
+.history-mini{margin-top:10px;}
+.history-label{font-size:0.65rem;color:#484f58;margin-bottom:4px;}
+.sparkline{height:30px;display:flex;align-items:flex-end;gap:2px;}
+.spark-bar{flex:1;background:#1f6feb;border-radius:2px 2px 0 0;min-height:2px;}
+.summary{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px;margin-bottom:24px;}
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;}
+.sum-val{font-size:1.6rem;font-weight:bold;color:#e6edf3;}
+.sum-label{font-size:0.72rem;color:#8b949e;margin-top:4px;}
+.no-data{text-align:center;padding:60px 20px;color:#484f58;}
+.nav{text-align:center;padding:20px;font-size:0.78rem;color:#484f58;}
+.nav a{color:#58a6ff;text-decoration:none;margin:0 8px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🧪 Experiment Dashboard</h1>
+  <p>Real-time data from GA4 + Google Search Console.</p>
+  <div class="updated" id="updated">Loading…</div>
+</div>
+
+<div class="main">
+  <div class="summary" id="summary-section" style="display:none">
+    <div class="summary-grid" id="summary-grid"></div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" onclick="setFilter('stable', this)">Stable</button>
+    <button class="filter-btn" onclick="setFilter('beta', this)">Beta</button>
+    <button class="filter-btn" onclick="setFilter('lab', this)">Lab</button>
+    <button class="filter-btn" onclick="setFilter('Graduate', this)">Graduate →</button>
+    <button class="filter-btn" onclick="setFilter('Retire', this)">Retire →</button>
+  </div>
+
+  <div class="grid" id="grid">
+    <div class="no-data">Loading experiment data…</div>
+  </div>
+</div>
+
+<div class="nav">
+  <a href="/">← Home</a>
+  <a href="/lab/">Lab</a>
+  <a href="/beta/">Beta</a>
+  <a href="/changelog/">Changelog</a>
+  <a href="https://github.com/daligao/year-of-goat-2027/actions">Actions</a>
+</div>
+
+<script>
+var allTools = [];
+var allMetrics = {};
+var currentFilter = 'all';
+
+function setFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+function daysSince(dateStr) {
+  if (!dateStr) return '?';
+  var d = new Date(dateStr);
+  var now = new Date();
+  return Math.floor((now - d) / 86400000);
+}
+
+function scoreColor(s) {
+  if (s >= 70) return '#56d364';
+  if (s >= 40) return '#e3b341';
+  return '#f85149';
+}
+
+function sparkBars(history) {
+  if (!history || history.length < 2) return '';
+  var vals = history.slice(-8).map(h => h.uv_30d || 0);
+  var max = Math.max(...vals, 1);
+  return vals.map(v => {
+    var pct = Math.round((v / max) * 100);
+    return '<div class="spark-bar" style="height:' + Math.max(pct, 3) + '%"></div>';
+  }).join('');
+}
+
+function renderCard(tool, metric) {
+  var m = metric || {};
+  var gsc = m.gsc || {};
+  var stage = tool.stage || 'stable';
+  var rec = m.recommendation || 'Observe';
+  var score = m.experiment_score || 0;
+  var days = daysSince(tool.launched);
+
+  if (currentFilter !== 'all') {
+    if (['Graduate','Accelerate','Observe','Retire'].indexOf(currentFilter) >= 0) {
+      if (rec !== currentFilter) return '';
+    } else {
+      if (stage !== currentFilter) return '';
+    }
+  }
+
+  var stageLabel = stage.charAt(0).toUpperCase() + stage.slice(1);
+  var history = m.history || [];
+  var sparkHtml = sparkBars(history);
+
+  return '<div class="card">'
+    + '<span class="stage-badge stage-' + stage + '">' + stageLabel + '</span>'
+    + '<div class="card-header">'
+    +   '<span class="card-emoji">' + (tool.emoji || '🔧') + '</span>'
+    +   '<div>'
+    +     '<div class="card-title">' + tool.title + '</div>'
+    +     '<div class="card-subtitle">' + (tool.subtitle || '') + '</div>'
+    +   '</div>'
+    + '</div>'
+
+    + '<div class="metrics">'
+    +   '<div class="metric"><div class="metric-label">UV (30d)</div><div class="metric-value">' + (m.uv_30d || 0).toLocaleString() + '</div></div>'
+    +   '<div class="metric"><div class="metric-label">Completion</div><div class="metric-value">' + ((m.completion_rate || 0) * 100).toFixed(0) + '%</div><div class="metric-sub">' + (m.tool_start || 0) + ' starts</div></div>'
+    +   '<div class="metric"><div class="metric-label">Share Rate</div><div class="metric-value">' + ((m.share_rate || 0) * 100).toFixed(1) + '%</div></div>'
+    +   '<div class="metric"><div class="metric-label">→ Main Site</div><div class="metric-value">' + (m.click_to_main || 0) + '</div><div class="metric-sub">clicks</div></div>'
+    + '</div>'
+
+    + '<div class="gsc-row">'
+    +   '<div class="gsc-cell"><div class="gsc-label">Impressions</div><div class="gsc-val">' + (gsc.impressions_28d || 0).toLocaleString() + '</div></div>'
+    +   '<div class="gsc-cell"><div class="gsc-label">Clicks</div><div class="gsc-val">' + (gsc.clicks_28d || 0) + '</div></div>'
+    +   '<div class="gsc-cell"><div class="gsc-label">CTR</div><div class="gsc-val">' + ((gsc.ctr || 0) * 100).toFixed(1) + '%</div></div>'
+    +   '<div class="gsc-cell"><div class="gsc-label">Position</div><div class="gsc-val">' + (gsc.avg_position || '—') + '</div></div>'
+    + '</div>'
+
+    + '<div class="score-bar">'
+    +   '<div class="score-label"><span>Experiment Score</span><span style="color:' + scoreColor(score) + '">' + score + '/100</span></div>'
+    +   '<div class="bar-bg"><div class="bar-fill" style="width:' + score + '%;background:' + scoreColor(score) + '"></div></div>'
+    + '</div>'
+
+    + '<div class="rec rec-' + rec + '">' + rec + '</div>'
+
+    + (sparkHtml ? '<div class="history-mini"><div class="history-label">UV trend (8 snapshots)</div><div class="sparkline">' + sparkHtml + '</div></div>' : '')
+
+    + '<div class="launch-days">Launched ' + days + ' days ago • ' + (tool.launched || '?') + '</div>'
+    + '</div>';
+}
+
+function render() {
+  var grid = document.getElementById('grid');
+  var cards = allTools.map(t => renderCard(t, allMetrics[t.id])).filter(Boolean);
+  grid.innerHTML = cards.length ? cards.join('') : '<div class="no-data">No tools match this filter.</div>';
+}
+
+function renderSummary(tools, metrics) {
+  var totalUV = 0, totalClicks = 0, totalImps = 0, avgScore = 0;
+  tools.forEach(function(t) {
+    var m = metrics[t.id] || {};
+    totalUV    += m.uv_30d || 0;
+    totalClicks += (m.gsc || {}).clicks_28d || 0;
+    totalImps  += (m.gsc || {}).impressions_28d || 0;
+    avgScore   += m.experiment_score || 0;
+  });
+  avgScore = tools.length ? (avgScore / tools.length).toFixed(0) : 0;
+
+  var sg = document.getElementById('summary-grid');
+  sg.innerHTML = [
+    ['Total UV (30d)', totalUV.toLocaleString()],
+    ['GSC Impressions', totalImps.toLocaleString()],
+    ['GSC Clicks', totalClicks.toLocaleString()],
+    ['Avg Score', avgScore + '/100'],
+  ].map(function(s) {
+    return '<div><div class="sum-val">' + s[1] + '</div><div class="sum-label">' + s[0] + '</div></div>';
+  }).join('');
+  document.getElementById('summary-section').style.display = 'block';
+}
+
+Promise.all([
+  fetch('/data/tools.json').then(r => r.json()),
+  fetch('/data/metrics.json').then(r => r.json()),
+]).then(function(results) {
+  var tools   = results[0].tools || [];
+  var metrics = {};
+  (results[1].tools || []).forEach(function(m) { metrics[m.id] = m; });
+
+  allTools   = tools;
+  allMetrics = metrics;
+
+  var upd = results[1]._updated || '';
+  var src = results[1]._source || 'manual';
+  document.getElementById('updated').textContent = 'Last updated: ' + upd + ' • Source: ' + src;
+
+  renderSummary(tools, metrics);
+  render();
+}).catch(function(e) {
+  document.getElementById('grid').innerHTML = '<div class="no-data">Failed to load data. ' + e.message + '</div>';
+});
+
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
+</script>
+</body>
+</html>

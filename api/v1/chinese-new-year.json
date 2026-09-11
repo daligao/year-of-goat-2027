@@ -1,0 +1,25 @@
+{
+  "version": "1",
+  "updated_at": "2026-09-11",
+  "license": "CC BY 4.0",
+  "source_notes": "Based on astronomical calculations. CNY falls on the second new moon after winter solstice.",
+  "description": "Chinese New Year dates, zodiac sign, and five-element for each year 2020-2035.",
+  "years": [
+    {"year": 2020, "date": "2020-01-25", "zodiac": "Rat",    "element": "Metal",  "lantern_date": "2020-02-08"},
+    {"year": 2021, "date": "2021-02-12", "zodiac": "Ox",     "element": "Metal",  "lantern_date": "2021-02-26"},
+    {"year": 2022, "date": "2022-02-01", "zodiac": "Tiger",  "element": "Water",  "lantern_date": "2022-02-15"},
+    {"year": 2023, "date": "2023-01-22", "zodiac": "Rabbit", "element": "Water",  "lantern_date": "2023-02-05"},
+    {"year": 2024, "date": "2024-02-10", "zodiac": "Dragon", "element": "Wood",   "lantern_date": "2024-02-24"},
+    {"year": 2025, "date": "2025-01-29", "zodiac": "Snake",  "element": "Wood",   "lantern_date": "2025-02-12"},
+    {"year": 2026, "date": "2026-02-17", "zodiac": "Horse",  "element": "Fire",   "lantern_date": "2026-03-03"},
+    {"year": 2027, "date": "2027-02-06", "zodiac": "Goat",   "element": "Fire",   "lantern_date": "2027-02-20"},
+    {"year": 2028, "date": "2028-01-26", "zodiac": "Monkey", "element": "Earth",  "lantern_date": "2028-02-09"},
+    {"year": 2029, "date": "2029-02-13", "zodiac": "Rooster","element": "Earth",  "lantern_date": "2029-02-27"},
+    {"year": 2030, "date": "2030-02-03", "zodiac": "Dog",    "element": "Metal",  "lantern_date": "2030-02-17"},
+    {"year": 2031, "date": "2031-01-23", "zodiac": "Pig",    "element": "Metal",  "lantern_date": "2031-02-06"},
+    {"year": 2032, "date": "2032-02-11", "zodiac": "Rat",    "element": "Water",  "lantern_date": "2032-02-25"},
+    {"year": 2033, "date": "2033-01-31", "zodiac": "Ox",     "element": "Water",  "lantern_date": "2033-02-14"},
+    {"year": 2034, "date": "2034-02-19", "zodiac": "Tiger",  "element": "Wood",   "lantern_date": "2034-03-05"},
+    {"year": 2035, "date": "2035-02-08", "zodiac": "Rabbit", "element": "Wood",   "lantern_date": "2035-02-22"}
+  ]
+}
