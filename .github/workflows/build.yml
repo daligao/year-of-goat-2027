@@ -25,13 +25,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
       - name: Run build script
         run: python3 scripts/build.py ${{ github.event.inputs.action || 'update-sitemap' }}
+
+      - name: Build Pagefind search index
+        run: |
+          npm install -g pagefind
+          npx pagefind --site . --output-path _pagefind --glob "**/*.html"
+          echo "Pagefind index built."
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml
-          git diff --staged --quiet || git commit -m "chore: auto-update sitemap from tools.json [skip ci]"
+          git add sitemap.xml _pagefind/
+          git diff --staged --quiet || git commit -m "chore: rebuild sitemap + Pagefind index [skip ci]"
           git push
