@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2027 Year of the Goat — Chinese Zodiac Fortune, Lucky Signs & Feng Shui Guide</title>
-<meta name="description" content="2027 is the Year of the Goat (羊年). Chinese New Year falls on February 6, 2027. Discover 2027 fortune predictions for all 12 zodiac signs, lucky colors, Feng Shui tips, and BaZi insights.">
+<meta name="description" content="2027 is the Year of the Fire Goat (丁未年). Chinese New Year falls on February 6, 2027. Get fortune predictions for all 12 zodiac signs, lucky colors, Feng Shui tips, BaZi insights, and a live countdown to CNY 2027.">
 <meta property="og:title" content="2027 Year of the Goat — Chinese Fortune Guide">
-<meta property="og:description" content="Chinese New Year 2027 (Feb 6) brings the Year of the Goat. Fortune predictions, lucky numbers, Feng Shui tips for all 12 zodiac signs.">
+<meta property="og:description" content="Chinese New Year 2027 (Feb 6) brings the Year of the Fire Goat. Fortune predictions, lucky numbers, Feng Shui tips for all 12 zodiac signs.">
 <meta property="og:url" content="https://chinesefortunetools.online">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://chinesefortunetools.online/">
@@ -14,20 +14,41 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPJFQ6FR"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GZSPJFQ6FR');</script>
 <style>
-  :root{--gold:#c9a84c;--ink:#1a1a2e;--parchment:#fdf6e3;--red:#c0392b;--sage:#7a9e7e;}
+  :root{--gold:#c9a84c;--ink:#1a1a2e;--parchment:#fdf6e3;--red:#c0392b;--sage:#7a9e7e;--purple:#6c3483;}
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Georgia',serif;background:var(--parchment);color:var(--ink);line-height:1.7;}
   a{color:var(--red);text-decoration:none;}
   a:hover{text-decoration:underline;}
 
   /* HERO */
-  .hero{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b4e 60%,#1a1a2e 100%);color:#fff;text-align:center;padding:70px 20px 60px;}
+  .hero{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b4e 60%,#1a1a2e 100%);color:#fff;text-align:center;padding:70px 20px 50px;}
   .hero-badge{display:inline-block;background:var(--gold);color:#1a1a2e;font-size:0.75rem;font-weight:bold;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:18px;}
   .hero h1{font-size:clamp(2rem,6vw,3.6rem);font-weight:900;letter-spacing:-1px;margin-bottom:12px;line-height:1.15;}
   .hero h1 span{color:var(--gold);}
   .hero .sub{font-size:1.15rem;opacity:0.85;max-width:560px;margin:0 auto 30px;}
   .cny-date{display:inline-block;border:2px solid var(--gold);border-radius:8px;padding:10px 28px;font-size:1rem;letter-spacing:1px;color:var(--gold);}
-  .chinese-char{font-size:5rem;display:block;margin:20px auto 0;opacity:0.25;letter-spacing:10px;}
+  .chinese-char{font-size:5rem;display:block;margin:20px auto 0;opacity:0.18;letter-spacing:10px;}
+
+  /* COUNTDOWN */
+  .countdown-bar{background:#16213e;padding:28px 20px;text-align:center;border-bottom:2px solid var(--gold);}
+  .countdown-bar .label{color:#aaa;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+  .countdown-wrap{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+  .cd-unit{text-align:center;}
+  .cd-num{font-size:2.4rem;font-weight:900;color:var(--gold);display:block;line-height:1;font-family:monospace;}
+  .cd-lbl{font-size:0.7rem;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+
+  /* ZODIAC FINDER */
+  .finder{background:#fff;border:2px solid var(--gold);border-radius:14px;max-width:520px;margin:0 auto 40px;padding:28px 24px;text-align:center;}
+  .finder h3{font-size:1.2rem;margin-bottom:14px;color:var(--ink);}
+  .finder-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .finder input{padding:10px 16px;font-size:1.1rem;border:1.5px solid #ddd;border-radius:8px;width:140px;text-align:center;font-family:inherit;}
+  .finder button{padding:10px 22px;background:var(--red);color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:bold;}
+  .finder button:hover{background:#a93226;}
+  #finder-result{margin-top:16px;padding:14px;border-radius:8px;display:none;}
+  #finder-result .res-sign{font-size:1.6rem;font-weight:bold;color:var(--ink);}
+  #finder-result .res-stars{color:var(--gold);margin:4px 0;}
+  #finder-result .res-text{font-size:0.9rem;color:#555;}
+  #finder-result .res-link{display:inline-block;margin-top:8px;font-size:0.85rem;color:var(--red);font-weight:bold;}
 
   /* SECTIONS */
   .section{max-width:860px;margin:0 auto;padding:54px 20px;}
@@ -38,17 +59,34 @@
   .goat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:20px;}
   .goat-card{background:#fff;border:1px solid #e8dfc8;border-radius:10px;padding:18px;text-align:center;}
   .goat-card .label{font-size:0.72rem;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-bottom:6px;}
-  .goat-card .value{font-size:1.1rem;font-weight:bold;color:var(--ink);}
+  .goat-card .value{font-size:1.05rem;font-weight:bold;color:var(--ink);}
   .goat-card .value.gold{color:var(--gold);}
+
+  /* FIRE GOAT TRAITS */
+  .traits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:24px;}
+  .trait-card{background:#fff;border-radius:12px;padding:20px;border-left:4px solid var(--red);}
+  .trait-card .trait-icon{font-size:1.8rem;margin-bottom:8px;}
+  .trait-card h3{font-size:1rem;font-weight:bold;color:var(--ink);margin-bottom:6px;}
+  .trait-card p{font-size:0.88rem;color:#666;line-height:1.55;}
 
   /* ZODIAC FORTUNE TABLE */
   .fortune-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:24px;}
   .fortune-card{background:#fff;border-radius:12px;padding:20px 22px;border:1px solid #e8dfc8;border-top:3px solid var(--gold);}
-  .fortune-card .sign-name{font-size:1rem;font-weight:bold;color:var(--ink);margin-bottom:4px;}
-  .fortune-card .sign-emoji{font-size:1.5rem;margin-right:6px;}
+  .fortune-card .sign-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+  .fortune-card .sign-emoji{font-size:1.5rem;}
+  .fortune-card .sign-name{font-size:0.95rem;font-weight:bold;color:var(--ink);}
+  .fortune-card .sign-years{font-size:0.75rem;color:#999;}
   .fortune-card .stars{color:var(--gold);font-size:0.9rem;margin-bottom:8px;}
-  .fortune-card p{font-size:0.9rem;color:#555;line-height:1.6;}
+  .fortune-card p{font-size:0.88rem;color:#555;line-height:1.6;}
   .fortune-card .cta-link{display:inline-block;margin-top:10px;font-size:0.8rem;color:var(--red);font-weight:bold;}
+
+  /* FENG SHUI */
+  .fengshui-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px;}
+  .fs-card{background:#fff;border-radius:12px;padding:22px;border:1px solid #e8dfc8;}
+  .fs-card .fs-dir{font-size:0.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--sage);font-weight:bold;margin-bottom:6px;}
+  .fs-card h3{font-size:1.05rem;font-weight:bold;color:var(--ink);margin-bottom:8px;}
+  .fs-card p{font-size:0.88rem;color:#666;line-height:1.55;}
+  .fs-card .fs-tip{margin-top:10px;font-size:0.82rem;color:var(--red);font-style:italic;}
 
   /* LUCKY TABLE */
   .lucky-table{width:100%;border-collapse:collapse;margin-top:20px;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e8dfc8;}
@@ -57,28 +95,43 @@
   .lucky-table tr:last-child td{border-bottom:none;}
   .lucky-table tr:hover td{background:#fdf0dc;}
 
+  /* HISTORY */
+  .history-timeline{margin-top:24px;position:relative;padding-left:28px;border-left:3px solid var(--gold);}
+  .ht-item{margin-bottom:28px;position:relative;}
+  .ht-item::before{content:'';width:12px;height:12px;background:var(--gold);border-radius:50%;position:absolute;left:-34px;top:6px;}
+  .ht-item .ht-year{font-size:0.8rem;font-weight:bold;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+  .ht-item h3{font-size:1rem;color:var(--ink);margin-bottom:6px;}
+  .ht-item p{font-size:0.88rem;color:#666;line-height:1.55;}
+
   /* FAQ */
   .faq-list{margin-top:20px;}
-  .faq-item{background:#fff;border:1px solid #e8dfc8;border-radius:8px;margin-bottom:12px;padding:18px 22px;}
-  .faq-item h3{font-size:1rem;color:var(--ink);margin-bottom:8px;}
-  .faq-item p{font-size:0.92rem;color:#555;}
+  .faq-item{background:#fff;border:1px solid #e8dfc8;border-radius:8px;margin-bottom:12px;overflow:hidden;}
+  .faq-q{padding:16px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+  .faq-q h3{font-size:0.97rem;color:var(--ink);font-weight:bold;}
+  .faq-q .arrow{color:var(--gold);font-size:1.1rem;transition:transform 0.2s;flex-shrink:0;margin-left:10px;}
+  .faq-q.open .arrow{transform:rotate(180deg);}
+  .faq-a{display:none;padding:0 22px 16px;font-size:0.92rem;color:#555;}
+  .faq-a.open{display:block;}
 
   /* CTA BANNER */
   .cta-banner{background:linear-gradient(135deg,#c0392b,#8e1a12);color:#fff;text-align:center;padding:52px 20px;}
   .cta-banner h2{font-size:1.8rem;margin-bottom:12px;}
   .cta-banner p{opacity:0.88;max-width:520px;margin:0 auto 28px;}
   .cta-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:680px;margin:0 auto;}
-  .cta-btn{background:#fff;color:#c0392b;font-weight:bold;padding:12px 22px;border-radius:8px;font-size:0.9rem;transition:transform 0.15s;}
+  .cta-btn{background:#fff;color:#c0392b;font-weight:bold;padding:12px 22px;border-radius:8px;font-size:0.9rem;transition:transform 0.15s;display:inline-block;}
   .cta-btn:hover{transform:translateY(-2px);text-decoration:none;}
 
   /* FOOTER */
   footer{background:var(--ink);color:#aaa;text-align:center;padding:28px 20px;font-size:0.82rem;}
   footer a{color:var(--gold);}
 
-  /* DIVIDER */
   .divider{border:none;border-top:1px solid #e8dfc8;max-width:860px;margin:0 auto;}
 
-  @media(max-width:600px){.hero h1{font-size:2rem;}.section{padding:36px 16px;}}
+  @media(max-width:600px){
+    .hero h1{font-size:2rem;}
+    .section{padding:36px 16px;}
+    .cd-num{font-size:1.8rem;}
+  }
 </style>
 
 <!-- Schema.org -->
@@ -87,9 +140,10 @@
   "@context":"https://schema.org",
   "@type":"Article",
   "headline":"2027 Year of the Goat — Chinese Fortune, Lucky Signs & Feng Shui Guide",
-  "description":"Complete guide to the 2027 Year of the Goat. Chinese New Year date, fortune predictions for all 12 zodiac signs, lucky colors, numbers, and Feng Shui tips.",
+  "description":"Complete guide to the 2027 Year of the Fire Goat. Chinese New Year date Feb 6 2027, fortune predictions for all 12 zodiac signs, lucky colors, numbers, and Feng Shui tips.",
   "url":"https://chinesefortunetools.online/",
-  "author":{"@type":"Organization","name":"ChineseFortuneTools"},
+  "datePublished":"2026-09-11",
+  "author":{"@type":"Organization","name":"ChineseFortuneTools","url":"https://chinesefortunetools.com"},
   "publisher":{"@type":"Organization","name":"ChineseFortuneTools","url":"https://chinesefortunetools.com"}
 }
 </script>
@@ -98,11 +152,13 @@
   "@context":"https://schema.org",
   "@type":"FAQPage",
   "mainEntity":[
-    {"@type":"Question","name":"When is Chinese New Year 2027?","acceptedAnswer":{"@type":"Answer","text":"Chinese New Year 2027 falls on Saturday, February 6, 2027, beginning the Year of the Goat (羊年, Yáng Nián)."}},
-    {"@type":"Question","name":"Is 2027 a good year for the Goat zodiac?","acceptedAnswer":{"@type":"Answer","text":"People born in Goat years (1955, 1967, 1979, 1991, 2003, 2015) are in their Ben Ming Nian (本命年) in 2027. Tradition advises wearing red for protection and being cautious with major decisions."}},
-    {"@type":"Question","name":"What are the lucky colors for 2027 Year of the Goat?","acceptedAnswer":{"@type":"Answer","text":"The lucky colors for 2027 are green (representing growth and renewal), red (for protection and good fortune), and purple (for wisdom and prosperity)."}},
-    {"@type":"Question","name":"Which zodiac signs have the best fortune in 2027?","acceptedAnswer":{"@type":"Answer","text":"The Pig, Rabbit, and Horse are traditionally considered to have excellent fortune in the Year of the Goat, as they form harmonious relationships with Goat energy."}},
-    {"@type":"Question","name":"What element is the 2027 Goat year?","acceptedAnswer":{"@type":"Answer","text":"2027 is the Year of the Fire Goat (丁未, Dīng Wèi). The Heavenly Stem is Dīng (丁, Yin Fire) and the Earthly Branch is Wèi (未, Goat). Fire Goat energy combines creativity, warmth, and artistic sensitivity."}}
+    {"@type":"Question","name":"When is Chinese New Year 2027?","acceptedAnswer":{"@type":"Answer","text":"Chinese New Year 2027 falls on Saturday, February 6, 2027, beginning the Year of the Fire Goat (丁未年, Dīng Wèi Nián). Celebrations last 15 days, ending with the Lantern Festival on February 20, 2027."}},
+    {"@type":"Question","name":"Is 2027 a good year for the Goat zodiac?","acceptedAnswer":{"@type":"Answer","text":"People born in Goat years (1955, 1967, 1979, 1991, 2003, 2015) are in their Ben Ming Nian (本命年) in 2027. Traditional belief holds this as both significant and vulnerable. Wearing red accessories brings protection; avoid major financial risks and focus on health."}},
+    {"@type":"Question","name":"What are the lucky colors for 2027 Year of the Goat?","acceptedAnswer":{"@type":"Answer","text":"The lucky colors for 2027 are green (growth, renewal), red (protection, Fire element energy), and purple (wisdom and spiritual strength). Incorporate these into home décor or clothing throughout the year."}},
+    {"@type":"Question","name":"Which zodiac signs have the best fortune in 2027?","acceptedAnswer":{"@type":"Answer","text":"The Rabbit, Horse, and Pig have the best fortune in 2027. Rabbit and Pig form the San He (三合) harmony triad with Goat, while Horse forms the Liu He (六合) perfect pair — making these three signs exceptionally lucky in 2027."}},
+    {"@type":"Question","name":"What element is the 2027 Goat year?","acceptedAnswer":{"@type":"Answer","text":"2027 is the Year of the Fire Goat (丁未, Dīng Wèi). The Heavenly Stem Dīng (丁) is Yin Fire, and the Earthly Branch Wèi (未) is the Goat. This combination brings creativity, warmth, artistic sensitivity, and emotional depth."}},
+    {"@type":"Question","name":"What are the lucky numbers for 2027?","acceptedAnswer":{"@type":"Answer","text":"The lucky numbers for the 2027 Year of the Goat are 2, 7, and combinations including 12 and 27. These align with the Goat's elemental energy and traditional Chinese numerology."}},
+    {"@type":"Question","name":"What is the best Feng Shui direction for 2027?","acceptedAnswer":{"@type":"Answer","text":"In 2027, the South and East sectors carry the most auspicious Feng Shui energy. Place wealth symbols, plants, or important furniture facing South or East to align with the Year of the Goat's energy flow."}}
   ]
 }
 </script>
@@ -113,24 +169,140 @@
 <header class="hero">
   <span class="hero-badge">Chinese New Year 2027</span>
   <h1>Year of the <span>Goat</span> 2027</h1>
-  <p class="sub">Chinese New Year begins February 6, 2027 — a year of creativity, harmony, and artistic renewal</p>
+  <p class="sub">The Fire Goat year begins February 6, 2027 — a year of creativity, harmony, and artistic renewal</p>
   <div class="cny-date">🗓 February 6, 2027 · 丁未年 · Fire Goat</div>
-  <span class="chinese-char">羊</span>
+  <span class="chinese-char">羊 年</span>
 </header>
+
+<!-- COUNTDOWN -->
+<div class="countdown-bar">
+  <div class="label">Countdown to Chinese New Year 2027</div>
+  <div class="countdown-wrap">
+    <div class="cd-unit"><span class="cd-num" id="cd-days">000</span><div class="cd-lbl">Days</div></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><div class="cd-lbl">Hours</div></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><div class="cd-lbl">Minutes</div></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><div class="cd-lbl">Seconds</div></div>
+  </div>
+</div>
+<script>
+(function(){
+  var target = new Date('2027-02-06T00:00:00+08:00').getTime();
+  function tick(){
+    var now = Date.now(), diff = target - now;
+    if(diff <= 0){
+      document.getElementById('cd-days').textContent = '000';
+      return;
+    }
+    var d = Math.floor(diff/86400000);
+    var h = Math.floor((diff%86400000)/3600000);
+    var m = Math.floor((diff%3600000)/60000);
+    var s = Math.floor((diff%60000)/1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(3,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+
+<!-- ZODIAC FINDER -->
+<section class="section">
+  <h2>Find Your 2027 Fortune</h2>
+  <p class="intro">Enter your birth year to instantly see your Chinese zodiac sign and 2027 fortune outlook.</p>
+  <div class="finder">
+    <h3>🔮 What's your 2027 fortune?</h3>
+    <div class="finder-row">
+      <input type="number" id="birth-year" placeholder="e.g. 1990" min="1900" max="2024">
+      <button onclick="findFortune()">Check 2027 Fortune</button>
+    </div>
+    <div id="finder-result"></div>
+  </div>
+</section>
+<script>
+var fortunes = {
+  Rat:    {emoji:'🐀', stars:'★★★☆☆', rating:'Moderate', text:'The Goat\'s gentle energy contrasts with the Rat\'s quick instincts. Stay patient in career moves and avoid risky investments. Relationships deepen with extra communication effort.', url:'https://chinesefortunetools.com/chinese-zodiac/rat/'},
+  Ox:     {emoji:'🐂', stars:'★★★☆☆', rating:'Steady', text:'Hard work pays off steadily in 2027, but don\'t expect dramatic breakthroughs. Health requires attention — rest more than usual.', url:'https://chinesefortunetools.com/chinese-zodiac/ox/'},
+  Tiger:  {emoji:'🐯', stars:'★★★★☆', rating:'Good', text:'The Fire Goat\'s warmth amplifies Tiger\'s bold nature. Excellent for creative projects and leadership. Watch for impulsive financial decisions.', url:'https://chinesefortunetools.com/chinese-zodiac/tiger/'},
+  Rabbit: {emoji:'🐰', stars:'★★★★★', rating:'Excellent', text:'Rabbit forms the San He (三合) harmony triad with Goat and Pig — this is your peak year. Career breakthroughs, romantic opportunities, and financial growth align.', url:'https://chinesefortunetools.com/chinese-zodiac/rabbit/'},
+  Dragon: {emoji:'🐲', stars:'★★★☆☆', rating:'Mixed', text:'Dragon\'s fiery ambition meets Goat\'s artistic calm. Channel creative energy into disciplined projects. Avoid confrontation in partnerships.', url:'https://chinesefortunetools.com/chinese-zodiac/dragon/'},
+  Snake:  {emoji:'🐍', stars:'★★★★☆', rating:'Above Average', text:'Snake\'s wisdom flourishes under Goat energy. Strong year for intellectual pursuits and investments. Trust your instincts.', url:'https://chinesefortunetools.com/chinese-zodiac/snake/'},
+  Horse:  {emoji:'🐴', stars:'★★★★★', rating:'Excellent', text:'Horse and Goat form a Liu He (六合) match — the most auspicious pairing. Expect significant career advancement, wealth opportunities, and romantic luck.', url:'https://chinesefortunetools.com/chinese-zodiac/horse/'},
+  Goat:   {emoji:'🐐', stars:'★★★☆☆', rating:'Ben Ming Nian', text:'Your own year (本命年) carries both opportunity and challenge. Wear red for protection. Avoid major risks — focus on nurturing relationships and consolidating gains.', url:'https://chinesefortunetools.com/chinese-zodiac/goat/'},
+  Monkey: {emoji:'🐒', stars:'★★★☆☆', rating:'Balanced', text:'Monkey finds the Goat year a little slow-paced. Use this time to consolidate, plan, and build foundations rather than launch bold ventures.', url:'https://chinesefortunetools.com/chinese-zodiac/monkey/'},
+  Rooster:{emoji:'🐓', stars:'★★★☆☆', rating:'Caution Advised', text:'Rooster and Goat have a subtle tension (害 relationship). Pay attention to workplace politics and health. Monitor diet carefully.', url:'https://chinesefortunetools.com/chinese-zodiac/rooster/'},
+  Dog:    {emoji:'🐕', stars:'★★☆☆☆', rating:'Challenging', text:'Dog and Goat have a Liu Chong (六冲) clash. Extra effort needed to maintain harmony in relationships. Consult a BaZi reading for personalized guidance.', url:'https://chinesefortunetools.com/chinese-zodiac/dog/'},
+  Pig:    {emoji:'🐷', stars:'★★★★★', rating:'Excellent', text:'Pig completes the San He triad with Goat and Rabbit. One of your best years in the 12-year cycle. Wealth, relationships, and career all trend upward.', url:'https://chinesefortunetools.com/chinese-zodiac/pig/'}
+};
+var zodiacOrder = ['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig'];
+function getZodiac(y){ return zodiacOrder[(y - 1900 + 9999*12) % 12]; }
+function findFortune(){
+  var y = parseInt(document.getElementById('birth-year').value);
+  var el = document.getElementById('finder-result');
+  if(!y || y < 1900 || y > 2024){ el.style.display='block'; el.style.background='#fdf0dc'; el.innerHTML='<p style="color:#c0392b">Please enter a year between 1900 and 2024.</p>'; return; }
+  var sign = getZodiac(y);
+  var f = fortunes[sign];
+  el.style.display='block'; el.style.background='#fdf6e3'; el.style.border='1px solid #e8dfc8';
+  el.innerHTML = '<div class="res-sign">'+f.emoji+' '+sign+'</div><div class="res-stars">'+f.stars+' '+f.rating+' in 2027</div><p class="res-text">'+f.text+'</p><a class="res-link" href="'+f.url+'" target="_blank">Full '+sign+' Guide on ChineseFortuneTools.com →</a>';
+}
+document.getElementById('birth-year').addEventListener('keydown', function(e){ if(e.key==='Enter') findFortune(); });
+</script>
+
+<hr class="divider">
 
 <!-- GOAT PROFILE -->
 <section class="section">
   <h2>2027 Year of the Goat — At a Glance</h2>
-  <p class="intro">The Goat (also called Ram or Sheep, 羊) is the 8th animal of the Chinese zodiac. 2027 is specifically the <strong>Fire Goat year (丁未, Dīng Wèi)</strong> — the last Fire Goat year was 1967.</p>
+  <p class="intro">The Goat (羊, also called Ram or Sheep) is the 8th animal of the Chinese zodiac. 2027 is specifically the <strong>Fire Goat year (丁未, Dīng Wèi)</strong> — the last time this exact combination occurred was 1967.</p>
   <div class="goat-grid">
     <div class="goat-card"><div class="label">Chinese New Year</div><div class="value">Feb 6, 2027</div></div>
     <div class="goat-card"><div class="label">Year Ends</div><div class="value">Jan 25, 2028</div></div>
-    <div class="goat-card"><div class="label">Element</div><div class="value gold">Fire (丁)</div></div>
-    <div class="goat-card"><div class="label">Zodiac Position</div><div class="value">8th Animal</div></div>
-    <div class="goat-card"><div class="label">Lucky Numbers</div><div class="value gold">2, 7</div></div>
+    <div class="goat-card"><div class="label">Element</div><div class="value gold">Yin Fire (丁)</div></div>
+    <div class="goat-card"><div class="label">Branch</div><div class="value">Wei (未) · Earth</div></div>
+    <div class="goat-card"><div class="label">Lucky Numbers</div><div class="value gold">2, 7, 12, 27</div></div>
     <div class="goat-card"><div class="label">Lucky Colors</div><div class="value">Green · Red · Purple</div></div>
-    <div class="goat-card"><div class="label">Ben Ming Nian</div><div class="value">Goat — wear red</div></div>
-    <div class="goat-card"><div class="label">Best Matches</div><div class="value">Pig · Rabbit · Horse</div></div>
+    <div class="goat-card"><div class="label">Lucky Direction</div><div class="value">South · East</div></div>
+    <div class="goat-card"><div class="label">Best Pairings</div><div class="value">Pig · Rabbit · Horse</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FIRE GOAT TRAITS -->
+<section class="section">
+  <h2>Fire Goat Year Energy — What 2027 Brings</h2>
+  <p class="intro">Each Goat year has a different elemental flavor. The Fire Goat (丁未) is the most passionate and creative of all Goat years. Here's what 2027 energy means for the world and your personal life.</p>
+  <div class="traits-grid">
+    <div class="trait-card">
+      <div class="trait-icon">🎨</div>
+      <h3>Creative Renaissance</h3>
+      <p>Fire Goat years historically spark cultural and artistic movements. In 2027, creative industries, design, music, and storytelling will flourish. This is the year to launch artistic projects you've been delaying.</p>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">🤝</div>
+      <h3>Harmony & Diplomacy</h3>
+      <p>Goat energy is inherently cooperative. 2027 favors negotiation, collaboration, and partnership over aggressive competition. Relationships that are nurtured this year will deepen significantly.</p>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">🌿</div>
+      <h3>Gentle Prosperity</h3>
+      <p>Wealth in Fire Goat years tends to come steadily rather than dramatically. Sustainable businesses and long-term investments outperform speculative ventures. Patience is rewarded.</p>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">❤️</div>
+      <h3>Emotional Depth</h3>
+      <p>Fire adds intensity to the Goat's already sensitive nature. 2027 is excellent for deepening romantic bonds, family healing, and emotional self-discovery. Vulnerability is a strength this year.</p>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">⚡</div>
+      <h3>Impulsive Fire Warning</h3>
+      <p>The Yin Fire (丁) can make decisions feel more urgent than they are. Guard against emotional overspending, hasty relationship decisions, or burning bridges in professional settings.</p>
+    </div>
+    <div class="trait-card">
+      <div class="trait-icon">🌏</div>
+      <h3>Global Sensitivity</h3>
+      <p>On a macro level, Fire Goat years tend to heighten collective empathy and humanitarian awareness. Social causes, environmental issues, and community initiatives gain momentum in 2027.</p>
+    </div>
   </div>
 </section>
 
@@ -139,91 +311,91 @@
 <!-- FORTUNE BY SIGN -->
 <section class="section">
   <h2>2027 Fortune for All 12 Zodiac Signs</h2>
-  <p class="intro">How does the Goat year affect each Chinese zodiac sign? Here are traditional fortune outlooks for career, wealth, love, and health in 2027.</p>
+  <p class="intro">Traditional Chinese astrology examines how each animal's energy interacts with the year's ruling sign. Here are the 2027 fortune outlooks based on classic zodiac relationships.</p>
   <div class="fortune-grid">
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐀</span><span class="sign-name">Rat (鼠) · 1948, 1960, 1972, 1984, 1996, 2008</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐀</span><div><div class="sign-name">Rat (鼠)</div><div class="sign-years">1948, 1960, 1972, 1984, 1996, 2008, 2020</div></div></div>
       <div class="stars">★★★☆☆ Moderate Fortune</div>
-      <p>The Goat's gentle energy contrasts with the Rat's quick instincts. Stay patient in career moves and avoid risky investments. Relationships deepen with extra communication effort.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/rat/">Full Rat Profile →</a>
+      <p>The Goat's gentle energy contrasts with the Rat's quick instincts. Stay patient in career moves, avoid risky investments. Relationships deepen with extra communication effort.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/rat/">Full Rat 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐂</span><span class="sign-name">Ox (牛) · 1949, 1961, 1973, 1985, 1997, 2009</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐂</span><div><div class="sign-name">Ox (牛)</div><div class="sign-years">1949, 1961, 1973, 1985, 1997, 2009, 2021</div></div></div>
       <div class="stars">★★★☆☆ Steady Progress</div>
-      <p>Ox and Goat have a neutral relationship. Hard work pays off steadily in 2027, but don't expect dramatic breakthroughs. Health requires attention — rest more than usual.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/ox/">Full Ox Profile →</a>
+      <p>Ox and Goat have a neutral relationship — no clash, no harmony boost. Hard work pays off steadily. Health requires attention; avoid overworking and rest more than usual.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/ox/">Full Ox 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐯</span><span class="sign-name">Tiger (虎) · 1950, 1962, 1974, 1986, 1998, 2010</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐯</span><div><div class="sign-name">Tiger (虎)</div><div class="sign-years">1950, 1962, 1974, 1986, 1998, 2010, 2022</div></div></div>
       <div class="stars">★★★★☆ Good Fortune</div>
-      <p>The Fire Goat's warmth amplifies Tiger's bold nature. Excellent year for creative projects and leadership. Watch for impulsive financial decisions — the energy can create overconfidence.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/tiger/">Full Tiger Profile →</a>
+      <p>The Fire Goat's warmth amplifies Tiger's bold nature. Excellent for creative projects and leadership. Watch for impulsive financial decisions — Fire energy can create overconfidence.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/tiger/">Full Tiger 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐰</span><span class="sign-name">Rabbit (兔) · 1951, 1963, 1975, 1987, 1999, 2011</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐰</span><div><div class="sign-name">Rabbit (兔)</div><div class="sign-years">1951, 1963, 1975, 1987, 1999, 2011, 2023</div></div></div>
       <div class="stars">★★★★★ Excellent Fortune</div>
-      <p>Rabbit forms the San He (三合) harmony triad with the Goat and Pig — this is your peak year. Career breakthroughs, romantic opportunities, and financial growth align in 2027.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/rabbit/">Full Rabbit Profile →</a>
+      <p>Rabbit forms the San He (三合) harmony triad with Goat and Pig — this is your peak year in the cycle. Career breakthroughs, romantic opportunities, and financial growth all align in 2027.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/rabbit/">Full Rabbit 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐲</span><span class="sign-name">Dragon (龙) · 1952, 1964, 1976, 1988, 2000, 2012</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐲</span><div><div class="sign-name">Dragon (龙)</div><div class="sign-years">1952, 1964, 1976, 1988, 2000, 2012, 2024</div></div></div>
       <div class="stars">★★★☆☆ Mixed Signals</div>
-      <p>Dragon's fiery ambition meets the Goat's artistic calm — an interesting friction. Channel creative energy into disciplined projects. Avoid confrontation in partnerships.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/dragon/">Full Dragon Profile →</a>
+      <p>Dragon's fiery ambition meets the Goat's artistic calm — an interesting creative friction. Channel energy into disciplined projects. Avoid confrontation in partnerships and business deals.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/dragon/">Full Dragon 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐍</span><span class="sign-name">Snake (蛇) · 1953, 1965, 1977, 1989, 2001, 2013</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐍</span><div><div class="sign-name">Snake (蛇)</div><div class="sign-years">1953, 1965, 1977, 1989, 2001, 2013, 2025</div></div></div>
       <div class="stars">★★★★☆ Above Average</div>
-      <p>Snake's wisdom and intuition flourish under Goat energy. Strong year for intellectual pursuits, investments, and deepening personal relationships. Trust your instincts.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/snake/">Full Snake Profile →</a>
+      <p>Snake's wisdom and intuition flourish under Goat energy. A strong year for intellectual pursuits, investments, and deepening personal relationships. Trust your instincts over external advice.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/snake/">Full Snake 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐴</span><span class="sign-name">Horse (马) · 1954, 1966, 1978, 1990, 2002, 2014</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐴</span><div><div class="sign-name">Horse (马)</div><div class="sign-years">1954, 1966, 1978, 1990, 2002, 2014, 2026</div></div></div>
       <div class="stars">★★★★★ Excellent Fortune</div>
-      <p>Horse and Goat form a Liu He (六合) match — the most auspicious pairing in the zodiac wheel. Expect significant career advancement, wealth opportunities, and romantic luck in 2027.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/horse/">Full Horse Profile →</a>
+      <p>Horse and Goat form a Liu He (六合) perfect pair — the most auspicious bond in the zodiac wheel. Expect significant career advancement, wealth opportunities, and romantic luck throughout 2027.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/horse/">Full Horse 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐐</span><span class="sign-name">Goat (羊) · 1955, 1967, 1979, 1991, 2003, 2015</span></div>
-      <div class="stars">★★★☆☆ Ben Ming Nian</div>
-      <p>Your own year (Ben Ming Nian 本命年) carries both opportunity and challenge. Wear red accessories for protection. Avoid major risks — focus on nurturing existing relationships and consolidating gains.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/goat/">Full Goat Profile →</a>
+      <div class="sign-header"><span class="sign-emoji">🐐</span><div><div class="sign-name">Goat (羊)</div><div class="sign-years">1955, 1967, 1979, 1991, 2003, 2015, 2027</div></div></div>
+      <div class="stars">★★★☆☆ Ben Ming Nian (本命年)</div>
+      <p>Your own zodiac year brings both opportunity and challenge. Wear red accessories for protection. Avoid major risks — consolidate what you have, nurture key relationships, prioritize health.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/goat/">Full Goat 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐒</span><span class="sign-name">Monkey (猴) · 1944, 1956, 1968, 1980, 1992, 2004</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐒</span><div><div class="sign-name">Monkey (猴)</div><div class="sign-years">1944, 1956, 1968, 1980, 1992, 2004, 2016</div></div></div>
       <div class="stars">★★★☆☆ Balanced Year</div>
       <p>Monkey's quick mind finds the Goat year a little slow-paced. Use this time to consolidate, plan, and build foundations rather than launch bold new ventures. Steady wins in 2027.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/monkey/">Full Monkey Profile →</a>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/monkey/">Full Monkey 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐓</span><span class="sign-name">Rooster (鸡) · 1945, 1957, 1969, 1981, 1993, 2005</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐓</span><div><div class="sign-name">Rooster (鸡)</div><div class="sign-years">1945, 1957, 1969, 1981, 1993, 2005, 2017</div></div></div>
       <div class="stars">★★★☆☆ Caution Advised</div>
-      <p>Rooster and Goat have a subtle tension (害, Hài relationship). Pay attention to workplace politics and avoid unnecessary conflicts. Health and diet deserve careful monitoring.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/rooster/">Full Rooster Profile →</a>
+      <p>Rooster and Goat carry a Xing (刑) friction relationship. Pay attention to workplace politics and interpersonal tensions. Health and diet deserve careful monitoring in 2027.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/rooster/">Full Rooster 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐕</span><span class="sign-name">Dog (狗) · 1946, 1958, 1970, 1982, 1994, 2006</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐕</span><div><div class="sign-name">Dog (狗)</div><div class="sign-years">1946, 1958, 1970, 1982, 1994, 2006, 2018</div></div></div>
       <div class="stars">★★☆☆☆ Challenging Year</div>
-      <p>Dog and Goat have a Liu Chong (六冲) clash in the zodiac. Extra effort needed to maintain harmony in relationships and avoid impulsive decisions. Consult a BaZi reading for personalized guidance.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/dog/">Full Dog Profile →</a>
+      <p>Dog and Goat have a Liu Chong (六冲) clash in the zodiac wheel. Extra effort needed to maintain harmony in relationships and avoid impulsive decisions. A BaZi reading provides personalized guidance.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/dog/">Full Dog 2027 Guide →</a>
     </div>
 
     <div class="fortune-card">
-      <div><span class="sign-emoji">🐷</span><span class="sign-name">Pig (猪) · 1947, 1959, 1971, 1983, 1995, 2007</span></div>
+      <div class="sign-header"><span class="sign-emoji">🐷</span><div><div class="sign-name">Pig (猪)</div><div class="sign-years">1947, 1959, 1971, 1983, 1995, 2007, 2019</div></div></div>
       <div class="stars">★★★★★ Excellent Fortune</div>
-      <p>Pig completes the San He (三合) triad with Goat and Rabbit. This is one of your best years in the 12-year cycle. Wealth, relationships, and career all trend upward — act on opportunities.</p>
-      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/pig/">Full Pig Profile →</a>
+      <p>Pig completes the San He (三合) harmony triad with Goat and Rabbit. This is one of your best years in the 12-year cycle. Wealth, relationships, and career all trend strongly upward.</p>
+      <a class="cta-link" href="https://chinesefortunetools.com/chinese-zodiac/pig/">Full Pig 2027 Guide →</a>
     </div>
 
   </div>
@@ -231,21 +403,99 @@
 
 <hr class="divider">
 
+<!-- FENG SHUI 2027 -->
+<section class="section">
+  <h2>Feng Shui for 2027 — Room-by-Room Guide</h2>
+  <p class="intro">The Year of the Goat shifts the Flying Stars energy map. Here's how to align your home or office with 2027's most auspicious forces, based on traditional <a href="https://chinesefortunetools.com/feng-shui/">Xuan Kong Feng Shui</a>.</p>
+  <div class="fengshui-grid">
+    <div class="fs-card">
+      <div class="fs-dir">South Sector</div>
+      <h3>💰 Wealth Activation Zone</h3>
+      <p>The South sector carries the auspicious #8 Star in 2027 — the most powerful wealth star. Place a water feature, wealth bowl, or active space (home office, living room) here to maximize financial opportunities.</p>
+      <div class="fs-tip">✦ Add: Water feature, green plants, or purple crystals</div>
+    </div>
+    <div class="fs-card">
+      <div class="fs-dir">East Sector</div>
+      <h3>🎓 Career & Recognition</h3>
+      <p>The East holds the #1 Victory Star in 2027 — excellent for career advancement, academic success, and gaining recognition. Place your desk or study area here if possible.</p>
+      <div class="fs-tip">✦ Add: Desk, bookshelf, or career achievement symbols</div>
+    </div>
+    <div class="fs-card">
+      <div class="fs-dir">Northeast Sector</div>
+      <h3>🌹 Romance & Relationships</h3>
+      <p>The #4 Romance Star activates the Northeast in 2027. Single people seeking love should energize this corner with pink or red décor. Couples can place paired objects here to strengthen bonds.</p>
+      <div class="fs-tip">✦ Add: Mandarin ducks, rose quartz, or pink flowers</div>
+    </div>
+    <div class="fs-card">
+      <div class="fs-dir">Center Sector</div>
+      <h3>⚠️ Caution — #5 Yellow Star</h3>
+      <p>The notorious #5 Yellow Misfortune Star occupies the center in 2027. Keep this area quiet and undisturbed. Avoid renovations, loud activities, or earth-disturbing work in the center of your home.</p>
+      <div class="fs-tip">✦ Place: 6-rod metal wind chime or salt water cure</div>
+    </div>
+    <div class="fs-card">
+      <div class="fs-dir">Northwest Sector</div>
+      <h3>🚫 Avoid — #2 Illness Star</h3>
+      <p>The #2 Illness Star moves to the Northwest in 2027. If your bedroom or kitchen is in this sector, take extra health precautions. Place a metal Wu Lou (gourd) or metal objects to suppress this energy.</p>
+      <div class="fs-tip">✦ Place: Metal Wu Lou, brass coins, or white metal objects</div>
+    </div>
+    <div class="fs-card">
+      <div class="fs-dir">West Sector</div>
+      <h3>✨ Creativity & New Beginnings</h3>
+      <p>The West sector carries the #6 Heavenly Star in 2027 — excellent for new projects, creative work, and helpful mentors. Artists, entrepreneurs, and students benefit most from activating this area.</p>
+      <div class="fs-tip">✦ Add: Creative workspace, mentor images, or metal décor</div>
+    </div>
+  </div>
+  <p style="margin-top:20px;font-size:0.88rem;color:#888;">→ Get a personalized Feng Shui analysis at <a href="https://chinesefortunetools.com/feng-shui/">ChineseFortuneTools.com/feng-shui/</a></p>
+</section>
+
+<hr class="divider">
+
 <!-- LUCKY TABLE -->
 <section class="section">
   <h2>2027 Goat Year Lucky Elements</h2>
-  <p class="intro">Traditional Chinese metaphysics assigns specific lucky (and unlucky) elements to each year. Use these as general guidance for major decisions in 2027.</p>
+  <p class="intro">Traditional Chinese metaphysics assigns specific lucky (and unlucky) elements to each year. Use these as guidance for major decisions, home décor, and personal choices in 2027.</p>
   <table class="lucky-table">
-    <thead><tr><th>Category</th><th>Lucky</th><th>Avoid</th></tr></thead>
+    <thead><tr><th>Category</th><th>Lucky / Favorable</th><th>Avoid / Unfavorable</th></tr></thead>
     <tbody>
-      <tr><td><strong>Colors</strong></td><td>Green, Red, Purple</td><td>Gold, Brown</td></tr>
+      <tr><td><strong>Colors</strong></td><td>Green, Red, Purple</td><td>Gold, Brown, White</td></tr>
       <tr><td><strong>Numbers</strong></td><td>2, 7, 12, 27</td><td>4, 9</td></tr>
-      <tr><td><strong>Direction</strong></td><td>South, East</td><td>Northwest</td></tr>
-      <tr><td><strong>Flowers</strong></td><td>Carnation, Primrose, Alice flower</td><td>—</td></tr>
-      <tr><td><strong>Gemstones</strong></td><td>Emerald, Ruby</td><td>—</td></tr>
-      <tr><td><strong>Element</strong></td><td>Fire (丁), Earth (未)</td><td>Metal</td></tr>
+      <tr><td><strong>Directions</strong></td><td>South, East, Northeast</td><td>Northwest, Center</td></tr>
+      <tr><td><strong>Flowers</strong></td><td>Carnation, Primrose, Lily</td><td>—</td></tr>
+      <tr><td><strong>Gemstones</strong></td><td>Emerald, Ruby, Amethyst</td><td>Pyrite, Gold nuggets</td></tr>
+      <tr><td><strong>Element</strong></td><td>Fire (丁), Wood, Water</td><td>Metal (suppress with Wood)</td></tr>
+      <tr><td><strong>Season</strong></td><td>Spring, Early Summer</td><td>Autumn (Metal season)</td></tr>
     </tbody>
   </table>
+</section>
+
+<hr class="divider">
+
+<!-- HISTORICAL FIRE GOAT -->
+<section class="section">
+  <h2>The Last Fire Goat Year — 1967</h2>
+  <p class="intro">To understand 2027, look at 1967 — the previous Fire Goat year (丁未). History rarely repeats exactly, but the elemental energies rhyme.</p>
+  <div class="history-timeline">
+    <div class="ht-item">
+      <div class="ht-year">1967 · Cultural Themes</div>
+      <h3>The Summer of Love & Creative Explosion</h3>
+      <p>1967 saw a global creative and cultural renaissance — from the Beatles' Sgt. Pepper album to the Summer of Love in San Francisco. Fire Goat energy channeled into art, music, and social connection. In 2027, expect a similar wave of creative output driven by AI and human collaboration.</p>
+    </div>
+    <div class="ht-item">
+      <div class="ht-year">1967 · Diplomacy</div>
+      <h3>New International Institutions</h3>
+      <p>The Association of Southeast Asian Nations (ASEAN) was founded in 1967 — a landmark cooperative diplomacy effort. Goat years favor multilateral collaboration. In 2027, new international frameworks and agreements are likely to emerge.</p>
+    </div>
+    <div class="ht-item">
+      <div class="ht-year">1967 · Technology</div>
+      <h3>The Dawn of a New Era</h3>
+      <p>1967 brought the first human heart transplant and early internet precursors. Fire Goat years tend to birth technologies that initially feel experimental but reshape civilization within a decade. In 2027, AI and biotech may hit similar inflection points.</p>
+    </div>
+    <div class="ht-item">
+      <div class="ht-year">2027 · What to Expect</div>
+      <h3>Creative Industries, Diplomacy & Sustainable Growth</h3>
+      <p>Based on Fire Goat patterns, 2027 favors the arts, green technology, cooperative business models, and relationship-focused industries. Bold solo gambits tend to underperform relative to collaborative ventures.</p>
+    </div>
+  </div>
 </section>
 
 <hr class="divider">
@@ -255,32 +505,47 @@
   <h2>Frequently Asked Questions — 2027 Year of the Goat</h2>
   <div class="faq-list">
     <div class="faq-item">
-      <h3>When is Chinese New Year 2027?</h3>
-      <p>Chinese New Year 2027 falls on <strong>Saturday, February 6, 2027</strong>, beginning the Year of the Fire Goat (丁未年). The celebrations typically last 15 days, ending with the Lantern Festival on February 20, 2027.</p>
+      <div class="faq-q" onclick="toggleFaq(this)"><h3>When is Chinese New Year 2027?</h3><span class="arrow">▼</span></div>
+      <div class="faq-a">Chinese New Year 2027 falls on <strong>Saturday, February 6, 2027</strong>, beginning the Year of the Fire Goat (丁未年). The 15-day celebrations end with the Lantern Festival on February 20, 2027. Note: traditional Chinese astrology (BaZi) uses the solar term Li Chun (立春, ~February 4) as the true start of the new year.</div>
     </div>
     <div class="faq-item">
-      <h3>Is 2027 a good year for the Goat zodiac?</h3>
-      <p>People born in Goat years are entering their <strong>Ben Ming Nian (本命年)</strong> — their own zodiac year. Traditional belief holds this as both significant and vulnerable. Wearing red underwear or accessories brings protection. Avoid major risks; focus on relationships and health.</p>
+      <div class="faq-q" onclick="toggleFaq(this)"><h3>Is 2027 a good year for the Goat zodiac?</h3><span class="arrow">▼</span></div>
+      <div class="faq-a">People born in Goat years (1955, 1967, 1979, 1991, 2003, 2015) are entering their <strong>Ben Ming Nian (本命年)</strong> — their own zodiac year. Traditional belief holds this as both significant and somewhat vulnerable. Wearing red underwear or accessories brings protection. Avoid major financial risks, don't make impulsive big decisions, and focus on health maintenance.</div>
     </div>
     <div class="faq-item">
-      <h3>What are the lucky colors for 2027?</h3>
-      <p>The primary lucky colors for the 2027 Fire Goat year are <strong>green</strong> (growth, Wood element), <strong>red</strong> (Fire element's native color, protection), and <strong>purple</strong> (wisdom and spiritual strength). Incorporate these into your home décor or wardrobe to align with 2027 energy.</p>
+      <div class="faq-q" onclick="toggleFaq(this)"><h3>What are the lucky colors for 2027?</h3><span class="arrow">▼</span></div>
+      <div class="faq-a">The primary lucky colors for the 2027 Fire Goat year are <strong>green</strong> (growth, aligns with Wood that feeds Fire), <strong>red</strong> (Fire element's native color, protection and vitality), and <strong>purple</strong> (wisdom and spiritual strength, bridges Fire and Water). Incorporate these into your home décor, clothing choices, or accessories to align with 2027 energy throughout the year.</div>
     </div>
     <div class="faq-item">
-      <h3>Which zodiac signs have the best fortune in 2027?</h3>
-      <p>The <strong>Rabbit, Horse, and Pig</strong> form the "San He" (三合) harmony triad with the Goat — these three signs are blessed with peak fortune in 2027. Horse additionally forms a Liu He (六合) pair with Goat, making it especially auspicious.</p>
+      <div class="faq-q" onclick="toggleFaq(this)"><h3>Which zodiac signs have the best fortune in 2027?</h3><span class="arrow">▼</span></div>
+      <div class="faq-a">The <strong>Rabbit, Horse, and Pig</strong> are the three most fortunate signs in 2027. Rabbit and Pig form the San He (三合) harmony triad with the Goat — an astrological alignment that amplifies fortune across career, wealth, and relationships. Horse additionally forms the Liu He (六合) perfect pair with Goat, giving it arguably the strongest individual fortune in 2027.</div>
     </div>
     <div class="faq-item">
-      <h3>What does Fire Goat energy mean for 2027?</h3>
-      <p>The 2027 Goat carries <strong>Yin Fire (丁) over Earth (未)</strong>. Fire brings passion, creativity, and illumination. Combined with Goat's gentle, artistic nature, 2027 favors creative industries, diplomacy, arts, and nurturing relationships. The last Fire Goat year was 1967 — a year of cultural transformation worldwide.</p>
+      <div class="faq-q" onclick="toggleFaq(this)"><h3>What does Fire Goat energy mean for 2027?</h3><span class="arrow">▼</span></div>
+      <div class="faq-a">The 2027 Goat carries <strong>Yin Fire (丁) over Earth (未)</strong> in the BaZi system. Yin Fire is like candlelight — warm, focused, and creative rather than explosive. Combined with Goat's gentle, empathetic nature, 2027 strongly favors creative industries, arts and culture, diplomacy, nurturing relationships, and community building. Aggressive or purely transactional approaches tend to underperform in Goat years.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><h3>What are the lucky numbers for 2027?</h3><span class="arrow">▼</span></div>
+      <div class="faq-a">The lucky numbers for the 2027 Year of the Goat are <strong>2 and 7</strong> as the primary pair (Yin numbers that resonate with Goat's Earth element), along with <strong>12</strong> (the full zodiac cycle) and <strong>27</strong> (the year itself). Use these when choosing significant dates, addresses, or as part of personal rituals to align with the year's numerological energy.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><h3>What is the best Feng Shui direction for 2027?</h3><span class="arrow">▼</span></div>
+      <div class="faq-a">In 2027, the <strong>South</strong> sector carries the powerful #8 Wealth Star, making it the most auspicious direction for money and opportunity. The <strong>East</strong> carries the #1 Victory Star for career success. Avoid disturbing the <strong>Center</strong> (where the #5 Yellow misfortune star sits) and the <strong>Northwest</strong> (where the #2 Illness Star resides). <a href="https://chinesefortunetools.com/feng-shui/">Use our Feng Shui calculator</a> for a personalized analysis.</div>
     </div>
   </div>
 </section>
+<script>
+function toggleFaq(el){
+  el.classList.toggle('open');
+  var ans = el.nextElementSibling;
+  ans.classList.toggle('open');
+}
+</script>
 
 <!-- CTA BANNER -->
 <section class="cta-banner">
-  <h2>Explore Your 2027 Fortune in Depth</h2>
-  <p>Get personalized Chinese fortune readings powered by traditional BaZi, Feng Shui, and Zodiac wisdom at ChineseFortuneTools.com</p>
+  <h2>Get Your Personal 2027 Fortune Reading</h2>
+  <p>Free Chinese fortune tools powered by authentic BaZi, Feng Shui, and Zodiac traditions. No sign-up required.</p>
   <div class="cta-grid">
     <a class="cta-btn" href="https://chinesefortunetools.com/chinese-zodiac/">🐐 Zodiac Calculator</a>
     <a class="cta-btn" href="https://chinesefortunetools.com/bazi-calculator/">📊 BaZi Reading</a>
@@ -292,6 +557,7 @@
 
 <footer>
   <p>2027 Year of the Goat Guide · <a href="https://chinesefortunetools.com">ChineseFortuneTools.com</a> · For entertainment and cultural education purposes.</p>
+  <p style="margin-top:6px;"><a href="/sitemap.xml">Sitemap</a></p>
 </footer>
 
 </body>
