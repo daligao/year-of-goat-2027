@@ -557,16 +557,34 @@ const TEMPLATES = [
 
 // ─── Canvas helpers ───────────────────────────────────────────────────────────
 function wrapText(ctx, text, x, y, maxW, lineH) {
-  const words = text.split(' ');
+  // CJK characters wrap at each character boundary; Latin wraps at spaces
+  const CJK_RE = /[　-鿿豈-﫿＀-￯]/;
+  const isCJK = str => CJK_RE.test(str);
+
+  // Tokenise: split into CJK chars + Latin words
+  const tokens = [];
+  let buf = '';
+  for (const ch of text) {
+    if (isCJK(ch)) {
+      if (buf) { tokens.push(...buf.trim().split(/\s+/).filter(Boolean)); buf = ''; }
+      tokens.push(ch);
+    } else {
+      buf += ch;
+    }
+  }
+  if (buf.trim()) tokens.push(...buf.trim().split(/\s+/).filter(Boolean));
+
+  const lines = [];
   let line = '';
-  let lines = [];
-  for (let i = 0; i < words.length; i++) {
-    const test = line + words[i] + ' ';
+  for (const tok of tokens) {
+    const sep = (line && !isCJK(tok) && !isCJK(line.slice(-1))) ? ' ' : '';
+    const test = line + sep + tok;
     if (ctx.measureText(test).width > maxW && line !== '') {
-      lines.push(line.trim()); line = words[i] + ' ';
+      lines.push(line); line = tok;
     } else { line = test; }
   }
-  lines.push(line.trim());
+  if (line) lines.push(line);
+
   lines.forEach((l, i) => ctx.fillText(l, x, y + i * lineH));
   return lines.length;
 }
@@ -810,15 +828,35 @@ function downloadPNG() {
 // ─── Share ────────────────────────────────────────────────────────────────────
 async function shareGreeting() {
   track('share_clicked');
-  const shareData = {
-    title: '2027 Chinese New Year Greeting',
-    text: 'I made my 2027 Chinese New Year greeting 🧧🐐 Create yours free!',
-    url: 'https://chinesefortunetools.online/2027-chinese-new-year-greeting-generator/'
-  };
-  if (navigator.share) {
-    try { await navigator.share(shareData); return; } catch(e) {}
+  const shareUrl = 'https://chinesefortunetools.online/2027-chinese-new-year-greeting-generator/';
+  const shareText = 'I made my 2027 Chinese New Year greeting 🧧🐐 Create yours free!';
+
+  // Try Web Share API Level 2 — share the actual PNG file
+  if (navigator.share && navigator.canShare) {
+    try {
+      const preview = document.getElementById('cardPreview');
+      await new Promise(res => setTimeout(res, 0)); // flush paint
+      preview.toBlob(async blob => {
+        if (!blob) { document.getElementById('shareBlock').classList.remove('hidden'); return; }
+        const file = new File([blob], '2027-cny-greeting.png', { type: 'image/png' });
+        const shareData = { files: [file], title: '2027 Chinese New Year Greeting', text: shareText };
+        if (navigator.canShare(shareData)) {
+          try { await navigator.share(shareData); return; } catch(e) { /* user cancelled or failed */ }
+        }
+        // File share not supported — fall back to URL share
+        try { await navigator.share({ title: '2027 CNY Greeting', text: shareText, url: shareUrl }); return; } catch(e) {}
+        document.getElementById('shareBlock').classList.remove('hidden');
+      }, 'image/png');
+      return;
+    } catch(e) { /* toBlob failed, fall through */ }
   }
-  // Fallback: show share block
+
+  // Level 1 URL-only share
+  if (navigator.share) {
+    try { await navigator.share({ title: '2027 CNY Greeting', text: shareText, url: shareUrl }); return; } catch(e) {}
+  }
+
+  // No share API — show manual share block
   document.getElementById('shareBlock').classList.remove('hidden');
 }
 
