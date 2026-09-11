@@ -17,6 +17,9 @@
   <url><loc>https://chinesefortunetools.online/2027/rabbit/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
   <url><loc>https://chinesefortunetools.online/2027/snake/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
 
+  <!-- Greeting Generator -->
+  <url><loc>https://chinesefortunetools.online/2027-chinese-new-year-greeting-generator/</loc><lastmod>2026-09-12</lastmod><changefreq>yearly</changefreq><priority>0.90</priority></url>
+
   <!-- 60x /2027/[zodiac]/[month]/ pages excluded — awaiting quality review -->
 
 </urlset>

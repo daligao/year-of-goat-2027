@@ -157,17 +157,17 @@ footer a{color:var(--gold);}
     <span class="search-label">Type a gift item to check</span>
     <div class="search-row">
       <input type="text" id="gift-input" class="search-input" placeholder="e.g. clock, umbrella, wine..." autocomplete="off" spellcheck="false">
-      <button class="search-btn" onclick="checkGift()">Check →</button>
+      <button type="button" class="search-btn" onclick="checkGift()">Check →</button>
     </div>
     <div class="suggestions">
       <span class="sug-label">Try these:</span>
-      <button class="sug-btn" onclick="quickCheck('clock')">🕐 Clock</button>
-      <button class="sug-btn" onclick="quickCheck('umbrella')">☂️ Umbrella</button>
-      <button class="sug-btn" onclick="quickCheck('shoes')">👟 Shoes</button>
-      <button class="sug-btn" onclick="quickCheck('pear')">🍐 Pear</button>
-      <button class="sug-btn" onclick="quickCheck('wine')">🍷 Wine</button>
-      <button class="sug-btn" onclick="quickCheck('tea')">🍵 Tea</button>
-      <button class="sug-btn" onclick="quickCheck('wallet')">👛 Wallet</button>
+      <button type="button" class="sug-btn" onclick="quickCheck('clock')">🕐 Clock</button>
+      <button type="button" class="sug-btn" onclick="quickCheck('umbrella')">☂️ Umbrella</button>
+      <button type="button" class="sug-btn" onclick="quickCheck('shoes')">👟 Shoes</button>
+      <button type="button" class="sug-btn" onclick="quickCheck('pear')">🍐 Pear</button>
+      <button type="button" class="sug-btn" onclick="quickCheck('wine')">🍷 Wine</button>
+      <button type="button" class="sug-btn" onclick="quickCheck('tea')">🍵 Tea</button>
+      <button type="button" class="sug-btn" onclick="quickCheck('wallet')">👛 Wallet</button>
     </div>
   </div>
 </div>
@@ -544,7 +544,7 @@ function renderResult(g, query) {
         ${occHTML}
       </div>
       <div class="result-actions">
-        <button class="btn-share" onclick="shareResult('${g.name}','${g.status}')">📤 Share Result</button>
+        <button type="button" class="btn-share" onclick="shareResult('${g.name}','${g.status}')">📤 Share Result</button>
         <a class="btn-learn" href="${g.learnMore}" target="_blank" onclick="ga('visit_main_site',{tool:'gift_checker',gift:'${g.name}',destination:'chinarules101'})">📖 Full Gift Guide on ChinaRules101 →</a>
       </div>
     </div>
@@ -553,7 +553,7 @@ function renderResult(g, query) {
 
 function renderNotFound(query) {
   const suggestions = GIFTS.filter(g=>g.status==='avoid').slice(0,4).map(g=>
-    `<button class="sug-btn" onclick="quickCheck('${g.keys[0]}')">${g.emoji} ${g.name}</button>`
+    `<button type="button" class="sug-btn" onclick="quickCheck('${g.keys[0]}')">${g.emoji} ${g.name}</button>`
   ).join('');
   return `<div class="result-card"><div class="result-not-found">
     <div class="nf-icon">🔍</div>

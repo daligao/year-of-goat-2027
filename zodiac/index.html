@@ -171,7 +171,7 @@ footer a{color:var(--gold);}
       <input type="number" id="birth-year" placeholder="e.g. 1990" min="1900" max="2024">
     </div>
   </div>
-  <button class="calc-btn" onclick="calculate()">Find My Chinese Zodiac →</button>
+  <button type="button" class="calc-btn" onclick="calculate()">Find My Chinese Zodiac →</button>
   <div id="result"></div>
 </div>
 
@@ -384,7 +384,7 @@ function calculate() {
           <div class="compat-chips">${avoidHTML}</div>
         </div>
         <div class="result-actions">
-          <button class="btn-share" onclick="shareResult('${sign.name}','${element}','${zodiacYear}')">📤 Share My Sign</button>
+          <button type="button" class="btn-share" onclick="shareResult('${sign.name}','${element}','${zodiacYear}')">📤 Share My Sign</button>
           <a class="btn-deep" href="${sign.url}" target="_blank" onclick="ga('visit_main_site',{tool:'zodiac_calc',sign:'${sign.name}',destination:'fortunetools'})">📖 Full ${sign.name} Guide →</a>
         </div>
       </div>

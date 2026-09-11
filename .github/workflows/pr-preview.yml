@@ -1,8 +1,9 @@
 name: PR Preview
 
+# Disabled: workflow commits to main conflict with branch protection.
+# Visual regression screenshots are captured by pr-quality-gate.yml instead.
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
+  workflow_dispatch:
 
 permissions:
   contents: write
