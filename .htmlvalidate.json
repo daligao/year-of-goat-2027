@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "no-inline-style": "off",
+    "no-raw-characters": "off",
+    "no-implicit-button-type": "error"
+  }
+}

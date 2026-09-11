@@ -126,7 +126,7 @@ footer a{color:var(--gold);}
   </div>
 
   <!-- Back button (hidden until step 2) -->
-  <button class="btn-back" id="btn-back" style="display:none" onclick="goBack()">← Back</button>
+  <button type="button" class="btn-back" id="btn-back" style="display:none" onclick="goBack()">← Back</button>
 
   <!-- Step chooser -->
   <div id="chooser"></div>
@@ -466,8 +466,8 @@ function render() {
       ${result.note ? `<div class="result-note">💡 ${result.note}</div>` : ''}
       ${result.informal ? `<div class="result-note">👥 Informal: ${result.informal}</div>` : ''}
       <div class="result-actions">
-        <button class="btn-reset" onclick="reset()">Start Over</button>
-        <button class="btn-share" onclick="share('${result.zh}','${result.pinyin}','${result.en}')">Share Result</button>
+        <button type="button" class="btn-reset" onclick="reset()">Start Over</button>
+        <button type="button" class="btn-share" onclick="share('${result.zh}','${result.pinyin}','${result.en}')">Share Result</button>
       </div>`;
     gtag('event','tool_complete',{tool:'kinship',result:result.zh,path:key});
   } else if (result && choices) {

@@ -100,48 +100,48 @@ footer a{color:var(--gold);}
   <div class="step">
     <span class="step-label"><span>①</span> What's the occasion?</span>
     <div class="chip-row" id="occasion-chips">
-      <button class="chip" data-val="wedding" onclick="pick('occasion',this)">💍 Wedding</button>
-      <button class="chip" data-val="cny" onclick="pick('occasion',this)">🏮 Chinese New Year</button>
-      <button class="chip" data-val="birthday" onclick="pick('occasion',this)">🎂 Birthday</button>
-      <button class="chip" data-val="baby" onclick="pick('occasion',this)">👶 New Baby</button>
-      <button class="chip" data-val="housewarming" onclick="pick('occasion',this)">🏠 Housewarming</button>
-      <button class="chip" data-val="graduation" onclick="pick('occasion',this)">🎓 Graduation</button>
-      <button class="chip" data-val="business" onclick="pick('occasion',this)">💼 Business</button>
+      <button type="button" class="chip" data-val="wedding" onclick="pick('occasion',this)">💍 Wedding</button>
+      <button type="button" class="chip" data-val="cny" onclick="pick('occasion',this)">🏮 Chinese New Year</button>
+      <button type="button" class="chip" data-val="birthday" onclick="pick('occasion',this)">🎂 Birthday</button>
+      <button type="button" class="chip" data-val="baby" onclick="pick('occasion',this)">👶 New Baby</button>
+      <button type="button" class="chip" data-val="housewarming" onclick="pick('occasion',this)">🏠 Housewarming</button>
+      <button type="button" class="chip" data-val="graduation" onclick="pick('occasion',this)">🎓 Graduation</button>
+      <button type="button" class="chip" data-val="business" onclick="pick('occasion',this)">💼 Business</button>
     </div>
   </div>
 
   <div class="step">
     <span class="step-label"><span>②</span> Your relationship to the recipient?</span>
     <div class="chip-row" id="relationship-chips">
-      <button class="chip" data-val="coworker" onclick="pick('relationship',this)">👔 Coworker</button>
-      <button class="chip" data-val="friend" onclick="pick('relationship',this)">🤝 Friend</button>
-      <button class="chip" data-val="closefriend" onclick="pick('relationship',this)">❤️ Close Friend</button>
-      <button class="chip" data-val="family" onclick="pick('relationship',this)">👨‍👩‍👧 Family</button>
-      <button class="chip" data-val="closefamily" onclick="pick('relationship',this)">💞 Close Family</button>
-      <button class="chip" data-val="boss" onclick="pick('relationship',this)">👑 Boss / Senior</button>
-      <button class="chip" data-val="partner" onclick="pick('relationship',this)">💑 Romantic Partner</button>
+      <button type="button" class="chip" data-val="coworker" onclick="pick('relationship',this)">👔 Coworker</button>
+      <button type="button" class="chip" data-val="friend" onclick="pick('relationship',this)">🤝 Friend</button>
+      <button type="button" class="chip" data-val="closefriend" onclick="pick('relationship',this)">❤️ Close Friend</button>
+      <button type="button" class="chip" data-val="family" onclick="pick('relationship',this)">👨‍👩‍👧 Family</button>
+      <button type="button" class="chip" data-val="closefamily" onclick="pick('relationship',this)">💞 Close Family</button>
+      <button type="button" class="chip" data-val="boss" onclick="pick('relationship',this)">👑 Boss / Senior</button>
+      <button type="button" class="chip" data-val="partner" onclick="pick('relationship',this)">💑 Romantic Partner</button>
     </div>
   </div>
 
   <div class="step">
     <span class="step-label"><span>③</span> Are you attending in person?</span>
     <div class="chip-row" id="attending-chips">
-      <button class="chip" data-val="yes" onclick="pick('attending',this)">✅ Yes, attending</button>
-      <button class="chip" data-val="no" onclick="pick('attending',this)">📮 No, sending remotely</button>
+      <button type="button" class="chip" data-val="yes" onclick="pick('attending',this)">✅ Yes, attending</button>
+      <button type="button" class="chip" data-val="no" onclick="pick('attending',this)">📮 No, sending remotely</button>
     </div>
   </div>
 
   <div class="step">
     <span class="step-label"><span>④</span> Your region / currency?</span>
     <div class="chip-row" id="region-chips">
-      <button class="chip" data-val="cn" onclick="pick('region',this)">🇨🇳 Mainland China (¥ RMB)</button>
-      <button class="chip" data-val="hk" onclick="pick('region',this)">🇭🇰 Hong Kong (HK$)</button>
-      <button class="chip" data-val="sg" onclick="pick('region',this)">🇸🇬 Singapore (S$)</button>
-      <button class="chip" data-val="us" onclick="pick('region',this)">🇺🇸 US / UK / Other (USD)</button>
+      <button type="button" class="chip" data-val="cn" onclick="pick('region',this)">🇨🇳 Mainland China (¥ RMB)</button>
+      <button type="button" class="chip" data-val="hk" onclick="pick('region',this)">🇭🇰 Hong Kong (HK$)</button>
+      <button type="button" class="chip" data-val="sg" onclick="pick('region',this)">🇸🇬 Singapore (S$)</button>
+      <button type="button" class="chip" data-val="us" onclick="pick('region',this)">🇺🇸 US / UK / Other (USD)</button>
     </div>
   </div>
 
-  <button class="calc-btn" id="calc-btn" onclick="calculate()" disabled>Calculate Lucky Amount →</button>
+  <button type="button" class="calc-btn" id="calc-btn" onclick="calculate()" disabled>Calculate Lucky Amount →</button>
   <div id="result"></div>
 </div>
 
@@ -297,7 +297,7 @@ function calculate() {
         <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#999;margin-bottom:8px;">Etiquette Rules</div>
         <div class="rule-list">${rulesHTML}</div>
         <div class="result-actions">
-          <button class="btn-share" onclick="shareResult()">📤 Share</button>
+          <button type="button" class="btn-share" onclick="shareResult()">📤 Share</button>
           <a class="btn-learn" href="https://chinarules101.com/gifts/chinese-wedding-red-envelope/" target="_blank" onclick="ga('visit_main_site',{tool:'red_envelope',destination:'chinarules101'})">📖 Full Red Envelope Guide →</a>
         </div>
       </div>

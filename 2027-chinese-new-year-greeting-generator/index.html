@@ -283,10 +283,10 @@ footer a{color:rgba(255,255,255,.6);}
       </div>
 
       <div style="margin-top:18px;">
-        <button class="btn btn-primary" style="width:100%;" onclick="generateCard()">
+        <button type="button" class="btn btn-primary" style="width:100%;" onclick="generateCard()">
           ✨ Generate Greeting
         </button>
-        <button class="btn btn-ghost" style="width:100%;margin-top:8px;font-size:.82rem;" onclick="shuffleBlessing()">
+        <button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px;font-size:.82rem;" onclick="shuffleBlessing()">
           🔀 Shuffle Blessing
         </button>
       </div>
@@ -318,15 +318,15 @@ footer a{color:rgba(255,255,255,.6);}
       </div>
 
       <div class="btn-row" id="downloadBtns" style="display:none;">
-        <button class="btn btn-gold" onclick="downloadPNG()">⬇ Download PNG</button>
-        <button class="btn btn-ghost" onclick="shareGreeting()">↗ Share</button>
-        <button class="btn btn-ghost" onclick="resetForm()">＋ Create Another</button>
+        <button type="button" class="btn btn-gold" onclick="downloadPNG()">⬇ Download PNG</button>
+        <button type="button" class="btn btn-ghost" onclick="shareGreeting()">↗ Share</button>
+        <button type="button" class="btn btn-ghost" onclick="resetForm()">＋ Create Another</button>
       </div>
 
       <div id="shareBlock" class="hidden" style="margin-top:14px;">
         <div class="share-text" id="shareTextEl">
           I made my 2027 Chinese New Year greeting 🧧🐐 Create yours free at chinesefortunetools.online
-          <button class="copy-btn" onclick="copyShareText()">Copy</button>
+          <button type="button" class="copy-btn" onclick="copyShareText()">Copy</button>
         </div>
       </div>
     </div>
