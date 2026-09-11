@@ -41,7 +41,7 @@ Saved as **draft** (ID=1807). Review and publish at: https://ordinarymantrying.c
 | 7 | OVERNIGHT-REPORT.md (this file) | — |
 | 8 | GITHUB-TOOL-RADAR.md | Zi Wei Dou Shu (iztro, 4k stars, MIT): zero English tool exists → blue ocean |
 | 9 | GITHUB-RISING-TOOLS.md | PDFCraft hit 8k stars in 8 months; Echo Loop AI speaking trainer: 3.5k in 4 months |
-| 10 | GITHUB-USER-PAIN-RADAR.md | ⏳ Agent still running — file pending |
+| 10 | GITHUB-USER-PAIN-RADAR.md | BaZi+Name gen "no web UI" = #1 pain; hanzi-writer PDF export = #2; English BaZi = #5 |
 | 11 | ABANDONED-GITHUB-GOLD.md | I Ching ecosystem: 3 abandoned implementations, no modern web oracle — build it |
 | 12 | CLI-TO-WEB-OPPORTUNITIES.md | tldr-pages CLI → Chinese cheatsheet site: score 34/35 |
 | 13 | OPEN-DATA-TREASURE-MAP.md | chinese-calendar-database (MIT, 1901–2100, lunar+BaZi): powers BaZi tools |
