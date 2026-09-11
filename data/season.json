@@ -1,0 +1,12 @@
+{
+  "season": "default",
+  "date": "2026-09-11",
+  "theme": {
+    "--gold": "#c9a84c",
+    "--ink": "#1a1a2e",
+    "--red": "#c0392b",
+    "--parchment": "#fdf6e3",
+    "badge": "Chinese Culture Lab",
+    "hero_note": ""
+  }
+}
