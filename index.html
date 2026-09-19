@@ -149,6 +149,11 @@
   .lab-logo{color:var(--gold);font-size:0.9rem;font-weight:bold;letter-spacing:.5px;font-family:monospace;}
   .lab-stats{font-size:0.75rem;color:#666;font-family:monospace;}
   .lab-stats span{color:#aaa;}
+  .site-nav{background:#1a1a2e;padding:10px 20px;display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:center;}
+  .site-nav a{color:var(--gold);font-size:0.85rem;text-decoration:none;}
+  .site-nav a:hover{text-decoration:underline;}
+  .site-nav a.site-nav-highlight{color:#fff;background:var(--red);padding:3px 10px;border-radius:12px;font-weight:bold;}
+  .site-nav a.site-nav-highlight:hover{text-decoration:none;background:#8e1a12;}
 
   /* TOOL CARDS */
   .tools-hub{background:#fff;padding:54px 20px;}
@@ -224,6 +229,17 @@
     <span id="stat-retired" style="display:none">· 0 retired</span>
   </div>
 </div>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <a href="/2027/">2027 Horoscopes</a>
+  <a href="/zodiac/">Zodiac Calculator</a>
+  <a href="/gift-checker/">Gift Checker</a>
+  <a href="/red-envelope/">Red Envelope</a>
+  <a href="/kinship/">Family Titles</a>
+  <a href="/festival-countdown/">Festivals</a>
+  <a href="/2027-goals/" class="site-nav-highlight">🎯 2027 Goals</a>
+</nav>
 
 <!-- HERO -->
 <header class="hero">
