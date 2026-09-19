@@ -16,9 +16,16 @@
   <url><loc>https://chinesefortunetools.online/2027/tiger/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
   <url><loc>https://chinesefortunetools.online/2027/rabbit/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
   <url><loc>https://chinesefortunetools.online/2027/snake/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://chinesefortunetools.online/2027/rat/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://chinesefortunetools.online/2027/horse/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://chinesefortunetools.online/2027/goat/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://chinesefortunetools.online/2027/monkey/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://chinesefortunetools.online/2027/rooster/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://chinesefortunetools.online/2027/dog/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://chinesefortunetools.online/2027/pig/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
 
   <!-- 2027 New Year Goals bridge page -->
   <url><loc>https://chinesefortunetools.online/2027-goals/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <!-- 60x /2027/[zodiac]/[month]/ pages excluded — awaiting quality review -->
+  <!-- 144x /2027/[zodiac]/[month]/ pages excluded — awaiting quality review -->
 
 </urlset>
