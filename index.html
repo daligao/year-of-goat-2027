@@ -45,6 +45,15 @@
   .cd-num{font-size:2.4rem;font-weight:900;color:var(--gold);display:block;line-height:1;font-family:monospace;}
   .cd-lbl{font-size:0.7rem;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
 
+  /* 2027 GOALS BANNER */
+  .goals-banner{display:flex;align-items:center;gap:16px;max-width:720px;margin:24px auto;padding:18px 24px;background:linear-gradient(135deg,#c0392b,#8e1a12);color:#fff;border-radius:14px;text-decoration:none;box-shadow:0 6px 20px rgba(192,57,43,0.25);transition:transform 0.15s;}
+  .goals-banner:hover{transform:translateY(-2px);text-decoration:none;}
+  .goals-banner .gb-emoji{font-size:2rem;flex-shrink:0;}
+  .goals-banner .gb-text{display:flex;flex-direction:column;gap:2px;text-align:left;}
+  .goals-banner .gb-text strong{font-size:1rem;}
+  .goals-banner .gb-text span{font-size:0.85rem;opacity:0.9;}
+  @media(max-width:480px){.goals-banner{flex-direction:column;text-align:center;padding:18px;}.goals-banner .gb-text{text-align:center;}}
+
   /* ZODIAC FINDER */
   .finder{background:#fff;border:2px solid var(--gold);border-radius:14px;max-width:520px;margin:0 auto 40px;padding:28px 24px;text-align:center;}
   .finder h3{font-size:1.2rem;margin-bottom:14px;color:var(--ink);}
@@ -256,6 +265,15 @@
   tick(); setInterval(tick, 1000);
 })();
 </script>
+
+<!-- 2027 GOALS BANNER -->
+<a class="goals-banner" href="/2027-goals/" onclick="gtag('event','banner_click',{tool:'2027-goals',from:'homepage_banner'})">
+  <span class="gb-emoji">🎯</span>
+  <span class="gb-text">
+    <strong>The Fire Goat year favours new intentions.</strong>
+    <span>Set your 2027 goal — free, anonymous, takes 30 seconds →</span>
+  </span>
+</a>
 
 <!-- ZODIAC FINDER -->
 <section class="section">
