@@ -29,6 +29,10 @@
 
   <!-- New Year 2027 (Western) pillar page -->
   <url><loc>https://chinesefortunetools.online/new-year-2027/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+
+  <!-- CNY 2027 date + Fire Goat explainer pages -->
+  <url><loc>https://chinesefortunetools.online/when-is-chinese-new-year-2027/</loc><lastmod>2026-09-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://chinesefortunetools.online/year-of-the-fire-goat-2027/</loc><lastmod>2026-09-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <!-- 144x /2027/[zodiac]/[month]/ pages excluded — awaiting quality review -->
 
 </urlset>

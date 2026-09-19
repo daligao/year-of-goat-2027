@@ -118,6 +118,38 @@
       "funnel": "cutdone.com/2027-goal-wall",
       "description": "Live countdown to Jan 1 2027, worldwide New Year's Eve traditions, resolution ideas that stick, and quotes.",
       "cta": "See the Countdown →"
+    },
+    {
+      "id": "when-is-chinese-new-year-2027",
+      "title": "When Is Chinese New Year 2027?",
+      "subtitle": "Saturday, February 6, 2027",
+      "emoji": "🗓",
+      "url": "/when-is-chinese-new-year-2027/",
+      "status": "testing",
+      "stage": "stable",
+      "launched": "2026-09-20",
+      "review_after_days": 90,
+      "priority": 0.8,
+      "tags": ["cny","2027","date","countdown"],
+      "funnel": "cutdone.com/2027-goal-wall",
+      "description": "The exact date of Chinese New Year 2027, a live countdown, and why the date moves every year on the lunisolar calendar.",
+      "cta": "See the Date & Countdown →"
+    },
+    {
+      "id": "year-of-the-fire-goat-2027",
+      "title": "Year of the Fire Goat 2027",
+      "subtitle": "What It Means",
+      "emoji": "🔥",
+      "url": "/year-of-the-fire-goat-2027/",
+      "status": "testing",
+      "stage": "stable",
+      "launched": "2026-09-20",
+      "review_after_days": 90,
+      "priority": 0.8,
+      "tags": ["2027","goat","fire-element","zodiac"],
+      "funnel": "cutdone.com/2027-goal-wall",
+      "description": "What a Fire Goat year means, why 2027 is different from other Goat years, and the general theme of the year ahead.",
+      "cta": "See What It Means →"
     }
   ]
 }
