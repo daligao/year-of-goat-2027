@@ -86,6 +86,22 @@
       "funnel": "chinesefortunetools.com/",
       "description": "Auto-detects the next upcoming Chinese festival and counts down the days with celebration tips.",
       "cta": "See Countdown →"
+    },
+    {
+      "id": "2027-goals",
+      "title": "Fire Goat Year Resolutions",
+      "subtitle": "2027 New Year Goals",
+      "emoji": "🎯",
+      "url": "/2027-goals/",
+      "status": "testing",
+      "stage": "stable",
+      "launched": "2026-09-19",
+      "review_after_days": 90,
+      "priority": 0.85,
+      "tags": ["2027","goals","cny","zodiac"],
+      "funnel": "cutdone.com/2027-goal-wall",
+      "description": "Why the Fire Goat year favours steady intention over new year hype, and a free anonymous wall to write your 2027 goal down.",
+      "cta": "Set My 2027 Goal →"
     }
   ]
 }
