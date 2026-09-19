@@ -102,6 +102,22 @@
       "funnel": "cutdone.com/2027-goal-wall",
       "description": "Why the Fire Goat year favours steady intention over new year hype, and a free anonymous wall to write your 2027 goal down.",
       "cta": "Set My 2027 Goal →"
+    },
+    {
+      "id": "new-year-2027",
+      "title": "New Year 2027",
+      "subtitle": "Countdown, Resolutions & Traditions",
+      "emoji": "🎆",
+      "url": "/new-year-2027/",
+      "status": "testing",
+      "stage": "stable",
+      "launched": "2026-09-19",
+      "review_after_days": 90,
+      "priority": 0.85,
+      "tags": ["new-year","2027","resolutions","countdown"],
+      "funnel": "cutdone.com/2027-goal-wall",
+      "description": "Live countdown to Jan 1 2027, worldwide New Year's Eve traditions, resolution ideas that stick, and quotes.",
+      "cta": "See the Countdown →"
     }
   ]
 }

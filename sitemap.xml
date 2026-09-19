@@ -26,6 +26,9 @@
 
   <!-- 2027 New Year Goals bridge page -->
   <url><loc>https://chinesefortunetools.online/2027-goals/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+
+  <!-- New Year 2027 (Western) pillar page -->
+  <url><loc>https://chinesefortunetools.online/new-year-2027/</loc><lastmod>2026-09-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <!-- 144x /2027/[zodiac]/[month]/ pages excluded — awaiting quality review -->
 
 </urlset>
