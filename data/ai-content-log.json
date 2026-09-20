@@ -1,0 +1,17 @@
+{
+  "articles": [
+    {
+      "id": "2026-09-20-chinese-zodiac-element-birth-year",
+      "slug": "chinese-zodiac-element-birth-year",
+      "title": "How to Find Your Chinese Zodiac Element from Your Birth Year",
+      "excerpt": "Learn how Wood, Fire, Earth, Metal and Water combine with the 12 zodiac animals, and when an exact birth date matters.",
+      "category": "Chinese Zodiac",
+      "primaryKeyword": "Chinese zodiac element by birth year",
+      "funnelKey": "five-elements",
+      "funnelUrl": "https://chinesefortunetools.com/five-elements/",
+      "published": "2026-09-20",
+      "wordCount": 1200,
+      "model": "manual-smoke-test"
+    }
+  ]
+}

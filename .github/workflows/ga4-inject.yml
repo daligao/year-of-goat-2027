@@ -1,0 +1,55 @@
+name: Inject GA4 across static pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/inject_ga4.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ga4-static-injection
+  cancel-in-progress: false
+
+jobs:
+  inject:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Inject GA4
+        run: python3 scripts/inject_ga4.py
+
+      - name: Create GA4 pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u
+          if git diff --staged --quiet; then
+            echo "No GA4 changes needed."
+            exit 0
+          fi
+
+          BRANCH="automation/ga4-${{ github.run_id }}"
+          git checkout -b "$BRANCH"
+          git commit -m "analytics: add GA4 G-HY5MJJP86Z across static pages"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "analytics: add GA4 G-HY5MJJP86Z across static pages" \
+            --body "Automatically injects GA4 measurement G-HY5MJJP86Z into existing static HTML pages. Existing GT-NCLSMV4H configuration is preserved where present."

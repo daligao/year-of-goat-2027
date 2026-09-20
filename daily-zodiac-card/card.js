@@ -2,13 +2,24 @@ import { THEMES, localDate, inferZodiac, dailyCard } from './engine.mjs';
 import { renderCard } from './render.mjs';
 const $ = id => document.getElementById(id);
 const url = 'https://chinesefortunetools.online/daily-zodiac-card/';
-let data, card, zodiac, theme = 'red-gold', blobPromise;
+let data, card, zodiac, theme = 'red-gold', blobPromise, analyticsReady = false;
 const canvas = $('fortune-canvas');
 $('birth-year').max = Math.min(2100, new Date().getFullYear());
 // No form submission, URL parameters, cookies, localStorage, or birth-data requests.
 function track(action) {
   if (!zodiac || !THEMES.includes(theme)) return;
-  if (typeof window.ga === 'function') window.ga(`daily_zodiac_${action}`, { zodiac: zodiac.id, theme });
+  if (!analyticsReady) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-HY5MJJP86Z', { send_page_view: false, allow_google_signals: false,
+      allow_ad_personalization_signals: false, page_location: url, page_referrer: '', ignore_referrer: true });
+    const script = document.createElement('script'); script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-HY5MJJP86Z';
+    document.head.appendChild(script); analyticsReady = true;
+  }
+  window.gtag('event', `daily_zodiac_${action}`, { zodiac: zodiac.id, theme });
 }
 function draw() {
   card = dailyCard(zodiac, localDate(), data);
