@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://chinesefortunetools.online"
+WORKER = "https://cft-online-seo-bot.love0972.workers.dev"
 ALLOWED = {"Chinese Zodiac","Feng Shui","Festivals & Customs","Lucky Symbols","Chinese Culture"}
 FUNNELS = {
     "zodiac": ("https://chinesefortunetools.com/chinese-zodiac/", "Find your exact Chinese zodiac sign", "Use the LiChun-accurate zodiac calculator →"),
@@ -52,7 +53,7 @@ def render_article(p,a,slug):
     canonical=f"{SITE}/learn/{slug}/"
     funnel_key=a["funnel_key"]
     funnel_url,funnel_title,funnel_button=FUNNELS[funnel_key]
-    tracked=f"{funnel_url}?utm_source=chinesefortunetools.online&utm_medium=content&utm_campaign=auto-growth&utm_content={slug}"
+    tracked=f"{WORKER}/go/{funnel_key}?article={slug}"
     cta=f'<aside class="cta"><span class="cta-kicker">Try it on ChineseFortuneTools.com</span><h3>{esc(funnel_title)}</h3><p>Turn this guide into a personal result with the matching interactive tool on our main site.</p><a class="cta-btn" href="{esc(tracked)}" target="_blank" rel="noopener">{esc(funnel_button)}</a></aside>'
     sections=[]
     for i,s in enumerate(a["sections"]):
