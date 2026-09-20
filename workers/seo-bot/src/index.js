@@ -1,19 +1,6 @@
 import { generateArticle, latestContent, contentStatus } from "./content.js";
+import { SITES, SITEMAP_PATHS } from "./sites.config.js";
 
-const SITES = [
-  { key: "cft-online", name: "ChineseFortuneTools.online", host: "chinesefortunetools.online", base: "https://chinesefortunetools.online" },
-  { key: "cft", name: "ChineseFortuneTools.com", host: "chinesefortunetools.com", base: "https://chinesefortunetools.com" },
-  { key: "cutdone", name: "CutDone", host: "cutdone.com", base: "https://cutdone.com" },
-  { key: "omt", name: "OrdinaryManTrying", host: "ordinarymantrying.com", base: "https://ordinarymantrying.com" },
-  { key: "tea", name: "ChinaTea101", host: "chinatea101.com", base: "https://chinatea101.com" },
-  { key: "rules", name: "ChinaRules101", host: "chinarules101.com", base: "https://chinarules101.com" },
-  { key: "namecraft", name: "ChineseNameCraft", host: "chinesenamecraft.com", base: "https://chinesenamecraft.com" },
-  { key: "hotpot", name: "Hotpot101", host: "hotpot101.com", base: "https://hotpot101.com" },
-  { key: "one-dollar", name: "One Dollar Experiment", host: "one-dollar.ordinarymantrying.com", base: "https://one-dollar.ordinarymantrying.com" },
-  { key: "zfuye", name: "ZFUYE", host: "zfuye.org", base: "https://zfuye.org" }
-];
-
-const SITEMAP_PATHS = ["/sitemap.xml", "/wp-sitemap.xml", "/sitemap_index.xml"];
 const MAX_CHILD_SITEMAPS = 8;
 const MAX_AUDIT_PAGES = 30;
 
