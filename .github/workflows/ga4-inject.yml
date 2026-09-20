@@ -40,4 +40,5 @@ jobs:
             exit 0
           fi
           git commit -m "analytics: add GA4 G-HY5MJJP86Z across static pages"
+          git pull --rebase origin main
           git push origin main
