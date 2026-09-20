@@ -8,6 +8,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://chinesefortunetools.online"
 ALLOWED = {"Chinese Zodiac","Feng Shui","Festivals & Customs","Lucky Symbols","Chinese Culture"}
+FUNNELS = {
+    "zodiac": ("https://chinesefortunetools.com/chinese-zodiac/", "Find your exact Chinese zodiac sign", "Use the LiChun-accurate zodiac calculator →"),
+    "bazi": ("https://chinesefortunetools.com/bazi-calculator/", "Go deeper with your full BaZi chart", "Calculate your Four Pillars →"),
+    "five-elements": ("https://chinesefortunetools.com/five-elements/", "Find your Chinese Five Element", "Try the Five Elements calculator →"),
+    "feng-shui": ("https://chinesefortunetools.com/feng-shui/", "Explore practical Feng Shui tools", "Open the Feng Shui hub →"),
+    "2027": ("https://chinesefortunetools.com/2027/", "See your full 2027 fortune", "Explore the 2027 Goat Year guide →"),
+    "home": ("https://chinesefortunetools.com/", "Explore the full Chinese fortune toolkit", "Visit ChineseFortuneTools.com →"),
+}
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 def esc(v): return html.escape(str(v or ""), quote=True)
@@ -32,6 +40,7 @@ def validate(p):
     a=p.get("article") or {}; slug=a.get("slug","")
     if not SLUG_RE.fullmatch(slug) or not (8 <= len(slug) <= 80): raise ValueError("unsafe slug")
     if a.get("category") not in ALLOWED: raise ValueError("unsupported category")
+    if a.get("funnel_key") not in FUNNELS: raise ValueError("unsupported funnel")
     if not (24 <= len(a.get("title","")) <= 100): raise ValueError("bad title length")
     if not (80 <= len(a.get("meta_description","")) <= 180): raise ValueError("bad meta description length")
     if len(a.get("sections",[])) < 5 or len(a.get("faq",[])) < 3: raise ValueError("too thin")
@@ -41,10 +50,17 @@ def validate(p):
 def render_article(p,a,slug):
     date=(p.get("generatedAt") or datetime.now(timezone.utc).isoformat())[:10]
     canonical=f"{SITE}/learn/{slug}/"
+    funnel_key=a["funnel_key"]
+    funnel_url,funnel_title,funnel_button=FUNNELS[funnel_key]
+    tracked=f"{funnel_url}?utm_source=chinesefortunetools.online&utm_medium=content&utm_campaign=auto-growth&utm_content={slug}"
+    cta=f'<aside class="cta"><span class="cta-kicker">Try it on ChineseFortuneTools.com</span><h3>{esc(funnel_title)}</h3><p>Turn this guide into a personal result with the matching interactive tool on our main site.</p><a class="cta-btn" href="{esc(tracked)}" target="_blank" rel="noopener">{esc(funnel_button)}</a></aside>'
     sections=[]
-    for s in a["sections"]:
+    for i,s in enumerate(a["sections"]):
         paras="".join(f"<p>{esc(x)}</p>" for x in s.get("paragraphs",[]))
-        sections.append(f"<section><h2>{esc(s.get('heading'))}</h2>{paras}</section>")
+        section=f"<section><h2>{esc(s.get('heading'))}</h2>{paras}</section>"
+        sections.append(section)
+        if i == 1:
+            sections.append(cta)
     faqs="".join(f"<details><summary>{esc(q['question'])}</summary><p>{esc(q['answer'])}</p></details>" for q in a["faq"])
     related=[]
     for path in a.get("related_paths",[])[:5]:
@@ -64,7 +80,7 @@ def render_article(p,a,slug):
 <body><nav><a href="/">Culture Lab</a><a href="/2027/">2027</a><a href="/zodiac/">Zodiac</a><a href="/festival-countdown/">Festivals</a><a href="/learn/">Learn</a></nav>
 <header><div class="k">{esc(a["category"])}</div><h1>{esc(a["title"])}</h1><p class="dek">{esc(a["excerpt"])}</p><small>Published {date} · {word_count(a)} words</small></header>
 <main><div class="note"><strong>Cultural note:</strong> Zodiac, Feng Shui, luck, and symbolism are traditional cultural frameworks; interpretations vary by region, family, and school of thought.</div>
-{''.join(sections)}<section><h2>Frequently Asked Questions</h2>{faqs}</section><p>{esc(a["closing"])}</p>
+{''.join(sections)}<section><h2>Frequently Asked Questions</h2>{faqs}</section><p>{esc(a["closing"])}</p>{cta}
 <div class="related"><strong>Related pages</strong><ul>{''.join(related)}</ul></div></main>
 <footer><a href="/">Chinese Culture Lab</a> · <a href="/learn/">Learn</a> · <a href="/sitemap.xml">Sitemap</a></footer></body></html>"""
 
@@ -96,7 +112,7 @@ def main():
         print(f"Already published: {slug}"); return 0
     target.parent.mkdir(parents=True,exist_ok=True); target.write_text(render_article(payload,a,slug),encoding="utf-8")
     log=load_log()
-    entry={"id":payload.get("id"),"slug":slug,"title":a["title"],"excerpt":a["excerpt"],"category":a["category"],"primaryKeyword":a.get("primary_keyword"),"published":(payload.get("generatedAt") or "")[:10],"wordCount":payload.get("wordCount") or word_count(a),"model":payload.get("model")}
+    entry={"id":payload.get("id"),"slug":slug,"title":a["title"],"excerpt":a["excerpt"],"category":a["category"],"primaryKeyword":a.get("primary_keyword"),"funnelKey":a.get("funnel_key"),"funnelUrl":FUNNELS[a.get("funnel_key")][0],"published":(payload.get("generatedAt") or "")[:10],"wordCount":payload.get("wordCount") or word_count(a),"model":payload.get("model")}
     log["articles"]=[entry]+[x for x in log.get("articles",[]) if x.get("slug")!=slug]
     save_log(log); render_index(log)
     print(f"Published draft into repo: /learn/{slug}/")
