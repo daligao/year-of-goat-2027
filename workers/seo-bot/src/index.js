@@ -7,8 +7,8 @@ const SITES = [
   { key: "rules", name: "ChinaRules101", host: "chinarules101.com", base: "https://chinarules101.com" },
   { key: "namecraft", name: "ChineseNameCraft", host: "chinesenamecraft.com", base: "https://chinesenamecraft.com" },
   { key: "hotpot", name: "Hotpot101", host: "hotpot101.com", base: "https://hotpot101.com" },
-  { key: "zfuye", name: "ZFUYE", host: "zfuye.org", base: "https://zfuye.org" },
-  { key: "zuofuye8", name: "Zuofuye8", host: "zuofuye8.cn", base: "https://zuofuye8.cn" }
+  { key: "one-dollar", name: "One Dollar Experiment", host: "one-dollar.ordinarymantrying.com", base: "https://one-dollar.ordinarymantrying.com" },
+  { key: "zfuye", name: "ZFUYE", host: "zfuye.org", base: "https://zfuye.org" }
 ];
 
 const SITEMAP_PATHS = ["/sitemap.xml", "/wp-sitemap.xml", "/sitemap_index.xml"];
