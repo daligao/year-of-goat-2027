@@ -147,7 +147,10 @@ body[data-theme="goat2027"]{--env1:#a8482f;--env2:#5c2317;--env3:#3a1810;--accen
 
 @media (prefers-reduced-motion: reduce){
   .open-btn{animation:none;}
-  .env-flap,.env-closed,.env-content{transition:none !important;}
+  .env-flap{transition:none !important;}
+  /* Reduced motion removes movement, but a short fade still reveals the wish. */
+  .env-closed,.env-content{transition:opacity .2s ease !important;}
+  .env-content{transform:none !important;}
 }
 
 #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;font-size:0.88rem;display:none;z-index:100;}
@@ -446,11 +449,21 @@ function openEnvelope(){
   const content = document.getElementById('env-content');
 
   if(reduced){
-    btn.style.display = 'none';
-    closed.style.display = 'none';
-    content.hidden = false;
-    content.classList.add('show');
-    content.style.marginTop = '0';
+    // Keep the layout still while fading the envelope, then reveal the wish.
+    // Do not spin the button, rotate the flap, or translate the card.
+    btn.disabled = true;
+    btn.style.visibility = 'hidden';
+    closed.classList.add('fade-out');
+    setTimeout(()=>{
+      btn.style.display = 'none';
+      closed.style.display = 'none';
+      content.style.marginTop = '0';
+      content.hidden = false;
+      void content.offsetHeight;
+      requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>content.classList.add('show'));
+      });
+    }, 220);
     return;
   }
 
