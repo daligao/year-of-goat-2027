@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cft-content-growth-bot",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-20",
+  "ai": {
+    "binding": "AI"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "CONTENT_QUEUE"
+    }
+  ],
+  "triggers": {
+    "crons": ["17 1 * * 2,5"]
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.2
+  }
+}
