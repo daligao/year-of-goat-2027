@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://chinesefortunetools.online"
 WORKER = "https://cft-online-seo-bot.love0972.workers.dev"
+GA4_ID = "G-HY5MJJP86Z"
 ALLOWED = {"Chinese Zodiac","Feng Shui","Festivals & Customs","Lucky Symbols","Chinese Culture"}
 FUNNELS = {
     "zodiac": ("https://chinesefortunetools.com/chinese-zodiac/", "Find your exact Chinese zodiac sign", "Use the LiChun-accurate zodiac calculator →"),
@@ -20,6 +21,16 @@ FUNNELS = {
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 def esc(v): return html.escape(str(v or ""), quote=True)
+
+def ga4_snippet():
+    return f"""<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('js',new Date());
+gtag('config','{GA4_ID}');
+</script>"""
 
 def fetch_json(url):
     req = urllib.request.Request(url, headers={"User-Agent":"CFT-GitHub-Publisher/1.0"})
@@ -77,7 +88,7 @@ def render_article(p,a,slug):
 <meta property="og:title" content="{esc(a["title"])}"><meta property="og:description" content="{esc(a["meta_description"])}"><meta property="og:url" content="{canonical}"><meta property="og:type" content="article">
 <style>body{{margin:0;background:#fdf6e3;color:#1a1a2e;font-family:Georgia,serif;line-height:1.75}}nav{{background:#1a1a2e;padding:12px;text-align:center}}nav a{{color:#c9a84c;margin:0 10px;text-decoration:none;font-family:system-ui}}header,main{{max-width:820px;margin:auto;padding:38px 22px}}header{{text-align:center;padding-top:62px}}h1{{font-size:clamp(2rem,5vw,3.3rem);line-height:1.12}}h2{{border-left:4px solid #c9a84c;padding-left:12px}}.k{{color:#c0392b;font:700 12px system-ui;text-transform:uppercase;letter-spacing:1.2px}}.dek{{color:#555;font-size:1.08rem}}.note,.related,details{{background:#fff;border:1px solid #eadfbe;border-radius:12px;padding:16px 18px;margin:16px 0}}a{{color:#c0392b}}footer{{background:#1a1a2e;color:#aaa;text-align:center;padding:24px;font:13px system-ui}}footer a{{color:#c9a84c}}</style>
 <script type="application/ld+json">{json.dumps(article_schema,ensure_ascii=False)}</script>
-<script type="application/ld+json">{json.dumps(faq_schema,ensure_ascii=False)}</script></head>
+<script type="application/ld+json">{json.dumps(faq_schema,ensure_ascii=False)}</script>{ga4_snippet()}</head>
 <body><nav><a href="/">Culture Lab</a><a href="/2027/">2027</a><a href="/zodiac/">Zodiac</a><a href="/festival-countdown/">Festivals</a><a href="/learn/">Learn</a></nav>
 <header><div class="k">{esc(a["category"])}</div><h1>{esc(a["title"])}</h1><p class="dek">{esc(a["excerpt"])}</p><small>Published {date} · {word_count(a)} words</small></header>
 <main><div class="note"><strong>Cultural note:</strong> Zodiac, Feng Shui, luck, and symbolism are traditional cultural frameworks; interpretations vary by region, family, and school of thought.</div>
@@ -98,7 +109,7 @@ def render_index(log):
     for x in log.get("articles",[]):
         cards.append(f'<article><div class="cat">{esc(x.get("category"))}</div><h2><a href="/learn/{esc(x["slug"])}/">{esc(x["title"])}</a></h2><p>{esc(x.get("excerpt"))}</p><small>{esc(x.get("published"))} · {esc(x.get("wordCount"))} words</small></article>')
     body="".join(cards) or "<p>No guides published yet.</p>"
-    page=f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chinese Culture Guides — Chinese Culture Lab</title><meta name="description" content="Growing English guides about Chinese zodiac, Feng Shui, festivals, lucky symbolism, and cultural traditions."><link rel="canonical" href="{SITE}/learn/"><style>body{{margin:0;background:#fdf6e3;color:#1a1a2e;font-family:Georgia,serif}}nav{{background:#1a1a2e;padding:13px;text-align:center}}nav a{{color:#c9a84c;margin:0 10px;text-decoration:none}}main{{max-width:980px;margin:auto;padding:48px 20px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}}article{{background:#fff;border:1px solid #e8dfc8;border-radius:14px;padding:20px}}article a{{color:#1a1a2e;text-decoration:none}}.cat,small{{font:12px system-ui;color:#8a6000}}</style></head><body><nav><a href="/">Culture Lab</a><a href="/2027/">2027</a><a href="/zodiac/">Zodiac</a><a href="/learn/">Learn</a></nav><main><h1>Chinese Culture Guides</h1><p>A growing experiment in practical English guides about Chinese culture.</p><div class="grid">{body}</div></main></body></html>"""
+    page=f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chinese Culture Guides — Chinese Culture Lab</title><meta name="description" content="Growing English guides about Chinese zodiac, Feng Shui, festivals, lucky symbolism, and cultural traditions."><link rel="canonical" href="{SITE}/learn/">{ga4_snippet()}<style>body{{margin:0;background:#fdf6e3;color:#1a1a2e;font-family:Georgia,serif}}nav{{background:#1a1a2e;padding:13px;text-align:center}}nav a{{color:#c9a84c;margin:0 10px;text-decoration:none}}main{{max-width:980px;margin:auto;padding:48px 20px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}}article{{background:#fff;border:1px solid #e8dfc8;border-radius:14px;padding:20px}}article a{{color:#1a1a2e;text-decoration:none}}.cat,small{{font:12px system-ui;color:#8a6000}}</style></head><body><nav><a href="/">Culture Lab</a><a href="/2027/">2027</a><a href="/zodiac/">Zodiac</a><a href="/learn/">Learn</a></nav><main><h1>Chinese Culture Guides</h1><p>A growing experiment in practical English guides about Chinese culture.</p><div class="grid">{body}</div></main></body></html>"""
     d=ROOT/"learn"; d.mkdir(exist_ok=True); (d/"index.html").write_text(page,encoding="utf-8")
 
 def main():
