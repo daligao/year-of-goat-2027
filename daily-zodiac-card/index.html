@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Chinese Zodiac Fortune Card — Free Download</title>
+<meta name="description" content="Create your free daily Chinese zodiac fortune card from your birth year and month. Three beautiful themes, private browser-only calculations, and PNG sharing.">
+<link rel="canonical" href="https://chinesefortunetools.online/daily-zodiac-card/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daily Chinese Zodiac Fortune Card — Free Download">
+<meta property="og:description" content="Enter your birth year and month for a free daily zodiac fortune card. Three themes, nothing stored, nothing sent.">
+<meta property="og:url" content="https://chinesefortunetools.online/daily-zodiac-card/">
+<meta property="og:image" content="https://chinesefortunetools.online/daily-zodiac-card/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0F0F14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CultureLab">
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-NCLSMV4H"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','GT-NCLSMV4H');
+function ga(event,params){gtag('event',event,params||{});}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Daily Chinese Zodiac Fortune Card","url":"https://chinesefortunetools.online/daily-zodiac-card/","description":"Create your free daily Chinese zodiac fortune card from your birth year and month. Three beautiful themes, private browser-only calculations, and PNG sharing.","applicationCategory":"EntertainmentApplication","operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<style>
+:root{--gold:#c9a84c;--ink:#1a1a2e;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0F0F14;color:#F2EDE4;min-height:100vh;overflow-x:hidden;}
+a{color:var(--gold);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.nav{background:var(--ink);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{color:var(--gold);font-weight:bold;font-size:0.9rem;font-family:Georgia,serif;}
+.nav-back{color:#aaa;font-size:0.82rem;}
+.nav-back:hover{color:var(--gold);}
+</style>
+<link rel="stylesheet" href="/daily-zodiac-card/card.css">
+<script type="module" src="/daily-zodiac-card/card.js"></script>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <span class="nav-logo">🏮 ChineseFortuneTools</span>
+  <a class="nav-back" href="/">← Back to 2027 Guide</a>
+</nav>
+<main class="daily-page">
+<header class="daily-hero">
+<p class="daily-eyebrow">A LITTLE TRADITION. A MOMENT FOR YOU.</p>
+<h1>Daily Chinese Zodiac<br><em>Fortune Card</em></h1>
+<p>A fresh perspective for your day, wrapped in a little Chinese culture.</p>
+<div class="daily-badges"><span>Always free</span><span>No account</span><span>No AI</span></div>
+</header>
+<div class="daily-layout">
+<section class="daily-controls" aria-labelledby="create-title">
+<p class="daily-eyebrow">01 / MAKE IT YOURS</p><h2 id="create-title">Your daily ritual</h2>
+<p class="daily-privacy"><strong>Your birth details stay with you.</strong> All calculations happen locally in your browser. Your birth year and month are never uploaded or saved. No day, name, login, or payment needed.</p>
+<div class="daily-inputs">
+<div><label for="birth-year">Birth year</label><input id="birth-year" type="number" inputmode="numeric" min="1900" max="2100" placeholder="e.g. 1990" autocomplete="off" required aria-describedby="boundary-note"></div>
+<div><label for="birth-month">Birth month</label><select id="birth-month" required autocomplete="off" aria-describedby="boundary-note"><option value="">Select month</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div>
+</div>
+<p class="daily-note" id="boundary-note">Based on Lunar New Year, not January 1 or Li Chun. Without a birth day, we use the middle of your month. A small boundary error is possible near Lunar New Year.</p>
+<fieldset class="daily-themes"><legend>Choose a look</legend>
+<label><input type="radio" name="card-theme" value="red-gold" checked><span><i class="daily-swatch red"></i>Red &amp; gold</span></label>
+<label><input type="radio" name="card-theme" value="paper-cut"><span><i class="daily-swatch paper"></i>Paper cut</span></label>
+<label><input type="radio" name="card-theme" value="ink"><span><i class="daily-swatch ink"></i>Quiet ink</span></label>
+</fieldset>
+<button id="generate" class="daily-primary" type="button" disabled>Create my daily card ↗</button>
+<p id="input-error" class="daily-error" role="alert"></p>
+<p id="sign-note" class="daily-note" aria-live="polite"></p>
+<p class="daily-note">Privacy: this tool does not store personal data. Its analytics events contain only the zodiac sign and theme, never your birth year or month.</p>
+</section>
+<section class="daily-result" aria-label="Fortune card preview">
+<div class="daily-preview-label"><span>02 / TODAY'S KEEPSAKE</span><span>4:5 PORTRAIT</span></div>
+<div id="card-placeholder"><span aria-hidden="true">福</span><h2>A little luck.<br>A little reflection.</h2><p>Enter your birth year and month<br>to reveal today's card.</p></div>
+<canvas id="fortune-canvas" width="1080" height="1350" role="img" aria-label="Your daily zodiac card" hidden></canvas>
+<details id="reading-details" class="daily-reading" hidden><summary>Read today's card</summary><div id="card-transcript" aria-live="polite"></div></details>
+<div class="daily-actions"><button id="download" type="button" disabled>↓ Download PNG</button><button id="share" type="button" disabled>↗ Share card</button></div>
+<p id="action-status" class="daily-note" role="status">Loading local card collection…</p>
+<noscript><p>This tool needs JavaScript to calculate and draw cards locally. Enable JavaScript to use it; no birth details are sent to a server.</p></noscript>
+</section>
+</div>
+<section class="daily-explainer"><p class="daily-eyebrow">A CARD, NOT A PREDICTION</p><h2>Culture meets a small daily pause.</h2><p>Explore all 12 Chinese zodiac animals through playful prompts for overall fortune, love, work, and money, plus a lucky color, number, direction, and a thought for the day. These are original, locally stored reflections inspired by cultural motifs, not traditional divination or predictions.</p><p>The same zodiac gets the same card on the same date. A new card arrives at midnight on your device's local calendar. Changing the visual theme keeps your reading the same.</p><p><strong>For entertainment and cultural interest only.</strong> Lucky details are symbolic, not advice or a promise of outcomes.</p></section>
+<section class="daily-explainer" style="margin-top:40px;">
+<p><a href="/zodiac/">🐉 Not sure which zodiac sign you are? Try the Exact Zodiac Calculator →</a></p>
+<p style="margin-top:10px;"><a href="/red-envelope-open/">🧧 Also try Lucky Wishes — send a red envelope wish to a friend →</a></p>
+</section>
+<footer class="daily-footer"><span aria-hidden="true">☾</span><h2>Come back tomorrow<br>to unlock a new card.</h2><p>No reminders. No sign-up. Just a fresh moment.</p><a href="/">ChineseFortuneTools</a></footer>
+</main>
+</body></html>

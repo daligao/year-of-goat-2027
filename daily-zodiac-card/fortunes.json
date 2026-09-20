@@ -1,0 +1,1035 @@
+{
+  "overall": [
+    "Make room for one small beginning; steady attention is enough.",
+    "Choose a gentler pace and notice what you usually hurry past.",
+    "Let curiosity guide one conversation or a new idea today.",
+    "Finish a small loose end before inviting something new in.",
+    "Give a familiar routine a thoughtful, refreshing adjustment.",
+    "Leave some space in your plans for an unexpected delight.",
+    "Bring your attention back to what is within reach today.",
+    "Choose progress you can repeat over a dramatic first step.",
+    "A quiet moment can help you name what matters most.",
+    "Try looking at an old question from a different angle.",
+    "Turn a good intention into one simple action today.",
+    "Notice the support already around you, however ordinary.",
+    "Put care into a small task without rushing the result.",
+    "Welcome a fresh perspective while keeping your own judgment.",
+    "Give yourself permission to learn without getting it perfect.",
+    "Mark one thing that went well before planning what is next.",
+    "Choose a manageable challenge and give it your full attention.",
+    "Let today have a clear priority and a little breathing room.",
+    "Find a small way to make your surroundings more welcoming.",
+    "Take a pause before responding to something unexpected.",
+    "Keep a useful habit and release an unnecessary expectation.",
+    "Allow a simple pleasure to have a place in your day.",
+    "Bring patience to something that is still taking shape.",
+    "Carry a spirit of generosity into one ordinary moment."
+  ],
+  "love": [
+    "Offer someone your full attention, without reaching for a reply.",
+    "Send a kind message with no expectation of an immediate answer.",
+    "Make room for both honest words and patient listening.",
+    "Ask a thoughtful question instead of making an assumption.",
+    "Appreciate a small act of care that often goes unnoticed.",
+    "Share a simple pleasure with a friend or someone you love.",
+    "Keep a gentle boundary that helps a relationship feel balanced.",
+    "Let warmth show in the way you greet someone today.",
+    "Say thank you for something specific and meaningful.",
+    "Give yourself the kindness you would offer a good friend.",
+    "Invite a conversation without trying to control its direction.",
+    "Respect a different point of view while sharing your own.",
+    "Choose a small act of care over a grand gesture.",
+    "Make a little time for a connection you want to nurture.",
+    "Remember that quiet companionship can be enough.",
+    "Express a need clearly rather than hoping it will be guessed.",
+    "Celebrate someone else without comparing your own path.",
+    "Check in with yourself before agreeing to another commitment.",
+    "Share a happy memory and let the conversation unfold.",
+    "Give a sincere compliment about effort or thoughtfulness.",
+    "Notice how it feels to be heard, and offer that to someone.",
+    "Choose a calm moment for a conversation that matters.",
+    "Let affection be simple, honest, and free of pressure.",
+    "Make space for friendship as well as time on your own."
+  ],
+  "work": [
+    "Start with the smallest useful step on your main task.",
+    "Write down one clear priority before opening more tabs.",
+    "Give a difficult task a short, focused window of attention.",
+    "Ask for clarification where an assumption could create rework.",
+    "Leave your next step written down before taking a break.",
+    "Share useful context with someone who needs it.",
+    "Notice a process that could be made a little simpler.",
+    "Protect a quiet block of time for thoughtful work.",
+    "Review a detail that deserves a second look.",
+    "Break a broad goal into something you can finish today.",
+    "Acknowledge a colleague's contribution with specific thanks.",
+    "Set a realistic stopping point before beginning a task.",
+    "Try a different approach to a familiar obstacle.",
+    "Make your workspace easier to return to tomorrow.",
+    "Collect your questions before seeking feedback.",
+    "Let a rough first draft give you something to improve.",
+    "Complete one open loop before starting another.",
+    "Check that your effort is serving the actual goal.",
+    "Take a short pause when your attention starts to drift.",
+    "Explain one idea in simpler language.",
+    "Keep a note of a lesson you want to use again.",
+    "Ask what would make the next step easier for everyone.",
+    "Balance careful planning with a small practical experiment.",
+    "Recognize steady effort even when the result is unfinished."
+  ],
+  "money": [
+    "Pause before an impulse purchase and name what you need.",
+    "Appreciate something useful that you already own.",
+    "Give a recurring expense a moment of thoughtful attention.",
+    "Make space to distinguish a wish from a practical need.",
+    "Choose a low-cost pleasure that makes today feel richer.",
+    "Repair, reuse, or rediscover an item before replacing it.",
+    "Write down a spending question you want to understand better.",
+    "Notice which purchases bring lasting usefulness or enjoyment.",
+    "Let a thoughtful pause come before a money decision.",
+    "Organize one receipt or record you may need later.",
+    "Compare the full cost, not just the headline price.",
+    "Enjoy generosity in a way that fits your own means.",
+    "Borrow an idea for enjoying more with less.",
+    "Take time to read a detail before making a commitment.",
+    "Look at a financial choice with curiosity, not self-criticism.",
+    "Consider a free alternative for one small plan today.",
+    "Give your future self a clear note about a pending expense.",
+    "Notice when convenience is worth its cost to you.",
+    "Separate a passing mood from a buying decision.",
+    "Value the time and care behind something you use daily.",
+    "Make an ordinary meal or outing feel special without excess.",
+    "Give a wish-list item time before deciding.",
+    "Consider what enough looks like for one part of your life.",
+    "Ask a practical question before accepting a sales promise."
+  ],
+  "quotes": [
+    "Small steps are still a way forward.",
+    "Let patience have a place at the table.",
+    "A little care changes an ordinary moment.",
+    "Make room for what helps you grow.",
+    "Today can be simple and still be meaningful.",
+    "The next kind choice is close at hand.",
+    "A quiet beginning is a beginning all the same.",
+    "Carry less hurry and a little more curiosity.",
+    "Notice the good that asks for no applause.",
+    "You can start with what is already here.",
+    "Let your attention be a gift.",
+    "A pause can be part of the path.",
+    "Keep a little space for wonder.",
+    "Good things can be tended one day at a time.",
+    "Let enough be enough for this moment.",
+    "Care is a practice, not a performance.",
+    "A fresh view can begin with a small question.",
+    "Leave a little kindness wherever you go.",
+    "One thoughtful choice belongs to you today.",
+    "Be gentle with what is still unfolding.",
+    "Slow growth is still growth.",
+    "Make something ordinary a little more beautiful.",
+    "Your pace can leave room for peace.",
+    "Begin again without making a grand announcement.",
+    "A clear intention can travel a long way.",
+    "There is room for both courage and rest.",
+    "Let gratitude be specific today.",
+    "Choose the small thing you can do well.",
+    "Leave tomorrow some room to surprise you.",
+    "Listening is a quiet form of generosity.",
+    "Keep the lesson and loosen your grip on the mistake."
+  ],
+  "zodiacs": [
+    {
+      "id": "rat",
+      "name": "Rat",
+      "symbol": "鼠"
+    },
+    {
+      "id": "ox",
+      "name": "Ox",
+      "symbol": "牛"
+    },
+    {
+      "id": "tiger",
+      "name": "Tiger",
+      "symbol": "虎"
+    },
+    {
+      "id": "rabbit",
+      "name": "Rabbit",
+      "symbol": "兔"
+    },
+    {
+      "id": "dragon",
+      "name": "Dragon",
+      "symbol": "龍"
+    },
+    {
+      "id": "snake",
+      "name": "Snake",
+      "symbol": "蛇"
+    },
+    {
+      "id": "horse",
+      "name": "Horse",
+      "symbol": "馬"
+    },
+    {
+      "id": "goat",
+      "name": "Goat",
+      "symbol": "羊"
+    },
+    {
+      "id": "monkey",
+      "name": "Monkey",
+      "symbol": "猴"
+    },
+    {
+      "id": "rooster",
+      "name": "Rooster",
+      "symbol": "雞"
+    },
+    {
+      "id": "dog",
+      "name": "Dog",
+      "symbol": "狗"
+    },
+    {
+      "id": "pig",
+      "name": "Pig",
+      "symbol": "豬"
+    }
+  ],
+  "colors": [
+    "Jade green",
+    "Vermilion",
+    "Warm gold",
+    "Ink blue",
+    "Plum purple",
+    "Ivory",
+    "Peach pink",
+    "Bamboo green",
+    "Terracotta",
+    "Sky blue",
+    "Amber",
+    "Soft silver"
+  ],
+  "directions": [
+    "North",
+    "Northeast",
+    "East",
+    "Southeast",
+    "South",
+    "Southwest",
+    "West",
+    "Northwest"
+  ],
+  "newYears": {
+    "1900": [
+      1,
+      31
+    ],
+    "1901": [
+      2,
+      19
+    ],
+    "1902": [
+      2,
+      8
+    ],
+    "1903": [
+      1,
+      29
+    ],
+    "1904": [
+      2,
+      16
+    ],
+    "1905": [
+      2,
+      4
+    ],
+    "1906": [
+      1,
+      25
+    ],
+    "1907": [
+      2,
+      13
+    ],
+    "1908": [
+      2,
+      2
+    ],
+    "1909": [
+      1,
+      22
+    ],
+    "1910": [
+      2,
+      10
+    ],
+    "1911": [
+      1,
+      30
+    ],
+    "1912": [
+      2,
+      18
+    ],
+    "1913": [
+      2,
+      6
+    ],
+    "1914": [
+      1,
+      26
+    ],
+    "1915": [
+      2,
+      14
+    ],
+    "1916": [
+      2,
+      3
+    ],
+    "1917": [
+      1,
+      23
+    ],
+    "1918": [
+      2,
+      11
+    ],
+    "1919": [
+      2,
+      1
+    ],
+    "1920": [
+      2,
+      20
+    ],
+    "1921": [
+      2,
+      8
+    ],
+    "1922": [
+      1,
+      28
+    ],
+    "1923": [
+      2,
+      16
+    ],
+    "1924": [
+      2,
+      5
+    ],
+    "1925": [
+      1,
+      24
+    ],
+    "1926": [
+      2,
+      13
+    ],
+    "1927": [
+      2,
+      2
+    ],
+    "1928": [
+      1,
+      23
+    ],
+    "1929": [
+      2,
+      10
+    ],
+    "1930": [
+      1,
+      30
+    ],
+    "1931": [
+      2,
+      17
+    ],
+    "1932": [
+      2,
+      6
+    ],
+    "1933": [
+      1,
+      26
+    ],
+    "1934": [
+      2,
+      14
+    ],
+    "1935": [
+      2,
+      4
+    ],
+    "1936": [
+      1,
+      24
+    ],
+    "1937": [
+      2,
+      11
+    ],
+    "1938": [
+      1,
+      31
+    ],
+    "1939": [
+      2,
+      19
+    ],
+    "1940": [
+      2,
+      8
+    ],
+    "1941": [
+      1,
+      27
+    ],
+    "1942": [
+      2,
+      15
+    ],
+    "1943": [
+      2,
+      5
+    ],
+    "1944": [
+      1,
+      25
+    ],
+    "1945": [
+      2,
+      13
+    ],
+    "1946": [
+      2,
+      2
+    ],
+    "1947": [
+      1,
+      22
+    ],
+    "1948": [
+      2,
+      10
+    ],
+    "1949": [
+      1,
+      29
+    ],
+    "1950": [
+      2,
+      17
+    ],
+    "1951": [
+      2,
+      6
+    ],
+    "1952": [
+      1,
+      27
+    ],
+    "1953": [
+      2,
+      14
+    ],
+    "1954": [
+      2,
+      4
+    ],
+    "1955": [
+      1,
+      24
+    ],
+    "1956": [
+      2,
+      12
+    ],
+    "1957": [
+      1,
+      31
+    ],
+    "1958": [
+      2,
+      18
+    ],
+    "1959": [
+      2,
+      8
+    ],
+    "1960": [
+      1,
+      28
+    ],
+    "1961": [
+      2,
+      15
+    ],
+    "1962": [
+      2,
+      5
+    ],
+    "1963": [
+      1,
+      25
+    ],
+    "1964": [
+      2,
+      13
+    ],
+    "1965": [
+      2,
+      2
+    ],
+    "1966": [
+      1,
+      21
+    ],
+    "1967": [
+      2,
+      9
+    ],
+    "1968": [
+      1,
+      30
+    ],
+    "1969": [
+      2,
+      17
+    ],
+    "1970": [
+      2,
+      6
+    ],
+    "1971": [
+      1,
+      27
+    ],
+    "1972": [
+      2,
+      15
+    ],
+    "1973": [
+      2,
+      3
+    ],
+    "1974": [
+      1,
+      23
+    ],
+    "1975": [
+      2,
+      11
+    ],
+    "1976": [
+      1,
+      31
+    ],
+    "1977": [
+      2,
+      18
+    ],
+    "1978": [
+      2,
+      7
+    ],
+    "1979": [
+      1,
+      28
+    ],
+    "1980": [
+      2,
+      16
+    ],
+    "1981": [
+      2,
+      5
+    ],
+    "1982": [
+      1,
+      25
+    ],
+    "1983": [
+      2,
+      13
+    ],
+    "1984": [
+      2,
+      2
+    ],
+    "1985": [
+      2,
+      20
+    ],
+    "1986": [
+      2,
+      9
+    ],
+    "1987": [
+      1,
+      29
+    ],
+    "1988": [
+      2,
+      17
+    ],
+    "1989": [
+      2,
+      6
+    ],
+    "1990": [
+      1,
+      27
+    ],
+    "1991": [
+      2,
+      15
+    ],
+    "1992": [
+      2,
+      4
+    ],
+    "1993": [
+      1,
+      23
+    ],
+    "1994": [
+      2,
+      10
+    ],
+    "1995": [
+      1,
+      31
+    ],
+    "1996": [
+      2,
+      19
+    ],
+    "1997": [
+      2,
+      7
+    ],
+    "1998": [
+      1,
+      28
+    ],
+    "1999": [
+      2,
+      16
+    ],
+    "2000": [
+      2,
+      5
+    ],
+    "2001": [
+      1,
+      24
+    ],
+    "2002": [
+      2,
+      12
+    ],
+    "2003": [
+      2,
+      1
+    ],
+    "2004": [
+      1,
+      22
+    ],
+    "2005": [
+      2,
+      9
+    ],
+    "2006": [
+      1,
+      29
+    ],
+    "2007": [
+      2,
+      18
+    ],
+    "2008": [
+      2,
+      7
+    ],
+    "2009": [
+      1,
+      26
+    ],
+    "2010": [
+      2,
+      14
+    ],
+    "2011": [
+      2,
+      3
+    ],
+    "2012": [
+      1,
+      23
+    ],
+    "2013": [
+      2,
+      10
+    ],
+    "2014": [
+      1,
+      31
+    ],
+    "2015": [
+      2,
+      19
+    ],
+    "2016": [
+      2,
+      8
+    ],
+    "2017": [
+      1,
+      28
+    ],
+    "2018": [
+      2,
+      16
+    ],
+    "2019": [
+      2,
+      5
+    ],
+    "2020": [
+      1,
+      25
+    ],
+    "2021": [
+      2,
+      12
+    ],
+    "2022": [
+      2,
+      1
+    ],
+    "2023": [
+      1,
+      22
+    ],
+    "2024": [
+      2,
+      10
+    ],
+    "2025": [
+      1,
+      29
+    ],
+    "2026": [
+      2,
+      17
+    ],
+    "2027": [
+      2,
+      7
+    ],
+    "2028": [
+      1,
+      26
+    ],
+    "2029": [
+      2,
+      13
+    ],
+    "2030": [
+      2,
+      2
+    ],
+    "2031": [
+      1,
+      23
+    ],
+    "2032": [
+      2,
+      11
+    ],
+    "2033": [
+      1,
+      31
+    ],
+    "2034": [
+      2,
+      19
+    ],
+    "2035": [
+      2,
+      8
+    ],
+    "2036": [
+      1,
+      28
+    ],
+    "2037": [
+      2,
+      15
+    ],
+    "2038": [
+      2,
+      4
+    ],
+    "2039": [
+      1,
+      24
+    ],
+    "2040": [
+      2,
+      12
+    ],
+    "2041": [
+      2,
+      1
+    ],
+    "2042": [
+      1,
+      22
+    ],
+    "2043": [
+      2,
+      10
+    ],
+    "2044": [
+      1,
+      30
+    ],
+    "2045": [
+      2,
+      17
+    ],
+    "2046": [
+      2,
+      6
+    ],
+    "2047": [
+      1,
+      26
+    ],
+    "2048": [
+      2,
+      14
+    ],
+    "2049": [
+      2,
+      2
+    ],
+    "2050": [
+      1,
+      23
+    ],
+    "2051": [
+      2,
+      11
+    ],
+    "2052": [
+      2,
+      1
+    ],
+    "2053": [
+      2,
+      19
+    ],
+    "2054": [
+      2,
+      8
+    ],
+    "2055": [
+      1,
+      28
+    ],
+    "2056": [
+      2,
+      15
+    ],
+    "2057": [
+      2,
+      4
+    ],
+    "2058": [
+      1,
+      24
+    ],
+    "2059": [
+      2,
+      12
+    ],
+    "2060": [
+      2,
+      2
+    ],
+    "2061": [
+      1,
+      21
+    ],
+    "2062": [
+      2,
+      9
+    ],
+    "2063": [
+      1,
+      29
+    ],
+    "2064": [
+      2,
+      17
+    ],
+    "2065": [
+      2,
+      5
+    ],
+    "2066": [
+      1,
+      26
+    ],
+    "2067": [
+      2,
+      14
+    ],
+    "2068": [
+      2,
+      3
+    ],
+    "2069": [
+      1,
+      23
+    ],
+    "2070": [
+      2,
+      11
+    ],
+    "2071": [
+      1,
+      31
+    ],
+    "2072": [
+      2,
+      19
+    ],
+    "2073": [
+      2,
+      7
+    ],
+    "2074": [
+      1,
+      27
+    ],
+    "2075": [
+      2,
+      15
+    ],
+    "2076": [
+      2,
+      5
+    ],
+    "2077": [
+      1,
+      24
+    ],
+    "2078": [
+      2,
+      12
+    ],
+    "2079": [
+      2,
+      2
+    ],
+    "2080": [
+      1,
+      22
+    ],
+    "2081": [
+      2,
+      9
+    ],
+    "2082": [
+      1,
+      29
+    ],
+    "2083": [
+      2,
+      17
+    ],
+    "2084": [
+      2,
+      6
+    ],
+    "2085": [
+      1,
+      26
+    ],
+    "2086": [
+      2,
+      14
+    ],
+    "2087": [
+      2,
+      3
+    ],
+    "2088": [
+      1,
+      24
+    ],
+    "2089": [
+      2,
+      10
+    ],
+    "2090": [
+      1,
+      30
+    ],
+    "2091": [
+      2,
+      18
+    ],
+    "2092": [
+      2,
+      7
+    ],
+    "2093": [
+      1,
+      27
+    ],
+    "2094": [
+      2,
+      15
+    ],
+    "2095": [
+      2,
+      5
+    ],
+    "2096": [
+      1,
+      25
+    ],
+    "2097": [
+      2,
+      12
+    ],
+    "2098": [
+      2,
+      1
+    ],
+    "2099": [
+      1,
+      21
+    ],
+    "2100": [
+      2,
+      9
+    ]
+  },
+  "_notes": {
+    "content": "Original entertainment reflections, not quotations or predictions. Version 1: keep existing entries and order stable for same-date determinism.",
+    "calendar": "Lunar New Year dates 1900–2100 generated at build time using Intl Chinese calendar / ICU. Browser lookup assumes day 15; boundary month is explicitly marked."
+  }
+}

@@ -52,6 +52,8 @@
   .goals-banner .gb-text{display:flex;flex-direction:column;gap:2px;text-align:left;}
   .goals-banner .gb-text strong{font-size:1rem;}
   .goals-banner .gb-text span{font-size:0.85rem;opacity:0.9;}
+  .goals-banner.gb-envelope{background:linear-gradient(135deg,#a8482f,#5c2317);box-shadow:0 6px 20px rgba(168,72,47,0.25);}
+  .goals-banner.gb-card{background:linear-gradient(135deg,#0F0F14,#2d1b4e);box-shadow:0 6px 20px rgba(45,27,78,0.3);}
   @media(max-width:480px){.goals-banner{flex-direction:column;text-align:center;padding:18px;}.goals-banner .gb-text{text-align:center;}}
 
   /* ZODIAC FINDER */
@@ -292,6 +294,24 @@
   </span>
 </a>
 
+<!-- LUCKY WISHES BANNER -->
+<a class="goals-banner gb-envelope" href="/red-envelope-open/" onclick="gtag('event','banner_click',{tool:'red-envelope-open',from:'homepage_banner'})">
+  <span class="gb-emoji">🧧</span>
+  <span class="gb-text">
+    <strong>Send a Lucky Wishes red envelope.</strong>
+    <span>Pick a wish, get a link — no real money, they send one right back →</span>
+  </span>
+</a>
+
+<!-- DAILY ZODIAC CARD BANNER -->
+<a class="goals-banner gb-card" href="/daily-zodiac-card/" onclick="gtag('event','banner_click',{tool:'daily-zodiac-card',from:'homepage_banner'})">
+  <span class="gb-emoji">🎴</span>
+  <span class="gb-text">
+    <strong>Get today's Chinese zodiac fortune card.</strong>
+    <span>Free daily card from your birth year — 3 themes, downloadable PNG →</span>
+  </span>
+</a>
+
 <!-- ZODIAC FINDER -->
 <section class="section">
   <h2>Find Your 2027 Fortune</h2>
@@ -372,6 +392,16 @@ document.getElementById('birth-year').addEventListener('keydown', function(e){ i
       <div class="t-desc">Wedding, CNY, birthday — pick the occasion and relationship to get the right amount with lucky numbers.</div>
       <div class="t-cta">Calculate Amount →</div>
     </a>
+    <a class="tool-card" href="/red-envelope-open/" onclick="gtag('event','tool_click',{tool:'red-envelope-open',from:'homepage'})">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div class="t-emoji">🧧</div>
+        <span class="exp-badge testing">🧪 Testing</span>
+      </div>
+      <div class="t-sub">Open a Red Envelope, Send One Back</div>
+      <div class="t-title">Lucky Wishes</div>
+      <div class="t-desc">Pick a wish and a lucky number, get a link. They open it, then send one right back — no real money, no app.</div>
+      <div class="t-cta">Send a Wish →</div>
+    </a>
     <a class="tool-card" href="/zodiac/" onclick="gtag('event','tool_click',{tool:'zodiac',from:'homepage'})">
       <div style="display:flex;justify-content:space-between;align-items:flex-start">
         <div class="t-emoji">🐉</div>
@@ -381,6 +411,16 @@ document.getElementById('birth-year').addEventListener('keydown', function(e){ i
       <div class="t-title">Your Real Chinese Zodiac Sign</div>
       <div class="t-desc">Most sites get January/February birthdays wrong. Enter your full date for the Spring-Festival-accurate result.</div>
       <div class="t-cta">Find My Sign →</div>
+    </a>
+    <a class="tool-card" href="/daily-zodiac-card/" onclick="gtag('event','tool_click',{tool:'daily-zodiac-card',from:'homepage'})">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div class="t-emoji">🎴</div>
+        <span class="exp-badge testing">🧪 Testing</span>
+      </div>
+      <div class="t-sub">A Fresh Card Every Day</div>
+      <div class="t-title">Daily Zodiac Fortune Card</div>
+      <div class="t-desc">Enter your birth year and month for a free daily card — 3 themes, downloadable PNG, nothing stored.</div>
+      <div class="t-cta">Get Today's Card →</div>
     </a>
     <a class="tool-card" href="/kinship/" onclick="gtag('event','tool_click',{tool:'kinship',from:'homepage'})">
       <div style="display:flex;justify-content:space-between;align-items:flex-start">

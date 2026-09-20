@@ -40,6 +40,22 @@
       "cta": "Calculate Amount →"
     },
     {
+      "id": "red-envelope-open",
+      "title": "Lucky Wishes",
+      "subtitle": "Open a Red Envelope, Send One Back",
+      "emoji": "🧧",
+      "url": "/red-envelope-open/",
+      "status": "testing",
+      "stage": "lab",
+      "launched": "2026-09-20",
+      "review_after_days": 60,
+      "priority": 0.8,
+      "tags": ["cny","gifts","2027","share"],
+      "funnel": "chinesefortunetools.com/chinese-new-year-2026/",
+      "description": "Send a playful Lucky Wishes red envelope with a wish and a lucky number — no real money. They open it, then send one right back.",
+      "cta": "Send a Wish →"
+    },
+    {
       "id": "zodiac",
       "title": "Exact Zodiac Calculator",
       "subtitle": "Spring Festival Boundary Handled",
@@ -54,6 +70,22 @@
       "funnel": "chinesefortunetools.com/chinese-zodiac/",
       "description": "Most calculators get Jan/Feb birthdays wrong. Enter your full birth date for the accurate result.",
       "cta": "Find My Sign →"
+    },
+    {
+      "id": "daily-zodiac-card",
+      "title": "Daily Zodiac Fortune Card",
+      "subtitle": "A Fresh Card Every Day",
+      "emoji": "🎴",
+      "url": "/daily-zodiac-card/",
+      "status": "testing",
+      "stage": "lab",
+      "launched": "2026-09-20",
+      "review_after_days": 60,
+      "priority": 0.8,
+      "tags": ["zodiac","daily","share","download"],
+      "funnel": "chinesefortunetools.com/chinese-zodiac/",
+      "description": "Enter your birth year and month for a free daily zodiac fortune card — 3 themes, downloadable PNG, nothing stored.",
+      "cta": "Get Today's Card →"
     },
     {
       "id": "kinship",
