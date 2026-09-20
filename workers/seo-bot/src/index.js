@@ -17,6 +17,15 @@ const SITEMAP_PATHS = ["/sitemap.xml", "/wp-sitemap.xml", "/sitemap_index.xml"];
 const MAX_CHILD_SITEMAPS = 8;
 const MAX_AUDIT_PAGES = 30;
 
+const FUNNEL_TARGETS = {
+  "zodiac": "https://chinesefortunetools.com/chinese-zodiac/",
+  "bazi": "https://chinesefortunetools.com/bazi-calculator/",
+  "five-elements": "https://chinesefortunetools.com/five-elements/",
+  "feng-shui": "https://chinesefortunetools.com/feng-shui/",
+  "2027": "https://chinesefortunetools.com/2027/",
+  "home": "https://chinesefortunetools.com/"
+};
+
 function json(data, status = 200) {
   return new Response(JSON.stringify(data, null, 2), {
     status,
@@ -343,6 +352,136 @@ async function checkSites(env) {
   return rows;
 }
 
+function validArticleSlug(value) {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(String(value || "")) &&
+    String(value || "").length <= 100;
+}
+
+function growthKey(article, funnel) {
+  return "growth:click:" + article + ":" + funnel;
+}
+
+async function incrementKvNumber(env, key) {
+  if (!env.CONTENT_QUEUE) return 0;
+  const current = Number(await env.CONTENT_QUEUE.get(key) || "0");
+  const next = Number.isFinite(current) ? current + 1 : 1;
+  await env.CONTENT_QUEUE.put(key, String(next));
+  return next;
+}
+
+async function recordGrowthClick(env, article, funnel) {
+  const total = await incrementKvNumber(env, growthKey(article, funnel));
+  const day = new Date().toISOString().slice(0, 10);
+  await incrementKvNumber(env, "growth:daily:" + day + ":" + article + ":" + funnel);
+  return total;
+}
+
+function destinationFor(funnel, article) {
+  const base = FUNNEL_TARGETS[funnel] || FUNNEL_TARGETS.home;
+  const target = new URL(base);
+  target.searchParams.set("utm_source", "chinesefortunetools.online");
+  target.searchParams.set("utm_medium", "content");
+  target.searchParams.set("utm_campaign", "auto-growth");
+  target.searchParams.set("utm_content", article);
+  return target.toString();
+}
+
+async function loadPublishedContentLog() {
+  const response = await fetch("https://chinesefortunetools.online/data/ai-content-log.json", {
+    headers: { "user-agent": "CFT-Growth-Dashboard/1.0" },
+    cf: { cacheTtl: 60, cacheEverything: true }
+  });
+  if (!response.ok) throw new Error("Content log HTTP " + response.status);
+  return response.json();
+}
+
+async function growthStatus(env) {
+  const log = await loadPublishedContentLog();
+  const articles = Array.isArray(log.articles) ? log.articles : [];
+  const rows = await Promise.all(articles.map(async (item) => {
+    const funnel = FUNNEL_TARGETS[item.funnelKey] ? item.funnelKey : "home";
+    const clicks = env.CONTENT_QUEUE
+      ? Number(await env.CONTENT_QUEUE.get(growthKey(item.slug, funnel)) || "0")
+      : 0;
+    return {
+      slug: item.slug,
+      title: item.title,
+      category: item.category,
+      published: item.published,
+      wordCount: item.wordCount,
+      funnelKey: funnel,
+      funnelUrl: FUNNEL_TARGETS[funnel],
+      articleUrl: "https://chinesefortunetools.online/learn/" + item.slug + "/",
+      clicks: Number.isFinite(clicks) ? clicks : 0
+    };
+  }));
+
+  rows.sort((a, b) => b.clicks - a.clicks || String(b.published).localeCompare(String(a.published)));
+
+  return {
+    generatedAt: new Date().toISOString(),
+    articles: rows.length,
+    totalClicks: rows.reduce((sum, row) => sum + row.clicks, 0),
+    rows
+  };
+}
+
+function growthDashboardHtml() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Content Growth Dashboard</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f3f4f6}
+*{box-sizing:border-box}body{margin:0}.wrap{max-width:1180px;margin:0 auto;padding:30px 18px 48px}
+h1{margin:0 0 6px;font-size:30px}.sub{color:#6b7280;margin:0 0 22px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.stat{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:17px}.stat strong{display:block;font-size:26px}.stat span{font-size:13px;color:#6b7280}
+.panel{background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:13px 14px;border-bottom:1px solid #eef0f2;font-size:13px;vertical-align:top}
+th{background:#f9fafb;color:#6b7280;font-weight:700}.title{font-weight:750;font-size:14px}.muted{color:#6b7280}.pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef2ff;color:#3730a3;font-weight:700}
+.clicks{font-size:20px;font-weight:800}.links a{display:inline-block;margin:0 10px 5px 0;text-decoration:none;color:#2563eb}.note{margin-top:16px;font-size:13px;color:#6b7280}
+@media(max-width:760px){.stats{grid-template-columns:1fr}.panel{overflow:auto}table{min-width:780px}}
+</style>
+</head>
+<body><main class="wrap">
+<h1>Content Growth Dashboard</h1>
+<p class="sub">ChineseFortuneTools.online → ChineseFortuneTools.com funnel tracking</p>
+<section class="stats">
+<div class="stat"><strong id="articles">—</strong><span>Published guides</span></div>
+<div class="stat"><strong id="clicks">—</strong><span>Tracked CTA clicks</span></div>
+<div class="stat"><strong id="updated">—</strong><span>Dashboard refresh</span></div>
+</section>
+<section class="panel">
+<table>
+<thead><tr><th>Article</th><th>Published</th><th>Funnel</th><th>CTA clicks</th><th>Links</th></tr></thead>
+<tbody id="rows"><tr><td colspan="5">Loading…</td></tr></tbody>
+</table>
+</section>
+<p class="note">Clicks are counted by the Worker before a 302 redirect to the main site. UTM parameters are preserved for GA4. GSC impressions/clicks can be added in the next phase.</p>
+</main>
+<script>
+async function load(){
+  const res=await fetch("/growth/status",{cache:"no-store"});
+  const data=await res.json();
+  document.getElementById("articles").textContent=data.articles||0;
+  document.getElementById("clicks").textContent=data.totalClicks||0;
+  document.getElementById("updated").textContent=new Date(data.generatedAt).toLocaleTimeString();
+  const rows=(data.rows||[]).map(r=>`
+    <tr>
+      <td><div class="title">${r.title||r.slug}</div><div class="muted">${r.category||""}</div></td>
+      <td>${r.published||"—"}</td>
+      <td><span class="pill">${r.funnelKey}</span><div class="muted">${r.funnelUrl}</div></td>
+      <td><div class="clicks">${r.clicks}</div></td>
+      <td class="links"><a href="${r.articleUrl}" target="_blank">Article</a><a href="${r.funnelUrl}" target="_blank">Target</a></td>
+    </tr>`).join("");
+  document.getElementById("rows").innerHTML=rows||'<tr><td colspan="5">No published guides yet.</td></tr>';
+}
+load().catch(err=>{document.getElementById("rows").innerHTML='<tr><td colspan="5">Failed to load growth data.</td></tr>';});
+</script>
+</body></html>`;
+}
+
 function dashboardHtml() {
   const siteRows = SITES.map((site) => `
     <article class="card" data-site="${site.host}">
@@ -476,6 +615,8 @@ export default {
         sites: SITES.length,
         endpoints: {
           dashboard: "/dashboard",
+          growthDashboard: "/growth-dashboard",
+          growthStatus: "/growth/status",
           contentStatus: "/content/status",
           contentLatest: "/content/latest",
           sites: "/sites",
@@ -488,6 +629,29 @@ export default {
 
     if (reqUrl.pathname === "/dashboard") {
       return html(dashboardHtml());
+    }
+
+    if (reqUrl.pathname === "/growth-dashboard") {
+      return html(growthDashboardHtml());
+    }
+
+    if (reqUrl.pathname === "/growth/status") {
+      try {
+        return json(await growthStatus(env));
+      } catch (error) {
+        return json({ error: String(error) }, 500);
+      }
+    }
+
+    if (reqUrl.pathname.startsWith("/go/")) {
+      const funnel = decodeURIComponent(reqUrl.pathname.slice(4));
+      const article = reqUrl.searchParams.get("article") || "";
+      if (!FUNNEL_TARGETS[funnel] || !validArticleSlug(article)) {
+        return json({ error: "Invalid funnel or article" }, 400);
+      }
+
+      await recordGrowthClick(env, article, funnel);
+      return Response.redirect(destinationFor(funnel, article), 302);
     }
 
     if (reqUrl.pathname === "/content/latest") {
