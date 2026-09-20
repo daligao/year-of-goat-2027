@@ -26,7 +26,39 @@ function findTag(html, tagName, attrName, attrValue) {
   }) || null;
 }
 
-async function renderedHtml(env, url) {
+function analyzeHtml(url, html, source) {
+  const title = match(html, /<title[^>]*>([\s\S]*?)<\/title>/i);
+
+  const descriptionTag = findTag(html, "meta", "name", "description");
+  const canonicalTag = findTag(html, "link", "rel", "canonical");
+  const robotsTag = findTag(html, "meta", "name", "robots");
+
+  const description = descriptionTag ? getAttr(descriptionTag, "content") : null;
+  const canonical = canonicalTag ? getAttr(canonicalTag, "href") : null;
+  const robots = robotsTag ? getAttr(robotsTag, "content") : null;
+  const h1Count = (html.match(/<h1\b[^>]*>/gi) || []).length;
+
+  const issues = [];
+  if (!title) issues.push("Missing title");
+  if (!description) issues.push("Missing meta description");
+  if (!canonical) issues.push("Missing canonical");
+  if (h1Count === 0) issues.push("Missing H1");
+  if (h1Count > 1) issues.push(`Multiple H1 tags: ${h1Count}`);
+
+  return {
+    target: url,
+    source,
+    title,
+    description,
+    canonical,
+    robots,
+    h1Count,
+    issues,
+    result: issues.length === 0 ? "PASS" : "WARNING"
+  };
+}
+
+async function browserHtml(env, url) {
   const rendered = await env.BROWSER.quickAction("content", {
     url,
     gotoOptions: {
@@ -53,41 +85,34 @@ async function renderedHtml(env, url) {
   return html;
 }
 
-async function auditPage(env, url) {
+async function directHtml(url) {
+  const response = await fetch(url, {
+    redirect: "follow",
+    headers: { "user-agent": "CFT-SEO-Bot/1.0" }
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
+  return response.text();
+}
+
+async function auditPage(env, url, mode = "browser") {
   try {
-    const html = await renderedHtml(env, url);
+    const html = mode === "direct"
+      ? await directHtml(url)
+      : await browserHtml(env, url);
 
-    const title = match(html, /<title[^>]*>([\s\S]*?)<\/title>/i);
+    if (!html || !/<html\b/i.test(html)) {
+      throw new Error(`No usable HTML returned by ${mode}`);
+    }
 
-    const descriptionTag = findTag(html, "meta", "name", "description");
-    const canonicalTag = findTag(html, "link", "rel", "canonical");
-    const robotsTag = findTag(html, "meta", "name", "robots");
-
-    const description = descriptionTag ? getAttr(descriptionTag, "content") : null;
-    const canonical = canonicalTag ? getAttr(canonicalTag, "href") : null;
-    const robots = robotsTag ? getAttr(robotsTag, "content") : null;
-    const h1Count = (html.match(/<h1\b[^>]*>/gi) || []).length;
-
-    const issues = [];
-    if (!title) issues.push("Missing title");
-    if (!description) issues.push("Missing meta description");
-    if (!canonical) issues.push("Missing canonical");
-    if (h1Count === 0) issues.push("Missing H1");
-    if (h1Count > 1) issues.push(`Multiple H1 tags: ${h1Count}`);
-
-    return {
-      target: url,
-      title,
-      description,
-      canonical,
-      robots,
-      h1Count,
-      issues,
-      result: issues.length === 0 ? "PASS" : "WARNING"
-    };
+    return analyzeHtml(url, html, mode === "direct" ? "direct-fetch" : "browser-run");
   } catch (error) {
     return {
       target: url,
+      source: mode === "direct" ? "direct-fetch" : "browser-run",
       issues: [],
       result: "FAIL",
       error: String(error)
@@ -126,10 +151,10 @@ async function auditSite(env, limit) {
   const selected = urls.slice(0, limit);
   const results = [];
 
-  for (let i = 0; i < selected.length; i += 2) {
-    const batch = selected.slice(i, i + 2);
+  for (let i = 0; i < selected.length; i += 5) {
+    const batch = selected.slice(i, i + 5);
     const batchResults = await Promise.all(
-      batch.map((url) => auditPage(env, url))
+      batch.map((url) => auditPage(env, url, "direct"))
     );
     results.push(...batchResults);
   }
@@ -144,6 +169,7 @@ async function auditSite(env, limit) {
 
   return {
     ...summary,
+    scanMode: "direct-fetch",
     limited: urls.length > results.length,
     issues: results
       .filter((x) => x.result !== "PASS")
@@ -165,7 +191,7 @@ export default {
       return json({
         name: "CFT Online SEO Bot",
         status: "running",
-        version: "site-audit-v1",
+        version: "site-audit-v2",
         endpoints: {
           page: "/audit?url=https://chinesefortunetools.online/",
           site: "/site-audit",
@@ -215,7 +241,7 @@ export default {
         );
       }
 
-      const result = await auditPage(env, targetUrl.toString());
+      const result = await auditPage(env, targetUrl.toString(), "browser");
       return json(
         {
           renderedBy: "Cloudflare Browser Run",
