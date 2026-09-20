@@ -25,6 +25,16 @@ function json(data, status = 200) {
   });
 }
 
+function html(body, status = 200) {
+  return new Response(body, {
+    status,
+    headers: {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "no-store"
+    }
+  });
+}
+
 function normalizeHost(host) {
   return String(host || "").toLowerCase().replace(/^www\./, "");
 }
@@ -331,6 +341,127 @@ async function checkSites(env) {
   return rows;
 }
 
+function dashboardHtml() {
+  const siteRows = SITES.map((site) => `
+    <article class="card" data-site="${site.host}">
+      <div class="card-head">
+        <div>
+          <h2>${site.name}</h2>
+          <a class="host" href="${site.base}" target="_blank" rel="noopener">${site.host}</a>
+        </div>
+        <span class="badge loading">Checking…</span>
+      </div>
+      <div class="meta">Homepage health check</div>
+      <div class="issue">Waiting for result…</div>
+      <div class="actions">
+        <a href="/site-audit?site=${encodeURIComponent(site.host)}&limit=20" target="_blank">Full scan · 20 pages</a>
+        <a href="/audit?url=${encodeURIComponent(site.base + "/")}" target="_blank">Browser Run</a>
+      </div>
+    </article>
+  `).join("");
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10-Site SEO Dashboard</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f3f4f6}
+*{box-sizing:border-box}body{margin:0}.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 48px}
+.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap}
+h1{font-size:28px;margin:0 0 6px}.sub{color:#6b7280;margin:0}.toolbar{display:flex;gap:10px;align-items:center}
+button{border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;background:#111827;color:white}
+#stamp{font-size:13px;color:#6b7280}
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.stat{background:white;border-radius:14px;padding:16px;border:1px solid #e5e7eb}.stat strong{display:block;font-size:24px}.stat span{color:#6b7280;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:white;border:1px solid #e5e7eb;border-radius:16px;padding:17px}
+.card-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.card h2{font-size:17px;margin:0 0 4px}.host{font-size:13px;color:#2563eb;text-decoration:none}
+.badge{font-size:12px;font-weight:800;border-radius:999px;padding:5px 9px;white-space:nowrap}.loading{background:#f3f4f6;color:#6b7280}.pass{background:#dcfce7;color:#166534}.warning{background:#fef3c7;color:#92400e}.fail{background:#fee2e2;color:#991b1b}
+.meta,.issue{font-size:13px;color:#6b7280;margin-top:12px}.issue{min-height:20px;color:#374151}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}.actions a{font-size:13px;text-decoration:none;font-weight:700;color:#111827}
+.note{margin-top:18px;padding:14px 16px;background:#eef2ff;border-radius:12px;color:#3730a3;font-size:13px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>SEO Health Dashboard</h1>
+      <p class="sub">10-site live homepage check · full scans open per site</p>
+    </div>
+    <div class="toolbar">
+      <span id="stamp">Not checked yet</span>
+      <button id="refresh">Refresh all</button>
+    </div>
+  </div>
+
+  <section class="summary">
+    <div class="stat"><strong id="total">10</strong><span>Sites</span></div>
+    <div class="stat"><strong id="pass">0</strong><span>Pass</span></div>
+    <div class="stat"><strong id="warning">0</strong><span>Warning</span></div>
+    <div class="stat"><strong id="fail">0</strong><span>Fail</span></div>
+  </section>
+
+  <section class="grid">${siteRows}</section>
+  <div class="note">Recommended cadence: live homepage check when you open this dashboard; full sitemap scan weekly or after a deployment/content migration.</div>
+</div>
+
+<script>
+async function refreshAll(){
+  const button=document.getElementById("refresh");
+  button.disabled=true;
+  button.textContent="Checking…";
+  document.querySelectorAll(".badge").forEach(el=>{el.className="badge loading";el.textContent="Checking…";});
+  document.querySelectorAll(".issue").forEach(el=>el.textContent="Waiting for result…");
+
+  try{
+    const res=await fetch("/sites?check=1",{cache:"no-store"});
+    const data=await res.json();
+    let pass=0,warning=0,fail=0;
+
+    (data.sites||[]).forEach(site=>{
+      const card=document.querySelector('[data-site="'+site.host+'"]');
+      if(!card)return;
+      const badge=card.querySelector(".badge");
+      const issue=card.querySelector(".issue");
+      const status=(site.result||"FAIL").toLowerCase();
+
+      badge.className="badge "+status;
+      badge.textContent=site.result||"FAIL";
+
+      if(site.result==="PASS"){
+        pass++;
+        issue.textContent="Homepage SEO basics look good.";
+      }else if(site.result==="WARNING"){
+        warning++;
+        issue.textContent=(site.issues||[]).join(" · ")||"SEO warning detected.";
+      }else{
+        fail++;
+        issue.textContent=site.error||"Homepage check failed.";
+      }
+    });
+
+    document.getElementById("pass").textContent=pass;
+    document.getElementById("warning").textContent=warning;
+    document.getElementById("fail").textContent=fail;
+    document.getElementById("stamp").textContent="Checked "+new Date().toLocaleString();
+  }catch(err){
+    document.getElementById("stamp").textContent="Check failed";
+  }finally{
+    button.disabled=false;
+    button.textContent="Refresh all";
+  }
+}
+document.getElementById("refresh").addEventListener("click",refreshAll);
+refreshAll();
+</script>
+</body>
+</html>`;
+}
+
 export default {
   async fetch(request, env) {
     const reqUrl = new URL(request.url);
@@ -342,12 +473,17 @@ export default {
         version: "site-audit-v3",
         sites: SITES.length,
         endpoints: {
+          dashboard: "/dashboard",
           sites: "/sites",
           sitesHealth: "/sites?check=1",
           siteAudit: "/site-audit?site=cutdone.com&limit=20",
           browserAudit: "/audit?url=https://cutdone.com/"
         }
       });
+    }
+
+    if (reqUrl.pathname === "/dashboard") {
+      return html(dashboardHtml());
     }
 
     if (reqUrl.pathname === "/sites") {
