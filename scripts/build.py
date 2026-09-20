@@ -25,6 +25,10 @@ def update_sitemap(data):
         url_path = '/' + path.replace('index.html', '')
         lines.append(f'  <url><loc>{base}{url_path}</loc><lastmod>{today}</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>')
 
+    # Keep the standalone daily-card experiment in future sitemap rebuilds.
+    if os.path.exists('daily-zodiac-card/index.html'):
+        lines.append(f'  <url><loc>{base}/daily-zodiac-card/</loc><lastmod>{today}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>')
+
     # Automatically generated evergreen guides under /learn/.
     if os.path.exists('learn/index.html'):
         lines.append(f'  <url><loc>{base}/learn/</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>')
