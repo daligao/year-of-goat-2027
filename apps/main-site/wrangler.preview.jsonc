@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "cft-main-site-v2-preview",
+  "compatibility_date": "2026-09-19",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "../../.build/preview",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

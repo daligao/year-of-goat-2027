@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.build/
+.wrangler/
+node_modules/
+.env
+.env.*
+.dev.vars*
+pw.txt
+.DS_Store

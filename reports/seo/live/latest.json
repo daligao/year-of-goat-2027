@@ -1,0 +1,657 @@
+{
+  "schemaVersion": 1,
+  "mode": "live",
+  "origin": "https://chinesefortunetools.online",
+  "coverage": {
+    "truncated": true,
+    "rendered": false,
+    "robotsRespected": true,
+    "note": "Bounded live HTTP crawl; JavaScript not rendered."
+  },
+  "summary": {
+    "pagesCrawled": 28,
+    "passed": 27,
+    "warnings": 1,
+    "failed": 0,
+    "issueCounts": {
+      "INFO": 16,
+      "P2": 1
+    }
+  },
+  "pages": [
+    {
+      "URL": "https://chinesefortunetools.online/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "2027 Year of the Goat — Chinese Zodiac Fortune & Feng Shui Guide",
+      "description": "2027 is the Year of the Fire Goat (丁未年). CNY falls Feb 6, 2027. Fortune for all 12 signs, lucky colors, Feng Shui tips, and live countdown.",
+      "canonical": "https://chinesefortunetools.online/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/zodiac/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Exact Chinese Zodiac Calculator — Correct Spring Festival Boundary",
+      "description": "The most accurate Chinese Zodiac calculator. Enter your exact birth date — handles the Spring Festival boundary correctly. January and February birthdays calculated precisely.",
+      "canonical": "https://chinesefortunetools.online/zodiac/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/gift-checker/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Can I Give This Gift in China? — Chinese Gift Taboo Checker",
+      "description": "Instantly check if a gift is appropriate in Chinese culture. Type any item to see if it's safe, risky, or a taboo — plus better alternatives and cultural explanations.",
+      "canonical": "https://chinesefortunetools.online/gift-checker/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/red-envelope/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Chinese Red Envelope Amount Calculator — How Much to Give?",
+      "description": "How much money should you put in a Chinese red envelope (红包)? Free calculator for weddings, Chinese New Year, birthdays and more. Get lucky amounts instantly.",
+      "canonical": "https://chinesefortunetools.online/red-envelope/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/kinship/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Chinese Family Title Finder — What Do I Call This Relative?",
+      "description": "Chinese kinship titles are notoriously specific. Click through the relationship chain to find the exact Chinese term, pinyin, and cultural notes for any family member.",
+      "canonical": "https://chinesefortunetools.online/kinship/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/festival-countdown/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Chinese Festival Countdown 2026–2027 — Days Until the Next Holiday",
+      "description": "How many days until the next Chinese festival? Live countdown to Chinese New Year, Mid-Autumn Festival, Dragon Boat, Qixi, and 8 major holidays — with celebration guides.",
+      "canonical": "https://chinesefortunetools.online/festival-countdown/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "2027 Year of the Fire Goat — Zodiac Horoscopes for All Signs",
+      "description": "2027 is the Year of the Fire Goat (丁未年). Chinese New Year falls Feb 6, 2027. Full 12-month horoscopes for Dragon, Ox, Tiger, Rabbit and Snake — with career, wealth, love and health forecasts.",
+      "canonical": "https://chinesefortunetools.online/2027/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/dragon/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Dragon 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Dragon horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/dragon/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/ox/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Ox 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Ox horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/ox/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/tiger/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Tiger 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Tiger horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/tiger/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/rabbit/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Rabbit 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Rabbit horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/rabbit/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/snake/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Snake 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Snake horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/snake/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/rat/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Rat 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Rat horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/rat/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/horse/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Horse 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Horse horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/horse/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/goat/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Goat 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Goat horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/goat/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/monkey/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Monkey 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Monkey horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/monkey/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/rooster/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Rooster 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Rooster horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/rooster/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/dog/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Dog 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Dog horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/dog/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027/pig/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Pig 2027 Horoscope — All 12 Months · Year of the Goat",
+      "description": "Complete Pig horoscope for 2027 Year of the Fire Goat. Monthly fortune predictions for career, wealth, love and health across all 12 months.",
+      "canonical": "https://chinesefortunetools.online/2027/pig/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027-goals/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "2027 New Year Goals — Fire Goat Year Resolutions & Goal Setting",
+      "description": "2027 is the Year of the Fire Goat (丁未年) — Chinese tradition's year of new beginnings. Learn why, then write down your own 2027 goal on a free public goal wall.",
+      "canonical": "https://chinesefortunetools.online/2027-goals/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/new-year-2027/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "New Year 2027 — Countdown, Resolutions, Traditions & Quotes",
+      "description": "Live countdown to January 1, 2027. New Year's Eve traditions from around the world, resolution ideas that actually stick, and quotes to start the year right.",
+      "canonical": "https://chinesefortunetools.online/new-year-2027/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/when-is-chinese-new-year-2027/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "When Is Chinese New Year 2027? — Saturday, February 6, 2027",
+      "description": "Chinese New Year 2027 falls on Saturday, February 6, 2027 — the Year of the Fire Goat (丁未年). Live countdown, plus why the date moves every year.",
+      "canonical": "https://chinesefortunetools.online/when-is-chinese-new-year-2027/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/year-of-the-fire-goat-2027/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Year of the Fire Goat 2027 — What It Means",
+      "description": "What is a Fire Goat year? 2027 combines the Goat's gentle, artistic nature with Fire's passionate energy — last seen in 1967. Here's what that means for the year ahead.",
+      "canonical": "https://chinesefortunetools.online/year-of-the-fire-goat-2027/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027-lucky-numbers-colors/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Lucky Numbers & Colors for 2027 — Fire Goat Year",
+      "description": "Traditional lucky numbers (2, 7) and lucky colors (green, red, purple) for the 2027 Fire Goat year, plus what's traditionally considered unlucky.",
+      "canonical": "https://chinesefortunetools.online/2027-lucky-numbers-colors/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/chinese-new-year-2027-food/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Chinese New Year 2027 Food — What to Eat & Why",
+      "description": "Classic Chinese New Year 2027 dishes and their symbolic meaning — fish, dumplings, spring rolls, nian gao, longevity noodles — plus foods traditionally avoided.",
+      "canonical": "https://chinesefortunetools.online/chinese-new-year-2027-food/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/chinese-zodiac-years-chart/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Chinese Zodiac Years Chart — 1924 to 2031",
+      "description": "Full Chinese zodiac years chart from 1924 to 2031 — find your animal sign by birth year. 2027 is the Year of the Goat.",
+      "canonical": "https://chinesefortunetools.online/chinese-zodiac-years-chart/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/2027-public-holidays-china/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "China Public Holidays 2027 — Estimated Dates",
+      "description": "Estimated 2027 China public holiday dates: New Year's Day, Spring Festival golden week, Qingming, Labour Day, Dragon Boat, Mid-Autumn, National Day. Official schedule not yet announced.",
+      "canonical": "https://chinesefortunetools.online/2027-public-holidays-china/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": true
+    },
+    {
+      "URL": "https://chinesefortunetools.online/beta/",
+      "httpStatus": 200,
+      "statusSource": "http",
+      "title": "Beta — Chinese Culture Lab",
+      "description": "Beta tools from Chinese Culture Lab — mostly working, being polished before stable release.",
+      "canonical": "https://chinesefortunetools.online/beta/",
+      "robotsMeta": [],
+      "xRobotsTag": "",
+      "indexable": true,
+      "h1Count": 1,
+      "structuredData": false
+    }
+  ],
+  "issues": [
+    {
+      "severity": "INFO",
+      "rule": "link-unverified",
+      "URL": "https://chinesefortunetools.online/2027/dog/",
+      "actual": {
+        "target": "https://chinesefortunetools.online/2027/dog/april/",
+        "reason": "request budget exhausted"
+      },
+      "expected": "Verified internal target",
+      "recommendedFix": "Recheck within crawl policy and request budget.",
+      "fingerprint": "link-unverified|https://chinesefortunetools.online/2027/dog/",
+      "additionalActual": [
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/august/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/december/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/february/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/january/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/july/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/june/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/march/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/may/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/november/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/october/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/dog/september/",
+          "reason": "request budget exhausted"
+        }
+      ]
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/dog/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/dog/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/dragon/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/dragon/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/goat/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/goat/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/horse/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/horse/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/monkey/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/monkey/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/ox/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/ox/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "link-unverified",
+      "URL": "https://chinesefortunetools.online/2027/pig/",
+      "actual": {
+        "target": "https://chinesefortunetools.online/2027/pig/april/",
+        "reason": "request budget exhausted"
+      },
+      "expected": "Verified internal target",
+      "recommendedFix": "Recheck within crawl policy and request budget.",
+      "fingerprint": "link-unverified|https://chinesefortunetools.online/2027/pig/",
+      "additionalActual": [
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/august/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/december/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/february/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/january/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/july/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/june/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/march/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/may/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/november/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/october/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/pig/september/",
+          "reason": "request budget exhausted"
+        }
+      ]
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/pig/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/pig/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/rabbit/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/rabbit/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/rat/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/rat/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "link-unverified",
+      "URL": "https://chinesefortunetools.online/2027/rooster/",
+      "actual": {
+        "target": "https://chinesefortunetools.online/2027/rooster/may/",
+        "reason": "request budget exhausted"
+      },
+      "expected": "Verified internal target",
+      "recommendedFix": "Recheck within crawl policy and request budget.",
+      "fingerprint": "link-unverified|https://chinesefortunetools.online/2027/rooster/",
+      "additionalActual": [
+        {
+          "target": "https://chinesefortunetools.online/2027/rooster/november/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/rooster/october/",
+          "reason": "request budget exhausted"
+        },
+        {
+          "target": "https://chinesefortunetools.online/2027/rooster/september/",
+          "reason": "request budget exhausted"
+        }
+      ]
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/rooster/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/rooster/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/snake/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/snake/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/2027/tiger/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/2027/tiger/"
+    },
+    {
+      "severity": "INFO",
+      "rule": "structured-data-missing",
+      "URL": "https://chinesefortunetools.online/beta/",
+      "actual": false,
+      "expected": "Relevant structured data where applicable",
+      "recommendedFix": "Assess suitable Schema.org markup.",
+      "fingerprint": "structured-data-missing|https://chinesefortunetools.online/beta/"
+    },
+    {
+      "severity": "P2",
+      "rule": "sitemap-membership",
+      "URL": "https://chinesefortunetools.online/beta/",
+      "actual": false,
+      "expected": "Canonical indexable page in sitemap",
+      "recommendedFix": "Review eligibility before adding the URL.",
+      "fingerprint": "sitemap-membership|https://chinesefortunetools.online/beta/"
+    }
+  ]
+}

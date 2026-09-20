@@ -1,0 +1,9 @@
+# Validation and future issue integration
+
+phase1-validation.yml runs install, content validation, unit tests, isolated build, production-integrity checks, local SEO audit and regression comparison. It runs on pull_request, manual dispatch and pushes only to codex/online-v2-phase1. Token permission is contents:read, checkout credentials are not persisted, artifacts expire after 14 days. There is no deployment, auto-merge, issue creation or schedule.
+
+Do not open a PR yet: the pre-existing pr-preview.yml checks out main, applies PR files, creates previews and pushes main. This can alter production merely by opening a PR. The safe next change is to replace that workflow with an artifact-only preview in a separate reviewed maintenance step. A draft PR is not safe from this trigger. Other legacy workflows were inspected and preserved; their schedules and failure modes remain.
+
+SEO findings are saved in reports/seo/latest.json and .md. Existing debt is explicit in docs/seo-baseline.json. The regression check fails on new/worsened findings, changed finding evidence or lost crawl coverage. Baseline changes require human review, never automatic acceptance. The preservation manifest also rejects any modification of original public files in Phase 1.
+
+Future issue automation must be separately enabled. Key each finding by rule + normalized URL (the report fingerprint). Look up that marker in open and closed issues, update an existing issue where appropriate, and avoid duplicate creation. Restrict issue creation to trusted main/manual runs, severity P0/P1, a capped batch (e.g. 5), and never run an issue-created → audit → issue-created loop. Store last observation and confirmation count; require confirmation before closing/reopening a noisy finding. Only that separately approved workflow would receive issues:write. Never interpolate page text into shell commands.

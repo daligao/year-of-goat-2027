@@ -1,0 +1,47 @@
+{
+  "id": "zodiac-goat",
+  "slug": "goat-dataset-example",
+  "title": "Goat zodiac dataset example",
+  "description": "A structured sample of Goat zodiac labels and traditional associations copied from the existing site dataset for editorial review.",
+  "status": "review",
+  "type": "zodiac",
+  "updatedAt": "2026-09-20",
+  "sourceUrl": "https://chinesefortunetools.online/zodiac/",
+  "data": {
+    "id": "goat",
+    "zh": "羊",
+    "emoji": "🐑",
+    "element": "Earth",
+    "yin_yang": "Yin",
+    "years_mod12": 11,
+    "traits": [
+      "gentle",
+      "creative",
+      "empathetic",
+      "artistic"
+    ],
+    "lucky_numbers": [
+      2,
+      7
+    ],
+    "lucky_colors": [
+      "green",
+      "red",
+      "purple"
+    ],
+    "avoid": [
+      "Ox",
+      "Dog",
+      "Rat"
+    ],
+    "best": [
+      "Rabbit",
+      "Horse",
+      "Pig"
+    ],
+    "fortune_2027": {
+      "stars": 2,
+      "text": "Ben Ming Nian (本命年) — birth year cycle. Wear red for protection. Significant but vulnerable."
+    }
+  }
+}
