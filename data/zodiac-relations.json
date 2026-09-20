@@ -1,0 +1,45 @@
+{
+  "note": "Canonical source of truth for traditional Chinese zodiac (Sheng Xiao) relationship claims used across this site. These are birth-year-branch-only relationships — a simplified layer of full BaZi (Four Pillars) analysis, which also considers month, day, and hour branches. No page on this site should assert a zodiac relationship (clash, harmony, harm, or triad) that contradicts these tables. Corrected 2026-09-20 after a factual error was found in the original 2027 Fire Goat build (Dog was wrongly cast as Goat's Liu Chong clash partner instead of Ox).",
+  "six_clashes": {
+    "description": "Liu Chong (六冲) — direct opposition, the most severe of the paired relationships. Each animal has exactly one Liu Chong partner, always the sign six positions away in the 12-year cycle.",
+    "pairs": [
+      { "rat": "horse", "note": "子午冲" },
+      { "ox": "goat", "note": "丑未冲" },
+      { "tiger": "monkey", "note": "寅申冲" },
+      { "rabbit": "rooster", "note": "卯酉冲" },
+      { "dragon": "dog", "note": "辰戌冲" },
+      { "snake": "pig", "note": "巳亥冲" }
+    ]
+  },
+  "six_harmonies": {
+    "description": "Liu He (六合) — the single best 1-on-1 pairing for each animal.",
+    "pairs": [
+      { "rat": "ox" },
+      { "tiger": "pig" },
+      { "rabbit": "dog" },
+      { "dragon": "rooster" },
+      { "snake": "monkey" },
+      { "horse": "goat" }
+    ]
+  },
+  "six_harms": {
+    "description": "Liu Hai (六害) — a milder negative relationship than Liu Chong; friction/harm rather than direct opposition.",
+    "pairs": [
+      { "rat": "goat", "note": "子未害" },
+      { "ox": "horse" },
+      { "tiger": "snake" },
+      { "rabbit": "dragon" },
+      { "monkey": "pig" },
+      { "rooster": "dog" }
+    ]
+  },
+  "san_he_triads": {
+    "description": "San He (三合) — harmony trios; each member of a triad shares an above-average, cooperative-fortune relationship with the other two.",
+    "triads": [
+      ["monkey", "rat", "dragon"],
+      ["snake", "rooster", "ox"],
+      ["tiger", "horse", "dog"],
+      ["pig", "rabbit", "goat"]
+    ]
+  }
+}
