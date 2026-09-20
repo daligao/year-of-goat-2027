@@ -1,3 +1,5 @@
+import { generateArticle, latestContent, contentStatus } from "./content.js";
+
 const SITES = [
   { key: "cft-online", name: "ChineseFortuneTools.online", host: "chinesefortunetools.online", base: "https://chinesefortunetools.online" },
   { key: "cft", name: "ChineseFortuneTools.com", host: "chinesefortunetools.com", base: "https://chinesefortunetools.com" },
@@ -470,10 +472,12 @@ export default {
       return json({
         name: "OPC Multi-Site SEO Bot",
         status: "running",
-        version: "site-audit-v3",
+        version: "site-audit-v3-content-v1",
         sites: SITES.length,
         endpoints: {
           dashboard: "/dashboard",
+          contentStatus: "/content/status",
+          contentLatest: "/content/latest",
           sites: "/sites",
           sitesHealth: "/sites?check=1",
           siteAudit: "/site-audit?site=cutdone.com&limit=20",
@@ -484,6 +488,17 @@ export default {
 
     if (reqUrl.pathname === "/dashboard") {
       return html(dashboardHtml());
+    }
+
+    if (reqUrl.pathname === "/content/latest") {
+      const latest = await latestContent(env);
+      return latest
+        ? json(latest)
+        : json({ error: "No generated content yet" }, 404);
+    }
+
+    if (reqUrl.pathname === "/content/status") {
+      return json(await contentStatus(env));
     }
 
     if (reqUrl.pathname === "/sites") {
@@ -566,5 +581,11 @@ export default {
     }
 
     return json({ error: "Not found" }, 404);
+  },
+
+  async scheduled(controller, env, ctx) {
+    if (controller.cron === "17 1 * * 2,5") {
+      ctx.waitUntil(generateArticle(env, controller.scheduledTime));
+    }
   }
 };
