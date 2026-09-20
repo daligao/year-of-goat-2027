@@ -61,7 +61,21 @@ export default {
         rejectResourceTypes: ["image", "media", "font"]
       });
 
-      const html = await rendered.text();
+      const raw = await rendered.text();
+
+let html = raw;
+
+try {
+  const payload = JSON.parse(raw);
+
+  if (typeof payload === "string") {
+    html = payload;
+  } else if (payload && typeof payload.result === "string") {
+    html = payload.result;
+  }
+} catch {
+  // Browser Run returned raw HTML directly.
+}
 
       const title = match(
         html,
