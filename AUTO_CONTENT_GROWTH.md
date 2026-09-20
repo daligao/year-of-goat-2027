@@ -500,3 +500,97 @@ ChineseFortuneTools.com
 ```
 
 Automatic content should therefore answer long-tail questions and create a natural next action that leads to the relevant main-site tool.
+
+
+## Growth Dashboard and CTA click tracking
+
+Automatic article CTAs no longer link directly to the main site.
+
+They first pass through the Cloudflare Worker:
+
+```
+https://cft-online-seo-bot.love0972.workers.dev/go/<funnel>?article=<slug>
+```
+
+The Worker:
+
+1. validates the funnel key and article slug;
+2. increments click counters in `CONTENT_QUEUE` KV;
+3. redirects with HTTP 302 to the matching ChineseFortuneTools.com destination;
+4. automatically adds the normal UTM parameters.
+
+Example:
+
+```
+/go/five-elements?article=chinese-zodiac-element-birth-year
+```
+
+redirects to the Five Elements tool with:
+
+```
+utm_source=chinesefortunetools.online
+utm_medium=content
+utm_campaign=auto-growth
+utm_content=chinese-zodiac-element-birth-year
+```
+
+### Growth dashboard
+
+Open:
+
+```
+https://cft-online-seo-bot.love0972.workers.dev/growth-dashboard
+```
+
+JSON endpoint:
+
+```
+https://cft-online-seo-bot.love0972.workers.dev/growth/status
+```
+
+The dashboard reads the production article log from:
+
+```
+https://chinesefortunetools.online/data/ai-content-log.json
+```
+
+and combines it with click counters stored in Workers KV.
+
+Current dashboard fields:
+
+- published article
+- publish date
+- funnel key
+- main-site destination
+- tracked CTA clicks
+- direct links to the article and target page
+
+### Click counter keys
+
+Workers KV uses keys like:
+
+```
+growth:click:<article-slug>:<funnel-key>
+growth:daily:<YYYY-MM-DD>:<article-slug>:<funnel-key>
+```
+
+The first is the lifetime total.
+The second keeps a daily bucket for future trend charts.
+
+### Where to change tracking behavior
+
+Worker tracking and dashboard:
+
+```
+cloudflare-lab
+workers/seo-bot/src/index.js
+```
+
+Generated CTA URL format:
+
+```
+main
+scripts/publish_ai_content.py
+```
+
+The current smoke-test article was also migrated to the tracked redirect so it can start accumulating clicks immediately.
