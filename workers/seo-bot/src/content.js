@@ -18,6 +18,7 @@ const ARTICLE_SCHEMA = {
     excerpt: { type: "string" },
     category: { type: "string", enum: ALLOWED_CATEGORIES },
     primary_keyword: { type: "string" },
+    funnel_key: { type: "string", enum: ["zodiac", "bazi", "five-elements", "feng-shui", "2027", "home"] },
     alternatives: {
       type: "array",
       items: { type: "string" },
@@ -70,6 +71,7 @@ const ARTICLE_SCHEMA = {
     "excerpt",
     "category",
     "primary_keyword",
+    "funnel_key",
     "alternatives",
     "related_paths",
     "sections",
@@ -189,6 +191,7 @@ async function generateArticle(env, scheduledTime) {
     "Avoid thin SEO filler. Explain context, practical examples, common misunderstandings, and regional variation where relevant.",
     "Internally consider three candidate topics, choose the strongest non-duplicate one, and return the other two titles in alternatives.",
     "Target roughly 900 to 1400 English words.",
+    "The business goal is to send interested readers to ChineseFortuneTools.com for a deeper tool or calculator. Choose the most relevant funnel_key, but keep the article genuinely useful and avoid salesy repetition.",
     "Return only the requested structured JSON."
   ].join(" ");
 
@@ -201,7 +204,9 @@ async function generateArticle(env, scheduledTime) {
     "related_paths must contain 3 to 5 exact paths from the existing site paths.",
     "The slug must be concise lowercase English words separated by hyphens.",
     "Meta description should be about 120 to 160 characters.",
-    "Use 5 to 8 substantive sections and 3 to 5 FAQs."
+    "Use 5 to 8 substantive sections and 3 to 5 FAQs.",
+    "Choose funnel_key from: zodiac -> https://chinesefortunetools.com/chinese-zodiac/; bazi -> https://chinesefortunetools.com/bazi-calculator/; five-elements -> https://chinesefortunetools.com/five-elements/; feng-shui -> https://chinesefortunetools.com/feng-shui/; 2027 -> https://chinesefortunetools.com/2027/; home -> https://chinesefortunetools.com/.",
+    "Prefer topics where the reader has a natural next action on the linked main-site tool."
   ].join("\n");
 
   const result = await env.AI.run(MODEL, {
@@ -240,6 +245,7 @@ async function generateArticle(env, scheduledTime) {
     slug: article.slug,
     title: article.title,
     category: article.category,
+    funnelKey: article.funnel_key,
     wordCount: words
   };
 
@@ -273,6 +279,7 @@ async function contentStatus(env) {
       slug: latest.article.slug,
       title: latest.article.title,
       category: latest.article.category,
+      funnelKey: latest.article.funnel_key,
       wordCount: latest.wordCount
     } : null,
     history: history
