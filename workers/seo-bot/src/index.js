@@ -467,14 +467,15 @@ async function load(){
   document.getElementById("articles").textContent=data.articles||0;
   document.getElementById("clicks").textContent=data.totalClicks||0;
   document.getElementById("updated").textContent=new Date(data.generatedAt).toLocaleTimeString();
-  const rows=(data.rows||[]).map(r=>`
-    <tr>
-      <td><div class="title">${r.title||r.slug}</div><div class="muted">${r.category||""}</div></td>
-      <td>${r.published||"—"}</td>
-      <td><span class="pill">${r.funnelKey}</span><div class="muted">${r.funnelUrl}</div></td>
-      <td><div class="clicks">${r.clicks}</div></td>
-      <td class="links"><a href="${r.articleUrl}" target="_blank">Article</a><a href="${r.funnelUrl}" target="_blank">Target</a></td>
-    </tr>`).join("");
+  const rows=(data.rows||[]).map(r=>
+    '<tr>'+
+      '<td><div class="title">'+(r.title||r.slug)+'</div><div class="muted">'+(r.category||"")+'</div></td>'+
+      '<td>'+(r.published||"—")+'</td>'+
+      '<td><span class="pill">'+r.funnelKey+'</span><div class="muted">'+r.funnelUrl+'</div></td>'+
+      '<td><div class="clicks">'+r.clicks+'</div></td>'+
+      '<td class="links"><a href="'+r.articleUrl+'" target="_blank">Article</a><a href="'+r.funnelUrl+'" target="_blank">Target</a></td>'+
+    '</tr>'
+  ).join("");
   document.getElementById("rows").innerHTML=rows||'<tr><td colspan="5">No published guides yet.</td></tr>';
 }
 load().catch(err=>{document.getElementById("rows").innerHTML='<tr><td colspan="5">Failed to load growth data.</td></tr>';});
