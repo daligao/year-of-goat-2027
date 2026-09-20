@@ -57,7 +57,7 @@ async function auditPage(env, url) {
   try {
     const html = await renderedHtml(env, url);
 
-    const title = match(html, /<title[^>]*>([\\s\\S]*?)<\\/title>/i);
+    const title = match(html, /<title[^>]*>([\s\S]*?)<\/title>/i);
 
     const descriptionTag = findTag(html, "meta", "name", "description");
     const canonicalTag = findTag(html, "link", "rel", "canonical");
@@ -66,7 +66,7 @@ async function auditPage(env, url) {
     const description = descriptionTag ? getAttr(descriptionTag, "content") : null;
     const canonical = canonicalTag ? getAttr(canonicalTag, "href") : null;
     const robots = robotsTag ? getAttr(robotsTag, "content") : null;
-    const h1Count = (html.match(/<h1\\b[^>]*>/gi) || []).length;
+    const h1Count = (html.match(/<h1\b[^>]*>/gi) || []).length;
 
     const issues = [];
     if (!title) issues.push("Missing title");
@@ -106,7 +106,7 @@ async function readSitemap() {
   }
 
   const xml = await response.text();
-  const urls = [...xml.matchAll(/<loc>\\s*([^<]+?)\\s*<\\/loc>/gi)]
+  const urls = [...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)]
     .map((m) => m[1].trim())
     .filter((url) => {
       try {
