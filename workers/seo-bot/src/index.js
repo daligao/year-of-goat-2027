@@ -165,6 +165,7 @@ export default {
       return json({
         name: "CFT Online SEO Bot",
         status: "running",
+        version: "site-audit-v1",
         endpoints: {
           page: "/audit?url=https://chinesefortunetools.online/",
           site: "/site-audit",
