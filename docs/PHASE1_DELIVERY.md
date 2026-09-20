@@ -21,6 +21,8 @@ Replaceable Crawler, LocalCrawler, StaticCrawler and explicit unimplemented Brow
 ## 7. Tests executed
 32 offline unit/integration tests passed; content validation, catalog build, static packaging, sitemap candidate, robots checks, production integrity and credential-pattern scan passed. No new SEO regression against the existing baseline. The unchanged legacy sitemap builder ran successfully in a disposable copy, never against the production sitemap. The unchanged legacy JSON validator has 2 existing failures (season.date extra; ideas.updated missing); these are not new content-library failures and were not hidden or auto-fixed. Wrangler 4.134.0 dry run passed. Local Wrangler HTTP checks passed for all 206 files with byte identity and preview noindex; missing route returned 404. Details: reports/preview-verification.json.
 
+GitHub Phase 1 validation passed on implementation commit 440b8f6: https://github.com/daligao/year-of-goat-2027/actions/runs/35487896319 . The existing release.yml separately reports a workflow-file failure (no release job ran): https://github.com/daligao/year-of-goat-2027/actions/runs/35487895938 . This legacy file was not modified. GitHub main remains 48a074dedc3bf0de3c9d6d5c03d9a0af689adb12. Branch: codex/online-v2-phase1. No PR created because of the legacy preview trigger.
+
 ## 8. Workers Builds readiness
 Isolated preview config/build/deploy commands/watch paths documented and dry-run tested. GitHub repository integration and remote Cloudflare builds are not enabled. No production domain routes configured. Future seo-bot and content-pipeline Workers still need runtime entrypoints before deployment.
 
@@ -30,7 +32,7 @@ Interface and binding/permission/robots/limits/cost-control plan documented. No 
 ## 10. Risks
 - Existing pr-preview workflow writes main on PR creation; do not open even a draft PR yet.
 - GitHub Pages root deployment may expose new content/docs directories after merge; configure explicit exclusions or artifact publishing before merge.
-- Existing scheduled workflows and sitemap builder retain their prior behavior; legacy schema validation still fails as described above.
+- Existing release.yml reports a workflow-file failure; existing scheduled workflows and sitemap builder retain their prior behavior; legacy schema validation still fails as described above.
 - Static audits do not execute JavaScript or establish rendered accessibility. Live audit is bounded; orphan checks are candidates. Pattern scanning cannot prove absence of every credential format.
 - Integrity manifest intentionally freezes original files for Phase 1; future edits require reviewed manifest evolution.
 
