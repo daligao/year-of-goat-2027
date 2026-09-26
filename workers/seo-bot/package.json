@@ -1,0 +1,11 @@
+{
+  "name": "cft-online-seo-bot",
+  "private": true,
+  "description": "Cloudflare SEO Bot experiment",
+  "scripts": {
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
