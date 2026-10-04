@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "2026-09-24-five-elements-in-chinese-culture",
+      "slug": "five-elements-in-chinese-culture",
+      "title": "The Significance of the Five Elements in Chinese Culture",
+      "excerpt": "Discover the significance of the Five Elements in Chinese culture and their influence on the Chinese zodiac, Feng Shui, and everyday life.",
+      "category": "Chinese Culture",
+      "primaryKeyword": "Five Elements",
+      "funnelKey": "zodiac",
+      "funnelUrl": "https://chinesefortunetools.com/chinese-zodiac/",
+      "published": "2026-09-24",
+      "wordCount": 808,
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+    },
+    {
       "id": "2026-09-20-chinese-zodiac-element-birth-year",
       "slug": "chinese-zodiac-element-birth-year",
       "title": "How to Find Your Chinese Zodiac Element from Your Birth Year",
