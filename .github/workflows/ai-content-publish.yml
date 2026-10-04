@@ -20,6 +20,8 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+          # Deploy key is a bypass actor on the main ruleset; GITHUB_TOKEN pushes are rejected.
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       - uses: actions/setup-python@v5
         with:
