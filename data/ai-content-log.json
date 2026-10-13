@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "2026-10-12-chinese-zodiac-elements",
+      "slug": "chinese-zodiac-elements",
+      "title": "Chinese Zodiac Elements: Understanding Their Influence on Personality and Destiny",
+      "excerpt": "Discover the significance of the Chinese zodiac elements and how they influence your personality and destiny.",
+      "category": "Chinese Culture",
+      "primaryKeyword": "chinese zodiac elements",
+      "funnelKey": "zodiac",
+      "funnelUrl": "https://chinesefortunetools.com/chinese-zodiac/",
+      "published": "2026-10-12",
+      "wordCount": 903,
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+    },
+    {
       "id": "2026-09-24-five-elements-in-chinese-culture",
       "slug": "five-elements-in-chinese-culture",
       "title": "The Significance of the Five Elements in Chinese Culture",
